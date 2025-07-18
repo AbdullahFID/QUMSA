@@ -1,0 +1,309 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import {
+  Menu,
+  MoonStar,
+  ChevronDown,
+  HeartHandshake,
+  Home,
+  Target,
+  Clock,
+  Users,
+  Calendar,
+  BookOpen,
+} from 'lucide-react'
+
+const primaryLinks = [
+  { href: '/',        label: 'Home',    icon: Home     },
+  { href: '/mission', label: 'Mission', icon: Target   },
+  { href: '/prayer',  label: 'Prayer',  icon: Clock    },
+  { href: '/team',    label: 'Team',    icon: Users    },
+  { href: '/events',  label: 'Events',  icon: Calendar },
+]
+
+const resourceLinks = [
+  { href: '/resources/housing', label: 'Housing Support' },
+  { href: '/resources/halal',   label: 'Halal Food Guide' },
+  { href: '/resources/faq',     label: 'FAQ & Resources' },
+]
+
+export default function Navbar() {
+  const [scroll,           setScroll]           = useState(false)
+  const [activeTheme,     setActiveTheme]     = useState<'dark'|'light'>('dark')
+  const [mobileOpen,      setMobileOpen]      = useState(false)
+  const [deskDrop,        setDeskDrop]        = useState(false)
+  const [showMobileNav,   setShowMobileNav]   = useState(true)
+  const [showFloatingBtn, setShowFloatingBtn] = useState(false)
+
+  // light text on scroll (navy bg); otherwise adapt to section theme
+  const textColorClass = scroll
+    ? 'text-white hover:text-islamic-gold'
+    : activeTheme === 'light'
+      ? 'text-gray-800 hover:text-islamic-gold'
+      : 'text-white hover:text-islamic-gold'
+
+  // consistent gold underline
+  const linkUnderlineClass = 'bg-islamic-gold'
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY
+      setScroll(y > 10)
+
+      if (y > 50) {
+        setShowMobileNav(false)
+        setShowFloatingBtn(true)
+        setMobileOpen(false)
+      } else {
+        setShowMobileNav(true)
+        setShowFloatingBtn(false)
+      }
+    }
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const theme = entry.target.getAttribute('data-section-theme') as 'light'|'dark'
+            theme && setActiveTheme(theme)
+          }
+        })
+      },
+      { rootMargin: '-100px 0px -90%' }
+    )
+
+    document.querySelectorAll('[data-section-theme]').forEach(sec => observer.observe(sec))
+    window.addEventListener('scroll', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      document.querySelectorAll('[data-section-theme]').forEach(sec => observer.unobserve(sec))
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!(deskDrop || mobileOpen)) return
+    const onClickOutside = () => {
+      setDeskDrop(false)
+      setMobileOpen(false)
+    }
+    document.addEventListener('click', onClickOutside)
+    return () => document.removeEventListener('click', onClickOutside)
+  }, [deskDrop, mobileOpen])
+
+  return (
+    <>
+      {/* Desktop Navigation */}
+      <header
+        className={`
+          hidden md:block fixed inset-x-0 top-0 z-50 transition-all duration-300
+          ${scroll
+            ? 'bg-navy-900/90 shadow-lg backdrop-blur-md border-b border-navy-800'
+            : 'bg-transparent'
+          }
+        `}
+      >
+        <nav className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+          {/* Brand */}
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="p-2 rounded-xl bg-gradient-to-r from-yellow-400 to-green-600 group-hover:shadow-lg transition">
+              <MoonStar className="w-6 h-6 text-white" />
+            </div>
+            <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-green-600">
+              QUMSA
+            </span>
+          </Link>
+
+          {/* Links */}
+          <div className="flex items-center gap-8">
+            {primaryLinks.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className={`relative font-medium transition ${textColorClass}`}
+              >
+                {label}
+                <span
+                  className={`
+                    absolute left-0 -bottom-1 h-0.5 w-0 transition-all duration-300
+                    ${linkUnderlineClass} group-hover:w-full
+                  `}
+                />
+              </Link>
+            ))}
+
+            {/* Resources Dropdown */}
+            <div className="relative" onClick={e => e.stopPropagation()}>
+              <button
+                onClick={() => setDeskDrop(!deskDrop)}
+                className={`flex items-center gap-2 font-medium transition ${textColorClass}`}
+              >
+                Resources
+                <ChevronDown className={`w-4 h-4 transition-transform ${deskDrop ? 'rotate-180' : ''}`} />
+              </button>
+              <div
+                className={`
+                  absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-gray-200
+                  overflow-hidden transition-transform duration-200 origin-top-right
+                  ${deskDrop ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'}
+                `}
+              >
+                {resourceLinks.map(({ href, label }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-islamic-gold transition"
+                    onClick={() => setDeskDrop(false)}
+                  >
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Donate Button */}
+            <Link
+              href="/donate"
+              className="
+                flex items-center gap-2 px-6 py-3 rounded-full font-semibold
+                bg-gradient-to-r from-yellow-400 to-green-600 hover:from-yellow-500 hover:to-green-700
+                text-white shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition
+              "
+            >
+              <HeartHandshake className="w-4 h-4" />
+              Donate
+            </Link>
+          </div>
+        </nav>
+      </header>
+
+      {/* Mobile Navigation */}
+      <div className="md:hidden">
+        {mobileOpen && (
+          <div
+            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30"
+            onClick={() => setMobileOpen(false)}
+          />
+        )}
+
+        <button
+          onClick={() => {
+            setShowMobileNav(true)
+            setShowFloatingBtn(false)
+            setMobileOpen(false)
+          }}
+          className={`
+            fixed right-4 bottom-20 z-50 w-14 h-14 rounded-full
+            bg-gray-900/95 backdrop-blur-md border border-gray-800 shadow-2xl
+            flex items-center justify-center transition-all duration-300
+            hover:shadow-3xl hover:scale-105 active:scale-95
+            ${showFloatingBtn ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0 pointer-events-none'}
+          `}
+        >
+          <svg
+            className="w-6 h-6 text-gray-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <nav
+          className={`
+            fixed bottom-0 left-0 right-0 z-40 transition-all duration-300 ease-in-out
+            ${showMobileNav ? 'translate-y-0' : 'translate-y-full'}
+          `}
+        >
+          <div className="flex justify-center px-4 pb-4 pt-2">
+            <div className="bg-gray-900/95 backdrop-blur-md rounded-2xl px-6 py-4 shadow-2xl border border-gray-800 max-w-sm w-full">
+              <div className="flex items-center justify-between">
+                {primaryLinks.slice(0, 4).map(({ href, label, icon: Icon }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="flex flex-col items-center gap-1 group min-w-0 flex-1"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    <Icon className="w-5 h-5 text-gray-400 group-hover:text-islamic-gold transition" />
+                    <span className="text-xs text-gray-400 group-hover:text-islamic-gold transition truncate">
+                      {label}
+                    </span>
+                  </Link>
+                ))}
+                <button
+                  onClick={e => {
+                    e.stopPropagation()
+                    setMobileOpen(!mobileOpen)
+                  }}
+                  className="flex flex-col items-center gap-1 group min-w-0 flex-1"
+                >
+                  <Menu className="w-5 h-5 text-gray-400 group-hover:text-islamic-gold transition" />
+                  <span className="text-xs text-gray-400 group-hover:text-islamic-gold transition">
+                    More
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex justify-center px-4 pb-2 relative z-50">
+            <div
+              className={`
+                bg-gray-900/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-800 max-w-sm w-full
+                overflow-hidden transition-all duration-300 origin-bottom
+                ${mobileOpen ? 'scale-100 opacity-100 max-h-96' : 'scale-95 opacity-0 max-h-0 pointer-events-none'}
+              `}
+              onClick={e => e.stopPropagation()}
+            >
+              <div className="p-4 space-y-4">
+                <Link
+                  href="/events"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center gap-3 text-gray-300 hover:text-islamic-gold transition"
+                >
+                  <Calendar className="w-5 h-5" />
+                  <span className="font-medium">Events</span>
+                </Link>
+
+                <div className="space-y-2">
+                  <div className="flex items-center gap-3 text-gray-300 pb-2 border-b border-gray-800">
+                    <BookOpen className="w-5 h-5" />
+                    <span className="font-medium">Resources</span>
+                  </div>
+                  <div className="space-y-2 pl-8">
+                    {resourceLinks.map(({ href, label }) => (
+                      <Link
+                        key={href}
+                        href={href}
+                        onClick={() => setMobileOpen(false)}
+                        className="block text-gray-400 hover:text-islamic-gold transition text-sm"
+                      >
+                        {label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                <Link
+                  href="/donate"
+                  onClick={() => setMobileOpen(false)}
+                  className="
+                    flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl font-semibold
+                    bg-gradient-to-r from-yellow-400 to-green-600 hover:from-yellow-500 hover:to-green-700
+                    text-white shadow-lg transition
+                  "
+                >
+                  <HeartHandshake className="w-4 h-4" />
+                  Donate
+                </Link>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </>
+  )
+}
