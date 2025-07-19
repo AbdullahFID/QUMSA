@@ -31,21 +31,13 @@ const resourceLinks = [
 
 export default function Navbar() {
   const [scroll,           setScroll]           = useState(false)
-  const [activeTheme,     setActiveTheme]     = useState<'dark'|'light'>('dark')
   const [mobileOpen,      setMobileOpen]      = useState(false)
   const [deskDrop,        setDeskDrop]        = useState(false)
   const [showMobileNav,   setShowMobileNav]   = useState(true)
   const [showFloatingBtn, setShowFloatingBtn] = useState(false)
 
-  // light text on scroll (navy bg); otherwise adapt to section theme
-  const textColorClass = scroll
-    ? 'text-white hover:text-islamic-gold'
-    : activeTheme === 'light'
-      ? 'text-gray-800 hover:text-islamic-gold'
-      : 'text-white hover:text-islamic-gold'
-
-  // consistent gold underline
-  const linkUnderlineClass = 'bg-islamic-gold'
+  // Simple text color logic: white when scrolling (green bg), white when at top
+  const textColorClass = 'text-white'
 
   useEffect(() => {
     const onScroll = () => {
@@ -62,24 +54,8 @@ export default function Navbar() {
       }
     }
 
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const theme = entry.target.getAttribute('data-section-theme') as 'light'|'dark'
-            theme && setActiveTheme(theme)
-          }
-        })
-      },
-      { rootMargin: '-100px 0px -90%' }
-    )
-
-    document.querySelectorAll('[data-section-theme]').forEach(sec => observer.observe(sec))
     window.addEventListener('scroll', onScroll)
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      document.querySelectorAll('[data-section-theme]').forEach(sec => observer.unobserve(sec))
-    }
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   useEffect(() => {
@@ -99,7 +75,7 @@ export default function Navbar() {
         className={`
           hidden md:block fixed inset-x-0 top-0 z-50 transition-all duration-300
           ${scroll
-            ? 'bg-navy-900/90 shadow-lg backdrop-blur-md border-b border-navy-800'
+            ? 'bg-green-700/40 shadow-xl backdrop-blur-md'
             : 'bg-transparent'
           }
         `}
@@ -121,15 +97,13 @@ export default function Navbar() {
               <Link
                 key={href}
                 href={href}
-                className={`relative font-medium transition ${textColorClass}`}
+                className={`
+                  relative font-medium transition-all duration-300 group
+                  ${textColorClass} hover:text-yellow-400
+                `}
               >
                 {label}
-                <span
-                  className={`
-                    absolute left-0 -bottom-1 h-0.5 w-0 transition-all duration-300
-                    ${linkUnderlineClass} group-hover:w-full
-                  `}
-                />
+                <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-yellow-400 transition-all duration-300 ease-out group-hover:w-full" />
               </Link>
             ))}
 
@@ -137,15 +111,19 @@ export default function Navbar() {
             <div className="relative" onClick={e => e.stopPropagation()}>
               <button
                 onClick={() => setDeskDrop(!deskDrop)}
-                className={`flex items-center gap-2 font-medium transition ${textColorClass}`}
+                className={`
+                  flex items-center gap-2 font-medium transition-all duration-300 group relative
+                  ${textColorClass} hover:text-yellow-400
+                `}
               >
                 Resources
                 <ChevronDown className={`w-4 h-4 transition-transform ${deskDrop ? 'rotate-180' : ''}`} />
+                <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-yellow-400 transition-all duration-300 ease-out group-hover:w-full" />
               </button>
               <div
                 className={`
                   absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-gray-200
-                  overflow-hidden transition-transform duration-200 origin-top-right
+                  overflow-hidden transition-all duration-200 origin-top-right
                   ${deskDrop ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'}
                 `}
               >
@@ -153,7 +131,7 @@ export default function Navbar() {
                   <Link
                     key={href}
                     href={href}
-                    className="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-islamic-gold transition"
+                    className="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-yellow-600 transition-all duration-200"
                     onClick={() => setDeskDrop(false)}
                   >
                     {label}
@@ -168,7 +146,7 @@ export default function Navbar() {
               className="
                 flex items-center gap-2 px-6 py-3 rounded-full font-semibold
                 bg-gradient-to-r from-yellow-400 to-green-600 hover:from-yellow-500 hover:to-green-700
-                text-white shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition
+                text-white shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300
               "
             >
               <HeartHandshake className="w-4 h-4" />
@@ -227,8 +205,8 @@ export default function Navbar() {
                     className="flex flex-col items-center gap-1 group min-w-0 flex-1"
                     onClick={() => setMobileOpen(false)}
                   >
-                    <Icon className="w-5 h-5 text-gray-400 group-hover:text-islamic-gold transition" />
-                    <span className="text-xs text-gray-400 group-hover:text-islamic-gold transition truncate">
+                    <Icon className="w-5 h-5 text-gray-400 group-hover:text-yellow-400 transition" />
+                    <span className="text-xs text-gray-400 group-hover:text-yellow-400 transition truncate">
                       {label}
                     </span>
                   </Link>
@@ -240,8 +218,8 @@ export default function Navbar() {
                   }}
                   className="flex flex-col items-center gap-1 group min-w-0 flex-1"
                 >
-                  <Menu className="w-5 h-5 text-gray-400 group-hover:text-islamic-gold transition" />
-                  <span className="text-xs text-gray-400 group-hover:text-islamic-gold transition">
+                  <Menu className="w-5 h-5 text-gray-400 group-hover:text-yellow-400 transition" />
+                  <span className="text-xs text-gray-400 group-hover:text-yellow-400 transition">
                     More
                   </span>
                 </button>
@@ -262,7 +240,7 @@ export default function Navbar() {
                 <Link
                   href="/events"
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center gap-3 text-gray-300 hover:text-islamic-gold transition"
+                  className="flex items-center gap-3 text-gray-300 hover:text-yellow-400 transition"
                 >
                   <Calendar className="w-5 h-5" />
                   <span className="font-medium">Events</span>
@@ -279,7 +257,7 @@ export default function Navbar() {
                         key={href}
                         href={href}
                         onClick={() => setMobileOpen(false)}
-                        className="block text-gray-400 hover:text-islamic-gold transition text-sm"
+                        className="block text-gray-400 hover:text-yellow-400 transition text-sm"
                       >
                         {label}
                       </Link>

@@ -8,10 +8,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: "QUMSA • Queen's University Muslim Students Association",
-  description:
-    "Building faith, friendship, and community on campus. Join Kingston's premier Muslim student organization.",
-  keywords:
-    "Queen's University, Muslim Students, MSA, Kingston, Islamic, Community, Prayer, Halal",
+  description: "Building faith, friendship, and community on campus. Join Kingston's premier Muslim student organization.",
+  keywords: "Queen's University, Muslim Students, MSA, Kingston, Islamic, Community, Prayer, Halal",
   authors: [{ name: 'QUMSA' }],
   openGraph: {
     title: "QUMSA • Queen's University Muslim Students Association",
@@ -24,6 +22,11 @@ export const metadata = {
     title: "QUMSA • Queen's University Muslim Students Association",
     description: 'Building faith, friendship, and community on campus.',
   },
+  icons: {
+    icon: '/icons/favicon.ico',        // Path to your favicon in /public/icons/
+    // apple: '/icons/apple-touch-icon.png', // Add if you have apple icon
+    // shortcut: '/icons/favicon.ico',       // Optional
+  },
 }
 
 export default function RootLayout({
@@ -33,9 +36,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body
-        className={`${inter.className} antialiased flex flex-col min-h-screen islamic-pattern`}
-      >
+      <body className={`${inter.className} antialiased flex flex-col min-h-screen islamic-pattern`}>
         <Navbar />
         <main className="flex-1 relative">{children}</main>
         <Footer />

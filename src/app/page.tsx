@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import ResourceTile from '../components/ResourceTile'
 import {
-  HelpCircle,
+  Clock,
   Utensils,
   Home,
   BookOpen,
@@ -187,10 +187,10 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                href: "/resources/chaplain",
-                title: "Ask a Chaplain",
-                icon: HelpCircle,
-                description: "Guidance from our Imam on Qur'an & Sunnah.",
+                href: "/prayer",
+                title: "Prayer Times",
+                icon: Clock,
+                description: "Daily prayer times and prayer room locations.",
                 color: "from-yellow-400 to-amber-500",
                 delay: 0.1
               },

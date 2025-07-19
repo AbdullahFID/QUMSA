@@ -47,22 +47,8 @@ export default function EventCard({
       {/* Subtle gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-transparent to-emerald-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
-      {/* Featured badge - more elegant */}
-      {featured && (
-        <div className="absolute top-6 right-6 z-10">
-          <motion.div 
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            className="flex items-center space-x-2 bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-900 px-4 py-2 rounded-full text-sm font-semibold shadow-lg backdrop-blur-sm"
-          >
-            <Star className="w-4 h-4 fill-current" />
-            <span>Featured</span>
-          </motion.div>
-        </div>
-      )}
-
       <div className="relative p-8">
-        {/* Header - More spacious */}
+        {/* Header - More spacious with proper spacing for featured badge */}
         <div className="flex items-start justify-between mb-8">
           <div className="flex items-center space-x-4">
             <div className="p-4 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-2xl shadow-lg">
@@ -74,12 +60,28 @@ export default function EventCard({
             </div>
           </div>
           
-          {attendees && (
-            <div className="flex items-center space-x-2 bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-full px-4 py-2 border border-white/40 dark:border-slate-700/40">
-              <Users className="w-4 h-4 text-emerald-500" />
-              <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{attendees}</span>
-            </div>
-          )}
+          {/* Right side content with proper stacking */}
+          <div className="flex flex-col items-end space-y-3">
+            {/* Featured badge - positioned first */}
+            {featured && (
+              <motion.div 
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                className="flex items-center space-x-2 bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-900 px-4 py-2 rounded-full text-sm font-semibold shadow-lg backdrop-blur-sm"
+              >
+                <Star className="w-4 h-4 fill-current" />
+                <span>Featured</span>
+              </motion.div>
+            )}
+            
+            {/* Attendees count - positioned below featured badge */}
+            {attendees && (
+              <div className="flex items-center space-x-2 bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-full px-4 py-2 border border-white/40 dark:border-slate-700/40">
+                <Users className="w-4 h-4 text-emerald-500" />
+                <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{attendees}</span>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Category - More refined */}
@@ -89,8 +91,8 @@ export default function EventCard({
           </span>
         </div>
 
-        {/* Title - Better spacing */}
-        <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white mb-6 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-yellow-400 group-hover:to-amber-500 group-hover:bg-clip-text transition-all duration-300 line-clamp-2 leading-tight">
+        {/* Title - Softer gradient on hover */}
+        <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white mb-6 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-amber-600 group-hover:to-orange-500 group-hover:bg-clip-text transition-all duration-300 line-clamp-2 leading-tight">
           {title}
         </h3>
 
