@@ -1,3 +1,4 @@
+// components/Preloader.tsx
 'use client'
 
 import { useState, useEffect } from 'react'
@@ -16,79 +17,77 @@ export default function Preloader({ isExiting = false }: PreloaderProps) {
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    // Fetch random quote from API
-    const fetchQuote = async () => {
+    let retryTimer: NodeJS.Timeout | null = null
+    let progressTimer: NodeJS.Timeout | null = null
+
+    const loadQuote = async () => {
       try {
-        const response = await fetch('https://quranquotes.vercel.app/api/getAll')
-        const quotes: QuranQuote[] = await response.json()
-        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
-        setQuote(randomQuote)
-      } catch (error) {
-        console.error('Error fetching quote:', error)
-        // Fallback quote
-        setQuote({
-          quranQuote: "And We have certainly created man in the best of stature.",
-          reference: "Quran 95:4"
-        })
+        // cache:no-store forces a fresh edge lookup each attempt
+        const res = await fetch('/api/quran-quotes', { cache: 'no-store' })
+        if (!res.ok) throw new Error('edge miss')
+        const quotes: QuranQuote[] = await res.json()
+
+        // pick & store random quote
+        setQuote(quotes[Math.floor(Math.random() * quotes.length)])
+
+        // success → stop further retries
+        if (retryTimer) clearInterval(retryTimer)
+      } catch {
+        // first edge call of the day may 502; try again later
       }
     }
 
-    fetchQuote()
+    /* first attempt immediately, then keep retrying every 5 s until success */
+    loadQuote()
+    retryTimer = setInterval(loadQuote, 5000)
 
-    // Progress bar animation
-    const progressInterval = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 100) {
-          clearInterval(progressInterval)
-          return 100
-        }
-        return prev + 2
-      })
-    }, 44) // Complete in ~2.2 seconds
+    /* progress‑bar animation (~2.2 s full) */
+    progressTimer = setInterval(() => {
+      setProgress(p => (p >= 100 ? 100 : p + 2))
+    }, 44)
 
-    return () => clearInterval(progressInterval)
+    /* cleanup on unmount */
+    return () => {
+      if (retryTimer) clearInterval(retryTimer)
+      if (progressTimer) clearInterval(progressTimer)
+    }
   }, [])
 
   return (
     <div className={`fixed inset-0 z-50 transition-all duration-800 ease-in-out ${
-      isExiting 
-        ? 'opacity-0 scale-110' 
-        : 'opacity-100 scale-100'
+      isExiting ? 'opacity-0 scale-110' : 'opacity-100 scale-100'
     }`}>
-      {/* Background Image */}
+      {/* ---------- Background image ---------- */}
       <div className="absolute inset-0">
-        <img 
-          src="https://images.unsplash.com/photo-1542816417-0983c9c9ad53?q=80&w=2940&auto=format&fit=crop" 
+        <img
+          src="https://images.unsplash.com/photo-1542816417-0983c9c9ad53?q=80&w=2940&auto=format&fit=crop"
           alt="Islamic Architecture Background"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-green-900/60 via-blue-900/50 to-purple-900/60" />
       </div>
 
-      {/* Animated geometric shapes that expand outward */}
+      {/* ---------- Expanding shapes ---------- */}
       <div className={`absolute inset-0 transition-all duration-700 ${
         isExiting ? 'opacity-100' : 'opacity-0'
       }`}>
-        {/* Expanding circles */}
-        <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-700 ${
+        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-700 ${
           isExiting ? 'w-96 h-96' : 'w-0 h-0'
         } bg-white/10 rounded-full`} />
-        <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 delay-100 ${
+        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 delay-100 ${
           isExiting ? 'w-64 h-64' : 'w-0 h-0'
         } bg-white/20 rounded-full`} />
-        <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 delay-200 ${
+        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-300 delay-200 ${
           isExiting ? 'w-32 h-32' : 'w-0 h-0'
         } bg-white/30 rounded-full`} />
       </div>
 
-      {/* Main Content Container */}
+      {/* ---------- Main content ---------- */}
       <div className={`relative z-10 flex flex-col items-center justify-center h-full px-6 transition-all duration-500 ${
-        isExiting 
-          ? 'transform -translate-y-8 opacity-0 scale-75' 
-          : 'transform translate-y-0 opacity-100 scale-100'
+        isExiting ? '-translate-y-8 opacity-0 scale-75' : 'translate-y-0 opacity-100 scale-100'
       }`}>
-        
-        {/* Quote Container */}
+
+        {/* Quote card */}
         <div className="w-full max-w-2xl mb-8">
           <div className="bg-white/15 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-2xl">
             {quote ? (
@@ -99,7 +98,7 @@ export default function Preloader({ isExiting = false }: PreloaderProps) {
                   </svg>
                 </div>
                 <p className="text-lg md:text-xl font-light leading-relaxed mb-4 italic">
-                  "{quote.quranQuote}"
+                  &quot;{quote.quranQuote}&quot;
                 </p>
                 <p className="text-sm text-green-300 font-medium">
                   — {quote.reference}
@@ -108,39 +107,35 @@ export default function Preloader({ isExiting = false }: PreloaderProps) {
             ) : (
               <div className="text-center text-white">
                 <div className="animate-pulse">
-                  <div className="h-4 bg-white/20 rounded mb-2"></div>
-                  <div className="h-4 bg-white/20 rounded mb-2"></div>
-                  <div className="h-3 bg-white/20 rounded w-1/2 mx-auto"></div>
+                  <div className="h-4 bg-white/20 rounded mb-2" />
+                  <div className="h-4 bg-white/20 rounded mb-2" />
+                  <div className="h-3 bg-white/20 rounded w-1/2 mx-auto" />
                 </div>
               </div>
             )}
           </div>
         </div>
 
-        {/* Loading Section */}
+        {/* Progress + credits */}
         <div className="w-full max-w-md">
-          {/* Progress Bar */}
           <div className="mb-4">
             <div className="flex justify-between items-center mb-2">
               <span className="text-white text-sm font-medium">Loading...</span>
               <span className="text-white text-sm">{Math.round(progress)}%</span>
             </div>
             <div className="w-full bg-white/20 rounded-full h-2 backdrop-blur-sm">
-              <div 
+              <div
                 className="bg-gradient-to-r from-green-400 to-blue-500 h-2 rounded-full transition-all duration-200 ease-out"
                 style={{ width: `${progress}%` }}
-              ></div>
+              />
             </div>
           </div>
 
-          {/* Credits */}
           <div className="text-center text-white/90 text-xs space-y-1">
             <p className="font-medium">
-              Built by <span className="text-green-300">Abdullah Khan</span>
+              Built by <span className="text-green-300">Abdullah Khan</span>
             </p>
-            <p>
-              First Year CMPE at Queen's University
-            </p>
+            <p>First‑Year CMPE at Queen’s University</p>
             <p>
               In Association with <span className="text-blue-300 font-semibold">QUMSA</span>
             </p>
@@ -148,7 +143,7 @@ export default function Preloader({ isExiting = false }: PreloaderProps) {
         </div>
       </div>
 
-      {/* Particle effects */}
+      {/* ---------- Particles ---------- */}
       <div className={`absolute inset-0 transition-opacity duration-300 ${
         isExiting ? 'opacity-100' : 'opacity-0'
       }`}>
@@ -161,7 +156,7 @@ export default function Preloader({ isExiting = false }: PreloaderProps) {
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 500}ms`,
+              animationDelay: `${Math.random() * 500}ms`
             }}
           />
         ))}

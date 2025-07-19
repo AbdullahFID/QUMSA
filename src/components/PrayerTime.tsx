@@ -1,7 +1,18 @@
-// components/PrayerTime.tsx
 'use client'
+
 import { useState, useEffect } from 'react'
-import { Clock, MapPin, Sunrise, Sun, Sunset, Moon, Star, Bell, Calendar, Navigation } from 'lucide-react'
+import {
+  Clock,
+  MapPin,
+  Sunrise,
+  Sun,
+  Sunset,
+  Moon,
+  Star,
+  Bell,
+  Calendar,
+  Navigation
+} from 'lucide-react'
 
 interface PrayerTimes {
   Fajr: string
@@ -28,38 +39,38 @@ interface PrayerData {
 }
 
 const prayerConfig = {
-  Fajr: { 
-    icon: Star, 
+  Fajr: {
+    icon: Star,
     arabic: 'الفجر',
     gradient: 'from-indigo-500 to-purple-600',
     description: 'Dawn Prayer'
   },
-  Sunrise: { 
-    icon: Sunrise, 
+  Sunrise: {
+    icon: Sunrise,
     arabic: 'الشروق',
     gradient: 'from-yellow-400 to-orange-500',
     description: 'Sunrise'
   },
-  Dhuhr: { 
-    icon: Sun, 
+  Dhuhr: {
+    icon: Sun,
     arabic: 'الظهر',
     gradient: 'from-yellow-400 to-orange-500',
     description: 'Midday Prayer'
   },
-  Asr: { 
-    icon: Sun, 
+  Asr: {
+    icon: Sun,
     arabic: 'العصر',
     gradient: 'from-orange-400 to-red-500',
     description: 'Afternoon Prayer'
   },
-  Maghrib: { 
-    icon: Sunset, 
+  Maghrib: {
+    icon: Sunset,
     arabic: 'المغرب',
     gradient: 'from-red-400 to-pink-500',
     description: 'Sunset Prayer'
   },
-  Isha: { 
-    icon: Moon, 
+  Isha: {
+    icon: Moon,
     arabic: 'العشاء',
     gradient: 'from-blue-600 to-indigo-700',
     description: 'Night Prayer'
@@ -82,26 +93,13 @@ export default function PrayerTime() {
     try {
       setLoading(true)
       setError(null)
-      
-      const today = new Date().toISOString().split('T')[0]
-// Fajr +1, Sunrise +1, Dhuhr +1 (→ +2 total after manual bump),
-// Asr +1, Sunset 0, Maghrib +2, Isha +1, Imsak 0, Midnight 0
-const tune = '0,2,-2,1,0,1,0,1,0';
-      const response = await fetch(
-        `https://api.aladhan.com/v1/timingsByCity/${today}?city=Kingston&country=Canada&method=2&tune=${tune}`
-      )
-      
-      if (!response.ok) {
-        throw new Error('Failed to fetch prayer times')
-      }
-      
+
+      // Hit our edge‑cached API route (24 h TTL)
+      const response = await fetch('/api/prayer-times')
+      if (!response.ok) throw new Error('Failed to fetch prayer times')
+
       const data = await response.json()
-      
-      if (data.data?.timings) {
-        setPrayerData(data.data)
-      } else {
-        throw new Error('Invalid response format')
-      }
+      setPrayerData(data)
     } catch (err) {
       console.error('Error fetching prayer times:', err)
       setError(err instanceof Error ? err.message : 'Failed to load prayer times')
@@ -124,10 +122,10 @@ const tune = '0,2,-2,1,0,1,0,1,0';
 
   const getNextPrayer = () => {
     if (!prayerData?.timings) return null
-    
+
     const now = new Date()
     const currentTimeMinutes = now.getHours() * 60 + now.getMinutes()
-    
+
     const prayers = [
       { name: 'Fajr', time: prayerData.timings.Fajr },
       { name: 'Dhuhr', time: prayerData.timings.Dhuhr },
@@ -138,44 +136,33 @@ const tune = '0,2,-2,1,0,1,0,1,0';
 
     for (const prayer of prayers) {
       try {
-        const [hours, minutes] = prayer.time.split(':')
-        const prayerTimeMinutes = parseInt(hours) * 60 + parseInt(minutes)
-        
-        if (prayerTimeMinutes > currentTimeMinutes) {
-          return prayer
-        }
+        const [h, m] = prayer.time.split(':')
+        const minutes = parseInt(h) * 60 + parseInt(m)
+        if (minutes > currentTimeMinutes) return prayer
       } catch {
         continue
       }
     }
-    
-    // If no prayer found for today, next is Fajr tomorrow
+
+    // If all prayers passed, next is tomorrow’s Fajr
     return prayers[0]
   }
 
   const getTimeUntilNext = () => {
     const nextPrayer = getNextPrayer()
     if (!nextPrayer) return ''
-    
+
     try {
       const now = new Date()
-      const [hours, minutes] = nextPrayer.time.split(':')
-      const prayerTime = new Date()
-      prayerTime.setHours(parseInt(hours), parseInt(minutes), 0, 0)
-      
-      // If prayer time has passed today, it's tomorrow
-      if (prayerTime < now) {
-        prayerTime.setDate(prayerTime.getDate() + 1)
-      }
-      
-      const diff = prayerTime.getTime() - now.getTime()
-      const hoursLeft = Math.floor(diff / (1000 * 60 * 60))
-      const minutesLeft = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
-      
-      if (hoursLeft > 0) {
-        return `${hoursLeft}h ${minutesLeft}m`
-      }
-      return `${minutesLeft}m`
+      const [h, m] = nextPrayer.time.split(':')
+      const target = new Date()
+      target.setHours(parseInt(h), parseInt(m), 0, 0)
+      if (target < now) target.setDate(target.getDate() + 1)
+
+      const diff = target.getTime() - now.getTime()
+      const hrs = Math.floor(diff / 3_600_000)
+      const mins = Math.floor((diff % 3_600_000) / 60_000)
+      return hrs > 0 ? `${hrs}h ${mins}m` : `${mins}m`
     } catch {
       return ''
     }
