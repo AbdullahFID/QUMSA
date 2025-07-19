@@ -1,19 +1,34 @@
 'use client'
 import React from 'react'
-import { Calendar, MapPin, Clock, Users, Star, ArrowRight } from 'lucide-react'
+import {
+  Calendar,
+  MapPin,
+  Clock,
+  Users,
+  Star,
+  ArrowRight,
+} from 'lucide-react'
 import { motion } from 'framer-motion'
 
-interface Props {
+/* ------------------------------------------------------------------ */
+/*  Types                                                             */
+/* ------------------------------------------------------------------ */
+export type EventCategory = 'Social' | 'Religious' | 'Educational' | 'General'
+
+export interface EventCardProps {
   date: string
   title: string
   desc: string
   location?: string
   time?: string
   attendees?: number
-  category?: string
-  featured?: boolean
+  category?: EventCategory        // optional ‑ falls back to “General”
+  featured?: boolean              // optional ‑ default false
 }
 
+/* ------------------------------------------------------------------ */
+/*  Component                                                         */
+/* ------------------------------------------------------------------ */
 export default function EventCard({
   date,
   title,
@@ -23,15 +38,9 @@ export default function EventCard({
   attendees,
   category = 'General',
   featured = false,
-}: Props) {
-  const categoryColors = {
-    Social: 'from-blue-500 to-cyan-500',
-    Religious: 'from-emerald-500 to-green-500',
-    Educational: 'from-purple-500 to-pink-500',
-    General: 'from-slate-500 to-slate-600',
-  }
-
-  const categoryBgColors = {
+}: EventCardProps) {
+  /* colour helpers */
+  const bgChip: Record<EventCategory, string> = {
     Social: 'bg-blue-500/10 border-blue-500/20',
     Religious: 'bg-emerald-500/10 border-emerald-500/20',
     Educational: 'bg-purple-500/10 border-purple-500/20',
@@ -39,104 +48,106 @@ export default function EventCard({
   }
 
   return (
-    <motion.article 
+    <motion.article
       whileHover={{ y: -8, scale: 1.02 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-      className={`group relative overflow-hidden rounded-3xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl border border-white/30 dark:border-slate-700/30 shadow-xl hover:shadow-2xl transition-all duration-500 ${featured ? 'ring-2 ring-yellow-400/40 shadow-yellow-400/20' : ''}`}
+      transition={{ duration: 0.4, ease: 'easeOut' }}
+      className={`group relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl hover:shadow-2xl ${
+        featured ? 'ring-2 ring-yellow-400/40 shadow-yellow-400/20' : ''
+      }`}
     >
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-transparent to-emerald-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      
+      {/* subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-transparent to-emerald-400/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+
+      {/* card body */}
       <div className="relative p-8">
-        {/* Header - More spacious with proper spacing for featured badge */}
+        {/* header row */}
         <div className="flex items-start justify-between mb-8">
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center gap-4">
             <div className="p-4 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-2xl shadow-lg">
               <Calendar className="w-6 h-6 text-slate-900" />
             </div>
             <div>
-              <span className="block text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Event Date</span>
-              <span className="block text-xl font-bold text-slate-900 dark:text-white">{date}</span>
+              <span className="block text-sm font-medium text-gray-400 mb-1">
+                Event Date
+              </span>
+              <span className="block text-xl font-bold text-white">{date}</span>
             </div>
           </div>
-          
-          {/* Right side content with proper stacking */}
-          <div className="flex flex-col items-end space-y-3">
-            {/* Featured badge - positioned first */}
+
+          <div className="flex flex-col items-end gap-3">
             {featured && (
-              <motion.div 
+              <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                className="flex items-center space-x-2 bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-900 px-4 py-2 rounded-full text-sm font-semibold shadow-lg backdrop-blur-sm"
+                className="flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-900 px-4 py-2 rounded-full text-sm font-semibold shadow-lg"
               >
-                <Star className="w-4 h-4 fill-current" />
-                <span>Featured</span>
+                <Star className="w-4 h-4" />
+                Featured
               </motion.div>
             )}
-            
-            {/* Attendees count - positioned below featured badge */}
+
             {attendees && (
-              <div className="flex items-center space-x-2 bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-full px-4 py-2 border border-white/40 dark:border-slate-700/40">
-                <Users className="w-4 h-4 text-emerald-500" />
-                <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{attendees}</span>
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
+                <Users className="w-4 h-4 text-emerald-400" />
+                <span className="text-sm font-semibold text-gray-300">
+                  {attendees}
+                </span>
               </div>
             )}
           </div>
         </div>
 
-        {/* Category - More refined */}
+        {/* category chip */}
         <div className="mb-6">
-          <span className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium ${categoryBgColors[category as keyof typeof categoryBgColors]} text-slate-700 dark:text-slate-300 backdrop-blur-sm border`}>
+          <span
+            className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium text-white backdrop-blur-sm border ${bgChip[category]}`}
+          >
             {category}
           </span>
         </div>
 
-        {/* Title - Softer gradient on hover */}
-        <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white mb-6 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-amber-600 group-hover:to-orange-500 group-hover:bg-clip-text transition-all duration-300 line-clamp-2 leading-tight">
+        {/* title + desc */}
+        <h3 className="text-2xl font-bold text-white mb-6 group-hover:bg-gradient-to-r group-hover:from-amber-400 group-hover:to-orange-400 group-hover:bg-clip-text group-hover:text-transparent transition-colors line-clamp-2">
           {title}
         </h3>
 
-        {/* Description - More breathing room */}
-        <p className="text-slate-600 dark:text-slate-300 mb-8 leading-relaxed text-lg line-clamp-3">
+        <p className="text-gray-300 mb-8 leading-relaxed text-lg line-clamp-3">
           {desc}
         </p>
 
-        {/* Details - Cleaner layout */}
+        {/* meta rows */}
         <div className="space-y-4 mb-8">
           {time && (
-            <div className="flex items-center space-x-4 text-slate-600 dark:text-slate-400">
-              <div className="p-3 bg-emerald-400/10 backdrop-blur-sm rounded-xl border border-emerald-400/20">
-                <Clock className="w-5 h-5 text-emerald-500" />
+            <div className="flex items-center gap-4 text-gray-300">
+              <div className="p-3 bg-emerald-400/10 rounded-xl border border-emerald-400/20">
+                <Clock className="w-5 h-5 text-emerald-400" />
               </div>
               <span className="font-medium">{time}</span>
             </div>
           )}
           {location && (
-            <div className="flex items-center space-x-4 text-slate-600 dark:text-slate-400">
-              <div className="p-3 bg-yellow-400/10 backdrop-blur-sm rounded-xl border border-yellow-400/20">
-                <MapPin className="w-5 h-5 text-yellow-500" />
+            <div className="flex items-center gap-4 text-gray-300">
+              <div className="p-3 bg-yellow-400/10 rounded-xl border border-yellow-400/20">
+                <MapPin className="w-5 h-5 text-yellow-400" />
               </div>
               <span className="font-medium">{location}</span>
             </div>
           )}
         </div>
 
-        {/* Action Button - More premium */}
-        <motion.button 
+        {/* CTA */}
+        <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="w-full group/btn flex items-center justify-center space-x-3 bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-300 hover:to-amber-400 text-slate-900 font-semibold py-4 px-8 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm"
+          className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-300 hover:to-amber-400 text-slate-900 font-semibold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transition"
         >
-          <span className="text-lg">Learn More</span>
-          <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1" />
+          <span className="text-lg">Learn&nbsp;More</span>
+          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
         </motion.button>
       </div>
 
-      {/* Animated accent line */}
-      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-center" />
-      
-      {/* Subtle corner glow */}
-      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-yellow-400/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+      {/* bottom accent line */}
+      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 origin-left scale-x-0 group-hover:scale-x-100 transition-transform" />
     </motion.article>
   )
 }
