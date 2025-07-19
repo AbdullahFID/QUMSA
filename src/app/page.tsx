@@ -289,10 +289,10 @@ export default function HomePage() {
                 delay: 0.2
               },
               {
-                href: "/resources/housing",
-                title: "Housing Support",
-                icon: Home,
-                description: "Muslim‑friendly off‑campus housing.",
+                href: "/events",
+                title: "Events",
+                icon: Calendar,
+                description: "See our upcoming Events",
                 color: "from-blue-400 to-cyan-500",
                 delay: 0.3
               },
