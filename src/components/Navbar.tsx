@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import {
   Menu,
   MoonStar,
@@ -78,8 +78,22 @@ export default function Navbar() {
   const [deskDrop,        setDeskDrop]        = useState(false)
   const [showMobileNav,   setShowMobileNav]   = useState(true)
   const [showFloatingBtn, setShowFloatingBtn] = useState(false)
+  const pathname = usePathname()
 
   const textColorClass = 'text-white'
+
+  // Helper function to check if a link is active
+  const isActiveLink = (href: string) => {
+    if (href === '/') {
+      return pathname === '/'
+    }
+    return pathname.startsWith(href)
+  }
+
+  // Helper function to check if resources dropdown should be active
+  const isResourcesActive = () => {
+    return resourceLinks.some(link => pathname.startsWith(link.href))
+  }
 
   useEffect(() => {
     const onScroll = () => {
@@ -135,19 +149,29 @@ export default function Navbar() {
 
           {/* Links */}
           <div className="flex items-center gap-8">
-            {primaryLinks.map(({ href, label }) => (
-              <SmoothLink
-                key={href}
-                href={href}
-                className={`
-                  relative font-medium transition-all duration-300 group
-                  ${textColorClass} hover:text-yellow-400
-                `}
-              >
-                {label}
-                <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-yellow-400 transition-all duration-300 ease-out group-hover:w-full" />
-              </SmoothLink>
-            ))}
+            {primaryLinks.map(({ href, label, icon: Icon }) => {
+              const isActive = isActiveLink(href)
+              return (
+                <SmoothLink
+                  key={href}
+                  href={href}
+                  className={`
+                    relative font-medium transition-all duration-300 group flex items-center gap-2
+                    ${isActive 
+                      ? 'text-yellow-400' 
+                      : `${textColorClass} hover:text-yellow-400`
+                    }
+                  `}
+                >
+                  <Icon className="w-4 h-4" />
+                  {label}
+                  <span className={`
+                    absolute left-0 -bottom-1 h-0.5 bg-yellow-400 transition-all duration-300 ease-out
+                    ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}
+                  `} />
+                </SmoothLink>
+              )
+            })}
 
             {/* Resources Dropdown */}
             <div className="relative" onClick={e => e.stopPropagation()}>
@@ -155,12 +179,19 @@ export default function Navbar() {
                 onClick={() => setDeskDrop(!deskDrop)}
                 className={`
                   flex items-center gap-2 font-medium transition-all duration-300 group relative
-                  ${textColorClass} hover:text-yellow-400
+                  ${isResourcesActive()
+                    ? 'text-yellow-400'
+                    : `${textColorClass} hover:text-yellow-400`
+                  }
                 `}
               >
+                <BookOpen className="w-4 h-4" />
                 Resources
                 <ChevronDown className={`w-4 h-4 transition-transform ${deskDrop ? 'rotate-180' : ''}`} />
-                <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-yellow-400 transition-all duration-300 ease-out group-hover:w-full" />
+                <span className={`
+                  absolute left-0 -bottom-1 h-0.5 bg-yellow-400 transition-all duration-300 ease-out
+                  ${isResourcesActive() ? 'w-full' : 'w-0 group-hover:w-full'}
+                `} />
               </button>
               <div
                 className={`
@@ -169,16 +200,25 @@ export default function Navbar() {
                   ${deskDrop ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'}
                 `}
               >
-                {resourceLinks.map(({ href, label }) => (
-                  <SmoothLink
-                    key={href}
-                    href={href}
-                    className="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-yellow-600 transition-all duration-200"
-                    onClick={() => setDeskDrop(false)}
-                  >
-                    {label}
-                  </SmoothLink>
-                ))}
+                {resourceLinks.map(({ href, label }) => {
+                  const isActive = isActiveLink(href)
+                  return (
+                    <SmoothLink
+                      key={href}
+                      href={href}
+                      className={`
+                        block px-4 py-3 transition-all duration-200
+                        ${isActive
+                          ? 'bg-yellow-50 text-yellow-600 border-r-2 border-yellow-400'
+                          : 'text-gray-700 hover:bg-gray-50 hover:text-yellow-600'
+                        }
+                      `}
+                      onClick={() => setDeskDrop(false)}
+                    >
+                      {label}
+                    </SmoothLink>
+                  )
+                })}
               </div>
             </div>
 
@@ -240,19 +280,37 @@ export default function Navbar() {
           <div className="flex justify-center px-4 pb-4 pt-2">
             <div className="bg-gray-900/95 backdrop-blur-md rounded-2xl px-6 py-4 shadow-2xl border border-gray-800 max-w-sm w-full">
               <div className="flex items-center justify-between">
-                {primaryLinks.slice(0, 4).map(({ href, label, icon: Icon }) => (
-                  <SmoothLink
-                    key={href}
-                    href={href}
-                    className="flex flex-col items-center gap-1 group min-w-0 flex-1"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    <Icon className="w-5 h-5 text-gray-400 group-hover:text-yellow-400 transition" />
-                    <span className="text-xs text-gray-400 group-hover:text-yellow-400 transition truncate">
-                      {label}
-                    </span>
-                  </SmoothLink>
-                ))}
+                {primaryLinks.slice(0, 4).map(({ href, label, icon: Icon }) => {
+                  const isActive = isActiveLink(href)
+                  return (
+                    <SmoothLink
+                      key={href}
+                      href={href}
+                      className="flex flex-col items-center gap-1 group min-w-0 flex-1"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      <Icon className={`
+                        w-5 h-5 transition
+                        ${isActive 
+                          ? 'text-yellow-400' 
+                          : 'text-gray-400 group-hover:text-yellow-400'
+                        }
+                      `} />
+                      <span className={`
+                        text-xs transition truncate
+                        ${isActive 
+                          ? 'text-yellow-400' 
+                          : 'text-gray-400 group-hover:text-yellow-400'
+                        }
+                      `}>
+                        {label}
+                      </span>
+                      {isActive && (
+                        <div className="w-1 h-1 rounded-full bg-yellow-400 mt-0.5"></div>
+                      )}
+                    </SmoothLink>
+                  )
+                })}
                 <button
                   onClick={e => {
                     e.stopPropagation()
@@ -282,28 +340,55 @@ export default function Navbar() {
                 <SmoothLink
                   href="/events"
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center gap-3 text-gray-300 hover:text-yellow-400 transition"
+                  className={`
+                    flex items-center gap-3 transition
+                    ${isActiveLink('/events')
+                      ? 'text-yellow-400'
+                      : 'text-gray-300 hover:text-yellow-400'
+                    }
+                  `}
                 >
                   <Calendar className="w-5 h-5" />
                   <span className="font-medium">Events</span>
+                  {isActiveLink('/events') && (
+                    <div className="w-1 h-1 rounded-full bg-yellow-400 ml-auto"></div>
+                  )}
                 </SmoothLink>
 
                 <div className="space-y-2">
-                  <div className="flex items-center gap-3 text-gray-300 pb-2 border-b border-gray-800">
+                  <div className={`
+                    flex items-center gap-3 pb-2 border-b border-gray-800
+                    ${isResourcesActive() ? 'text-yellow-400' : 'text-gray-300'}
+                  `}>
                     <BookOpen className="w-5 h-5" />
                     <span className="font-medium">Resources</span>
+                    {isResourcesActive() && (
+                      <div className="w-1 h-1 rounded-full bg-yellow-400 ml-auto"></div>
+                    )}
                   </div>
                   <div className="space-y-2 pl-8">
-                    {resourceLinks.map(({ href, label }) => (
-                      <SmoothLink
-                        key={href}
-                        href={href}
-                        onClick={() => setMobileOpen(false)}
-                        className="block text-gray-400 hover:text-yellow-400 transition text-sm"
-                      >
-                        {label}
-                      </SmoothLink>
-                    ))}
+                    {resourceLinks.map(({ href, label }) => {
+                      const isActive = isActiveLink(href)
+                      return (
+                        <SmoothLink
+                          key={href}
+                          href={href}
+                          onClick={() => setMobileOpen(false)}
+                          className={`
+                            block transition text-sm flex items-center
+                            ${isActive
+                              ? 'text-yellow-400'
+                              : 'text-gray-400 hover:text-yellow-400'
+                            }
+                          `}
+                        >
+                          {label}
+                          {isActive && (
+                            <div className="w-1 h-1 rounded-full bg-yellow-400 ml-auto"></div>
+                          )}
+                        </SmoothLink>
+                      )
+                    })}
                   </div>
                 </div>
 
