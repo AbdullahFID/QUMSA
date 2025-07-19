@@ -692,7 +692,7 @@ const ResourcePanel: React.FC = () => {
             
             <div className="mt-12 pt-8 border-t border-white/20">
               <p className="text-slate-400">
-                © 2025 QUMSA - Queen's University Muslim Students Association
+                © 2025 QUMSA & Collaborators
               </p>
             </div>
           </div>

@@ -18,6 +18,7 @@ import {
   Trophy,
   Mountain,
   Flame,
+  X
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import EventCard, { EventCategory } from '@/components/EventCard'
@@ -125,36 +126,39 @@ const annualEvents: AnnualEvent[] = [
   },
 ]
 
-/* ─────────────────────────── Slideshow ──────────────────────────── */
+/* ─────────────────────────── Enhanced Slideshow ──────────────────────────── */
 function PhotoSlideshow() {
   const [idx, setIdx] = useState(0)
   const [play, setPlay] = useState(true)
+  const [showThumbnails, setShowThumbnails] = useState(false)
 
-  const slides: Slide[] = Array.from({ length: 12 }, (_, i) => ({
+  // Generate all 70 slides
+  const slides: Slide[] = Array.from({ length: 70 }, (_, i) => ({
     id: i + 1,
     title: `Community Event ${i + 1}`,
     description: 'Beautiful moments from our QUMSA family gatherings',
   }))
 
   useEffect(() => {
-  if (!play) return
+    if (!play) return
 
-  // schedule next slide once, and reset on idx change
-  const timeoutId = setTimeout(() => {
-    setIdx((prev) => (prev + 1) % slides.length)
-  }, 4000)
+    const timeoutId = setTimeout(() => {
+      setIdx((prev) => (prev + 1) % slides.length)
+    }, 4000)
 
-  // clear pending timeout if idx or play changes (including on manual next/prev)
-  return () => clearTimeout(timeoutId)
-}, [play, idx, slides.length])
-
+    return () => clearTimeout(timeoutId)
+  }, [play, idx, slides.length])
 
   const next = () => setIdx((p) => (p + 1) % slides.length)
   const prev = () => setIdx((p) => (p - 1 + slides.length) % slides.length)
+  const goToSlide = (slideIndex: number) => {
+    setIdx(slideIndex)
+    setShowThumbnails(false)
+  }
 
   return (
     <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-2xl">
-      {/* slide */}
+      {/* Main slide display */}
       <div className="relative h-64 sm:h-80 lg:h-96 overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
@@ -165,20 +169,19 @@ function PhotoSlideshow() {
             transition={{ duration: 0.6 }}
             className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-yellow-400/20 via-emerald-400/20 to-blue-400/20"
           >
-            {/* logo corner */}
-            <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
-            <Image
-              src="/images/QUMSA_LOGO.png"
-              alt="QUMSA Logo"
-              width={48}      // 8 * 6px for default size
-              height={48}
-              className="rounded-lg object-contain"
-              priority         // optional: if logo should load ASAP
-            />
-          </div>
+            {/* QUMSA logo in corner */}
+            <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10">
+              <Image
+                src="/images/QUMSA_LOGO.png"
+                alt="QUMSA Logo"
+                width={48}
+                height={48}
+                className="rounded-lg object-contain"
+                priority
+              />
+            </div>
 
-
-            {/* placeholder text */}
+            {/* Main slide image */}
             <Image
               src={`/slideshow/slide-${slides[idx].id}.jpg`}
               alt={slides[idx].title}
@@ -186,42 +189,136 @@ function PhotoSlideshow() {
               className="object-cover"
               priority={idx === 0}
             />
+
+            {/* Slide counter */}
+            <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-black/70 backdrop-blur-sm rounded-full px-3 py-1.5 text-white text-xs sm:text-sm font-medium z-10">
+              {idx + 1} / {slides.length}
+            </div>
           </motion.div>
         </AnimatePresence>
 
-        {/* controls */}
-        <button onClick={prev} className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 bg-black/50 rounded-full text-white hover:bg-black/70">
+        {/* Navigation controls */}
+        <button 
+          onClick={prev} 
+          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 bg-black/50 rounded-full text-white hover:bg-black/70 transition-colors z-20"
+        >
           <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6" />
         </button>
-        <button onClick={next} className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 bg-black/50 rounded-full text-white hover:bg-black/70">
+        
+        <button 
+          onClick={next} 
+          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 bg-black/50 rounded-full text-white hover:bg-black/70 transition-colors z-20"
+        >
           <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6" />
         </button>
-        <button onClick={() => setPlay(!play)} className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 p-2 sm:p-3 bg-black/50 rounded-full text-white hover:bg-black/70">
+
+        {/* Play/Pause button */}
+        <button 
+          onClick={() => setPlay(!play)} 
+          className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 p-2 sm:p-3 bg-black/50 rounded-full text-white hover:bg-black/70 transition-colors z-20"
+        >
           {play ? <Pause className="w-4 h-4 sm:w-5 sm:h-5" /> : <Play className="w-4 h-4 sm:w-5 sm:h-5" />}
+        </button>
+
+        {/* Thumbnail grid toggle */}
+        <button 
+          onClick={() => setShowThumbnails(!showThumbnails)} 
+          className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 p-2 sm:p-3 bg-black/50 rounded-full text-white hover:bg-black/70 transition-colors z-20"
+        >
+          <Camera className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
       </div>
 
-      {/* dots */}
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 sm:gap-2">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setIdx(i)}
-            className={`h-1.5 sm:h-2 rounded-full transition-all ${
-              i === idx ? 'bg-yellow-400 w-6 sm:w-8' : 'w-1.5 sm:w-2 bg-white/50 hover:bg-white/70'
-            }`}
-          />
-        ))}
+      {/* Progress bar */}
+      <div className="absolute bottom-0 left-0 w-full h-1 bg-white/20">
+        <motion.div 
+          className="h-full bg-gradient-to-r from-yellow-400 to-amber-500"
+          initial={{ width: 0 }}
+          animate={{ 
+            width: play ? '100%' : `${((idx + 1) / slides.length) * 100}%` 
+          }}
+          transition={{ 
+            duration: play ? 4 : 0.3,
+            ease: play ? 'linear' : 'easeOut'
+          }}
+          key={`${idx}-${play}`}
+        />
       </div>
 
-      {/* info bar */}
+      {/* Thumbnail grid overlay */}
+      <AnimatePresence>
+        {showThumbnails && (
+          <motion.div
+            initial={{ opacity: 0, y: '100%' }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: '100%' }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+            className="absolute inset-0 bg-black/95 backdrop-blur-xl z-30 overflow-auto"
+          >
+            {/* Header */}
+            <div className="sticky top-0 bg-black/80 backdrop-blur-sm border-b border-white/10 p-4 flex items-center justify-between">
+              <h3 className="text-white font-semibold text-lg">Choose Photo</h3>
+              <button 
+                onClick={() => setShowThumbnails(false)}
+                className="p-2 bg-white/10 rounded-full text-white hover:bg-white/20 transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Thumbnail grid */}
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-2 p-4">
+              {slides.map((slide, i) => (
+                <button
+                  key={slide.id}
+                  onClick={() => goToSlide(i)}
+                  className={`relative aspect-square rounded-lg overflow-hidden transition-all hover:scale-105 ${
+                    i === idx 
+                      ? 'ring-2 ring-yellow-400 ring-offset-2 ring-offset-black' 
+                      : 'hover:ring-1 hover:ring-white/50'
+                  }`}
+                >
+                  <Image
+                    src={`/slideshow/slide-${slide.id}.jpg`}
+                    alt={slide.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 33vw, (max-width: 768px) 25vw, (max-width: 1024px) 20vw, 12.5vw"
+                  />
+                  
+                  {/* Slide number overlay */}
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                    <span className="text-white text-xs font-medium">{i + 1}</span>
+                  </div>
+                  
+                  {/* Current slide indicator */}
+                  {i === idx && (
+                    <div className="absolute top-1 right-1 w-3 h-3 bg-yellow-400 rounded-full border-2 border-black" />
+                  )}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Info bar */}
       <div className="bg-black/30 backdrop-blur-sm p-3 sm:p-4 border-t border-white/10">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2 sm:gap-3">
             <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-red-400" />
             <span className="text-white font-medium text-sm sm:text-base">Community Memories</span>
           </div>
-          <span className="text-white/70 text-xs sm:text-sm">70+ Photos Available</span>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setShowThumbnails(true)}
+              className="text-white/70 hover:text-white text-xs sm:text-sm transition-colors flex items-center gap-1"
+            >
+              <Camera className="w-3 h-3 sm:w-4 sm:h-4" />
+              View All
+            </button>
+            <span className="text-white/70 text-xs sm:text-sm">{slides.length} Photos</span>
+          </div>
         </div>
       </div>
     </div>
