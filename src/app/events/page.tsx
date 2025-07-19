@@ -132,12 +132,22 @@ function PhotoSlideshow() {
   const [play, setPlay] = useState(true)
   const [showThumbnails, setShowThumbnails] = useState(false)
 
-  // Generate all 70 slides
-  const slides: Slide[] = Array.from({ length: 70 }, (_, i) => ({
+  const excludedIds = [
+    2, 3, 6, 9, 14, 15, 16, 17, 31, 36,
+    13, 18, 23, 27, 28,
+    34, 35, 37, 39, 40,
+    44, 45, 46, 47, 49
+  ];
+
+  // 2. Generate the full set of slides:
+  const allSlides: Slide[] = Array.from({ length: 70 }, (_, i) => ({
     id: i + 1,
     title: `Community Event ${i + 1}`,
     description: 'Beautiful moments from our QUMSA family gatherings',
-  }))
+  }));
+
+  // 3. Filter out the excluded ones:
+  const slides: Slide[] = allSlides.filter(slide => !excludedIds.includes(slide.id));
 
   useEffect(() => {
     if (!play) return

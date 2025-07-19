@@ -3,7 +3,6 @@
 
 import { useState, useRef } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { Mail, Phone, ArrowRight, Sparkles } from 'lucide-react'
 
 interface Props {
