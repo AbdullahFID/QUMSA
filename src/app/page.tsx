@@ -78,16 +78,16 @@ export default function HomePage() {
         </div>
 
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 30, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.6 }} // Faster and no delay
           className="relative z-10 mx-4 w-full max-w-4xl"
         >
           <div className="bg-white/10 dark:bg-slate-900/20 backdrop-blur-xl border border-white/20 dark:border-slate-700/30 rounded-3xl p-8 sm:p-12 text-center shadow-2xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
+              transition={{ delay: 0.3, duration: 0.5 }} // Shorter delay, faster duration
             >
               <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight mb-2">
                 <span className="bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
@@ -104,7 +104,7 @@ export default function HomePage() {
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
+              transition={{ delay: 0.5, duration: 0.5 }} // Adjusted timing
               className="mt-8 text-lg sm:text-xl lg:text-2xl font-medium leading-relaxed text-white/90"
             >
               <p className="mb-4">
@@ -150,7 +150,7 @@ export default function HomePage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
+              transition={{ delay: 0.7, duration: 0.5 }} // Adjusted timing
               className="mt-10"
             >
               <Link
@@ -267,9 +267,9 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay, duration: 0.6 }}
                 viewport={{ once: true }}
-                className="group p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105"
+                className="group p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 md:hover:bg-white/10 transition-all duration-300 md:hover:scale-105"
               >
-                <Icon className="mx-auto h-12 w-12 text-yellow-400 mb-4 group-hover:scale-110 transition-transform" />
+                <Icon className="mx-auto h-12 w-12 text-yellow-400 mb-4 md:group-hover:scale-110 transition-transform" />
                 <p className="text-4xl sm:text-5xl font-bold mb-2 bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
                   {count}
                 </p>
