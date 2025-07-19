@@ -137,10 +137,17 @@ function PhotoSlideshow() {
   }))
 
   useEffect(() => {
-    if (!play) return
-    const id = setInterval(() => setIdx((p) => (p + 1) % slides.length), 4000)
-    return () => clearInterval(id)
-  }, [play, slides.length])
+  if (!play) return
+
+  // schedule next slide once, and reset on idx change
+  const timeoutId = setTimeout(() => {
+    setIdx((prev) => (prev + 1) % slides.length)
+  }, 4000)
+
+  // clear pending timeout if idx or play changes (including on manual next/prev)
+  return () => clearTimeout(timeoutId)
+}, [play, idx, slides.length])
+
 
   const next = () => setIdx((p) => (p + 1) % slides.length)
   const prev = () => setIdx((p) => (p - 1 + slides.length) % slides.length)

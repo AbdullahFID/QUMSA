@@ -128,8 +128,7 @@ export default function Footer() {
                 <div className={`mt-2 ml-6 space-y-2 transition-all duration-200 overflow-hidden ${isResourcesOpen ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}`}>
                   {[
                     { href: '/resources/halal', label: 'Halal' },
-                    { href: '/resources/faq', label: 'FAQ' },
-                    { href: '/resources/housing', label: 'Housing' },
+                    { href: '/resources/faq', label: 'FAQ' }
                   ].map((resource) => (
                     <Link
                       key={resource.href}

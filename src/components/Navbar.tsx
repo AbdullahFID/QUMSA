@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import {
   Menu,
   MoonStar,
@@ -24,10 +25,52 @@ const primaryLinks = [
 ]
 
 const resourceLinks = [
-  { href: '/resources/housing', label: 'Housing Support' },
   { href: '/resources/halal',   label: 'Halal Food Guide' },
   { href: '/resources/faq',     label: 'FAQ & Resources' },
 ]
+
+// Custom Link component with smooth transitions
+function SmoothLink({ 
+  href, 
+  children, 
+  className = '', 
+  onClick 
+}: { 
+  href: string
+  children: React.ReactNode
+  className?: string
+  onClick?: () => void
+}) {
+  const router = useRouter()
+  const [isNavigating, setIsNavigating] = useState(false)
+
+  const handleClick = async (e: React.MouseEvent) => {
+    e.preventDefault()
+    
+    if (onClick) onClick()
+    
+    // Don't navigate if we're already on this page
+    if (window.location.pathname === href) return
+    
+    setIsNavigating(true)
+    
+    // Small delay for visual feedback
+    await new Promise(resolve => setTimeout(resolve, 150))
+    
+    router.push(href)
+    setIsNavigating(false)
+  }
+
+  return (
+    <Link 
+      href={href} 
+      onClick={handleClick}
+      className={`${className} ${isNavigating ? 'opacity-75 transform scale-95' : ''} transition-all duration-150`}
+    >
+      {children}
+    </Link>
+  )
+}
 
 export default function Navbar() {
   const [scroll,           setScroll]           = useState(false)
@@ -36,7 +79,6 @@ export default function Navbar() {
   const [showMobileNav,   setShowMobileNav]   = useState(true)
   const [showFloatingBtn, setShowFloatingBtn] = useState(false)
 
-  // Simple text color logic: white when scrolling (green bg), white when at top
   const textColorClass = 'text-white'
 
   useEffect(() => {
@@ -82,19 +124,19 @@ export default function Navbar() {
       >
         <nav className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
           {/* Brand */}
-          <Link href="/" className="flex items-center gap-3 group">
+          <SmoothLink href="/" className="flex items-center gap-3 group">
             <div className="p-2 rounded-xl bg-gradient-to-r from-yellow-400 to-green-600 group-hover:shadow-lg transition">
               <MoonStar className="w-6 h-6 text-white" />
             </div>
             <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-green-600">
               QUMSA
             </span>
-          </Link>
+          </SmoothLink>
 
           {/* Links */}
           <div className="flex items-center gap-8">
             {primaryLinks.map(({ href, label }) => (
-              <Link
+              <SmoothLink
                 key={href}
                 href={href}
                 className={`
@@ -104,7 +146,7 @@ export default function Navbar() {
               >
                 {label}
                 <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-yellow-400 transition-all duration-300 ease-out group-hover:w-full" />
-              </Link>
+              </SmoothLink>
             ))}
 
             {/* Resources Dropdown */}
@@ -128,20 +170,20 @@ export default function Navbar() {
                 `}
               >
                 {resourceLinks.map(({ href, label }) => (
-                  <Link
+                  <SmoothLink
                     key={href}
                     href={href}
                     className="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-yellow-600 transition-all duration-200"
                     onClick={() => setDeskDrop(false)}
                   >
                     {label}
-                  </Link>
+                  </SmoothLink>
                 ))}
               </div>
             </div>
 
             {/* Donate Button */}
-            <Link
+            <SmoothLink
               href="/donate"
               className="
                 flex items-center gap-2 px-6 py-3 rounded-full font-semibold
@@ -151,7 +193,7 @@ export default function Navbar() {
             >
               <HeartHandshake className="w-4 h-4" />
               Donate
-            </Link>
+            </SmoothLink>
           </div>
         </nav>
       </header>
@@ -199,7 +241,7 @@ export default function Navbar() {
             <div className="bg-gray-900/95 backdrop-blur-md rounded-2xl px-6 py-4 shadow-2xl border border-gray-800 max-w-sm w-full">
               <div className="flex items-center justify-between">
                 {primaryLinks.slice(0, 4).map(({ href, label, icon: Icon }) => (
-                  <Link
+                  <SmoothLink
                     key={href}
                     href={href}
                     className="flex flex-col items-center gap-1 group min-w-0 flex-1"
@@ -209,7 +251,7 @@ export default function Navbar() {
                     <span className="text-xs text-gray-400 group-hover:text-yellow-400 transition truncate">
                       {label}
                     </span>
-                  </Link>
+                  </SmoothLink>
                 ))}
                 <button
                   onClick={e => {
@@ -237,14 +279,14 @@ export default function Navbar() {
               onClick={e => e.stopPropagation()}
             >
               <div className="p-4 space-y-4">
-                <Link
+                <SmoothLink
                   href="/events"
                   onClick={() => setMobileOpen(false)}
                   className="flex items-center gap-3 text-gray-300 hover:text-yellow-400 transition"
                 >
                   <Calendar className="w-5 h-5" />
                   <span className="font-medium">Events</span>
-                </Link>
+                </SmoothLink>
 
                 <div className="space-y-2">
                   <div className="flex items-center gap-3 text-gray-300 pb-2 border-b border-gray-800">
@@ -253,19 +295,19 @@ export default function Navbar() {
                   </div>
                   <div className="space-y-2 pl-8">
                     {resourceLinks.map(({ href, label }) => (
-                      <Link
+                      <SmoothLink
                         key={href}
                         href={href}
                         onClick={() => setMobileOpen(false)}
                         className="block text-gray-400 hover:text-yellow-400 transition text-sm"
                       >
                         {label}
-                      </Link>
+                      </SmoothLink>
                     ))}
                   </div>
                 </div>
 
-                <Link
+                <SmoothLink
                   href="/donate"
                   onClick={() => setMobileOpen(false)}
                   className="
@@ -276,7 +318,7 @@ export default function Navbar() {
                 >
                   <HeartHandshake className="w-4 h-4" />
                   Donate
-                </Link>
+                </SmoothLink>
               </div>
             </div>
           </div>

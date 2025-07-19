@@ -84,8 +84,9 @@ export default function PrayerTime() {
       setError(null)
       
       const today = new Date().toISOString().split('T')[0]
+      const tune = '0,1,1,0,0,-1,0,-1,0'
       const response = await fetch(
-        `https://api.aladhan.com/v1/timingsByCity/${today}?city=Kingston&country=Canada&method=2`
+        `https://api.aladhan.com/v1/timingsByCity/${today}?city=Kingston&country=Canada&method=2&tune=${tune}`
       )
       
       if (!response.ok) {
