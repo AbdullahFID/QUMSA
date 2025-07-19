@@ -183,18 +183,18 @@ export default function PrayerTime() {
 
   if (loading) {
     return (
-      <div className="space-y-8">
+      <div className="space-y-6 sm:space-y-8">
         {/* Loading Header */}
         <div className="text-center animate-pulse">
-          <div className="h-8 bg-gradient-to-r from-slate-200 to-slate-300 rounded-lg mb-4 mx-auto max-w-xs"></div>
-          <div className="h-4 bg-slate-200 rounded mb-2 mx-auto max-w-32"></div>
-          <div className="h-16 bg-gradient-to-r from-slate-200 to-slate-300 rounded-xl mx-auto max-w-sm"></div>
+          <div className="h-6 sm:h-8 bg-gradient-to-r from-slate-200 to-slate-300 rounded-lg mb-3 sm:mb-4 mx-auto max-w-xs"></div>
+          <div className="h-3 sm:h-4 bg-slate-200 rounded mb-2 mx-auto max-w-32"></div>
+          <div className="h-12 sm:h-16 bg-gradient-to-r from-slate-200 to-slate-300 rounded-xl mx-auto max-w-sm"></div>
         </div>
         
         {/* Loading Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
           {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="h-32 bg-gradient-to-r from-slate-200 to-slate-300 rounded-xl animate-pulse"></div>
+            <div key={i} className="h-28 sm:h-32 bg-gradient-to-r from-slate-200 to-slate-300 rounded-xl animate-pulse"></div>
           ))}
         </div>
       </div>
@@ -203,16 +203,16 @@ export default function PrayerTime() {
 
   if (error) {
     return (
-      <div className="text-center py-12">
-        <div className="bg-red-50 border border-red-200 rounded-xl p-6 max-w-md mx-auto">
-          <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Clock className="w-6 h-6 text-red-600" />
+      <div className="text-center py-8 sm:py-12">
+        <div className="bg-red-50 border border-red-200 rounded-xl p-4 sm:p-6 max-w-md mx-auto">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+            <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-red-600" />
           </div>
-          <h3 className="text-lg font-semibold text-red-900 mb-2">Unable to Load Prayer Times</h3>
-          <p className="text-red-700 text-sm mb-4">{error}</p>
+          <h3 className="text-base sm:text-lg font-semibold text-red-900 mb-2">Unable to Load Prayer Times</h3>
+          <p className="text-red-700 text-sm mb-3 sm:mb-4">{error}</p>
           <button
             onClick={fetchPrayerTimes}
-            className="bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-red-700 transition-colors"
+            className="bg-red-600 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg text-sm font-medium hover:bg-red-700 transition-colors"
           >
             Try Again
           </button>
@@ -222,13 +222,13 @@ export default function PrayerTime() {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       {/* Current Time & Next Prayer Header */}
       <div className="text-center">
         {/* Current Time */}
-        <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-3 rounded-full mb-4 shadow-lg">
-          <Clock className="w-5 h-5" />
-          <span className="text-lg font-semibold">
+        <div className="inline-flex items-center space-x-2 sm:space-x-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full mb-3 sm:mb-4 shadow-lg">
+          <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
+          <span className="text-base sm:text-lg font-semibold">
             {currentTime.toLocaleTimeString('en-US', { 
               hour: 'numeric', 
               minute: '2-digit',
@@ -238,31 +238,39 @@ export default function PrayerTime() {
         </div>
 
         {/* Location */}
-        <div className="flex items-center justify-center space-x-2 text-slate-600 dark:text-slate-400 mb-6">
-          <MapPin className="w-4 h-4" />
-          <span className="text-sm">Kingston, ON</span>
+        <div className="flex items-center justify-center space-x-2 text-slate-600 dark:text-slate-400 mb-4 sm:mb-6">
+          <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
+          <span className="text-xs sm:text-sm">Kingston, ON</span>
           {prayerData?.date && (
             <>
-              <span className="text-slate-400">•</span>
-              <Calendar className="w-4 h-4" />
-              <span className="text-sm">{prayerData.date.readable}</span>
+              <span className="text-slate-400 hidden xs:inline">•</span>
+              <Calendar className="w-3 h-3 sm:w-4 sm:h-4 hidden xs:inline" />
+              <span className="text-xs sm:text-sm hidden xs:inline">{prayerData.date.readable}</span>
             </>
           )}
         </div>
 
+        {/* Date on mobile (separate line) */}
+        {prayerData?.date && (
+          <div className="flex items-center justify-center space-x-2 text-slate-600 dark:text-slate-400 mb-4 sm:mb-6 xs:hidden">
+            <Calendar className="w-3 h-3" />
+            <span className="text-xs">{prayerData.date.readable}</span>
+          </div>
+        )}
+
         {/* Next Prayer Countdown */}
         {nextPrayer && (
-          <div className="bg-gradient-to-r from-slate-50 to-emerald-50 dark:from-slate-800 dark:to-emerald-900 border border-emerald-200 dark:border-emerald-700 rounded-2xl p-6 max-w-md mx-auto shadow-sm">
-            <div className="flex items-center justify-center space-x-2 mb-3">
-              <Bell className="w-5 h-5 text-emerald-600" />
-              <span className="text-sm font-medium text-slate-600 dark:text-slate-400">Next Prayer</span>
+          <div className="bg-gradient-to-r from-slate-50 to-emerald-50 dark:from-slate-800 dark:to-emerald-900 border border-emerald-200 dark:border-emerald-700 rounded-2xl p-4 sm:p-6 max-w-sm mx-auto shadow-sm">
+            <div className="flex items-center justify-center space-x-2 mb-2 sm:mb-3">
+              <Bell className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600" />
+              <span className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">Next Prayer</span>
             </div>
             
-            <div className="space-y-2">
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+            <div className="space-y-1 sm:space-y-2">
+              <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
                 {nextPrayer.name} - {formatTime(nextPrayer.time)}
               </h3>
-              <p className="text-emerald-600 dark:text-emerald-400 font-medium">
+              <p className="text-emerald-600 dark:text-emerald-400 font-medium text-sm sm:text-base">
                 in {getTimeUntilNext()}
               </p>
             </div>
@@ -273,16 +281,16 @@ export default function PrayerTime() {
       {/* Hijri Date */}
       {prayerData?.date?.hijri && (
         <div className="text-center">
-          <div className="inline-flex items-center space-x-2 bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-full">
-            <span className="text-sm text-slate-600 dark:text-slate-400">
+          <div className="inline-flex items-center space-x-2 bg-slate-100 dark:bg-slate-800 px-3 py-2 sm:px-4 sm:py-2 rounded-full">
+            <span className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
               {prayerData.date.hijri.date} {prayerData.date.hijri.month.en} {prayerData.date.hijri.year} AH
             </span>
           </div>
         </div>
       )}
 
-      {/* Prayer Times Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      {/* Prayer Times Grid - Improved Mobile Layout */}
+      <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
         {prayerData?.timings && (
           ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'] as const
         ).map((prayerName) => {
@@ -294,7 +302,7 @@ export default function PrayerTime() {
           return (
             <div
               key={prayerName}
-              className={`relative overflow-hidden rounded-2xl p-6 transition-all duration-300 hover:scale-105 ${
+              className={`relative overflow-hidden rounded-xl sm:rounded-2xl p-4 sm:p-6 transition-all duration-300 hover:scale-105 ${
                 isNext 
                   ? 'bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-xl ring-2 ring-emerald-400' 
                   : isMainPrayer
@@ -303,27 +311,27 @@ export default function PrayerTime() {
               }`}
             >
               {/* Prayer Icon */}
-              <div className="flex items-center justify-between mb-4">
-                <div className={`p-3 rounded-xl transition-all duration-300 ${
+              <div className="flex items-center justify-between mb-3 sm:mb-4">
+                <div className={`p-2 sm:p-3 rounded-lg sm:rounded-xl transition-all duration-300 ${
                   isNext 
                     ? 'bg-white/20' 
                     : `bg-gradient-to-r ${config.gradient}`
                 }`}>
-                  <IconComponent className="w-6 h-6 text-white" />
+                  <IconComponent className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
                 </div>
                 
                 {isNext && (
                   <div className="flex items-center space-x-1 text-white/80 text-xs">
                     <Bell className="w-3 h-3" />
-                    <span>Next</span>
+                    <span className="hidden xs:inline">Next</span>
                   </div>
                 )}
               </div>
               
               {/* Prayer Info */}
-              <div className="space-y-2">
+              <div className="space-y-1 sm:space-y-2">
                 <div className="flex items-center justify-between">
-                  <h3 className={`text-lg font-bold ${
+                  <h3 className={`text-base sm:text-lg font-bold ${
                     isNext ? 'text-white' : 'text-slate-900 dark:text-white'
                   }`}>
                     {prayerName}
@@ -339,13 +347,13 @@ export default function PrayerTime() {
                   )}
                 </div>
                 
-                <p className={`text-sm ${
+                <p className={`text-xs sm:text-sm ${
                   isNext ? 'text-white/70' : 'text-slate-500 dark:text-slate-400'
                 }`}>
                   {config.arabic}
                 </p>
                 
-                <p className={`text-2xl font-bold font-mono ${
+                <p className={`text-xl sm:text-2xl font-bold font-mono ${
                   isNext ? 'text-white' : 'text-slate-900 dark:text-white'
                 }`}>
                   {formatTime(prayerData.timings[prayerName])}
@@ -357,12 +365,12 @@ export default function PrayerTime() {
       </div>
 
       {/* Qibla Direction */}
-      <div className="bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-800 dark:to-blue-900 rounded-2xl p-6 text-center">
-        <div className="flex items-center justify-center space-x-2 mb-3">
-          <Navigation className="w-5 h-5 text-blue-600" />
-          <span className="font-semibold text-slate-900 dark:text-white">Qibla Direction</span>
+      <div className="bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-800 dark:to-blue-900 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center">
+        <div className="flex items-center justify-center space-x-2 mb-2 sm:mb-3">
+          <Navigation className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
+          <span className="font-semibold text-slate-900 dark:text-white text-sm sm:text-base">Qibla Direction</span>
         </div>
-        <p className="text-sm text-slate-600 dark:text-slate-400">
+        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
           From Kingston, ON: <span className="font-semibold">58° NE</span>
         </p>
       </div>

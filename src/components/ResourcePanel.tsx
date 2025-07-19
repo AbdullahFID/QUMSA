@@ -616,23 +616,31 @@ const ResourcePanel: React.FC = () => {
                   <div
                     key={idx}
                     className="bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20
-                               hover:border-white/40 transition-all duration-300"
+                              hover:border-white/40 transition-all duration-300"
                   >
                     <button
                       onClick={() => toggleFAQ(idx)}
                       className="w-full p-8 text-left flex justify-between items-center
-                                 hover:bg-white/5 transition-colors rounded-3xl"
+                                hover:bg-white/5 transition-colors rounded-3xl"
                     >
                       <h3 className="text-xl font-semibold pr-4 text-white">
                         {faq.q}
                       </h3>
                       <ChevronDown
-                        className={`w-6 h-6 text-yellow-400 transition-transform duration-300 ${
+                        className={`w-6 h-6 text-yellow-400 transition-transform duration-500 ease-in-out ${
                           openFAQ === idx ? 'rotate-180' : ''
                         }`}
                       />
                     </button>
-                    {openFAQ === idx && (
+                    
+                    {/* Animated content container */}
+                    <div 
+                      className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                        openFAQ === idx 
+                          ? 'max-h-96 opacity-100' 
+                          : 'max-h-0 opacity-0'
+                      }`}
+                    >
                       <div className="px-8 pb-8">
                         <div className="pt-4 border-t border-white/20">
                           <p className="text-slate-300 leading-relaxed text-lg">
@@ -640,14 +648,13 @@ const ResourcePanel: React.FC = () => {
                           </p>
                         </div>
                       </div>
-                    )}
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
           </section>
         )}
-
         {/* Footer */}
         <footer className="py-20 relative text-center">
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent" />
