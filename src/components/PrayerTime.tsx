@@ -84,7 +84,9 @@ export default function PrayerTime() {
       setError(null)
       
       const today = new Date().toISOString().split('T')[0]
-      const tune = '0,1,1,0,0,-1,0,-1,0'
+// Fajr +1, Sunrise +1, Dhuhr +1 (→ +2 total after manual bump),
+// Asr +1, Sunset 0, Maghrib +2, Isha +1, Imsak 0, Midnight 0
+const tune = '0,2,-2,1,0,1,0,1,0';
       const response = await fetch(
         `https://api.aladhan.com/v1/timingsByCity/${today}?city=Kingston&country=Canada&method=2&tune=${tune}`
       )
