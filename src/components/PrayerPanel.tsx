@@ -193,22 +193,49 @@ export default function PrayerPanel() {
               </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {[
-                  { title: 'Friday Prayer', desc: 'JDUC Pub every Friday', time: '12:30 PM', color: 'emerald' },
-                  { title: 'Halaqa Study Circle', desc: 'Weekly Islamic education', time: 'Sun 7 PM', color: 'blue' },
-                  { title: 'Social Night', desc: 'Community gathering', time: 'Thu 8 PM', color: 'purple' },
+                    { 
+                    title: 'Friday Prayer', 
+                    desc: 'JDUC Pub every Friday', 
+                    time: '12:30 PM', 
+                    bgColor: 'bg-emerald-50',
+                    borderColor: 'border-emerald-100',
+                    textColor: 'text-emerald-900',
+                    badgeBg: 'bg-emerald-100',
+                    badgeText: 'text-emerald-700'
+                    },
+                    { 
+                    title: 'Halaqa Study Circle', 
+                    desc: 'Weekly Islamic education', 
+                    time: 'Sun 7 PM', 
+                    bgColor: 'bg-blue-50',
+                    borderColor: 'border-blue-100',
+                    textColor: 'text-blue-900',
+                    badgeBg: 'bg-blue-100',
+                    badgeText: 'text-blue-700'
+                    },
+                    { 
+                    title: 'Social Night', 
+                    desc: 'Community gathering', 
+                    time: 'Thu 8 PM', 
+                    bgColor: 'bg-purple-50',
+                    borderColor: 'border-purple-100',
+                    textColor: 'text-purple-900',
+                    badgeBg: 'bg-purple-100',
+                    badgeText: 'text-purple-700'
+                    },
                 ].map((e) => (
-                  <div
+                    <div
                     key={e.title}
-                    className={`bg-${e.color}-50 rounded-xl p-4 text-center border border-${e.color}-100`}
-                  >
-                    <h4 className={`font-semibold text-${e.color}-900 text-sm mb-2`}>{e.title}</h4>
+                    className={`${e.bgColor} rounded-xl p-4 text-center border ${e.borderColor}`}
+                    >
+                    <h4 className={`font-semibold ${e.textColor} text-sm mb-2`}>{e.title}</h4>
                     <p className="text-xs text-slate-600 mb-3">{e.desc}</p>
-                    <span className={`inline-block text-xs bg-${e.color}-100 text-${e.color}-700 px-3 py-1 rounded-full font-medium`}>
-                      {e.time}
+                    <span className={`inline-block text-xs ${e.badgeBg} ${e.badgeText} px-3 py-1 rounded-full font-medium`}>
+                        {e.time}
                     </span>
-                  </div>
+                    </div>
                 ))}
-              </div>
+                </div>
               <div className="mt-6 p-4 bg-slate-50 rounded-xl">
                 <p className="text-sm text-slate-600 text-center">
                   <strong>Note:</strong> Check the calendar above for special events, workshops, and community activities throughout the year.
