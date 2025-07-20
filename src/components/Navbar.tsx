@@ -188,7 +188,7 @@ export default function Navbar() {
               </button>
               <div className={`
                 absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-gray-200
-                overflow-hidden transition-all duration-200 origin-top-right
+                overflow-hidden transition-all duration-200 origin-top-right max-h-64
                 ${deskDrop ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'}
               `}>
                 {resourceLinks.map(({ href, label }) => {
@@ -201,8 +201,8 @@ export default function Navbar() {
                         block px-4 py-3 transition-all duration-200
                         ${
                           isActive
-                            ? `bg-[${accentColor}]/10 text-[${accentColor}] border-r-2 border-[${accentColor}]`
-                            : `text-gray-700 hover:bg-[${accentColor}]/10 hover:text-[${accentColor}]`
+                            ? 'bg-yellow-600/10 text-yellow-700 border-r-2 border-yellow-600'
+                            : 'text-gray-700 hover:bg-yellow-600/10 hover:text-yellow-700'
                         }
                       `}
                       onClick={() => setDeskDrop(false)}
