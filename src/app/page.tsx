@@ -22,7 +22,30 @@ import {
 
 export default function HomePage() {
   /* ───────────────────────── rotating words ───────────────────────── */
-  const first = ['faith', 'friendship', 'المجتمع', 'الإيمان']
+  const first = [
+  'faith',
+  'friendship',
+  'belonging',
+  'growth',
+  'service',
+  'connection',
+  'hope',
+  'purpose',
+  'support',
+  'trust',
+  'السلام',
+  'الرحمة',
+  'الإيمان',
+  'الصحبة',
+  'العطاء',
+  'الوحدة',
+  'البركة',
+  'النية',
+  'المحبة',
+  'المجتمع',
+  'الصدق',
+]
+
   const second = ['Islam', 'الإسلام']
   const [i1, setI1] = useState(0)
   const [i2, setI2] = useState(0)
