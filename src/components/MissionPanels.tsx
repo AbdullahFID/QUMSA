@@ -125,9 +125,6 @@ export default function MissionPanels(): JSX.Element {
                 <span>Serving the Muslim</span><br />
                 <span>Student Community</span>
               </h1>
-              <p className="text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">
-                QUMSA exists to support Muslim students at Queen's University through comprehensive programming in a welcoming and inclusive environment.
-              </p>
             </div>
           </motion.div>
 
@@ -159,9 +156,15 @@ export default function MissionPanels(): JSX.Element {
             >
               <div className="w-full max-w-4xl">
                 <div className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-3xl p-6 md:p-12">
-                  <p className="text-lg md:text-2xl text-slate-100 leading-relaxed text-center">
-                    The Queen's University Muslim Student Association (QUMSA) exists to <span className="text-amber-300 font-semibold">serve the Muslim student community</span> by providing <span className="text-emerald-300 font-semibold">religious, social, academic, and charitable programming</span> in a welcoming and inclusive environment. We support students in fulfilling their religious obligations while creating opportunities for connection and helping Muslim students <span className="text-blue-300 font-semibold">thrive on campus, build meaningful relationships, and feel a strong sense of belonging and purpose</span> throughout their university experience.
-                  </p>
+             <p className="text-lg md:text-2xl text-slate-100 leading-relaxed text-center">
+              The Queen's University Muslim Student Association (QUMSA) exists to{" "}
+              <span className="text-amber-400 font-semibold">serve the Muslim student community</span> by providing{" "}
+              <span className="text-amber-400 font-semibold">religious, social, academic, and charitable initiatives</span>{" "}
+              in a welcoming and inclusive environment. We support students in fulfilling their religious obligations while
+              creating opportunities for connection and helping Muslim students{" "}
+              <span className="text-white font-semibold">thrive on campus, build meaningful relationships, and feel a strong sense of belonging and purpose</span>{" "}
+              throughout their university experience.
+            </p>
                 </div>
               </div>
             </motion.div>
