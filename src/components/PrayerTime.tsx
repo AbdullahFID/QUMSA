@@ -4,14 +4,17 @@ import { useState, useEffect } from 'react'
 import {
   Clock,
   MapPin,
+  ClockAlert,
   Sunrise,
   Sun,
   Sunset,
   Moon,
-  Star,
   Bell,
   Calendar,
-  Navigation
+  Navigation,
+  CalendarDays,
+  CloudSunRain,
+  Compass,
 } from 'lucide-react'
 
 interface PrayerTimes {
@@ -40,7 +43,7 @@ interface PrayerData {
 
 const prayerConfig = {
   Fajr: {
-    icon: Star,
+    icon: Compass,
     arabic: 'الفجر',
     gradient: 'from-indigo-500 to-purple-600',
     description: 'Dawn Prayer'
@@ -58,7 +61,7 @@ const prayerConfig = {
     description: 'Midday Prayer'
   },
   Asr: {
-    icon: Sun,
+    icon: CloudSunRain,
     arabic: 'العصر',
     gradient: 'from-orange-400 to-red-500',
     description: 'Afternoon Prayer'
@@ -216,7 +219,7 @@ export default function PrayerTime() {
       <div className="text-center">
         {/* Current Time */}
         <div className="inline-flex items-center space-x-2 sm:space-x-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full mb-3 sm:mb-4 shadow-lg">
-          <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
+          <ClockAlert className="w-4 h-4 sm:w-5 sm:h-5" />
           <span className="text-base sm:text-lg font-semibold">
             {currentTime.toLocaleTimeString('en-US', { 
               hour: 'numeric', 
@@ -233,7 +236,7 @@ export default function PrayerTime() {
           {prayerData?.date && (
             <>
               <span className="text-slate-400 hidden xs:inline">•</span>
-              <Calendar className="w-3 h-3 sm:w-4 sm:h-4 hidden xs:inline" />
+              <CalendarDays className="w-3 h-3 sm:w-4 sm:h-4 hidden xs:inline" />
               <span className="text-xs sm:text-sm hidden xs:inline">{prayerData.date.readable}</span>
             </>
           )}

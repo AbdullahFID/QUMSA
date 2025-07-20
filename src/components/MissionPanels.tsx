@@ -2,7 +2,7 @@
 
 import { useRef, JSX } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Heart, Users, BookOpen, Compass, Calendar, Hand } from 'lucide-react'
+import { Heart, Megaphone, GraduationCap, ShieldCheck, Handshake, HeartHandshake, Compass, Gem } from 'lucide-react'
 
 export default function MissionPanels(): JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -70,9 +70,9 @@ export default function MissionPanels(): JSX.Element {
 
   const coreAreas = [
     { Icon: Heart, title: 'Religious', desc: 'Supporting students in fulfilling their religious obligations through worship and spiritual growth.', color: 'from-rose-400 to-pink-500' },
-    { Icon: Users, title: 'Social', desc: 'Creating opportunities for connection, building meaningful relationships and community bonds.', color: 'from-blue-400 to-cyan-500' },
-    { Icon: BookOpen, title: 'Academic', desc: 'Providing educational programming, halaqas, and peer support for academic success.', color: 'from-emerald-400 to-teal-500' },
-    { Icon: Hand, title: 'Charitable', desc: 'Engaging in community service and charitable initiatives to give back to our community.', color: 'from-amber-400 to-orange-500' },
+    { Icon: Megaphone, title: 'Social', desc: 'Creating opportunities for connection, building meaningful relationships and community bonds.', color: 'from-blue-400 to-cyan-500' },
+    { Icon: GraduationCap, title: 'Academic', desc: 'Providing educational programming, halaqas, and peer support for academic success.', color: 'from-emerald-400 to-teal-500' },
+    { Icon: Handshake, title: 'Charitable', desc: 'Engaging in community service and charitable initiatives to give back to our community.', color: 'from-amber-400 to-orange-500' },
   ]
 
   // Split core areas for mobile batching
@@ -134,7 +134,7 @@ export default function MissionPanels(): JSX.Element {
             >
               <div className="text-center">
                 <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/10 rounded-full border border-white/20 backdrop-blur-sm mb-6">
-                  <BookOpen className="h-5 w-5 text-blue-400" />
+                  <ShieldCheck className="h-5 w-5 text-blue-400" />
                   <span className="text-blue-400 font-medium text-base">What We Stand For</span>
                 </div>
                 <h2 className="text-4xl md:text-6xl font-black bg-gradient-to-r from-white via-blue-200 to-emerald-200 bg-clip-text text-transparent">
@@ -170,7 +170,7 @@ export default function MissionPanels(): JSX.Element {
             >
               <div className="text-center">
                 <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/10 rounded-full border border-white/20 backdrop-blur-sm mb-6">
-                  <Compass className="h-5 w-5 text-emerald-400" />
+                  <HeartHandshake className="h-5 w-5 text-emerald-400" />
                   <span className="text-emerald-400 font-medium text-base">How We Serve</span>
                 </div>
                 <h2 className="text-4xl md:text-6xl font-black bg-gradient-to-r from-white via-amber-200 to-emerald-200 bg-clip-text text-transparent">
@@ -232,7 +232,7 @@ export default function MissionPanels(): JSX.Element {
             >
               <div className="text-center">
                 <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/10 rounded-full border border-white/20 backdrop-blur-sm mb-6">
-                  <Calendar className="h-5 w-5 text-emerald-400" />
+                  <Gem className="h-5 w-5 text-emerald-400" />
                   <span className="text-emerald-400 font-medium text-base">What We Provide</span>
                 </div>
                 <h2 className="text-4xl md:text-6xl font-black bg-gradient-to-r from-white via-amber-200 to-emerald-200 bg-clip-text text-transparent">

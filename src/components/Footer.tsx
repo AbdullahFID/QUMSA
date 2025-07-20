@@ -12,6 +12,10 @@ import {
   ChevronRight,
   ChevronDown,
   Heart,
+  MessageCircle,          // WhatsApp icon
+  Facebook,               // Facebook icon
+  Twitter,                // Twitter icon
+  Github,                 // GitHub icon
 } from 'lucide-react'
 
 export default function Footer() {
@@ -73,22 +77,76 @@ export default function Footer() {
             </p>
 
             {/* Social Media Links */}
-            <div className="flex justify-center sm:justify-start space-x-4">
+            <div className="flex justify-center sm:justify-start space-x-4 mt-2">
               <a
                 href="https://instagram.com/qumsa"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-gray-800 hover:bg-islamic-gold transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-islamic-gold focus:ring-offset-2 focus:ring-offset-gray-900"
+                className="relative group p-3 rounded-full bg-gray-800 hover:bg-pink-500 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-islamic-gold focus:ring-offset-2 focus:ring-offset-gray-900"
                 aria-label="Follow QUMSA on Instagram"
               >
                 <InstagramIcon className="w-5 h-5" />
+                {/* Tooltip
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-lg">
+                  Follow us on Instagram
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-gray-900"></div>
+                </div> */}
               </a>
               <a
-                href="mailto:info@qumsa.ca"
-                className="p-3 rounded-full bg-gray-800 hover:bg-islamic-emerald transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-islamic-emerald focus:ring-offset-2 focus:ring-offset-gray-900"
-                aria-label="Email QUMSA"
+                href="https://whatsapp.com/channel/0029VaEZcoSLNSZyWbQK390Q"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative group p-3 rounded-full bg-gray-800 hover:bg-green-500 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+                aria-label="Join QUMSA WhatsApp"
               >
-                <Mail className="w-5 h-5" />
+                <MessageCircle className="w-5 h-5" />
+                {/* Tooltip */}
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-lg">
+                  Join our WhatsApp
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-gray-900"></div>
+                </div>
+              </a>
+              <a
+                href="https://www.facebook.com/QUMSA/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative group p-3 rounded-full bg-gray-800 hover:bg-blue-600 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
+                aria-label="Follow QUMSA on Facebook"
+              >
+                <Facebook className="w-5 h-5" />
+                {/* Tooltip */}
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-lg">
+                  Follow us on Facebook
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-gray-900"></div>
+                </div>
+              </a>
+              <a
+                href="https://x.com/qumsa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative group p-3 rounded-full bg-gray-800 hover:bg-blue-400 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+                aria-label="Follow QUMSA on Twitter"
+              >
+                <Twitter className="w-5 h-5" />
+                {/* Tooltip */}
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-lg">
+                  Follow us on Twitter
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-gray-900"></div>
+                </div>
+              </a>
+              <a
+                href="https://github.com/AbdullahFID/QUMSA"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative group p-3 rounded-full bg-gray-800 hover:bg-islamic-emerald transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-islamic-emerald focus:ring-offset-2 focus:ring-offset-gray-900"
+                aria-label="QUMSA GitHub"
+              >
+                <Github className="w-5 h-5" />
+                {/* Tooltip */}
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-lg">
+                  See the Code!
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-gray-900"></div>
+                </div>
               </a>
             </div>
           </div>

@@ -7,13 +7,15 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import ResourceTile from '../components/ResourceTile'
 import {
-  Clock,
   Utensils,
-  Home,
-  BookOpen,
+  CalendarClock,
+  AlarmClock,
   Users,
-  Calendar,
-  Star,
+  CalendarCheck,
+  Calendar1,
+  BadgeQuestionMark,
+  Medal,
+  UsersRound,
   ArrowRight,
   Sparkles,
 } from 'lucide-react'
@@ -275,7 +277,7 @@ export default function HomePage() {
               {
                 href: "/prayer",
                 title: "Prayer Times",
-                icon: Clock,
+                icon: AlarmClock,
                 description: "Daily prayer times and prayer room locations.",
                 color: "from-yellow-400 to-amber-500",
                 delay: 0.1
@@ -291,7 +293,7 @@ export default function HomePage() {
               {
                 href: "/events",
                 title: "Events",
-                icon: Calendar,
+                icon: CalendarClock,
                 description: "See our upcoming Events",
                 color: "from-blue-400 to-cyan-500",
                 delay: 0.3
@@ -299,7 +301,7 @@ export default function HomePage() {
               {
                 href: "/resources/faq",
                 title: "FAQ",
-                icon: BookOpen,
+                icon: BadgeQuestionMark,
                 description: "Answers to common questions.",
                 color: "from-purple-400 to-pink-500",
                 delay: 0.4
@@ -343,9 +345,9 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {[
-              { Icon: Users, count: '500+', label: 'Active Members', delay: 0.1 },
-              { Icon: Calendar, count: '50+', label: 'Events Annually', delay: 0.2 },
-              { Icon: Star, count: '25+', label: 'Years of Service', delay: 0.3 },
+              { Icon: UsersRound, count: '500+', label: 'Active Members', delay: 0.1 },
+              { Icon: Calendar1, count: '50+', label: 'Events Annually', delay: 0.2 },
+              { Icon: Medal, count: '65+', label: 'Years of Service', delay: 0.3 },
             ].map(({ Icon, count, label, delay }) => (
               <motion.div
                 key={label}
@@ -407,7 +409,7 @@ export default function HomePage() {
                   href="/events"
                   className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-900 font-semibold rounded-2xl hover:from-yellow-300 hover:to-amber-400 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
                 >
-                  <Calendar className="w-5 h-5" />
+                  <CalendarCheck className="w-5 h-5" />
                   View Events
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>

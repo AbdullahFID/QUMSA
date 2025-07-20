@@ -4,14 +4,16 @@ import PrayerTime from './PrayerTime'
 import EventsCalendar from './Calendar'
 import Image from 'next/image'
 import {
-  Star,
   Navigation,
-  BookOpen,
   MapPin,
-  Calendar,
-  Users,
-  Clock,
-  Heart
+  MapPinHouse,
+  BrainCog,
+  UserRoundPlus,
+  Heart,
+  AlarmClock,
+  CalendarHeart,
+  CalendarClock,
+  Landmark,
 } from 'lucide-react'
 
 export default function PrayerPanel() {
@@ -42,8 +44,8 @@ export default function PrayerPanel() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
             {[
               { icon: Navigation, label: 'Qibla 58° NE', sub: 'Direction to Mecca' },
-              { icon: Users, label: 'Campus MSA', sub: "Queen's University" },
-              { icon: Calendar, label: 'Weekly Events', sub: 'Community Programs' },
+              { icon: MapPinHouse, label: 'Campus MSA', sub: "Queen's University" },
+              { icon: CalendarHeart, label: 'Weekly Events', sub: 'Community Programs' },
             ].map(({ icon: Icon, label, sub }) => (
               <div
                 key={label}
@@ -68,7 +70,7 @@ export default function PrayerPanel() {
           <div className="lg:col-span-3 bg-white rounded-3xl p-8">
             <div className="flex items-center space-x-3 mb-6">
               <div className="w-10 h-10 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl flex items-center justify-center">
-                <Star className="w-5 h-5 text-white" />
+                <CalendarClock className="w-5 h-5 text-white" />
               </div>
               <h2 className="text-xl font-bold text-slate-900">Today's Prayer Times</h2>
             </div>
@@ -81,7 +83,7 @@ export default function PrayerPanel() {
             <aside className="bg-gradient-to-br from-emerald-600 to-teal-700 rounded-3xl p-6 text-white shadow-lg">
               <div className="flex items-center space-x-3 mb-4">
                 <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
-                  <Calendar className="w-5 h-5 text-white" />
+                  <Landmark className="w-5 h-5 text-white" />
                 </div>
                 <h3 className="text-lg font-bold">Juma Prayer</h3>
               </div>
@@ -125,7 +127,7 @@ export default function PrayerPanel() {
             <aside className="bg-white rounded-3xl p-6 shadow">
               <div className="flex items-center space-x-3 mb-4">
                 <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-green-600 rounded-xl flex items-center justify-center">
-                  <BookOpen className="w-5 h-5 text-white" />
+                  <BrainCog className="w-5 h-5 text-white" />
                 </div>
                 <h3 className="text-lg font-bold text-slate-900">Prayer Resources</h3>
               </div>
@@ -187,7 +189,7 @@ export default function PrayerPanel() {
             <aside className="bg-white rounded-3xl p-8 shadow border border-slate-100">
               <div className="flex items-center space-x-3 mb-6">
                 <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-600 rounded-xl flex items-center justify-center">
-                  <Clock className="w-5 h-5 text-white" />
+                  <AlarmClock className="w-5 h-5 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900">Regular Weekly Schedule</h3>
               </div>
@@ -298,7 +300,7 @@ export default function PrayerPanel() {
             <aside className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-3xl p-6 text-white shadow-lg border border-emerald-200">
               <div className="flex items-center space-x-3 mb-4">
                 <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
-                  <Users className="w-5 h-5 text-white" />
+                  <UserRoundPlus className="w-5 h-5 text-white" />
                 </div>
                 <h3 className="text-lg font-bold">Get Involved</h3>
               </div>
