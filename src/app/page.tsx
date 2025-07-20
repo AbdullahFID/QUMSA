@@ -46,6 +46,7 @@ export default function HomePage() {
   return (
     <div className="bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900 text-slate-900 dark:text-slate-50">
       {/* ───────────── HERO ───────────── */}
+      {/* ───────────── HERO ───────────── */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <Image
           src="https://cdn.prod.website-files.com/667c59abb9df9789d17407a6/667dd742313853241f5dcc64_Story-DJI_0031.jpeg"
@@ -54,7 +55,7 @@ export default function HomePage() {
           priority
           className="object-cover object-center scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-blue-900/40 to-emerald-900/50" />
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/70 via-blue-900/60 to-navy-900/70" />
         
         {/* Floating particles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -82,27 +83,19 @@ export default function HomePage() {
         <motion.div 
           initial={{ opacity: 0, y: 30, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.6 }} // Faster and no delay
+          transition={{ duration: 0.6 }}
           className="relative z-10 mx-4 w-full max-w-4xl"
         >
-          <div className="bg-white/10 dark:bg-slate-900/20 backdrop-blur-xl border border-white/20 dark:border-slate-700/30 rounded-3xl p-8 sm:p-12 text-center shadow-2xl">
+          <div className="text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.5 }} // Shorter delay, faster duration
+              transition={{ delay: 0.3, duration: 0.5 }}
             >
-              <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight mb-2">
-                <span className="bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
-                  Queen's University
-                </span>
+              <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight mb-2 text-white">
+                Queen's University
                 <br />
-                <span className="bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
-                  Muslim
-                </span>
-                {' '}
-                <span className="bg-gradient-to-r from-emerald-400 to-green-500 bg-clip-text text-transparent">
-                  Student Association
-                </span>
+                Muslim Student Association
               </h1>
             </motion.div>
 
@@ -110,7 +103,7 @@ export default function HomePage() {
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }} // Adjusted timing
+              transition={{ delay: 0.5, duration: 0.5 }}
               className="mt-8 text-lg sm:text-xl lg:text-2xl font-medium leading-relaxed text-white/90"
             >
               <p className="mb-4">
@@ -156,7 +149,7 @@ export default function HomePage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.5 }} // Adjusted timing
+              transition={{ delay: 0.7, duration: 0.5 }}
               className="mt-10"
             >
               <Link
