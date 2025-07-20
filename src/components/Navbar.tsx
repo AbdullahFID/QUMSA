@@ -140,9 +140,18 @@ export default function Navbar() {
         <nav className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
           {/* Brand */}
           <SmoothLink href="/" className="flex items-center gap-3 group">
-            <div className="p-2 rounded-xl bg-gradient-to-r from-yellow-400 to-green-600 group-hover:shadow-lg transition">
-              <MoonStar className="w-6 h-6 text-white" />
+            <div className="relative group-hover:shadow-lg transition">
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-400 to-green-600 p-0.5">
+              <div className="w-full h-full rounded-full bg-white"></div>
             </div>
+            <div className="relative p-2 rounded-full bg-white">
+              <img 
+                src="/images/QUMSA_LOGO.png" 
+                alt="QUMSA Logo" 
+                className="w-6 h-6 object-contain"
+              />
+            </div>
+          </div>
             <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-green-600">
               QUMSA
             </span>
