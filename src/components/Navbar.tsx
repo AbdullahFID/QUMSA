@@ -15,7 +15,7 @@ import {
   BookOpen,
 } from 'lucide-react'
 
-const accentColor = '#FFD700'
+
 
 const primaryLinks = [
   { href: '/',        label: 'Home',    icon: Home     },
@@ -151,15 +151,15 @@ export default function Navbar() {
                   className={`
                     relative font-medium transition-all duration-300 group flex items-center gap-2
                     ${isActive
-                      ? `text-[${accentColor}]`
-                      : `text-white hover:text-[${accentColor}]`
+                      ? 'text-yellow-400'
+                      : 'text-white hover:text-yellow-400'
                     }
                   `}
                 >
                   <Icon className="w-4 h-4" />
                   {label}
                   <span className={`
-                    absolute left-0 -bottom-1 h-0.5 bg-[${accentColor}] transition-all duration-300 ease-out
+                    absolute left-0 -bottom-1 h-0.5 bg-yellow-400 transition-all duration-300 ease-out
                     ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}
                   `}/>
                 </SmoothLink>
@@ -173,8 +173,8 @@ export default function Navbar() {
                 className={`
                   flex items-center gap-2 font-medium transition-all duration-300 group relative
                   ${isResourcesActive()
-                    ? `text-[${accentColor}]`
-                    : `text-white hover:text-[${accentColor}]`
+                    ? 'text-yellow-400'
+                    : 'text-white hover:text-yellow-400'
                   }
                 `}
               >
@@ -182,7 +182,7 @@ export default function Navbar() {
                 Resources
                 <ChevronDown className={`w-4 h-4 transition-transform ${deskDrop ? 'rotate-180' : ''}`} />
                 <span className={`
-                  absolute left-0 -bottom-1 h-0.5 bg-[${accentColor}] transition-all duration-300 ease-out
+                  absolute left-0 -bottom-1 h-0.5 bg-yellow-400 transition-all duration-300 ease-out
                   ${isResourcesActive() ? 'w-full' : 'w-0 group-hover:w-full'}
                 `}/>
               </button>
@@ -284,20 +284,20 @@ export default function Navbar() {
                       <Icon className={`
                         w-5 h-5 transition
                         ${isActive
-                          ? `text-[${accentColor}]`
-                          : `text-white group-hover:text-[${accentColor}]`
+                          ? 'text-yellow-400'
+                          : 'text-white group-hover:text-yellow-400'
                         }
                       `}/>
                       <span className={`
                         text-xs transition truncate
                         ${isActive
-                          ? `text-[${accentColor}]`
-                          : `text-white group-hover:text-[${accentColor}]`
+                          ? 'text-yellow-400'
+                          : 'text-white group-hover:text-yellow-400'
                         }
                       `}>
                         {label}
                       </span>
-                      {isActive && <div className={`w-1 h-1 rounded-full bg-[${accentColor}] mt-0.5`} />}
+                      {isActive && <div className="w-1 h-1 rounded-full bg-yellow-400 mt-0.5" />}
                     </SmoothLink>
                   )
                 })}
@@ -305,8 +305,8 @@ export default function Navbar() {
                   onClick={e => { e.stopPropagation(); setMobileOpen(!mobileOpen) }}
                   className="flex flex-col items-center gap-1 group min-w-0 flex-1"
                 >
-                  <Menu className={`w-5 h-5 text-white group-hover:text-[${accentColor}] transition`} />
-                  <span className={`text-xs text-white group-hover:text-[${accentColor}] transition`}>More</span>
+                  <Menu className="w-5 h-5 text-white group-hover:text-yellow-400 transition" />
+                  <span className="text-xs text-white group-hover:text-yellow-400 transition">More</span>
                 </button>
               </div>
             </div>
@@ -329,24 +329,24 @@ export default function Navbar() {
                     flex items-center gap-3 transition
                     ${
                       isActiveLink('/events')
-                        ? `text-[${accentColor}]`
-                        : 'text-white hover:text-[${accentColor}]'
+                        ? 'text-yellow-400'
+                        : 'text-white hover:text-yellow-400'
                     }
                   `}
                 >
                   <Calendar className="w-5 h-5" />
                   <span className="font-medium">Events</span>
-                  {isActiveLink('/events') && <div className={`w-1 h-1 rounded-full bg-[${accentColor}] ml-auto`} />}
+                  {isActiveLink('/events') && <div className="w-1 h-1 rounded-full bg-yellow-400 ml-auto" />}
                 </SmoothLink>
 
                 <div className="space-y-2">
                   <div className={`
                     flex items-center gap-3 pb-2 border-b border-gray-800
-                    ${isResourcesActive() ? `text-[${accentColor}]` : 'text-white'}
+                    ${isResourcesActive() ? 'text-yellow-400' : 'text-white'}
                   `}>
                     <BookOpen className="w-5 h-5" />
                     <span className="font-medium">Resources</span>
-                    {isResourcesActive() && <div className={`w-1 h-1 rounded-full bg-[${accentColor}] ml-auto`} />}
+                    {isResourcesActive() && <div className="w-1 h-1 rounded-full bg-yellow-400 ml-auto" />}
                   </div>
                   <div className="space-y-2 pl-8">
                     {resourceLinks.map(({ href, label }) => {
@@ -359,13 +359,13 @@ export default function Navbar() {
                           className={`
                             block transition text-sm flex items-center
                             ${isSubActive
-                              ? `text-[${accentColor}]`
-                              : `text-white hover:text-[${accentColor}]`
+                              ? 'text-yellow-400'
+                              : 'text-white hover:text-yellow-400'
                             }
                           `}
                         >
                           {label}
-                          {isSubActive && <div className={`w-1 h-1 rounded-full bg-[${accentColor}] ml-auto`} />}
+                          {isSubActive && <div className={`w-1 h-1 rounded-full bg-[#FFD700] ml-auto`} />}
                         </SmoothLink>
                       )
                     })}
