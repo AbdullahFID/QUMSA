@@ -1,7 +1,6 @@
 'use client'
 
 import PrayerTime from './PrayerTime'
-import EventsCalendar from './Calendar'
 import Image from 'next/image'
 import {
   Navigation,
@@ -20,28 +19,28 @@ export default function PrayerPanel() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-emerald-900 to-teal-900 text-white">
       {/* Hero Section */}
-      <section className="pt-24 pb-16 text-center">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="inline-flex items-center space-x-2 mb-6 bg-emerald-500/20 backdrop-blur-sm border border-emerald-300/30 rounded-full px-4 py-2 mx-auto">
+      <section className="pt-16 sm:pt-24 pb-12 sm:pb-16 text-center px-4">
+        <div className="max-w-4xl mx-auto">
+          <div className="inline-flex items-center space-x-2 mb-6 bg-emerald-500/20 backdrop-blur-sm border border-emerald-300/30 rounded-full px-3 sm:px-4 py-2 mx-auto">
             <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-            <span className="text-sm font-medium text-emerald-200">
+            <span className="text-xs sm:text-sm font-medium text-emerald-200">
               Live Prayer Times & Events
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-bold mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 px-2">
             Prayer Times for{' '}
             <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
               Kingston
             </span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-emerald-100 max-w-2xl mx-auto mb-12">
+          <p className="text-base sm:text-lg lg:text-xl text-emerald-100 max-w-2xl mx-auto mb-8 sm:mb-12 px-4">
             Accurate, real‑time Islamic prayer times and community events for Kingston, Ontario.
           </p>
 
           {/* Quick Stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-2xl mx-auto px-4">
             {[
               { icon: Navigation, label: 'Qibla 58° NE', sub: 'Direction to Mecca' },
               { icon: MapPinHouse, label: 'Campus MSA', sub: "Queen's University" },
@@ -49,11 +48,11 @@ export default function PrayerPanel() {
             ].map(({ icon: Icon, label, sub }) => (
               <div
                 key={label}
-                className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20"
+                className="bg-white/10 backdrop-blur-sm rounded-2xl p-3 sm:p-4 border border-white/20"
               >
                 <div className="flex items-center justify-center space-x-2 mb-2">
-                  <Icon className="w-5 h-5 text-emerald-300" />
-                  <span className="text-sm font-medium text-white">{label}</span>
+                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-300" />
+                  <span className="text-xs sm:text-sm font-medium text-white">{label}</span>
                 </div>
                 <p className="text-xs text-emerald-200">{sub}</p>
               </div>
@@ -63,29 +62,29 @@ export default function PrayerPanel() {
       </section>
 
       {/* Main Content with Rounded Top */}
-      <main className="relative -mt-12 bg-white rounded-t-3xl shadow-lg max-w-7xl mx-auto px-6 py-16 sm:py-24 space-y-12">
+      <main className="relative -mt-8 sm:-mt-12 bg-white rounded-t-3xl shadow-lg max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-24 space-y-8 sm:space-y-12">
         {/* Top Section - Prayer Times and Sidebar */}
-        <div className="grid lg:grid-cols-4 gap-8">
+        <div className="grid lg:grid-cols-4 gap-6 lg:gap-8">
           {/* Prayer Times Panel */}
-          <div className="lg:col-span-3 bg-white rounded-3xl p-8">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl flex items-center justify-center">
-                <CalendarClock className="w-5 h-5 text-white" />
+          <div className="lg:col-span-3 bg-white rounded-3xl p-4 sm:p-6 lg:p-8 shadow border border-slate-100">
+            <div className="flex items-center space-x-3 mb-4 sm:mb-6">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl flex items-center justify-center">
+                <CalendarClock className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               </div>
-              <h2 className="text-xl font-bold text-slate-900">Today's Prayer Times</h2>
+              <h2 className="text-lg sm:text-xl font-bold text-slate-900">Today's Prayer Times</h2>
             </div>
             <PrayerTime />
           </div>
 
-          {/* Sidebar - Shortened */}
+          {/* Sidebar */}
           <div className="space-y-6">
             {/* Juma Prayer Information */}
-            <aside className="bg-gradient-to-br from-emerald-600 to-teal-700 rounded-3xl p-6 text-white shadow-lg">
+            <aside className="bg-gradient-to-br from-emerald-600 to-teal-700 rounded-3xl p-4 sm:p-6 text-white shadow-lg">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
-                  <Landmark className="w-5 h-5 text-white" />
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 rounded-xl flex items-center justify-center">
+                  <Landmark className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                 </div>
-                <h3 className="text-lg font-bold">Jummah Prayer</h3>
+                <h3 className="text-base sm:text-lg font-bold">Jummah Prayer</h3>
               </div>
               
               {/* Juma Poster Image */}
@@ -124,12 +123,12 @@ export default function PrayerPanel() {
             </aside>
 
             {/* Prayer Resources */}
-            <aside className="bg-white rounded-3xl p-6 shadow">
+            <aside className="bg-white rounded-3xl p-4 sm:p-6 shadow border border-slate-100">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-green-600 rounded-xl flex items-center justify-center">
-                  <BrainCog className="w-5 h-5 text-white" />
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-emerald-500 to-green-600 rounded-xl flex items-center justify-center">
+                  <BrainCog className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                 </div>
-                <h3 className="text-lg font-bold text-slate-900">Prayer Resources</h3>
+                <h3 className="text-base sm:text-lg font-bold text-slate-900">Prayer Resources</h3>
               </div>
               <div className="space-y-3">
                 {[
@@ -163,139 +162,122 @@ export default function PrayerPanel() {
           </div>
         </div>
 
-        {/* Divider Section */}
-        <div className="flex items-center justify-center py-8">
-          <div className="flex items-center space-x-4">
-            <div className="h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent w-24"></div>
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-full flex items-center justify-center">
-                <Heart className="w-4 h-4 text-white" />
+        {/* Bottom Section - Weekly Schedule and Campus Prayer Spaces */}
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
+          {/* Regular Weekly Schedule - Left Side */}
+          <div className="bg-white rounded-3xl p-6 sm:p-8 shadow border border-slate-100">
+            <div className="flex items-center space-x-3 mb-6 sm:mb-8">
+              <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-600 rounded-xl flex items-center justify-center">
+                <AlarmClock className="w-5 h-5 text-white" />
               </div>
-              <span className="text-slate-600 font-medium">Community Events</span>
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-900">Regular Weekly Schedule</h3>
             </div>
-            <div className="h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent w-24"></div>
-          </div>
-        </div>
 
-        {/* Calendar Section - Full Width */}
-        <div className="w-full">
-          <EventsCalendar />
-        </div>
-
-        {/* Bottom Section - Weekly Events and Campus Info */}
-        <div className="grid lg:grid-cols-3 gap-8 pt-8">
-          {/* Weekly Events - Now wider */}
-          <div className="lg:col-span-2">
-            <aside className="bg-white rounded-3xl p-8 shadow border border-slate-100">
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-600 rounded-xl flex items-center justify-center">
-                  <AlarmClock className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900">Regular Weekly Schedule</h3>
-              </div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {[
-                    { 
-                      title: 'Friday Prayer', 
-                      desc: 'Wallace Hall, JDUC every Friday', 
-                      time: '1:30 PM', 
-                      bgColor: 'bg-emerald-50',
-                      borderColor: 'border-emerald-100',
-                      textColor: 'text-emerald-900',
-                      badgeBg: 'bg-emerald-100',
-                      badgeText: 'text-emerald-700'
-                    },
-                    { 
-                    title: 'Halaqa Study Circle', 
-                    desc: 'Weekly Islamic education', 
-                    time: 'Sun 7 PM', 
-                    bgColor: 'bg-blue-50',
-                    borderColor: 'border-blue-100',
-                    textColor: 'text-blue-900',
-                    badgeBg: 'bg-blue-100',
-                    badgeText: 'text-blue-700'
-                    },
-                    { 
-                    title: 'Social Night', 
-                    desc: 'Community gathering', 
-                    time: 'Thu 8 PM', 
-                    bgColor: 'bg-purple-50',
-                    borderColor: 'border-purple-100',
-                    textColor: 'text-purple-900',
-                    badgeBg: 'bg-purple-100',
-                    badgeText: 'text-purple-700'
-                    },
-                ].map((e) => (
-                    <div
-                    key={e.title}
-                    className={`${e.bgColor} rounded-xl p-4 text-center border ${e.borderColor}`}
-                    >
-                    <h4 className={`font-semibold ${e.textColor} text-sm mb-2`}>{e.title}</h4>
-                    <p className="text-xs text-slate-600 mb-3">{e.desc}</p>
-                    <span className={`inline-block text-xs ${e.badgeBg} ${e.badgeText} px-3 py-1 rounded-full font-medium`}>
-                        {e.time}
-                    </span>
+            <div className="space-y-4 sm:space-y-6">
+              {[
+                { 
+                  title: 'Friday Prayer', 
+                  desc: 'Wallace Hall, JDUC every Friday', 
+                  time: '1:30 PM', 
+                  bgColor: 'bg-emerald-50',
+                  borderColor: 'border-emerald-100',
+                  textColor: 'text-emerald-900',
+                  badgeBg: 'bg-emerald-100',
+                  badgeText: 'text-emerald-700'
+                },
+                { 
+                  title: 'Halaqa Study Circle', 
+                  desc: 'Weekly Islamic education', 
+                  time: 'Sun 7 PM', 
+                  bgColor: 'bg-blue-50',
+                  borderColor: 'border-blue-100',
+                  textColor: 'text-blue-900',
+                  badgeBg: 'bg-blue-100',
+                  badgeText: 'text-blue-700'
+                },
+                { 
+                  title: 'Social Night', 
+                  desc: 'Community gathering', 
+                  time: 'Thu 8 PM', 
+                  bgColor: 'bg-purple-50',
+                  borderColor: 'border-purple-100',
+                  textColor: 'text-purple-900',
+                  badgeBg: 'bg-purple-100',
+                  badgeText: 'text-purple-700'
+                },
+              ].map((e) => (
+                <div
+                  key={e.title}
+                  className={`${e.bgColor} rounded-xl p-4 sm:p-6 border ${e.borderColor} hover:shadow-md transition-shadow`}
+                >
+                  <div className="flex justify-between items-start mb-3">
+                    <div>
+                      <h4 className={`font-semibold ${e.textColor} text-base sm:text-lg mb-1`}>{e.title}</h4>
+                      <p className="text-sm text-slate-600">{e.desc}</p>
                     </div>
-                ))}
+                    <span className={`${e.badgeBg} ${e.badgeText} text-sm px-3 py-1 rounded-full font-medium whitespace-nowrap`}>
+                      {e.time}
+                    </span>
+                  </div>
                 </div>
-              <div className="mt-6 p-4 bg-slate-50 rounded-xl">
-                <p className="text-sm text-slate-600 text-center">
-                  <strong>Note:</strong> Check the calendar above for special events, workshops, and community activities throughout the year.
-                </p>
-              </div>
-            </aside>
+              ))}
+            </div>
+
+            <div className="mt-8 p-4 sm:p-6 bg-slate-50 rounded-xl">
+              <p className="text-sm sm:text-base text-slate-600 text-center">
+                <strong>Note:</strong> Join our community for regular prayers, educational programs, and social events throughout the year.
+              </p>
+            </div>
           </div>
 
-          {/* Right Sidebar - Campus Info and Get Involved */}
-          <div className="space-y-6">
-            {/* Campus Prayer Spaces */}
-            <aside className="bg-white rounded-3xl p-6 shadow border border-slate-100">
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900">Campus Prayer Spaces</h3>
+          {/* Campus Prayer Spaces - Right Side */}
+          <aside className="bg-white rounded-3xl p-6 sm:p-8 shadow border border-slate-100">
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
+                <MapPin className="w-5 h-5 text-white" />
               </div>
-              <div className="space-y-4">
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
-                  <h4 className="font-semibold text-slate-900 text-sm mb-1">JDUC Prayer Room</h4>
-                  <p className="text-xs text-slate-600 mb-2">
-                    John Deutsch University Centre, Room 233
-                  </p>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-xs text-green-700">Open 24/7</span>
-                  </div>
-                </div>
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
-                  <h4 className="font-semibold text-slate-900 text-sm mb-1">ARC Prayer Space</h4>
-                  <p className="text-xs text-slate-600 mb-2">
-                    Athletics & Recreation Centre
-                  </p>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                    <span className="text-xs text-orange-700">6 AM – 11 PM</span>
-                  </div>
-                </div>
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
-                  <h4 className="font-semibold text-slate-900 text-sm mb-1">
-                    Interfaith Centre
-                  </h4>
-                  <p className="text-xs text-slate-600 mb-2">
-                    Ban Righ Hall, Ground Floor
-                  </p>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <span className="text-xs text-blue-700">By appointment</span>
-                  </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-900">Campus Prayer Spaces</h3>
+            </div>
+            <div className="space-y-4">
+              <div className="p-4 sm:p-6 bg-slate-50 rounded-xl border border-slate-100">
+                <h4 className="font-semibold text-slate-900 text-base mb-2">JDUC Prayer Room</h4>
+                <p className="text-sm text-slate-600 mb-3">
+                  John Deutsch University Centre, Room 233
+                </p>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span className="text-sm text-green-700 font-medium">Open 24/7</span>
                 </div>
               </div>
-              <p className="mt-4 text-xs text-slate-600">
-                <strong>Note:</strong> Prayer rooms have mats & Qibla markers. Please
-                respect shared spaces.
+              <div className="p-4 sm:p-6 bg-slate-50 rounded-xl border border-slate-100">
+                <h4 className="font-semibold text-slate-900 text-base mb-2">ARC Prayer Space</h4>
+                <p className="text-sm text-slate-600 mb-3">
+                  Athletics & Recreation Centre
+                </p>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                  <span className="text-sm text-orange-700 font-medium">6 AM – 11 PM</span>
+                </div>
+              </div>
+              <div className="p-4 sm:p-6 bg-slate-50 rounded-xl border border-slate-100">
+                <h4 className="font-semibold text-slate-900 text-base mb-2">
+                  Interfaith Centre
+                </h4>
+                <p className="text-sm text-slate-600 mb-3">
+                  Ban Righ Hall, Ground Floor
+                </p>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <span className="text-sm text-blue-700 font-medium">By appointment</span>
+                </div>
+              </div>
+            </div>
+            <div className="mt-6 p-4 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl border border-emerald-100">
+              <p className="text-sm text-slate-600 text-center">
+                <strong>Note:</strong> Prayer rooms have mats & Qibla markers. Please respect shared spaces.
               </p>
-            </aside>
-          </div>
+            </div>
+          </aside>
         </div>
       </main>
     </div>

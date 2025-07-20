@@ -28,6 +28,7 @@ const resourceLinks = [
   { href: '/resources/halal',   label: 'Halal Food Guide' },
   { href: '/resources/links',     label: 'Important Links' },
   { href: '/resources/faq',     label: 'FAQ and More' },
+  { href: '/resources/merch', label: 'Merch Coming Soon' }
 ]
 
 // Custom Link component with smooth transitions

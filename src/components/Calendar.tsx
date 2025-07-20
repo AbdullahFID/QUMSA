@@ -478,7 +478,7 @@ END:VCALENDAR`;
   };
 
   return (
-    <div className={`${themeClasses.container} rounded-2xl p-4 sm:p-6 max-w-4xl mx-auto`}>
+<div className={`${themeClasses.container} relative rounded-2xl p-4 sm:p-6 max-w-4xl mx-auto`}>
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 sm:mb-6">
         <div className="flex items-center space-x-3 mb-4 sm:mb-0">
@@ -659,14 +659,20 @@ END:VCALENDAR`;
 
       {/* Event Detail Modal */}
       {selectedEvent && (
-        <div 
-          className={`fixed inset-0 ${themeClasses.modal.backdrop} flex items-center justify-center p-3 sm:p-6 z-50`}
-          onClick={() => setSelectedEvent(null)}
+        <div
+        className="absolute inset-0 z-50 flex items-center justify-center p-3 sm:p-6"
+        style={{
+          backgroundColor: isDarkMode
+            ? 'rgba(15, 23, 42, 0.8)'
+            : 'rgba(255, 255, 255, 0.2)',
+          backdropFilter: 'blur(8px)',
+        }}
+        onClick={() => setSelectedEvent(null)}
+      >
+        <div
+          className={`${themeClasses.modal.content} rounded-2xl max-w-sm sm:max-w-md w-full max-h-[90vh] overflow-y-auto shadow-2xl transform animate-in slide-in-from-bottom-4 duration-300`}
+          onClick={e => e.stopPropagation()}
         >
-          <div 
-            className={`${themeClasses.modal.content} rounded-2xl max-w-sm sm:max-w-md w-full max-h-[90vh] overflow-y-auto shadow-2xl transform animate-in slide-in-from-bottom-4 duration-300`}
-            onClick={(e) => e.stopPropagation()}
-          >
             <div className="p-4 sm:p-6">
               {/* Header */}
               <div className="flex items-start justify-between mb-4">

@@ -195,7 +195,8 @@ export default function Footer() {
                   {[
                     { href: '/resources/halal', label: 'Halal' },
                     { href: '/resources/links', label: 'Important Links & Guides' },
-                    { href: '/resources/faq', label: 'FAQ and More' }
+                    { href: '/resources/faq', label: 'FAQ and More' },
+                    { href: '/resources/merch', label: 'Merch Coming Soon' }
                   ].map((resource) => (
                     <Link
                       key={resource.href}

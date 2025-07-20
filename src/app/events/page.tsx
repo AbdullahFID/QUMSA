@@ -23,6 +23,7 @@ import {
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import EventCard, { EventCategory } from '@/components/EventCard'
+import EventsCalendar from '../../components/Calendar'
 import Image from 'next/image'
 
 
@@ -58,7 +59,7 @@ const upcomingEvents: Event[] = [
     title: 'Welcome BBQ & Orientation',
     desc: 'Kick‑off the academic year with delicious halal food, games, and meet fellow Muslim students. Perfect opportunity to learn about QUMSA and get involved!',
     location: "Queen's Park",
-    time: '12:00 PM – 4:00 PM',
+    time: '12:00 PM – 4:00 PM',
     attendees: 150,
     category: 'Social',
     featured: true,
@@ -67,18 +68,18 @@ const upcomingEvents: Event[] = [
     date: 'Sep 13 2025',
     title: 'First Jummah Prayer on Campus',
     desc: 'Join us for our first congregational Friday prayer of the semester in Mitchell Hall. Experience the spiritual unity of our campus Muslim community.',
-    location: 'Mitchell Hall Room 228',
-    time: '1:00 PM – 2:00 PM',
+    location: 'Mitchell Hall Room 228',
+    time: '1:00 PM – 2:00 PM',
     attendees: 200,
     category: 'Religious',
     featured: false,
   },
   {
-    date: 'Oct 7‑11 2025',
+    date: 'Oct 7‑11 2025',
     title: 'Islam Awareness Week',
     desc: 'A week‑long celebration featuring educational booths, guest speakers, cultural displays, and open‑mosque tours. Learn about Islam and connect with the community.',
     location: 'Various Campus Locations',
-    time: 'All Week',
+    time: 'All Week',
     attendees: 500,
     category: 'Educational',
     featured: true,
@@ -375,7 +376,7 @@ export default function Events() {
                 <div className="p-1.5 sm:p-2 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full">
                   <Ticket className="w-3 h-3 sm:w-4 sm:h-4 text-black" />
                 </div>
-                <span className="text-yellow-400 font-medium text-xs sm:text-sm lg:text-base">Events & Activities</span>
+                <span className="text-yellow-400 font-medium text-xs sm:text-sm lg:text-base">Events & Activities</span>
                 <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-400 animate-pulse" />
               </div>
             </div>
@@ -395,6 +396,39 @@ export default function Events() {
               Join us for meaningful events that strengthen our community, celebrate our faith, and create lasting
               memories together.
             </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── events calendar section ── */}
+      <section className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            className="text-center mb-12 sm:mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="inline-flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+              <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400" />
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                Events Calendar
+              </h2>
+              <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400" />
+            </div>
+            <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto">
+              Stay up to date with all upcoming QUMSA events and activities
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <EventsCalendar />
           </motion.div>
         </div>
       </section>
