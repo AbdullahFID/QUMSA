@@ -1,18 +1,31 @@
-/* ORIGINAL globals.css */
 @import "tailwindcss";
 
-/* Custom Islamic styling */
+/* Custom Islamic styling with brand colors */
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --islamic-gold: #D4AF37;
-  --islamic-emerald: #50C878;
+  
+  /* Brand Colors */
+  --brand-navy-dark: #131C65;
+  --brand-navy-light: #3B4883;
+  --brand-grey-accent: #D4CED1;
+  --brand-gold: #CFA740;
+  --brand-red: #E91235;
+  --brand-blue-accent: #00466E;
+  --brand-blue-dark: #014362;
+  --brand-blue-light: #BBD0E5;
+  --brand-midnight: #0E1B2C;
+  --brand-emerald: #00D698;
+  
+  /* Legacy support */
+  --islamic-gold: #CFA740;
+  --islamic-emerald: #00D698;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0E1B2C; /* Using your midnight color for dark mode */
+    --foreground: #D4CED1; /* Using your grey accent for text */
   }
 }
 
@@ -28,54 +41,98 @@ body {
 }
 
 /* 
-  NEW FIX: This rule targets the pseudo-elements on the body,
-  which are the likely culprits for the persistent diagonal line.
-  Setting the opacity here will make it much more subtle.
+  Pattern opacity control for brand colors
 */
 body::before,
 body::after {
-  opacity: 0.05 !important; /* Adjust this value as needed */
+  opacity: 0.05 !important;
 }
 
+/* Islamic pattern updated with brand gold */
 .islamic-pattern {
-  background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23D4AF37" fill-opacity="0.05"%3E%3Cpath d="M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+  background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23CFA740" fill-opacity="0.05"%3E%3Cpath d="M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
 }
 
+/* Brand gradient text variants */
 .gradient-text {
-  background: linear-gradient(135deg, #D4AF37, #50C878);
+  background: linear-gradient(135deg, #CFA740, #00D698);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+.gradient-text-navy {
+  background: linear-gradient(135deg, #131C65, #3B4883);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-brand {
+  background: linear-gradient(135deg, #131C65, #CFA740);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass effect with brand colors */
 .glass-effect {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(212, 206, 209, 0.1); /* Using your grey accent with transparency */
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(207, 167, 64, 0.2); /* Using your gold with transparency */
 }
 
 .dark .glass-effect {
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(19, 28, 101, 0.3); /* Using your navy with transparency */
+  border: 1px solid rgba(0, 214, 152, 0.1); /* Using your emerald with transparency */
 }
 
-/* Smooth scrollbar */
+/* Brand-specific glass effects */
+.glass-effect-navy {
+  background: rgba(19, 28, 101, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(59, 72, 131, 0.3);
+}
+
+.glass-effect-gold {
+  background: rgba(207, 167, 64, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(207, 167, 64, 0.3);
+}
+
+.glass-effect-emerald {
+  background: rgba(0, 214, 152, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 214, 152, 0.3);
+}
+
+/* Smooth scrollbar with brand colors */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #D4CED1; /* Your grey accent */
 }
 ::-webkit-scrollbar-thumb {
-  background: #D4AF37;
+  background: #CFA740; /* Your gold */
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #b8941f;
+  background: #131C65; /* Your navy on hover */
 }
 
-/* Add these custom animations to your existing globals.css */
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: #0E1B2C; /* Your midnight */
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #00D698; /* Your emerald */
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3B4883; /* Your light navy */
+}
 
+/* Enhanced animations with brand colors */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -131,6 +188,35 @@ body::after {
   }
 }
 
+/* Brand-specific glow effects */
+@keyframes glowGold {
+  from {
+    box-shadow: 0 0 5px #CFA740, 0 0 10px #CFA740;
+  }
+  to {
+    box-shadow: 0 0 10px #CFA740, 0 0 20px #CFA740, 0 0 30px #CFA740;
+  }
+}
+
+@keyframes glowEmerald {
+  from {
+    box-shadow: 0 0 5px #00D698, 0 0 10px #00D698;
+  }
+  to {
+    box-shadow: 0 0 10px #00D698, 0 0 20px #00D698, 0 0 30px #00D698;
+  }
+}
+
+@keyframes glowNavy {
+  from {
+    box-shadow: 0 0 5px #131C65, 0 0 10px #131C65;
+  }
+  to {
+    box-shadow: 0 0 10px #131C65, 0 0 20px #131C65, 0 0 30px #131C65;
+  }
+}
+
+/* Animation classes */
 .animate-fadeInUp {
   animation: fadeInUp 0.8s ease-out forwards;
 }
@@ -151,7 +237,19 @@ body::after {
   animation: scaleIn 0.5s ease-out forwards;
 }
 
-/* Staggered animation delays for multiple elements */
+.animate-glow-gold {
+  animation: glowGold 2s ease-in-out infinite alternate;
+}
+
+.animate-glow-emerald {
+  animation: glowEmerald 2s ease-in-out infinite alternate;
+}
+
+.animate-glow-navy {
+  animation: glowNavy 2s ease-in-out infinite alternate;
+}
+
+/* Staggered animation delays */
 .animate-delay-100 {
   animation-delay: 100ms;
 }
@@ -170,4 +268,53 @@ body::after {
 
 .animate-delay-500 {
   animation-delay: 500ms;
+}
+
+.animate-delay-600 {
+  animation-delay: 600ms;
+}
+
+.animate-delay-700 {
+  animation-delay: 700ms;
+}
+
+.animate-delay-800 {
+  animation-delay: 800ms;
+}
+
+/* Brand color utility classes */
+.bg-brand-gradient {
+  background: linear-gradient(135deg, #131C65, #CFA740);
+}
+
+.bg-islamic-gradient {
+  background: linear-gradient(135deg, #CFA740, #00D698);
+}
+
+.bg-navy-gradient {
+  background: linear-gradient(135deg, #131C65, #3B4883);
+}
+
+.text-brand-gold {
+  color: #CFA740;
+}
+
+.text-brand-navy {
+  color: #131C65;
+}
+
+.text-brand-emerald {
+  color: #00D698;
+}
+
+.border-brand-gold {
+  border-color: #CFA740;
+}
+
+.border-brand-navy {
+  border-color: #131C65;
+}
+
+.border-brand-emerald {
+  border-color: #00D698;
 }
