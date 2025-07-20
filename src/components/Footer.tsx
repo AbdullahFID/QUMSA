@@ -1,20 +1,21 @@
 // components/Footer.tsx
 'use client'
+
 import Link from 'next/link'
 import { useState } from 'react'
 import {
   MoonStar,               // brand mark (crescent + star)
-  Instagram as InstagramIcon,  // alias the deprecated Instagram export
+  Instagram as InstagramIcon,
   Mail,
   MapPin,
   ExternalLink,
   ChevronRight,
   ChevronDown,
   Heart,
-  MessageCircle,          // WhatsApp icon
-  Facebook,               // Facebook icon
-  Twitter,                // Twitter icon
-  Github,                 // GitHub icon
+  MessageCircle,
+  Facebook,
+  Twitter,
+  Github,
 } from 'lucide-react'
 
 export default function Footer() {
@@ -24,16 +25,13 @@ export default function Footer() {
     <footer
       className={`
         relative
-        bg-gradient-to-br from-slate-800 via-slate-700 to-slate-600
+        bg-[#131C65]
         text-white
-        
-        /* pull up to overlap the section above */
         -mt-16
-        /* softly round top corners */
         rounded-t-3xl
-        /* add extra top padding so content isn't cut off */
         pt-20
-        
+        shadow-xl backdrop-blur-md
+
         /* Fix rendering artifacts */
         transform-gpu
         will-change-transform
@@ -56,7 +54,7 @@ export default function Footer() {
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           
-          {/* Brand Section - Takes full width on mobile, 2 cols on desktop */}
+          {/* Brand Section */}
           <div className="sm:col-span-2 lg:col-span-2">
             <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-6">
               <div className="relative w-fit hidden sm:block">
@@ -94,11 +92,6 @@ export default function Footer() {
                 aria-label="Follow QUMSA on Instagram"
               >
                 <InstagramIcon className="w-5 h-5" />
-                {/* Tooltip
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-lg">
-                  Follow us on Instagram
-                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-gray-900"></div>
-                </div> */}
               </a>
               <a
                 href="https://whatsapp.com/channel/0029VaEZcoSLNSZyWbQK390Q"
@@ -108,7 +101,6 @@ export default function Footer() {
                 aria-label="Join QUMSA WhatsApp"
               >
                 <MessageCircle className="w-5 h-5" />
-                {/* Tooltip */}
                 <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-lg">
                   Join our WhatsApp
                   <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-gray-900"></div>
@@ -122,7 +114,6 @@ export default function Footer() {
                 aria-label="Follow QUMSA on Facebook"
               >
                 <Facebook className="w-5 h-5" />
-                {/* Tooltip */}
                 <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-lg">
                   Follow us on Facebook
                   <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-gray-900"></div>
@@ -136,7 +127,6 @@ export default function Footer() {
                 aria-label="Follow QUMSA on Twitter"
               >
                 <Twitter className="w-5 h-5" />
-                {/* Tooltip */}
                 <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-lg">
                   Follow us on Twitter
                   <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-gray-900"></div>
@@ -150,7 +140,6 @@ export default function Footer() {
                 aria-label="QUMSA GitHub"
               >
                 <Github className="w-5 h-5" />
-                {/* Tooltip */}
                 <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-lg">
                   See the Code!
                   <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-gray-900"></div>
@@ -179,8 +168,6 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
-              
-              {/* Resources Dropdown */}
               <li className="relative">
                 <button
                   onClick={() => setIsResourcesOpen(!isResourcesOpen)}
@@ -189,8 +176,6 @@ export default function Footer() {
                   <ChevronDown className={`w-4 h-4 mr-2 transition-transform duration-200 ${isResourcesOpen ? 'rotate-180' : ''}`} />
                   Resources
                 </button>
-                
-                {/* Dropdown Menu */}
                 <div className={`mt-2 ml-6 space-y-2 transition-all duration-200 overflow-hidden ${isResourcesOpen ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}`}>
                   {[
                     { href: '/resources/halal', label: 'Halal' },

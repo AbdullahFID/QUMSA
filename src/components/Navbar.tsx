@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
 import {
   Menu,
-  MoonStar,
   ChevronDown,
   HeartHandshake,
   Home,
@@ -16,6 +15,8 @@ import {
   BookOpen,
 } from 'lucide-react'
 
+const accentColor = '#FFD700'
+
 const primaryLinks = [
   { href: '/',        label: 'Home',    icon: Home     },
   { href: '/mission', label: 'Mission', icon: Target   },
@@ -25,19 +26,18 @@ const primaryLinks = [
 ]
 
 const resourceLinks = [
-  { href: '/resources/halal',   label: 'Halal Food Guide' },
-  { href: '/resources/links',     label: 'Important Links' },
-  { href: '/resources/faq',     label: 'FAQ and More' },
-  { href: '/resources/merch', label: 'Merch Coming Soon' }
+  { href: '/resources/halal', label: 'Halal Food Guide' },
+  { href: '/resources/links', label: 'Important Links' },
+  { href: '/resources/faq',   label: 'FAQ and More' },
+  { href: '/resources/merch', label: 'Merch Coming Soon' },
 ]
 
-// Custom Link component with smooth transitions
-function SmoothLink({ 
-  href, 
-  children, 
-  className = '', 
-  onClick 
-}: { 
+function SmoothLink({
+  href,
+  children,
+  className = '',
+  onClick
+}: {
   href: string
   children: React.ReactNode
   className?: string
@@ -48,24 +48,17 @@ function SmoothLink({
 
   const handleClick = async (e: React.MouseEvent) => {
     e.preventDefault()
-    
     if (onClick) onClick()
-    
-    // Don't navigate if we're already on this page
     if (window.location.pathname === href) return
-    
     setIsNavigating(true)
-    
-    // Small delay for visual feedback
     await new Promise(resolve => setTimeout(resolve, 150))
-    
     router.push(href)
     setIsNavigating(false)
   }
 
   return (
-    <Link 
-      href={href} 
+    <Link
+      href={href}
       onClick={handleClick}
       className={`${className} ${isNavigating ? 'opacity-75 transform scale-95' : ''} transition-all duration-150`}
     >
@@ -82,26 +75,16 @@ export default function Navbar() {
   const [showFloatingBtn, setShowFloatingBtn] = useState(false)
   const pathname = usePathname()
 
-  const textColorClass = 'text-white'
+  const isActiveLink = (href: string) =>
+    href === '/' ? pathname === '/' : pathname.startsWith(href)
 
-  // Helper function to check if a link is active
-  const isActiveLink = (href: string) => {
-    if (href === '/') {
-      return pathname === '/'
-    }
-    return pathname.startsWith(href)
-  }
-
-  // Helper function to check if resources dropdown should be active
-  const isResourcesActive = () => {
-    return resourceLinks.some(link => pathname.startsWith(link.href))
-  }
+  const isResourcesActive = () =>
+    resourceLinks.some(link => pathname.startsWith(link.href))
 
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY
       setScroll(y > 10)
-
       if (y > 50) {
         setShowMobileNav(false)
         setShowFloatingBtn(true)
@@ -111,7 +94,6 @@ export default function Navbar() {
         setShowFloatingBtn(false)
       }
     }
-
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -133,7 +115,7 @@ export default function Navbar() {
         className={`
           hidden md:block fixed inset-x-0 top-0 z-50 transition-all duration-300
           ${scroll
-            ? 'bg-green-700/40 shadow-xl backdrop-blur-md'
+            ? 'bg-[#131C65] shadow-xl backdrop-blur-md'
             : 'bg-transparent'
           }
         `}
@@ -142,17 +124,17 @@ export default function Navbar() {
           {/* Brand */}
           <SmoothLink href="/" className="flex items-center gap-3 group">
             <div className="relative group-hover:shadow-lg transition">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-400 to-green-600 p-0.5">
-              <div className="w-full h-full rounded-full bg-white"></div>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-400 to-green-600 p-0.5">
+                <div className="w-full h-full rounded-full bg-white"></div>
+              </div>
+              <div className="relative p-2 rounded-full bg-white">
+                <img
+                  src="/images/QUMSA_LOGO.png"
+                  alt="QUMSA Logo"
+                  className="w-6 h-6 object-contain"
+                />
+              </div>
             </div>
-            <div className="relative p-2 rounded-full bg-white">
-              <img 
-                src="/images/QUMSA_LOGO.png" 
-                alt="QUMSA Logo" 
-                className="w-6 h-6 object-contain"
-              />
-            </div>
-          </div>
             <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-green-600">
               QUMSA
             </span>
@@ -168,18 +150,18 @@ export default function Navbar() {
                   href={href}
                   className={`
                     relative font-medium transition-all duration-300 group flex items-center gap-2
-                    ${isActive 
-                      ? 'text-yellow-400' 
-                      : `${textColorClass} hover:text-yellow-400`
+                    ${isActive
+                      ? `text-[${accentColor}]`
+                      : `text-white hover:text-[${accentColor}]`
                     }
                   `}
                 >
                   <Icon className="w-4 h-4" />
                   {label}
                   <span className={`
-                    absolute left-0 -bottom-1 h-0.5 bg-yellow-400 transition-all duration-300 ease-out
+                    absolute left-0 -bottom-1 h-0.5 bg-[${accentColor}] transition-all duration-300 ease-out
                     ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}
-                  `} />
+                  `}/>
                 </SmoothLink>
               )
             })}
@@ -191,8 +173,8 @@ export default function Navbar() {
                 className={`
                   flex items-center gap-2 font-medium transition-all duration-300 group relative
                   ${isResourcesActive()
-                    ? 'text-yellow-400'
-                    : `${textColorClass} hover:text-yellow-400`
+                    ? `text-[${accentColor}]`
+                    : `text-white hover:text-[${accentColor}]`
                   }
                 `}
               >
@@ -200,17 +182,15 @@ export default function Navbar() {
                 Resources
                 <ChevronDown className={`w-4 h-4 transition-transform ${deskDrop ? 'rotate-180' : ''}`} />
                 <span className={`
-                  absolute left-0 -bottom-1 h-0.5 bg-yellow-400 transition-all duration-300 ease-out
+                  absolute left-0 -bottom-1 h-0.5 bg-[${accentColor}] transition-all duration-300 ease-out
                   ${isResourcesActive() ? 'w-full' : 'w-0 group-hover:w-full'}
-                `} />
+                `}/>
               </button>
-              <div
-                className={`
-                  absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-gray-200
-                  overflow-hidden transition-all duration-200 origin-top-right
-                  ${deskDrop ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'}
-                `}
-              >
+              <div className={`
+                absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-gray-200
+                overflow-hidden transition-all duration-200 origin-top-right
+                ${deskDrop ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'}
+              `}>
                 {resourceLinks.map(({ href, label }) => {
                   const isActive = isActiveLink(href)
                   return (
@@ -219,9 +199,10 @@ export default function Navbar() {
                       href={href}
                       className={`
                         block px-4 py-3 transition-all duration-200
-                        ${isActive
-                          ? 'bg-yellow-50 text-yellow-600 border-r-2 border-yellow-400'
-                          : 'text-gray-700 hover:bg-gray-50 hover:text-yellow-600'
+                        ${
+                          isActive
+                            ? `bg-[${accentColor}]/10 text-[${accentColor}] border-r-2 border-[${accentColor}]`
+                            : `text-gray-700 hover:bg-[${accentColor}]/10 hover:text-[${accentColor}]`
                         }
                       `}
                       onClick={() => setDeskDrop(false)}
@@ -266,14 +247,14 @@ export default function Navbar() {
           }}
           className={`
             fixed right-4 bottom-20 z-50 w-14 h-14 rounded-full
-            bg-gray-900/95 backdrop-blur-md border border-gray-800 shadow-2xl
+            bg-[#131C65]/95 backdrop-blur-md border border-gray-800 shadow-2xl
             flex items-center justify-center transition-all duration-300
             hover:shadow-3xl hover:scale-105 active:scale-95
             ${showFloatingBtn ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0 pointer-events-none'}
           `}
         >
           <svg
-            className="w-6 h-6 text-gray-400"
+            className="w-6 h-6 text-white"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -289,7 +270,7 @@ export default function Navbar() {
           `}
         >
           <div className="flex justify-center px-4 pb-4 pt-2">
-            <div className="bg-gray-900/95 backdrop-blur-md rounded-2xl px-6 py-4 shadow-2xl border border-gray-800 max-w-sm w-full">
+            <div className="bg-[#131C65]/95 backdrop-blur-md rounded-2xl px-6 py-4 shadow-2xl border border-gray-800 max-w-sm w-full">
               <div className="flex items-center justify-between">
                 {primaryLinks.slice(0, 4).map(({ href, label, icon: Icon }) => {
                   const isActive = isActiveLink(href)
@@ -302,37 +283,30 @@ export default function Navbar() {
                     >
                       <Icon className={`
                         w-5 h-5 transition
-                        ${isActive 
-                          ? 'text-yellow-400' 
-                          : 'text-gray-400 group-hover:text-yellow-400'
+                        ${isActive
+                          ? `text-[${accentColor}]`
+                          : `text-white group-hover:text-[${accentColor}]`
                         }
-                      `} />
+                      `}/>
                       <span className={`
                         text-xs transition truncate
-                        ${isActive 
-                          ? 'text-yellow-400' 
-                          : 'text-gray-400 group-hover:text-yellow-400'
+                        ${isActive
+                          ? `text-[${accentColor}]`
+                          : `text-white group-hover:text-[${accentColor}]`
                         }
                       `}>
                         {label}
                       </span>
-                      {isActive && (
-                        <div className="w-1 h-1 rounded-full bg-yellow-400 mt-0.5"></div>
-                      )}
+                      {isActive && <div className={`w-1 h-1 rounded-full bg-[${accentColor}] mt-0.5`} />}
                     </SmoothLink>
                   )
                 })}
                 <button
-                  onClick={e => {
-                    e.stopPropagation()
-                    setMobileOpen(!mobileOpen)
-                  }}
+                  onClick={e => { e.stopPropagation(); setMobileOpen(!mobileOpen) }}
                   className="flex flex-col items-center gap-1 group min-w-0 flex-1"
                 >
-                  <Menu className="w-5 h-5 text-gray-400 group-hover:text-yellow-400 transition" />
-                  <span className="text-xs text-gray-400 group-hover:text-yellow-400 transition">
-                    More
-                  </span>
+                  <Menu className={`w-5 h-5 text-white group-hover:text-[${accentColor}] transition`} />
+                  <span className={`text-xs text-white group-hover:text-[${accentColor}] transition`}>More</span>
                 </button>
               </div>
             </div>
@@ -341,7 +315,7 @@ export default function Navbar() {
           <div className="flex justify-center px-4 pb-2 relative z-50">
             <div
               className={`
-                bg-gray-900/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-800 max-w-sm w-full
+                bg-[#131C65]/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-800 max-w-sm w-full
                 overflow-hidden transition-all duration-300 origin-bottom
                 ${mobileOpen ? 'scale-100 opacity-100 max-h-96' : 'scale-95 opacity-0 max-h-0 pointer-events-none'}
               `}
@@ -353,33 +327,30 @@ export default function Navbar() {
                   onClick={() => setMobileOpen(false)}
                   className={`
                     flex items-center gap-3 transition
-                    ${isActiveLink('/events')
-                      ? 'text-yellow-400'
-                      : 'text-gray-300 hover:text-yellow-400'
+                    ${
+                      isActiveLink('/events')
+                        ? `text-[${accentColor}]`
+                        : 'text-white hover:text-[${accentColor}]'
                     }
                   `}
                 >
                   <Calendar className="w-5 h-5" />
                   <span className="font-medium">Events</span>
-                  {isActiveLink('/events') && (
-                    <div className="w-1 h-1 rounded-full bg-yellow-400 ml-auto"></div>
-                  )}
+                  {isActiveLink('/events') && <div className={`w-1 h-1 rounded-full bg-[${accentColor}] ml-auto`} />}
                 </SmoothLink>
 
                 <div className="space-y-2">
                   <div className={`
                     flex items-center gap-3 pb-2 border-b border-gray-800
-                    ${isResourcesActive() ? 'text-yellow-400' : 'text-gray-300'}
+                    ${isResourcesActive() ? `text-[${accentColor}]` : 'text-white'}
                   `}>
                     <BookOpen className="w-5 h-5" />
                     <span className="font-medium">Resources</span>
-                    {isResourcesActive() && (
-                      <div className="w-1 h-1 rounded-full bg-yellow-400 ml-auto"></div>
-                    )}
+                    {isResourcesActive() && <div className={`w-1 h-1 rounded-full bg-[${accentColor}] ml-auto`} />}
                   </div>
                   <div className="space-y-2 pl-8">
                     {resourceLinks.map(({ href, label }) => {
-                      const isActive = isActiveLink(href)
+                      const isSubActive = isActiveLink(href)
                       return (
                         <SmoothLink
                           key={href}
@@ -387,16 +358,14 @@ export default function Navbar() {
                           onClick={() => setMobileOpen(false)}
                           className={`
                             block transition text-sm flex items-center
-                            ${isActive
-                              ? 'text-yellow-400'
-                              : 'text-gray-400 hover:text-yellow-400'
+                            ${isSubActive
+                              ? `text-[${accentColor}]`
+                              : `text-white hover:text-[${accentColor}]`
                             }
                           `}
                         >
                           {label}
-                          {isActive && (
-                            <div className="w-1 h-1 rounded-full bg-yellow-400 ml-auto"></div>
-                          )}
+                          {isSubActive && <div className={`w-1 h-1 rounded-full bg-[${accentColor}] ml-auto`} />}
                         </SmoothLink>
                       )
                     })}
