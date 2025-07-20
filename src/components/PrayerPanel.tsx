@@ -85,14 +85,14 @@ export default function PrayerPanel() {
                 <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
                   <Landmark className="w-5 h-5 text-white" />
                 </div>
-                <h3 className="text-lg font-bold">Juma Prayer</h3>
+                <h3 className="text-lg font-bold">Jummah Prayer</h3>
               </div>
               
               {/* Juma Poster Image */}
               <div className="mb-4 rounded-xl overflow-hidden shadow-md">
                 <Image
                   src="/images/Juma/JumaImage.png"
-                  alt="Juma Prayer Information"
+                  alt="Jummah Prayer Information"
                   width={300}
                   height={200}
                   className="w-full h-auto object-cover"
@@ -103,14 +103,14 @@ export default function PrayerPanel() {
               <div className="space-y-3">
                 <div className="bg-white/10 rounded-lg p-3">
                   <p className="text-sm font-medium mb-1">Every Friday</p>
-                  <p className="text-xs text-emerald-100">JDUC Pub • 12:30 PM</p>
+                  <p className="text-xs text-emerald-100">Wallace Hall, JDUC • 1:30 PM</p>
                 </div>
                 
                 {/* Juma Location Image */}
                 <div className="rounded-lg overflow-hidden">
                   <Image
                     src="/images/Juma/JumaLocation.png"
-                    alt="Juma Prayer Location Map"
+                    alt="Jummah Prayer Location Map"
                     width={300}
                     height={150}
                     className="w-full h-auto object-cover"
@@ -118,7 +118,7 @@ export default function PrayerPanel() {
                 </div>
                 
                 <p className="text-xs text-emerald-100">
-                  Join us for congregational Friday prayers at the John Deutsch University Centre Pub
+                  Join us for congregational Friday prayers at Wallace Hall in the John Deutsch University Centre
                 </p>
               </div>
             </aside>
@@ -196,14 +196,14 @@ export default function PrayerPanel() {
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {[
                     { 
-                    title: 'Friday Prayer', 
-                    desc: 'JDUC Pub every Friday', 
-                    time: '12:30 PM', 
-                    bgColor: 'bg-emerald-50',
-                    borderColor: 'border-emerald-100',
-                    textColor: 'text-emerald-900',
-                    badgeBg: 'bg-emerald-100',
-                    badgeText: 'text-emerald-700'
+                      title: 'Friday Prayer', 
+                      desc: 'Wallace Hall, JDUC every Friday', 
+                      time: '1:30 PM', 
+                      bgColor: 'bg-emerald-50',
+                      borderColor: 'border-emerald-100',
+                      textColor: 'text-emerald-900',
+                      badgeBg: 'bg-emerald-100',
+                      badgeText: 'text-emerald-700'
                     },
                     { 
                     title: 'Halaqa Study Circle', 
@@ -294,31 +294,6 @@ export default function PrayerPanel() {
                 <strong>Note:</strong> Prayer rooms have mats & Qibla markers. Please
                 respect shared spaces.
               </p>
-            </aside>
-
-            {/* Get Involved */}
-            <aside className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-3xl p-6 text-white shadow-lg border border-emerald-200">
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
-                  <UserRoundPlus className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-lg font-bold">Get Involved</h3>
-              </div>
-              <p className="text-sm mb-4 text-emerald-50">
-                Join our community of Muslim students at Queen's University. Connect,
-                learn, and grow together through prayer, events, and fellowship.
-              </p>
-              <div className="space-y-2 text-sm">
-                <a href="mailto:msa@queensu.ca" className="hover:underline flex items-center space-x-2">
-                  <span>📧</span><span>msa@queensu.ca</span>
-                </a>
-                <a href="#" className="hover:underline flex items-center space-x-2">
-                  <span>📱</span><span>@QUMSA</span>
-                </a>
-                <a href="#" className="hover:underline flex items-center space-x-2">
-                  <span>🌐</span><span>qumsa.ca</span>
-                </a>
-              </div>
             </aside>
           </div>
         </div>

@@ -8,6 +8,7 @@ import {
   Sparkles,
   ArrowRight,
   Users,
+  Ticket,
   Zap,
   ChevronLeft,
   ChevronRight,
@@ -23,6 +24,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion'
 import EventCard, { EventCategory } from '@/components/EventCard'
 import Image from 'next/image'
+
 
 /* ───────────────────────────── Types ────────────────────────────── */
 interface Event {
@@ -371,7 +373,7 @@ export default function Events() {
             <div className="flex justify-center mb-6 sm:mb-8 lg:mb-12">
               <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 bg-white/5 backdrop-blur-xl rounded-full border border-white/10 hover:bg-white/10 transition">
                 <div className="p-1.5 sm:p-2 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full">
-                  <Calendar className="w-3 h-3 sm:w-4 sm:h-4 text-black" />
+                  <Ticket className="w-3 h-3 sm:w-4 sm:h-4 text-black" />
                 </div>
                 <span className="text-yellow-400 font-medium text-xs sm:text-sm lg:text-base">Events & Activities</span>
                 <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-400 animate-pulse" />

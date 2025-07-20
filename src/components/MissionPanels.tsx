@@ -2,7 +2,7 @@
 
 import { useRef, JSX } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Heart, Megaphone, GraduationCap, ShieldCheck, Handshake, HeartHandshake, Compass, Gem } from 'lucide-react'
+import { Heart, Megaphone, GraduationCap, ShieldCheck, Handshake, HeartHandshake, Compass, Gem, MapPin, Moon, Users, Globe, Calendar, BookOpen, Coffee, Gift } from 'lucide-react'
 
 export default function MissionPanels(): JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -45,21 +45,26 @@ export default function MissionPanels(): JSX.Element {
   const coreAreasBatch2Opacity = useTransform(scrollYProgress, [0.56, 0.60, 0.62, 0.64], [0, 1, 1, 0])
   const coreAreasBatch2Y = useTransform(scrollYProgress, [0.56, 0.60], [50, 0])
 
-  // Panel 4 (Services Container): 64% -> 100%
+  // Panel 4 (Services): 64% -> 100%
   const panel4Opacity = useTransform(scrollYProgress, [0.64, 0.70], [0, 1])
   const panel4Scale = useTransform(scrollYProgress, [0.64, 0.70], [0.85, 1])
 
-  // Services Title: 70% -> 76%
-  const servicesTitleOpacity = useTransform(scrollYProgress, [0.70, 0.74, 0.76, 0.78], [0, 1, 1, 0])
-  const servicesTitleY = useTransform(scrollYProgress, [0.76, 0.78], [0, -50])
+  // Services Title: 70% -> 74%
+  const servicesTitleOpacity = useTransform(scrollYProgress, [0.70, 0.72, 0.74, 0.76], [0, 1, 1, 0])
+  const servicesTitleY = useTransform(scrollYProgress, [0.74, 0.76], [0, -50])
 
-  // Services Batch 1 (first 3): 78% -> 84%
-  const servicesBatch1Opacity = useTransform(scrollYProgress, [0.78, 0.82, 0.84, 0.86], [0, 1, 1, 0])
-  const servicesBatch1Y = useTransform(scrollYProgress, [0.78, 0.82], [50, 0])
+  // Services Batches
+  // Batch 1 (first 3): 76% -> 84%
+  const servicesBatch1Opacity = useTransform(scrollYProgress, [0.76, 0.80, 0.84, 0.86], [0, 1, 1, 0])
+  const servicesBatch1Y = useTransform(scrollYProgress, [0.76, 0.80], [50, 0])
 
-  // Services Batch 2 (last 3): 86% -> 100%
-  const servicesBatch2Opacity = useTransform(scrollYProgress, [0.86, 0.90], [0, 1])
+  // Batch 2 (middle 3): 86% -> 94%
+  const servicesBatch2Opacity = useTransform(scrollYProgress, [0.86, 0.90, 0.94, 0.96], [0, 1, 1, 0])
   const servicesBatch2Y = useTransform(scrollYProgress, [0.86, 0.90], [50, 0])
+
+  // Batch 3 (last 3): 96% -> 100%
+  const servicesBatch3Opacity = useTransform(scrollYProgress, [0.96, 0.98, 1.0], [0, 1, 1])
+  const servicesBatch3Y = useTransform(scrollYProgress, [0.96, 0.98], [50, 0])
 
   // Animated background for the entire component
   const bgGradient = useTransform(scrollYProgress, [0, 0.5, 1], [
@@ -80,17 +85,21 @@ export default function MissionPanels(): JSX.Element {
   const coreAreasBatch2 = coreAreas.slice(2, 4)
 
   const services = [
-    'Daily and Friday prayers for spiritual fulfillment',
-    'Ramadan iftars bringing the community together',
-    'Eid celebrations honoring Islamic traditions',
-    'Halaqas for learning and spiritual discussion',
-    'Social events fostering friendship and connection',
-    'Peer support networks for academic and personal growth',
+    { Icon: MapPin, title: 'Prayer Spaces', desc: 'Dedicated prayer areas across campus for daily prayers', color: 'from-emerald-400 to-teal-500' },
+    { Icon: Moon, title: 'Jumu\'ah Prayers', desc: 'Weekly Friday congregational prayers and sermons', color: 'from-blue-400 to-indigo-500' },
+    { Icon: BookOpen, title: 'Educational Halaqas', desc: 'Islamic study circles and spiritual discussions', color: 'from-purple-400 to-pink-500' },
+    { Icon: Calendar, title: 'Ramadan Iftars', desc: 'Community breaking of fast during the holy month', color: 'from-amber-400 to-orange-500' },
+    { Icon: Gift, title: 'Eid Celebrations', desc: 'Festive celebrations honoring Islamic traditions', color: 'from-rose-400 to-pink-500' },
+    { Icon: Users, title: 'Social Events', desc: 'Community gatherings fostering friendship and connection', color: 'from-cyan-400 to-blue-500' },
+    { Icon: Heart, title: 'Community Service', desc: 'Charitable initiatives giving back to the community', color: 'from-green-400 to-emerald-500' },
+    { Icon: Globe, title: 'Global Awareness', desc: 'Programs connecting students to global Muslim issues', color: 'from-violet-400 to-purple-500' },
+    { Icon: Coffee, title: 'Mentorship Program', desc: 'Peer support networks for academic and personal growth', color: 'from-orange-400 to-red-500' },
   ]
 
-  // Split services for mobile batching
+  // Split services into batches of 3
   const servicesBatch1 = services.slice(0, 3)
   const servicesBatch2 = services.slice(3, 6)
+  const servicesBatch3 = services.slice(6, 9)
 
   return (
     <div ref={containerRef} className="relative h-[800vh] text-white">
@@ -151,7 +160,7 @@ export default function MissionPanels(): JSX.Element {
               <div className="w-full max-w-4xl">
                 <div className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-3xl p-6 md:p-12">
                   <p className="text-lg md:text-2xl text-slate-100 leading-relaxed text-center">
-                    The Queen's University Muslim Student Association (QUMSA) exists to <span className="text-amber-300 font-semibold">serve the Muslim student community</span> at Queen's University by providing <span className="text-emerald-300 font-semibold">religious, social, academic, and charitable programming</span> in a welcoming and inclusive environment. We support students in fulfilling their religious obligations while creating opportunities for connection and helping Muslim students <span className="text-blue-300 font-semibold">thrive on campus, build meaningful relationships, and feel a strong sense of belonging and purpose</span> throughout their university experience.
+                    The Queen's University Muslim Student Association (QUMSA) exists to <span className="text-amber-300 font-semibold">serve the Muslim student community</span> by providing <span className="text-emerald-300 font-semibold">religious, social, academic, and charitable programming</span> in a welcoming and inclusive environment. We support students in fulfilling their religious obligations while creating opportunities for connection and helping Muslim students <span className="text-blue-300 font-semibold">thrive on campus, build meaningful relationships, and feel a strong sense of belonging and purpose</span> throughout their university experience.
                   </p>
                 </div>
               </div>
@@ -246,14 +255,22 @@ export default function MissionPanels(): JSX.Element {
               style={{ opacity: servicesBatch1Opacity, y: servicesBatch1Y }}
               className="absolute inset-0 flex items-center justify-center px-4"
             >
-              <div className="w-full max-w-4xl">
-                <div className="space-y-6">
-                  {servicesBatch1.map((text, i) => (
-                    <div key={i} className="flex items-center gap-6 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-300">
-                      <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 font-bold text-slate-900 text-xl group-hover:scale-110 transition-transform duration-300">
-                        {i + 1}
+              <div className="w-full max-w-6xl">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+                  {servicesBatch1.map(({ Icon, title, desc, color }, index) => (
+                    <div key={title} className="group relative overflow-hidden">
+                      <div className="h-full p-4 lg:p-5 rounded-xl lg:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
+                        <div className={`w-10 h-10 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl bg-gradient-to-br ${color} flex items-center justify-center mb-3 lg:mb-4 group-hover:rotate-3 transition-transform duration-300`}>
+                          <Icon className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
+                        </div>
+                        <h3 className="text-base lg:text-lg font-bold text-white mb-2 lg:mb-3 group-hover:text-amber-200 transition-colors duration-300">
+                          {title}
+                        </h3>
+                        <p className="text-slate-300 text-xs lg:text-sm leading-relaxed group-hover:text-slate-200 transition-colors duration-300">
+                          {desc}
+                        </p>
+                        <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-br ${color} transition-opacity duration-500 rounded-xl lg:rounded-2xl`} />
                       </div>
-                      <span className="text-lg text-slate-100 leading-relaxed">{text}</span>
                     </div>
                   ))}
                 </div>
@@ -265,16 +282,58 @@ export default function MissionPanels(): JSX.Element {
               style={{ opacity: servicesBatch2Opacity, y: servicesBatch2Y }}
               className="absolute inset-0 flex items-center justify-center px-4"
             >
-              <div className="w-full max-w-4xl">
-                <div className="space-y-6">
-                  {servicesBatch2.map((text, i) => (
-                    <div key={i} className="flex items-center gap-6 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-300">
-                      <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 font-bold text-slate-900 text-xl group-hover:scale-110 transition-transform duration-300">
-                        {i + 4}
+              <div className="w-full max-w-6xl">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+                  {servicesBatch2.map(({ Icon, title, desc, color }, index) => (
+                    <div key={title} className="group relative overflow-hidden">
+                      <div className="h-full p-4 lg:p-5 rounded-xl lg:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
+                        <div className={`w-10 h-10 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl bg-gradient-to-br ${color} flex items-center justify-center mb-3 lg:mb-4 group-hover:rotate-3 transition-transform duration-300`}>
+                          <Icon className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
+                        </div>
+                        <h3 className="text-base lg:text-lg font-bold text-white mb-2 lg:mb-3 group-hover:text-amber-200 transition-colors duration-300">
+                          {title}
+                        </h3>
+                        <p className="text-slate-300 text-xs lg:text-sm leading-relaxed group-hover:text-slate-200 transition-colors duration-300">
+                          {desc}
+                        </p>
+                        <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-br ${color} transition-opacity duration-500 rounded-xl lg:rounded-2xl`} />
                       </div>
-                      <span className="text-lg text-slate-100 leading-relaxed">{text}</span>
                     </div>
                   ))}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Services Batch 3 */}
+            <motion.div
+              style={{ opacity: servicesBatch3Opacity, y: servicesBatch3Y }}
+              className="absolute inset-0 flex items-center justify-center px-4"
+            >
+              <div className="w-full max-w-6xl">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+                  {servicesBatch3.map(({ Icon, title, desc, color }, index) => (
+                    <div key={title} className="group relative overflow-hidden">
+                      <div className="h-full p-4 lg:p-5 rounded-xl lg:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
+                        <div className={`w-10 h-10 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl bg-gradient-to-br ${color} flex items-center justify-center mb-3 lg:mb-4 group-hover:rotate-3 transition-transform duration-300`}>
+                          <Icon className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
+                        </div>
+                        <h3 className="text-base lg:text-lg font-bold text-white mb-2 lg:mb-3 group-hover:text-amber-200 transition-colors duration-300">
+                          {title}
+                        </h3>
+                        <p className="text-slate-300 text-xs lg:text-sm leading-relaxed group-hover:text-slate-200 transition-colors duration-300">
+                          {desc}
+                        </p>
+                        <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-br ${color} transition-opacity duration-500 rounded-xl lg:rounded-2xl`} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Additional info text - only show on final batch */}
+                <div className="text-center mt-8">
+                  <p className="text-slate-400 text-sm pb-16">
+                    And many more programs tailored to serve our diverse Muslim student community
+                  </p>
                 </div>
               </div>
             </motion.div>

@@ -26,7 +26,8 @@ const primaryLinks = [
 
 const resourceLinks = [
   { href: '/resources/halal',   label: 'Halal Food Guide' },
-  { href: '/resources/faq',     label: 'FAQ & Resources' },
+  { href: '/resources/links',     label: 'Important Links' },
+  { href: '/resources/faq',     label: 'FAQ and More' },
 ]
 
 // Custom Link component with smooth transitions

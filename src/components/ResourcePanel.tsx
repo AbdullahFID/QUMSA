@@ -2,23 +2,39 @@
 
 import React, { useState, useEffect } from 'react'
 import {
+  /* utility + layout */
   ChevronDown,
   ExternalLink,
-  Calendar,
-  Heart,
-  Users,
-  AlertTriangle,
-  MessageCircle,
-  MapPin,
-  Scale,
-  Zap,
-  HelpCircle,
   ArrowRight,
   Star,
   Search,
   Sparkles,
   Moon,
   Sun,
+
+  /* UNIQUE resource-level icons */
+  Calendar,
+  HeartHandshake,
+  UserPlus,
+  AlertTriangle,
+  MessageSquareText,
+  Mic,
+  HeartPulse,
+  Scale,
+  HandHeart,
+  HeartPlus,
+  MessageCircle,
+  MessagesSquare,
+  MessageSquare,
+  MapPin,
+  Zap,
+  Locate,
+  Gavel,
+  CircleEqual,
+
+  /* decorative footer icon */
+  Heart,
+  HelpCircle,
 } from 'lucide-react'
 
 /* ─────────────────────────── types ─────────────────────────── */
@@ -35,15 +51,17 @@ interface ResourceCategory {
 
 /* ─────────────────────── Animated Background ─────────────────────── */
 const AnimatedBackground = () => {
-  const [stars, setStars] = useState<Array<{id: number, x: number, y: number, delay: number, duration: number}>>([])
-  
+  const [stars, setStars] = useState<
+    Array<{ id: number; x: number; y: number; delay: number; duration: number }>
+  >([])
+
   useEffect(() => {
     const starArray = Array.from({ length: 50 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
       delay: Math.random() * 5,
-      duration: 3 + Math.random() * 4
+      duration: 3 + Math.random() * 4,
     }))
     setStars(starArray)
   }, [])
@@ -52,7 +70,7 @@ const AnimatedBackground = () => {
     <div className="fixed inset-0 overflow-hidden pointer-events-none">
       {/* Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-purple-900 to-slate-900" />
-      
+
       {/* Animated Stars */}
       {stars.map((star) => (
         <div
@@ -62,15 +80,21 @@ const AnimatedBackground = () => {
             left: `${star.x}%`,
             top: `${star.y}%`,
             animationDelay: `${star.delay}s`,
-            animationDuration: `${star.duration}s`
+            animationDuration: `${star.duration}s`,
           }}
         />
       ))}
-      
+
       {/* Floating Orbs */}
       <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}} />
-      <div className="absolute top-1/2 left-1/2 w-48 h-48 bg-gradient-to-r from-emerald-500/15 to-teal-500/15 rounded-full blur-3xl animate-pulse" style={{animationDelay: '4s'}} />
+      <div
+        className="absolute top-3/4 right-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-full blur-3xl animate-pulse"
+        style={{ animationDelay: '2s' }}
+      />
+      <div
+        className="absolute top-1/2 left-1/2 w-48 h-48 bg-gradient-to-r from-emerald-500/15 to-teal-500/15 rounded-full blur-3xl animate-pulse"
+        style={{ animationDelay: '4s' }}
+      />
     </div>
   )
 }
@@ -78,7 +102,6 @@ const AnimatedBackground = () => {
 /* ────────────────────────── component ───────────────────────── */
 const ResourcePanel: React.FC = () => {
   /* state ------------------------------------------------------ */
-  const [openFAQ, setOpenFAQ] = useState<number | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
   const [hoveredCard, setHoveredCard] = useState<string | null>(null)
 
@@ -88,15 +111,9 @@ const ResourcePanel: React.FC = () => {
       {
         title: 'Ramadan Iftar Donation',
         url: 'https://www.launchgood.com/v4/campaign/qumsa_2025_ramadan_iftar_program',
-        icon: <Heart className="w-6 h-6" />,
+        icon: <HeartHandshake className="w-6 h-6" />,
         description: 'Support our community Iftar program during the holy month',
         featured: true,
-      },
-      {
-        title: 'Ramadan Iftars Volunteer Sign Up 2025',
-        url: 'https://docs.google.com/forms/d/e/1FAIpQLSdG95p_4DhImGpG496phBMszzNtv9ZOh5ajTOEPV4d5wvew2g/viewform',
-        icon: <Users className="w-6 h-6" />,
-        description: 'Join our volunteer team for Ramadan events and community service',
       },
       {
         title: 'Ramadan Resources',
@@ -105,6 +122,7 @@ const ResourcePanel: React.FC = () => {
         description: 'Complete collection of Ramadan materials and spiritual resources',
       },
     ],
+
     'Community Support': [
       {
         title: 'Report an Incident',
@@ -116,22 +134,23 @@ const ResourcePanel: React.FC = () => {
       {
         title: 'QUMSA Feedback Form',
         url: 'https://docs.google.com/forms/d/e/1FAIpQLSehVDpbg6QM56gaW5Y51gFH-t0b55TF_qrMA7b0-mCKg0PWPw/viewform',
-        icon: <MessageCircle className="w-6 h-6" />,
+        icon: <MessageSquareText className="w-6 h-6" />,
         description: 'Share your thoughts, suggestions, and help us improve',
       },
       {
         title: 'Khatib Volunteer',
         url: 'https://docs.google.com/forms/d/e/1FAIpQLSeGpLRbyscX3qdrJes9tcT2H7J3615sSqLnnnL48Y3fl2jxEQ/viewform?usp=send_form',
-        icon: <Users className="w-6 h-6" />,
+        icon: <Mic className="w-6 h-6" />,
         description: 'Volunteer to give Friday sermons and serve the community',
       },
       {
         title: 'Naseeha Mental Health Resources',
         url: 'https://www.naseeha.org/about-us/',
-        icon: <Heart className="w-6 h-6" />,
-        description: 'Professional mental health support specifically for Muslims',
+        icon: <HeartPulse className="w-6 h-6" />,
+        description: 'Professional mental-health support specifically for Muslims',
       },
     ],
+
     'Palestine Solidarity': [
       {
         title: 'Joint Statement on Palestine',
@@ -142,17 +161,18 @@ const ResourcePanel: React.FC = () => {
       {
         title: 'Donate to Palestine – Islamic Relief',
         url: 'https://www.islamicreliefcanada.org/emergencies/palestine-appeal',
-        icon: <Heart className="w-6 h-6" />,
+        icon: <HandHeart className="w-6 h-6" />,
         description: 'Support Palestinian relief efforts through Islamic Relief Canada',
         featured: true,
       },
       {
         title: 'Donate to Palestine – LaunchGood',
         url: 'https://www.launchgood.com/v4/campaign/palestine_under_attack',
-        icon: <Heart className="w-6 h-6" />,
+        icon: <HeartPlus className="w-6 h-6" />,
         description: 'Emergency humanitarian aid for Palestine through LaunchGood',
       },
     ],
+
     'Connect & Communicate': [
       {
         title: 'QUMSA WhatsApp Channel',
@@ -164,16 +184,17 @@ const ResourcePanel: React.FC = () => {
       {
         title: 'Brothers WhatsApp Group',
         url: 'https://chat.whatsapp.com/KtJKrInPRiaKfZ4HmCOl5q?mode=r_c',
-        icon: <Users className="w-6 h-6" />,
+        icon: <MessagesSquare className="w-6 h-6" />,
         description: 'Connect with brothers in the community and build friendships',
       },
       {
         title: 'Sisters WhatsApp Group',
         url: 'https://chat.whatsapp.com/I3bo4j8jmvi5i7z02YF7qT',
-        icon: <Users className="w-6 h-6" />,
+        icon: <MessageSquare className="w-6 h-6" />,
         description: 'Connect with sisters in the community and build friendships',
       },
     ],
+
     'Local Resources': [
       {
         title: 'Islamic Society of Kingston',
@@ -190,61 +211,26 @@ const ResourcePanel: React.FC = () => {
       {
         title: 'Kingston Mosque Bus Stop Petition',
         url: 'https://www.change.org/p/kingston-city-officials-kingston-ontario-mosque-bus-stop',
-        icon: <MapPin className="w-6 h-6" />,
+        icon: <Locate className="w-6 h-6" />,
         description: 'Support better public-transit access to the local mosque',
       },
     ],
+
     'Human Rights': [
       {
         title: 'Petition Against Uyghur Forced Labour',
         url: 'https://www.change.org/p/justin-trudeau-ban-products-made-from-uyghur-forced-labour',
-        icon: <Scale className="w-6 h-6" />,
+        icon: <Gavel className="w-6 h-6" />,
         description: 'Stand against Uyghur persecution and forced-labour products',
       },
       {
         title: 'Black Lives Matter Resources',
         url: 'https://blacklivesmatters.carrd.co/',
-        icon: <Scale className="w-6 h-6" />,
+        icon: <CircleEqual className="w-6 h-6" />,
         description: 'Support racial-justice initiatives and community solidarity',
       },
     ],
   }
-
-  /* FAQs -------------------------------------------------------- */
-  const faqs = [
-    {
-      q: 'Can non-Muslims attend QUMSA events?',
-      a: 'Absolutely! Our events are open to everyone interested in learning about Islam and building community. We welcome people of all backgrounds who want to engage respectfully and learn more about Islamic culture and values.',
-    },
-    {
-      q: 'Is there a membership fee for QUMSA?',
-      a: "No membership fee required! All Queen's students are welcome to join at no cost. Some special events may have a small ticket fee, but we always strive to keep events accessible.",
-    },
-    {
-      q: 'Where and when do Friday prayers take place?',
-      a: 'During the academic term, Jummah prayers are held in Mitchell Hall Auditorium every Friday. Follow @qumsa on Instagram or join our WhatsApp channel for weekly timing/location updates.',
-    },
-    {
-      q: 'How can I get involved with QUMSA activities?',
-      a: 'Join our WhatsApp groups, attend events, volunteer for Ramadan Iftars, become a Khatib volunteer, or fill out our feedback form to suggest new initiatives. We love enthusiastic community members!',
-    },
-    {
-      q: 'What resources are available for new Muslim students?',
-      a: 'We provide prayer-space info, halal-food guides, connection to local Islamic communities, mental-health resources via Naseeha, academic-support networks, and above all a welcoming community.',
-    },
-    {
-      q: 'How do I report concerns or incidents?',
-      a: 'Use our confidential incident-reporting form in the Community Support section. All reports are taken seriously and addressed promptly—your safety and well-being are priorities.',
-    },
-    {
-      q: 'Are there opportunities for Islamic education and learning?',
-      a: 'Yes! We host study circles, guest speakers, and workshops. Watch our socials/WhatsApp for upcoming events, or suggest topics through the feedback form.',
-    },
-    {
-      q: "How can I contribute to QUMSA's charitable initiatives?",
-      a: 'Donate to our Ramadan Iftar, Palestine relief, or propose new initiatives. Volunteers are always needed to organise and execute service projects throughout the year.',
-    },
-  ]
 
   /* derived lists ---------------------------------------------- */
   const allResources = Object.entries(resources).flatMap(([category, items]) =>
@@ -260,12 +246,6 @@ const ResourcePanel: React.FC = () => {
             r.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
             r.category.toLowerCase().includes(searchTerm.toLowerCase())
         )
-
-  /* helpers ----------------------------------------------------- */
-  const toggleFAQ = (idx: number) => setOpenFAQ(openFAQ === idx ? null : idx)
-  const scrollTo = (id: string) =>
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-
   /* ─────────────────────────── UI ─────────────────────────── */
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -451,77 +431,6 @@ const ResourcePanel: React.FC = () => {
             </div>
           </section>
         )}
-
-        {/* ───────────── TABLE OF CONTENTS ───────────── */}
-        {!searchTerm && (
-          <section className="py-20 relative">
-            <div className="absolute inset-0 bg-white/5 backdrop-blur-sm" />
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-16">
-                <h2 className="text-4xl font-bold mb-6 text-white">
-                  Browse by Category
-                </h2>
-                <div className="w-32 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto rounded-full" />
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {Object.keys(resources).map((cat, idx) => (
-                  <button
-                    key={cat}
-                    onClick={() => scrollTo(cat.replace(/\s+/g, '-').toLowerCase())}
-                    className="group relative p-8 bg-white/10 backdrop-blur-xl rounded-3xl 
-                               border border-white/20 hover:border-white/40
-                               hover:bg-white/15 transition-all duration-500 
-                               hover:scale-105 text-left"
-                    onMouseEnter={() => setHoveredCard(`category-${idx}`)}
-                    onMouseLeave={() => setHoveredCard(null)}
-                  >
-                    <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-yellow-300 transition-colors">
-                      {cat}
-                    </h3>
-                    <p className="text-slate-300 mb-6">
-                      {resources[cat].length} amazing {resources[cat].length === 1 ? 'resource' : 'resources'} available
-                    </p>
-                    <div className="flex items-center text-yellow-400 font-medium group-hover:text-yellow-300 transition-colors">
-                      <span>Explore Category</span>
-                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </div>
-                    
-                    {hoveredCard === `category-${idx}` && (
-                      <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-500/20 to-pink-500/20 pointer-events-none" />
-                    )}
-                  </button>
-                ))}
-                
-                <button
-                  onClick={() => scrollTo('faq')}
-                  className="group relative p-8 bg-white/10 backdrop-blur-xl rounded-3xl 
-                             border border-white/20 hover:border-white/40
-                             hover:bg-white/15 transition-all duration-500 
-                             hover:scale-105 text-left"
-                  onMouseEnter={() => setHoveredCard('faq-category')}
-                  onMouseLeave={() => setHoveredCard(null)}
-                >
-                  <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-yellow-300 transition-colors">
-                    FAQ
-                  </h3>
-                  <p className="text-slate-300 mb-6">
-                    {faqs.length} frequently asked questions answered
-                  </p>
-                  <div className="flex items-center text-yellow-400 font-medium group-hover:text-yellow-300 transition-colors">
-                    <span>Get Answers</span>
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                  
-                  {hoveredCard === 'faq-category' && (
-                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-500/20 to-pink-500/20 pointer-events-none" />
-                  )}
-                </button>
-              </div>
-            </div>
-          </section>
-        )}
-
         {/* ───────────── RESOURCE SECTIONS ───────────── */}
         {!searchTerm && (
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-32">
@@ -589,71 +498,6 @@ const ResourcePanel: React.FC = () => {
               </section>
             ))}
           </div>
-        )}
-
-        {/* ───────────── FAQ ───────────── */}
-        {!searchTerm && (
-          <section id="faq" className="scroll-mt-20 py-24 relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 via-purple-900/20 to-pink-900/20 backdrop-blur-sm" />
-            <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-16">
-                <div className="inline-flex items-center space-x-3 mb-6">
-                  <div className="p-4 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 rounded-full animate-pulse">
-                    <HelpCircle className="w-8 h-8 text-yellow-400" />
-                  </div>
-                  <span className="text-2xl font-bold text-yellow-400">FAQ</span>
-                </div>
-                <h2 className="text-4xl font-bold mb-6 text-white">
-                  Frequently Asked Questions
-                </h2>
-                <p className="text-xl text-slate-300">
-                  Get answers to common questions about our community and resources
-                </p>
-              </div>
-
-              <div className="space-y-6">
-                {faqs.map((faq, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20
-                              hover:border-white/40 transition-all duration-300"
-                  >
-                    <button
-                      onClick={() => toggleFAQ(idx)}
-                      className="w-full p-8 text-left flex justify-between items-center
-                                hover:bg-white/5 transition-colors rounded-3xl"
-                    >
-                      <h3 className="text-xl font-semibold pr-4 text-white">
-                        {faq.q}
-                      </h3>
-                      <ChevronDown
-                        className={`w-6 h-6 text-yellow-400 transition-transform duration-500 ease-in-out ${
-                          openFAQ === idx ? 'rotate-180' : ''
-                        }`}
-                      />
-                    </button>
-                    
-                    {/* Animated content container */}
-                    <div 
-                      className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                        openFAQ === idx 
-                          ? 'max-h-96 opacity-100' 
-                          : 'max-h-0 opacity-0'
-                      }`}
-                    >
-                      <div className="px-8 pb-8">
-                        <div className="pt-4 border-t border-white/20">
-                          <p className="text-slate-300 leading-relaxed text-lg">
-                            {faq.a}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
         )}
         {/* Footer */}
         <footer className="py-20 relative text-center">

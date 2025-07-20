@@ -3,7 +3,7 @@
 
 import { useState, useRef } from 'react'
 import Image from 'next/image'
-import { Mail, Phone, ArrowRight, Sparkles } from 'lucide-react'
+import { Mail, Phone, Sparkles } from 'lucide-react'
 
 interface Props {
   name: string

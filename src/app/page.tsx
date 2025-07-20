@@ -93,11 +93,15 @@ export default function HomePage() {
             >
               <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight mb-2">
                 <span className="bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
-                  Welcome to Queen's
+                  Queen's University
                 </span>
                 <br />
+                <span className="bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
+                  Muslim
+                </span>
+                {' '}
                 <span className="bg-gradient-to-r from-emerald-400 to-green-500 bg-clip-text text-transparent">
-                  MSA
+                  Student Association
                 </span>
               </h1>
             </motion.div>
@@ -346,7 +350,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {[
               { Icon: UsersRound, count: '500+', label: 'Active Members', delay: 0.1 },
-              { Icon: Calendar1, count: '50+', label: 'Events Annually', delay: 0.2 },
+              { Icon: Calendar1, count: '30+', label: 'Events Annually', delay: 0.2 },
               { Icon: Medal, count: '65+', label: 'Years of Service', delay: 0.3 },
             ].map(({ Icon, count, label, delay }) => (
               <motion.div

@@ -12,6 +12,7 @@ import {
   Award
 } from 'lucide-react';
 
+
 // Type definitions
 interface HalalSpot {
   id: number;

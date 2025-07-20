@@ -7,7 +7,6 @@ import {
   Instagram as InstagramIcon,  // alias the deprecated Instagram export
   Mail,
   MapPin,
-  Phone,
   ExternalLink,
   ChevronRight,
   ChevronDown,
@@ -186,7 +185,8 @@ export default function Footer() {
                 <div className={`mt-2 ml-6 space-y-2 transition-all duration-200 overflow-hidden ${isResourcesOpen ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}`}>
                   {[
                     { href: '/resources/halal', label: 'Halal' },
-                    { href: '/resources/faq', label: 'FAQ' }
+                    { href: '/resources/links', label: 'Important Links & Guides' },
+                    { href: '/resources/faq', label: 'FAQ and More' }
                   ].map((resource) => (
                     <Link
                       key={resource.href}
@@ -209,28 +209,19 @@ export default function Footer() {
               <div className="flex flex-col sm:flex-row sm:items-start space-y-2 sm:space-y-0 sm:space-x-3">
                 <MapPin className="w-5 h-5 text-islamic-gold mt-0.5 flex-shrink-0 mx-auto sm:mx-0" />
                 <div className="text-center sm:text-left">
-                  <p className="text-gray-300 text-sm sm:text-base">Queen&apos;s University</p>
-                  <p className="text-gray-400 text-xs sm:text-sm">Kingston, ON K7L 3N6</p>
+                  <p className="text-gray-300 text-sm sm:text-base">JDUC Room 329, 331</p>
+                  <p className="text-gray-300 text-sm sm:text-base">John Deutsch University Centre</p>
+                  <p className="text-gray-400 text-xs sm:text-sm">99 University Ave, Kingston, ON K7L 3N6</p>
                 </div>
               </div>
 
               <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
                 <Mail className="w-5 h-5 text-islamic-gold flex-shrink-0 mx-auto sm:mx-0" />
                 <a
-                  href="mailto:info@qumsa.ca"
+                  href="mailto:qumsachair@gmail.com"
                   className="text-gray-300 hover:text-islamic-gold transition-colors text-sm sm:text-base focus:outline-none focus:text-islamic-gold"
                 >
-                  info@qumsa.ca
-                </a>
-              </div>
-
-              <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
-                <Phone className="w-5 h-5 text-islamic-gold flex-shrink-0 mx-auto sm:mx-0" />
-                <a
-                  href="tel:+1-613-555-QUMSA"
-                  className="text-gray-300 hover:text-islamic-gold transition-colors text-sm sm:text-base focus:outline-none focus:text-islamic-gold"
-                >
-                  (613) 555‑QUMSA
+                  qumsachair@gmail.com
                 </a>
               </div>
             </div>

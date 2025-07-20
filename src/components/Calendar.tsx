@@ -63,7 +63,7 @@ interface ColorConfig {
 const sampleEvents: Event[] = [
   {
     id: 1,
-    title: 'Juma Prayer',
+    title: 'Jummah Prayer',
     date: '2025-07-25',
     time: '12:30 PM',
     endTime: '1:15 PM',

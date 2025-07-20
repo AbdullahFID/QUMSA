@@ -1,6 +1,5 @@
 // app/team/page.tsx
-import { Users, Sparkles } from 'lucide-react'
-import TeamCard from '../../components/TeamCard'
+import { UsersRound, Users, Sparkles } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -27,7 +26,7 @@ export default function TeamPage() {
           <div className="flex justify-center mb-8 sm:mb-12">
             <div className="inline-flex items-center space-x-3 px-6 py-3 bg-white/5 backdrop-blur-xl rounded-full border border-white/10 hover:bg-white/10 transition-all duration-300">
               <div className="p-2 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full">
-                <Users className="w-4 h-4 text-black" />
+                <UsersRound className="w-4 h-4 text-black" />
               </div>
               <span className="text-emerald-400 font-medium text-sm sm:text-base">Meet the Team</span>
               <Sparkles className="w-4 h-4 text-emerald-400 animate-pulse" />
