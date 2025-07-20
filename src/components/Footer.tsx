@@ -70,7 +70,7 @@ export default function Footer() {
                 </div>
               </div>
               <div className="text-center sm:text-left">
-                <h3 className="text-2xl sm:text-3xl font-bold gradient-text">QUMSA</h3>
+                <h3 className="text-2xl sm:text-3xl font-bold text-white">QUMSA</h3>
                 <p className="text-gray-300 text-sm sm:text-base">
                   Queen&apos;s University Muslim Students Association
                 </p>

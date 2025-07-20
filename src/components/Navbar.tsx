@@ -135,7 +135,7 @@ export default function Navbar() {
                 />
               </div>
             </div>
-            <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-green-600">
+            <span className="text-2xl font-bold text-white">
               QUMSA
             </span>
           </SmoothLink>
@@ -215,17 +215,21 @@ export default function Navbar() {
             </div>
 
             {/* Donate Button */}
-            <SmoothLink
-              href="/donate"
-              className="
-                flex items-center gap-2 px-6 py-3 rounded-full font-semibold
-                bg-gradient-to-r from-yellow-400 to-green-600 hover:from-yellow-500 hover:to-green-700
-                text-white shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300
-              "
-            >
-              <HeartHandshake className="w-4 h-4" />
-              Donate
-            </SmoothLink>
+           <SmoothLink
+            href="/donate"
+            className="
+              flex items-center gap-2 px-6 py-3 rounded-full font-semibold
+              text-white bg-transparent backdrop-blur-sm
+              shadow-[0_2px_6px_rgba(255,255,255,0.1),0_0_1px_rgba(255,255,255,0.25)]
+              hover:shadow-[0_4px_12px_rgba(255,255,255,0.2),0_0_2px_rgba(255,255,255,0.4)]
+              ring-1 ring-inset ring-white/10 hover:ring-white/20
+              transition-all duration-300 transform hover:-translate-y-0.5
+            "
+          >
+            <HeartHandshake className="w-4 h-4 text-white/90" />
+            Donate
+          </SmoothLink>
+
           </div>
         </nav>
       </header>

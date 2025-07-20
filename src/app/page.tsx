@@ -318,15 +318,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ───────────── STATS ───────────── */}
-      <section className="relative py-20 sm:py-24 pb-32 sm:pb-40 bg-gradient-to-br from-slate-800 via-slate-900 to-blue-900 text-white overflow-hidden">
-        {/* Background pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_50%,theme(colors.yellow.400),transparent_50%)]" />
-          <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_20%,theme(colors.emerald.400),transparent_50%)]" />
+    <section className="relative py-20 sm:py-24 pb-32 sm:pb-40 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 overflow-hidden">
+        {/* Background Effects */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* Large floating circles with translucency */}
+          <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-gradient-to-r from-amber-400/15 to-yellow-400/15 blur-xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-48 h-48 rounded-full bg-gradient-to-r from-slate-400/10 to-gray-300/10 blur-lg animate-pulse" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gradient-to-r from-blue-950/20 to-slate-800/20 blur-2xl"></div>
+          
+          {/* Modern geometric shapes */}
+          <div className="absolute top-40 right-20 w-32 h-32 rounded-full border-2 border-white/10 backdrop-blur-sm"></div>
+          <div className="absolute bottom-40 left-20 w-24 h-24 rounded-full border-2 border-amber-400/20 backdrop-blur-sm"></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -334,8 +339,9 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Our Impact</h2>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">Our Impact</h2>
+            <div className="w-16 h-1 mx-auto mb-6 rounded-full bg-gradient-to-r from-amber-400 to-yellow-500"></div>
+            <p className="text-xl max-w-2xl mx-auto text-gray-300">
               Building a stronger Muslim community at Queen's University
             </p>
           </motion.div>
@@ -352,20 +358,24 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay, duration: 0.6 }}
                 viewport={{ once: true }}
-                className="group p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 md:hover:bg-white/10 transition-all duration-300 md:hover:scale-105"
+                className="group relative p-8 rounded-2xl border border-gray-700/30 backdrop-blur-md bg-white/5 transition-all duration-300 md:hover:scale-105 md:hover:bg-white/10 md:hover:border-amber-400/40"
               >
-                <Icon className="mx-auto h-12 w-12 text-yellow-400 mb-4 md:group-hover:scale-110 transition-transform" />
-                <p className="text-4xl sm:text-5xl font-bold mb-2 bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
+                {/* Glowing circular accent */}
+                <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full bg-gradient-to-r from-amber-400/15 to-yellow-400/15 opacity-0 blur-xl group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute top-2 right-2 w-8 h-8 rounded-full bg-gradient-to-r from-amber-400/40 to-yellow-400/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                <Icon className="mx-auto h-14 w-14 mb-6 md:group-hover:scale-110 md:group-hover:text-amber-400 transition-all duration-300 text-gray-300" />
+                <p className="text-5xl sm:text-6xl font-bold mb-3 text-white group-hover:text-amber-100 transition-colors duration-300">
                   {count}
                 </p>
-                <p className="text-lg text-slate-300">{label}</p>
+                <p className="text-lg font-medium text-gray-400 group-hover:text-gray-300 transition-colors duration-300">{label}</p>
+
+                {/* Translucent bottom accent */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 rounded-b-2xl bg-gradient-to-r from-amber-400 to-yellow-500 opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
               </motion.div>
             ))}
           </div>
         </div>
-
-        {/* Enhanced glow */}
-        <div className="pointer-events-none absolute bottom-16 left-1/2 -translate-x-1/2 w-96 h-32 bg-gradient-to-r from-yellow-400/20 via-amber-500/20 to-yellow-400/20 blur-3xl rounded-full" />
       </section>
 
       {/* ───────────── CTA floating card ───────────── */}

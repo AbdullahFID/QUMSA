@@ -122,8 +122,8 @@ export default function MissionPanels(): JSX.Element {
                 </div>
               </div>
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight">
-                <span className="bg-gradient-to-r from-white via-amber-200 to-emerald-200 bg-clip-text text-transparent">Serving the Muslim</span><br />
-                <span className="bg-gradient-to-r from-emerald-200 via-blue-200 to-white bg-clip-text text-transparent">Student Community</span>
+                <span>Serving the Muslim</span><br />
+                <span>Student Community</span>
               </h1>
               <p className="text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">
                 QUMSA exists to support Muslim students at Queen's University through comprehensive programming in a welcoming and inclusive environment.
@@ -146,7 +146,7 @@ export default function MissionPanels(): JSX.Element {
                   <ShieldCheck className="h-5 w-5 text-blue-400" />
                   <span className="text-blue-400 font-medium text-base">What We Stand For</span>
                 </div>
-                <h2 className="text-4xl md:text-6xl font-black bg-gradient-to-r from-white via-blue-200 to-emerald-200 bg-clip-text text-transparent">
+                <h2 className="text-4xl md:text-6xl font-black text-white">
                   Our Mission Statement
                 </h2>
               </div>
@@ -182,7 +182,7 @@ export default function MissionPanels(): JSX.Element {
                   <HeartHandshake className="h-5 w-5 text-emerald-400" />
                   <span className="text-emerald-400 font-medium text-base">How We Serve</span>
                 </div>
-                <h2 className="text-4xl md:text-6xl font-black bg-gradient-to-r from-white via-amber-200 to-emerald-200 bg-clip-text text-transparent">
+                <h2 className="text-4xl md:text-6xl font-black text-white">
                   Our Core Areas
                 </h2>
               </div>
@@ -244,7 +244,7 @@ export default function MissionPanels(): JSX.Element {
                   <Gem className="h-5 w-5 text-emerald-400" />
                   <span className="text-emerald-400 font-medium text-base">What We Provide</span>
                 </div>
-                <h2 className="text-4xl md:text-6xl font-black bg-gradient-to-r from-white via-amber-200 to-emerald-200 bg-clip-text text-transparent">
+                <h2 className="text-4xl md:text-6xl font-black text-white">
                   Our Services
                 </h2>
               </div>
