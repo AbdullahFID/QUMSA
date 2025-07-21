@@ -381,8 +381,12 @@ export default function Navbar() {
                   onClick={() => setMobileOpen(false)}
                   className="
                     flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl font-semibold
-                    bg-gradient-to-r from-yellow-400 to-green-600 hover:from-yellow-500 hover:to-green-700
-                    text-white shadow-lg transition
+                    text-white bg-transparent backdrop-blur-sm
+                    shadow-[0_2px_6px_rgba(255,255,255,0.1),0_0_1px_rgba(255,255,255,0.25)]
+                    hover:shadow-[0_4px_12px_rgba(255,255,255,0.2),0_0_2px_rgba(255,255,255,0.4)]
+                    ring-1 ring-inset ring-white/10 hover:ring-white/20
+                    ring-2 ring-amber-400
+                    transition-all duration-300
                   "
                 >
                   <HeartHandshake className="w-4 h-4" />
