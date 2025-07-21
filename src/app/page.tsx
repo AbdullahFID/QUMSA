@@ -78,7 +78,7 @@ export default function HomePage() {
           priority
           className="object-cover object-center scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/70 via-blue-900/60 to-navy-900/70" />
+<div className="absolute inset-0 bg-gradient-to-br from-slate-900/70 via-blue-900/60 to-navy-900/70" />
         
         {/* Floating particles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -189,7 +189,7 @@ export default function HomePage() {
       </section>
 
       {/* ───────────── DU'A SECTION ───────────── */}
-      <section className="relative py-16 sm:py-20 bg-gradient-to-b from-slate-800 via-slate-900 to-slate-800 text-white overflow-hidden">
+      <section className="relative py-16 sm:py-20 bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900 text-white overflow-hidden">
         {/* Subtle background pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-yellow-400 rounded-full blur-3xl" />
@@ -215,7 +215,7 @@ export default function HomePage() {
               <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-4 leading-tight" 
                   style={{ fontFamily: 'Noto Sans Arabic, serif' }}>
                 <span className="bg-gradient-to-r from-yellow-400 via-amber-300 to-yellow-500 bg-clip-text text-transparent">
-                  رَّبِّ زِدْنِي عِلْمًا
+                  وَوَجَدَكَ ضَالًّا فَهَدَىٰ
                 </span>
               </h2>
             </motion.div>
@@ -229,10 +229,10 @@ export default function HomePage() {
               className="space-y-3"
             >
               <p className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-slate-200">
-                "My Lord, increase me in knowledge"
+                "And He found you lost and guided [you]"
               </p>
               <p className="text-lg sm:text-xl text-slate-400 font-medium">
-                — Quran 20:114
+                -- Quran, Surah Ad-Duha (93:7)
               </p>
             </motion.div>
 
@@ -341,7 +341,7 @@ export default function HomePage() {
         </div>
       </section>
 
-    <section className="relative py-20 sm:py-24 pb-32 sm:pb-40 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 overflow-hidden">
+    <section className="relative py-20 sm:py-24 pb-32 sm:pb-40 bg-gradient-to-br from-slate-900 via-blue-900 to-navy-900 overflow-hidden">
         {/* Background Effects */}
         <div className="absolute inset-0 pointer-events-none">
           {/* Large floating circles with translucency */}
