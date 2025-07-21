@@ -151,7 +151,7 @@ export default function PrayerPanel() {
                   <a
                     key={r.title}
                     href={r.href}
-                    className="block p-3 bg-slate-50 rounded-xl hover:bg-amber-50 hover:border-amber-200 border border-transparent transition-all"
+                    className="block p-3 bg-sky-50 rounded-xl hover:bg-sky-100 hover:border-sky-200 border border-transparent transition-all"
                   >
                     <h4 className="font-semibold text-slate-900 text-sm">{r.title}</h4>
                     <p className="text-xs text-slate-600">{r.desc}</p>
@@ -227,33 +227,61 @@ export default function PrayerPanel() {
               <div className="p-4 sm:p-6 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all">
                 <h4 className="font-semibold text-white text-base mb-2">JDUC Prayer Room</h4>
                 <p className="text-sm text-white/80 mb-3">
-                  John Deutsch University Centre, Room 233
+                  John Deutsch University Centre, Room 348 (3rd floor)
                 </p>
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
-                  <span className="text-sm text-amber-200 font-medium">Open 24/7</span>
+                  <span className="text-sm text-amber-200 font-medium">Bookable for large sessions</span>
                 </div>
               </div>
               <div className="p-4 sm:p-6 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all">
-                <h4 className="font-semibold text-white text-base mb-2">ARC Prayer Space</h4>
+                <h4 className="font-semibold text-white text-base mb-2">Mitchell Hall Interfaith Room</h4>
                 <p className="text-sm text-white/80 mb-3">
-                  Athletics & Recreation Centre
+                  2nd floor, Room 210
                 </p>
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
-                  <span className="text-sm text-amber-200 font-medium">6 AM – 11 PM</span>
+                  <span className="text-sm text-amber-200 font-medium">Open during building hours</span>
                 </div>
               </div>
               <div className="p-4 sm:p-6 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all">
-                <h4 className="font-semibold text-white text-base mb-2">
-                  Interfaith Centre
-                </h4>
+                <h4 className="font-semibold text-white text-base mb-2">Goodes Hall</h4>
                 <p className="text-sm text-white/80 mb-3">
-                  Ban Righ Hall, Ground Floor
+                  Kolias Family Prayer Room, LL109
                 </p>
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
-                  <span className="text-sm text-amber-200 font-medium">By appointment</span>
+                  <span className="text-sm text-amber-200 font-medium">Business hours</span>
+                </div>
+              </div>
+              <div className="p-4 sm:p-6 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all">
+                <h4 className="font-semibold text-white text-base mb-2">Stauffer Library</h4>
+                <p className="text-sm text-white/80 mb-3">
+                  Prayer & Meditation Room, 2nd floor
+                </p>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
+                  <span className="text-sm text-amber-200 font-medium">Building hours</span>
+                </div>
+              </div>
+              <div className="p-4 sm:p-6 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all">
+                <h4 className="font-semibold text-white text-base mb-2">School of Medicine</h4>
+                <p className="text-sm text-white/80 mb-3">
+                  Prayer & Meditation Room, LL011
+                </p>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
+                  <span className="text-sm text-amber-200 font-medium">7:30 AM – 5:30 PM</span>
+                </div>
+              </div>
+              <div className="p-4 sm:p-6 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all">
+                <h4 className="font-semibold text-white text-base mb-2">Law Building</h4>
+                <p className="text-sm text-white/80 mb-3">
+                  Multifaith Room, 1st floor Room 103
+                </p>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
+                  <span className="text-sm text-amber-200 font-medium">Building hours</span>
                 </div>
               </div>
             </div>
