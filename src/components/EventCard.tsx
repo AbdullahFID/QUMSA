@@ -40,10 +40,10 @@ export default function EventCard({
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 p-8 flex items-center justify-center">
+    <div className="min-h-screen p-8 flex items-center justify-center">
       <article
-        className={`group relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-800/80 via-blue-900/60 to-slate-700/80 backdrop-blur-xl border border-white/10 shadow-xl hover:shadow-2xl max-w-md w-full transform transition-all duration-400 hover:-translate-y-2 hover:scale-105 ${
-          featured ? 'ring-2 ring-amber-400/40 shadow-amber-400/20' : ''
+        className={`group relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-800/80 via-blue-900/60 to-slate-700/80 backdrop-blur-xl shadow-xl hover:shadow-2xl max-w-md w-full transform transition-all duration-400 hover:-translate-y-2 hover:scale-105 ${
+              featured ? 'ring-2 ring-amber-400/40 shadow-amber-400/20' : ''
         }`}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-amber-400/5 via-transparent to-amber-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
