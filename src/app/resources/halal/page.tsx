@@ -491,11 +491,15 @@ const HalalFoodMap = () => {
   });
 
   const getDirections = (spot: HalalSpot) => {
-    window.open(
-      `https://maps.google.com/maps?daddr=${encodeURIComponent(spot.address)}`,
-      "_blank"
-    );
-  };
+  const { lat, lng } = spot.coordinates;
+  let url = `https://maps.google.com/maps?daddr=${lat},${lng} (${encodeURIComponent(spot.address)})`;
+  if (userLocation) {
+    // Use "saddr" param to set start point
+    url += `&saddr=${userLocation.lat},${userLocation.lng}`;
+  }
+  window.open(url, "_blank");
+};
+
 
   useEffect(() => {
     if (navigator.geolocation) {
