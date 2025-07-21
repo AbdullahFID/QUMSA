@@ -41,98 +41,27 @@ const HalalFoodMap = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [userLocation, setUserLocation] = useState<UserLocation | null>(null);
 
-  // Sample halal food spots data
+  // Sample halal food spots data - Easy for executives to update!
   const halalSpots: HalalSpot[] = [
     {
-      id: 1,
-      name: "Shawarma Palace",
-      type: "restaurant",
-      cuisine: "Middle Eastern",
-      rating: 4.8,
-      priceRange: "$$",
-      address: "123 Princess St, Kingston, ON",
-      phone: "(613) 555-0123",
-      hours: "11:00 AM - 10:00 PM",
-      website: "shawarmapalace.ca",
-      image:
-        "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop",
-      coordinates: { lat: 44.2312, lng: -76.486 },
-      verified: true,
-      description:
-        "Authentic Middle Eastern cuisine with fresh ingredients and traditional recipes."
-    },
-    {
-      id: 2,
-      name: "Halal Guys Kingston",
-      type: "restaurant",
-      cuisine: "American-Middle Eastern",
-      rating: 4.6,
-      priceRange: "$",
-      address: "456 Bath Rd, Kingston, ON",
-      phone: "(613) 555-0456",
-      hours: "11:00 AM - 11:00 PM",
-      website: "thehalalguys.com",
-      image:
-        "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=300&fit=crop",
-      coordinates: { lat: 44.2501, lng: -76.5235 },
-      verified: true,
-      description:
-        "Famous for their chicken and rice platters with signature white and hot sauce."
-    },
-    {
-      id: 3,
-      name: "Bismillah Grocery",
-      type: "grocery",
-      cuisine: "Halal Market",
-      rating: 4.7,
-      priceRange: "$",
-      address: "789 Division St, Kingston, ON",
-      phone: "(613) 555-0789",
-      hours: "9:00 AM - 9:00 PM",
-      website: null,
-      image:
-        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
-      coordinates: { lat: 44.2411, lng: -76.5011 },
-      verified: true,
-      description:
-        "Fresh halal meat, groceries, and specialty items from around the world."
-    },
-    {
-      id: 4,
-      name: "Makkah Restaurant",
-      type: "restaurant",
-      cuisine: "Pakistani",
-      rating: 4.9,
-      priceRange: "$$",
-      address: "321 Ontario St, Kingston, ON",
-      phone: "(613) 555-0321",
-      hours: "12:00 PM - 10:00 PM",
-      website: "makkahrestaurant.ca",
-      image:
-        "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&h=300&fit=crop",
-      coordinates: { lat: 44.228, lng: -76.4951 },
-      verified: true,
-      description:
-        "Authentic Pakistani and Indian cuisine with aromatic spices and traditional cooking methods."
-    },
-    {
-      id: 5,
-      name: "Sultan's Kitchen",
-      type: "cafe",
-      cuisine: "Turkish",
-      rating: 4.5,
-      priceRange: "$",
-      address: "654 King St E, Kingston, ON",
-      phone: "(613) 555-0654",
-      hours: "8:00 AM - 8:00 PM",
-      website: null,
-      image:
-        "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=300&fit=crop",
-      coordinates: { lat: 44.2344, lng: -76.4812 },
-      verified: false,
-      description:
-        "Turkish café serving traditional breakfast, coffee, and light meals."
-    }
+        "id": 1,
+        "name": "Limestone Kabob House",
+        "type": "restaurant",
+        "cuisine": "Afghan, Pakistani, Indian, Middle Eastern, Moroccan",
+        "rating": 4.4,
+        "priceRange": "$$",
+        "address": "251 Princess St, Kingston, ON K7L 1B5",
+        "phone": "(613) 634-9600",
+        "hours": "4:00 P.M - 9:00 P.M",
+        "website": "https://www.limestonekabob.com",
+        "image": "https://www.fbgcdn.com/pictures/e2676215-182b-4fbf-a5f0-b12b523ca3ba.jpg",
+        "coordinates": {
+          "lat": 44.2575027,
+          "lng": -76.5703786
+        },
+        "verified": true,
+        "description": "Limestone Kabob House - a fusion restaurant in the heart of Kingston, Ontario. Enjoy a nice dinner with your family, friends. Contemporary style seating , beautiful tapestry and authentic homemade food creates a relaxing atmosphere."
+      },
   ];
 
   const filteredSpots = halalSpots.filter((spot) => {
@@ -149,10 +78,6 @@ const HalalFoodMap = () => {
       "_blank"
     );
   };
-
-  const featuredSpots = halalSpots.filter(
-    (s) => s.verified && s.rating >= 4.7
-  );
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -172,27 +97,27 @@ const HalalFoodMap = () => {
   const isSearching = searchQuery.trim() !== "";
 
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-amber-50 relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-black to-yellow-900/20" />
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-600/10 to-blue-800/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-r from-yellow-500/10 to-amber-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-gradient-to-r from-blue-500/5 to-yellow-500/5 rounded-full blur-3xl animate-pulse delay-2000" />
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-blue-900/70 to-navy-900/50" />
+        <div className="absolute top-0 left-1/4 w-72 h-72 md:w-96 md:h-96 bg-gradient-to-r from-amber-400/10 to-yellow-400/15 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 right-1/4 w-72 h-72 md:w-96 md:h-96 bg-gradient-to-r from-blue-600/15 to-slate-600/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/2 w-80 h-80 md:w-96 md:h-96 bg-gradient-to-r from-amber-500/5 to-yellow-500/5 rounded-full blur-3xl animate-pulse delay-2000" />
       </div>
 
       {/* Header */}
-      <div className="relative pt-20 sm:pt-32 pb-8 sm:pb-12">
+      <div className="relative pt-16 sm:pt-24 pb-6 sm:pb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center space-x-4 mb-8">
-            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-800 to-blue-900 rounded-3xl flex items-center justify-center shadow-2xl border border-blue-700/50">
-              <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-400" />
+          <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-6">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-2xl flex items-center justify-center shadow-2xl border border-amber-300/30">
+              <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-slate-900" />
             </div>
-            <div>
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
+            <div className="text-center sm:text-left">
+              <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold bg-gradient-to-r from-amber-300 to-yellow-400 bg-clip-text text-transparent mb-1">
                 Halal Food Map
               </h1>
-              <p className="text-lg sm:text-xl text-gray-300 font-medium">
+              <p className="text-base sm:text-lg lg:text-xl text-amber-200 font-medium">
                 Kingston & Queen's University
               </p>
             </div>
@@ -201,95 +126,186 @@ const HalalFoodMap = () => {
       </div>
 
       {/* Sticky Search Bar */}
-      <div className="sticky top-0 z-40 bg-black/90 backdrop-blur-xl border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+      <div className="sticky top-0 z-40 bg-slate-900/98 backdrop-blur-xl border-b border-amber-400/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="relative">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-yellow-400" />
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-amber-300 z-10" />
             <input
               type="text"
               placeholder="Search halal restaurants, groceries, cafés..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 sm:py-4 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/20 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-400/20 outline-none transition-all duration-300 text-white placeholder-gray-400 shadow-lg hover:bg-white/10"
+              className="w-full pl-12 pr-6 py-4 bg-white/95 backdrop-blur-xl rounded-2xl border-2 border-amber-200/30 focus:border-amber-400 focus:ring-4 focus:ring-amber-400/20 outline-none transition-all duration-300 text-slate-800 placeholder-slate-500 shadow-xl hover:bg-white text-base font-medium hover:shadow-2xl focus:shadow-2xl"
             />
           </div>
         </div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-8 pb-24">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 pb-16 sm:pb-24">
         {!isSearching ? (
-          <>
-            {/* Featured Spots */}
-            <div className="mb-12">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
-                <div className="mb-4 sm:mb-0">
-                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mb-2">
-                    Featured Halal Spots
-                  </h2>
-                  <p className="text-lg text-gray-400">
-                    Top-rated halal locations
-                  </p>
-                </div>
-                <div className="flex items-center space-x-3 px-4 py-2 bg-white/5 backdrop-blur-xl rounded-full border border-white/10">
-                  <Award className="w-5 h-5 text-yellow-400" />
-                  <span className="text-sm font-medium text-yellow-400">Premium Selection</span>
+          <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
+            {/* Quick Stats */}
+            <div className="lg:col-span-1 order-2 lg:order-1">
+              <div className="bg-slate-800/60 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-2xl border border-amber-400/20 p-5 sm:p-6 mb-6">
+                <h3 className="text-lg sm:text-xl font-bold text-amber-300 mb-4 sm:mb-6">
+                  Quick Stats
+                </h3>
+                <div className="space-y-4 sm:space-y-6">
+                  <div className="flex items-center justify-between">
+                    <span className="text-amber-100 text-sm sm:text-base">Total Locations</span>
+                    <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-amber-300 to-yellow-400 bg-clip-text text-transparent">
+                      {halalSpots.length}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-amber-100 text-sm sm:text-base">Avg Rating</span>
+                    <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-amber-300 to-yellow-400 bg-clip-text text-transparent">
+                      {(
+                        halalSpots.reduce((sum, s) => sum + s.rating, 0) /
+                        halalSpots.length
+                      ).toFixed(1)}
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {featuredSpots.map((spot) => (
+              {/* Selected Spot Details */}
+              {selectedSpot && (
+                <div className="bg-slate-800/60 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-2xl border border-amber-400/20 overflow-hidden">
+                  <div
+                    className="h-36 sm:h-48 bg-cover bg-center relative"
+                    style={{ backgroundImage: `url(${selectedSpot.image})` }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent" />
+                  </div>
+                  <div className="p-4 sm:p-6">
+                    <div className="flex items-start justify-between mb-3">
+                      <h3 className="text-lg sm:text-xl font-bold text-amber-300 flex-1 pr-2">
+                        {selectedSpot.name}
+                      </h3>
+                      <div className="flex items-center space-x-1 flex-shrink-0">
+                        <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
+                        <span className="text-sm font-semibold text-amber-200">
+                          {selectedSpot.rating}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-2 mb-4">
+                      <span className="px-3 py-1 bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-900 text-xs sm:text-sm font-medium rounded-full">
+                        {selectedSpot.cuisine}
+                      </span>
+                      <span className="text-amber-200 text-xs sm:text-sm font-medium">
+                        {selectedSpot.priceRange}
+                      </span>
+                    </div>
+                    <p className="text-amber-100 text-sm mb-4 sm:mb-6 leading-relaxed">
+                      {selectedSpot.description}
+                    </p>
+                    <div className="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
+                      <div className="flex items-start space-x-3">
+                        <MapPin className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
+                        <span className="text-xs sm:text-sm text-amber-100 leading-relaxed">
+                          {selectedSpot.address}
+                        </span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <Clock className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                        <span className="text-xs sm:text-sm text-amber-100">
+                          {selectedSpot.hours}
+                        </span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <Phone className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                        <span className="text-xs sm:text-sm text-amber-100">
+                          {selectedSpot.phone}
+                        </span>
+                      </div>
+                      {selectedSpot.website && (
+                        <div className="flex items-center space-x-3">
+                          <Globe className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                          <a
+                            href={`https://${selectedSpot.website}`}
+                            className="text-xs sm:text-sm text-amber-400 hover:text-amber-300 transition-colors"
+                          >
+                            {selectedSpot.website}
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                    <button
+                      onClick={() => getDirections(selectedSpot)}
+                      className="w-full py-2.5 sm:py-3 bg-gradient-to-r from-amber-400 to-yellow-500 text-slate-900 font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center space-x-2 hover:from-amber-300 hover:to-yellow-400 text-sm sm:text-base"
+                    >
+                      <Navigation className="w-4 h-4 sm:w-5 sm:h-5" />
+                      <span>Get Directions</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* All Spots List */}
+            <div className="lg:col-span-2 order-1 lg:order-2">
+              <div className="flex items-center justify-between mb-6 sm:mb-8">
+                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-amber-300 to-yellow-400 bg-clip-text text-transparent">
+                  All Halal Spots{" "}
+                  <span className="text-base sm:text-lg lg:text-xl">({halalSpots.length})</span>
+                </h2>
+              </div>
+              <div className="space-y-4 sm:space-y-6">
+                {halalSpots.map((spot) => (
                   <div
                     key={spot.id}
                     onClick={() => setSelectedSpot(spot)}
                     className="group cursor-pointer"
                   >
-                    <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/10 overflow-hidden hover:shadow-3xl hover:border-white/20 transition-all duration-500 hover:scale-105">
-                      <div
-                        className="h-48 sm:h-56 bg-cover bg-center relative"
-                        style={{ backgroundImage: `url(${spot.image})` }}
-                      >
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/70 transition-all duration-300" />
-                        <div className="absolute bottom-4 left-4 flex flex-wrap gap-2">
-                          <div className="px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-semibold rounded-full flex items-center">
-                            <Star className="w-3 h-3 mr-1 text-yellow-400" />
-                            {spot.rating}
+                    <div className="bg-slate-800/60 backdrop-blur-xl rounded-xl sm:rounded-2xl shadow-lg border border-amber-400/20 overflow-hidden hover:shadow-xl hover:border-amber-400/40 transition-all duration-300 hover:scale-[1.02]">
+                      <div className="flex flex-col sm:flex-row">
+                        <div
+                          className="w-full sm:w-40 md:w-48 h-32 sm:h-auto bg-cover bg-center relative flex-shrink-0"
+                          style={{ backgroundImage: `url(${spot.image})` }}
+                        >
+                          <div className="absolute inset-0 bg-slate-900/40 group-hover:bg-slate-900/50 transition-all duration-200" />
+                        </div>
+                        <div className="flex-1 p-4 sm:p-5">
+                          <div className="flex items-start justify-between mb-2">
+                            <h3 className="text-base sm:text-lg font-bold text-amber-300 group-hover:text-amber-200 transition-colors flex-1 pr-2">
+                              {spot.name}
+                            </h3>
+                            <div className="flex items-center space-x-1 flex-shrink-0">
+                              <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
+                              <span className="text-sm font-semibold text-amber-200">
+                                {spot.rating}
+                              </span>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                      <div className="p-6">
-                        <div className="flex items-center justify-between mb-3">
-                          <h3 className="text-lg font-bold text-white group-hover:text-yellow-400 transition-colors">
-                            {spot.name}
-                          </h3>
-                          <span className="text-gray-300 text-sm font-medium">
-                            {spot.priceRange}
-                          </span>
-                        </div>
-                        <div className="flex items-center space-x-2 mb-4">
-                          <span className="px-3 py-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm font-medium rounded-full">
-                            {spot.cuisine}
-                          </span>
-                        </div>
-                        <p className="text-gray-400 text-sm mb-4 line-clamp-2">
-                          {spot.description}
-                        </p>
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center text-gray-400 text-sm flex-1 min-w-0">
-                            <MapPin className="w-4 h-4 mr-2 flex-shrink-0 text-yellow-400" />
-                            <span className="truncate">
-                              {spot.address.split(",")[0]}
+                          <div className="flex items-center space-x-2 mb-3">
+                            <span className="px-2.5 py-1 bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-900 text-xs font-medium rounded-full">
+                              {spot.cuisine}
+                            </span>
+                            <span className="text-amber-200 text-xs">
+                              {spot.priceRange}
                             </span>
                           </div>
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              getDirections(spot);
-                            }}
-                            className="px-4 py-2 bg-gradient-to-r from-yellow-400 to-amber-500 text-black text-sm font-semibold rounded-xl hover:from-yellow-300 hover:to-amber-400 transition-all duration-200 flex items-center space-x-1 ml-3 shadow-lg hover:shadow-xl"
-                          >
-                            <Navigation className="w-4 h-4" />
-                            <span className="hidden sm:inline">Directions</span>
-                          </button>
+                          <p className="text-amber-100 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 leading-relaxed">
+                            {spot.description}
+                          </p>
+                          <div className="flex flex-col space-y-2 sm:space-y-0 sm:flex-row sm:items-center sm:justify-between">
+                            <div className="flex items-start text-amber-200 text-xs sm:text-sm flex-1 min-w-0">
+                              <MapPin className="w-3 h-3 sm:w-4 sm:h-4 mr-2 flex-shrink-0 text-amber-400 mt-0.5" />
+                              <span className="truncate leading-relaxed">{spot.address}</span>
+                            </div>
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                getDirections(spot);
+                              }}
+                              className="px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-amber-400 to-yellow-500 text-slate-900 text-xs sm:text-sm font-semibold rounded-lg sm:rounded-xl hover:from-amber-300 hover:to-yellow-400 transition-all duration-200 flex items-center justify-center sm:justify-start space-x-1 sm:ml-3 shadow-lg self-start sm:self-center"
+                            >
+                              <Navigation className="w-3 h-3 sm:w-4 sm:h-4" />
+                              <span>Directions</span>
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -297,200 +313,27 @@ const HalalFoodMap = () => {
                 ))}
               </div>
             </div>
-
-            {/* Main Grid */}
-            <div className="grid lg:grid-cols-3 gap-8">
-              {/* Quick Stats */}
-              <div className="lg:col-span-1">
-                <div className="bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/10 p-6 mb-6">
-                  <h3 className="text-xl font-bold text-white mb-6">
-                    Quick Stats
-                  </h3>
-                  <div className="space-y-6">
-                    <div className="flex items-center justify-between">
-                      <span className="text-gray-300">Total Locations</span>
-                      <span className="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
-                        {halalSpots.length}
-                      </span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-gray-300">Avg Rating</span>
-                      <span className="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
-                        {(
-                          halalSpots.reduce((sum, s) => sum + s.rating, 0) /
-                          halalSpots.length
-                        ).toFixed(1)}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Selected Spot Details */}
-                {selectedSpot && (
-                  <div className="bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/10 overflow-hidden">
-                    <div
-                      className="h-48 bg-cover bg-center relative"
-                      style={{ backgroundImage: `url(${selectedSpot.image})` }}
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                    </div>
-                    <div className="p-6">
-                      <div className="flex items-center justify-between mb-3">
-                        <h3 className="text-xl font-bold text-white">
-                          {selectedSpot.name}
-                        </h3>
-                        <div className="flex items-center space-x-1">
-                          <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                          <span className="text-sm font-semibold text-gray-300">
-                            {selectedSpot.rating}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="flex items-center space-x-2 mb-4">
-                        <span className="px-3 py-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm font-medium rounded-full">
-                          {selectedSpot.cuisine}
-                        </span>
-                        <span className="text-gray-300 text-sm font-medium">
-                          {selectedSpot.priceRange}
-                        </span>
-                      </div>
-                      <p className="text-gray-400 mb-6">
-                        {selectedSpot.description}
-                      </p>
-                      <div className="space-y-4 mb-6">
-                        <div className="flex items-center space-x-3">
-                          <MapPin className="w-4 h-4 text-yellow-400" />
-                          <span className="text-sm text-gray-300">
-                            {selectedSpot.address}
-                          </span>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <Clock className="w-4 h-4 text-yellow-400" />
-                          <span className="text-sm text-gray-300">
-                            {selectedSpot.hours}
-                          </span>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <Phone className="w-4 h-4 text-yellow-400" />
-                          <span className="text-sm text-gray-300">
-                            {selectedSpot.phone}
-                          </span>
-                        </div>
-                        {selectedSpot.website && (
-                          <div className="flex items-center space-x-3">
-                            <Globe className="w-4 h-4 text-yellow-400" />
-                            <a
-                              href={`https://${selectedSpot.website}`}
-                              className="text-sm text-yellow-400 hover:text-yellow-300 transition-colors"
-                            >
-                              {selectedSpot.website}
-                            </a>
-                          </div>
-                        )}
-                      </div>
-                      <button
-                        onClick={() => getDirections(selectedSpot)}
-                        className="w-full py-3 bg-gradient-to-r from-yellow-400 to-amber-500 text-black font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center space-x-2 hover:from-yellow-300 hover:to-amber-400"
-                      >
-                        <Navigation className="w-5 h-5" />
-                        <span>Get Directions</span>
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* All Spots List */}
-              <div className="lg:col-span-2">
-                <div className="flex items-center justify-between mb-8">
-                  <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                    All Halal Spots{" "}
-                    <span className="bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">({halalSpots.length})</span>
-                  </h2>
-                </div>
-                <div className="space-y-6">
-                  {halalSpots.map((spot) => (
-                    <div
-                      key={spot.id}
-                      onClick={() => setSelectedSpot(spot)}
-                      className="group cursor-pointer"
-                    >
-                      <div className="bg-white/5 backdrop-blur-xl rounded-2xl shadow-lg border border-white/10 overflow-hidden hover:shadow-xl hover:border-white/20 transition-all duration-300 hover:scale-102">
-                        <div className="flex flex-col sm:flex-row">
-                          <div
-                            className="sm:w-48 h-32 sm:h-auto bg-cover bg-center relative flex-shrink-0"
-                            style={{ backgroundImage: `url(${spot.image})` }}
-                          >
-                            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-all duration-200" />
-                          </div>
-                          <div className="flex-1 p-5">
-                            <div className="flex items-center justify-between mb-2">
-                              <h3 className="text-lg font-bold text-white group-hover:text-yellow-400 transition-colors">
-                                {spot.name}
-                              </h3>
-                              <div className="flex items-center space-x-1">
-                                <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                                <span className="text-sm font-semibold text-gray-300">
-                                  {spot.rating}
-                                </span>
-                              </div>
-                            </div>
-                            <div className="flex items-center space-x-2 mb-3">
-                              <span className="px-3 py-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm font-medium rounded-full">
-                                {spot.cuisine}
-                              </span>
-                              <span className="text-gray-300 text-sm">
-                                {spot.priceRange}
-                              </span>
-                            </div>
-                            <p className="text-gray-400 text-sm mb-4 line-clamp-2">
-                              {spot.description}
-                            </p>
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center text-gray-400 text-sm flex-1 min-w-0">
-                                <MapPin className="w-4 h-4 mr-2 flex-shrink-0 text-yellow-400" />
-                                <span className="truncate">{spot.address}</span>
-                              </div>
-                              <button
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  getDirections(spot);
-                                }}
-                                className="px-4 py-2 bg-gradient-to-r from-yellow-400 to-amber-500 text-black text-sm font-semibold rounded-xl hover:from-yellow-300 hover:to-amber-400 transition-all duration-200 flex items-center space-x-1 ml-3 shadow-lg"
-                              >
-                                <Navigation className="w-4 h-4" />
-                                <span className="hidden sm:inline">Directions</span>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </>
+          </div>
         ) : (
           /* Search Results */
-          <div className="space-y-6">
-            <div className="mb-8">
-              <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mb-2">
+          <div className="space-y-4 sm:space-y-6">
+            <div className="mb-6 sm:mb-8">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-amber-300 to-yellow-400 bg-clip-text text-transparent mb-2">
                 Search Results{" "}
-                <span className="bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">({filteredSpots.length})</span>
+                <span className="text-base sm:text-lg lg:text-xl">({filteredSpots.length})</span>
               </h2>
-              <p className="text-gray-400">Results for "{searchQuery}"</p>
+              <p className="text-amber-200 text-sm sm:text-base">Results for "{searchQuery}"</p>
             </div>
 
             {filteredSpots.length === 0 ? (
-              <div className="text-center py-16">
-                <div className="w-20 h-20 bg-white/5 backdrop-blur-xl rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10">
-                  <Search className="w-10 h-10 text-yellow-400" />
+              <div className="text-center py-12 sm:py-16">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-slate-800/60 backdrop-blur-xl rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 border border-amber-400/20">
+                  <Search className="w-8 h-8 sm:w-10 sm:h-10 text-amber-400" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">
+                <h3 className="text-lg sm:text-xl font-bold text-amber-300 mb-2">
                   No results found
                 </h3>
-                <p className="text-gray-400 text-lg">
+                <p className="text-amber-200 text-sm sm:text-lg">
                   Try adjusting your search terms or browse all locations
                 </p>
               </div>
@@ -501,45 +344,45 @@ const HalalFoodMap = () => {
                   onClick={() => setSelectedSpot(spot)}
                   className="group cursor-pointer"
                 >
-                  <div className="bg-white/5 backdrop-blur-xl rounded-2xl shadow-lg border border-white/10 overflow-hidden hover:shadow-xl hover:border-white/20 transition-all duration-300 hover:scale-102">
+                  <div className="bg-slate-800/60 backdrop-blur-xl rounded-xl sm:rounded-2xl shadow-lg border border-amber-400/20 overflow-hidden hover:shadow-xl hover:border-amber-400/40 transition-all duration-300 hover:scale-[1.02]">
                     <div className="flex flex-col sm:flex-row">
                       <div
-                        className="sm:w-48 h-32 sm:h-auto bg-cover bg-center relative flex-shrink-0"
+                        className="w-full sm:w-40 md:w-48 h-32 sm:h-auto bg-cover bg-center relative flex-shrink-0"
                         style={{ backgroundImage: `url(${spot.image})` }}
                       >
-                        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-all duration-200" />
+                        <div className="absolute inset-0 bg-slate-900/40 group-hover:bg-slate-900/50 transition-all duration-200" />
                       </div>
-                      <div className="flex-1 p-5">
-                        <div className="flex items-center justify-between mb-2">
-                          <h3 className="text-lg font-bold text-white group-hover:text-yellow-400 transition-colors">
+                      <div className="flex-1 p-4 sm:p-5">
+                        <div className="flex items-start justify-between mb-2">
+                          <h3 className="text-base sm:text-lg font-bold text-amber-300 group-hover:text-amber-200 transition-colors flex-1 pr-2">
                             {spot.name}
                           </h3>
-                          <div className="flex items-center space-x-1">
-                            <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                            <span className="text-sm font-semibold text-gray-300">
+                          <div className="flex items-center space-x-1 flex-shrink-0">
+                            <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
+                            <span className="text-sm font-semibold text-amber-200">
                               {spot.rating}
                             </span>
                           </div>
                         </div>
                         <div className="flex items-center space-x-2 mb-3">
-                          <span className="px-3 py-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm font-medium rounded-full">
+                          <span className="px-2.5 py-1 bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-900 text-xs font-medium rounded-full">
                             {spot.cuisine}
                           </span>
-                          <span className="text-gray-300 text-sm">
+                          <span className="text-amber-200 text-xs">
                             {spot.priceRange}
                           </span>
                         </div>
-                        <p className="text-gray-400 text-sm mb-3 line-clamp-2">
+                        <p className="text-amber-100 text-xs sm:text-sm mb-3 line-clamp-2 leading-relaxed">
                           {spot.description}
                         </p>
-                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                          <div className="flex items-center text-gray-400 text-sm">
-                            <MapPin className="w-4 h-4 mr-2 flex-shrink-0 text-yellow-400" />
-                            <span className="truncate">{spot.address}</span>
+                        <div className="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:items-center sm:justify-between gap-3">
+                          <div className="flex items-start text-amber-200 text-xs sm:text-sm">
+                            <MapPin className="w-3 h-3 sm:w-4 sm:h-4 mr-2 flex-shrink-0 text-amber-400 mt-0.5" />
+                            <span className="truncate leading-relaxed">{spot.address}</span>
                           </div>
-                          <div className="flex items-center gap-4">
-                            <div className="flex items-center text-gray-400 text-sm">
-                              <Clock className="w-4 h-4 mr-1 text-yellow-400" />
+                          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
+                            <div className="flex items-center text-amber-200 text-xs sm:text-sm">
+                              <Clock className="w-3 h-3 sm:w-4 sm:h-4 mr-1 text-amber-400" />
                               <span>{spot.hours}</span>
                             </div>
                             <button
@@ -547,12 +390,10 @@ const HalalFoodMap = () => {
                                 e.stopPropagation();
                                 getDirections(spot);
                               }}
-                              className="px-4 py-2 bg-gradient-to-r from-yellow-400 to-amber-500 text-black text-sm font-semibold rounded-xl hover:from-yellow-300 hover:to-amber-400 transition-all duration-200 flex items-center space-x-1 shadow-lg"
+                              className="px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-amber-400 to-yellow-500 text-slate-900 text-xs sm:text-sm font-semibold rounded-lg sm:rounded-xl hover:from-amber-300 hover:to-yellow-400 transition-all duration-200 flex items-center space-x-1 shadow-lg self-start"
                             >
-                              <Navigation className="w-4 h-4" />
-                              <span className="hidden sm:inline">
-                                Directions
-                              </span>
+                              <Navigation className="w-3 h-3 sm:w-4 sm:h-4" />
+                              <span>Directions</span>
                             </button>
                           </div>
                         </div>
@@ -567,7 +408,7 @@ const HalalFoodMap = () => {
       </div>
 
       {/* Bottom Accent */}
-      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 via-yellow-400 to-amber-500" />
+      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500" />
     </div>
   );
 };
