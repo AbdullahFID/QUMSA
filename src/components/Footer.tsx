@@ -232,8 +232,14 @@ export default function Footer() {
                 Association
               </p>
               <p className="text-gray-500 text-xs mt-1 flex items-center justify-center lg:justify-start">
-                Built with <Heart className="w-3 h-3 mx-1 text-red-500" /> by Abdullah Khan
-              </p>
+                  Built with <Heart className="w-3 h-3 mx-1 text-red-500" /> by
+                  <a
+                    href="mailto:abdullah.khan@queensu.ca"
+                    className="underline hover:text-islamic-gold focus:outline-none focus:text-islamic-gold transition-colors ml-1"
+                  >
+                    Abdullah Khan
+                  </a>
+                </p>
             </div>
 
             <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6 text-xs sm:text-sm order-1 lg:order-2">

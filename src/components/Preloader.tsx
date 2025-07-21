@@ -37,11 +37,11 @@ export default function Preloader({ isExiting = false }: PreloaderProps) {
       }
     }
 
-    /* first attempt immediately, then keep retrying every 5 s until success */
+    /* first attempt immediately, then keep retrying every 5 s until success */
     loadQuote()
     retryTimer = setInterval(loadQuote, 5000)
 
-    /* progress‑bar animation (~2.2 s full) */
+    /* progress‑bar animation (~2.2 s full) */
     progressTimer = setInterval(() => {
       setProgress(p => (p >= 100 ? 100 : p + 2))
     }, 44)
@@ -133,9 +133,10 @@ export default function Preloader({ isExiting = false }: PreloaderProps) {
 
           <div className="text-center text-white/90 text-xs space-y-1">
             <p className="font-medium">
-              Built by <span className="text-green-300">Abdullah Khan</span>
+              Built by <span className="text-green-300">Abdullah Khan</span>
             </p>
-            <p>First‑Year CMPE at Queen’s University</p>
+            <p className="text-white/70">abdullah.khan@queensu.ca</p>
+            <p>First‑Year CMPE at Queen's University</p>
             <p>
               In Association with <span className="text-blue-300 font-semibold">QUMSA</span>
             </p>
