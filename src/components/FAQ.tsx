@@ -3,14 +3,13 @@
 import React, { useState } from 'react'
 import { ChevronDown, HelpCircle, Heart, MessageCircle } from 'lucide-react'
 
-/* ─────────────────────── Animated Background ─────────────────────── */
 const AnimatedBackground = () => {
   const [stars, setStars] = React.useState<
     Array<{ id: number; x: number; y: number; delay: number; duration: number }>
   >([])
 
   React.useEffect(() => {
-    const starArray = Array.from({ length: 50 }, (_, i) => ({
+    const starArray = Array.from({ length:50 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
@@ -22,10 +21,8 @@ const AnimatedBackground = () => {
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none">
-      {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-purple-900 to-slate-900" />
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-navy-900" />
 
-      {/* Animated Stars */}
       {stars.map((star) => (
         <div
           key={star.id}
@@ -39,14 +36,13 @@ const AnimatedBackground = () => {
         />
       ))}
 
-      {/* Floating Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 rounded-full blur-3xl animate-pulse" />
       <div
-        className="absolute top-3/4 right-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-full blur-3xl animate-pulse"
+        className="absolute top-3/4 right-1/4 w-96 h-96 bg-gradient-to-r from-blue-600/10 to-slate-600/10 rounded-full blur-3xl animate-pulse"
         style={{ animationDelay: '2s' }}
       />
       <div
-        className="absolute top-1/2 left-1/2 w-48 h-48 bg-gradient-to-r from-emerald-500/15 to-teal-500/15 rounded-full blur-3xl animate-pulse"
+        className="absolute top-1/2 left-1/2 w-48 h-48 bg-gradient-to-r from-amber-400/15 to-yellow-400/15 rounded-full blur-3xl animate-pulse"
         style={{ animationDelay: '4s' }}
       />
     </div>
@@ -98,39 +94,37 @@ const FAQ: React.FC = () => {
       <AnimatedBackground />
       
       <div className="relative z-10">
-        {/* Hero Section */}
         <section className="pt-24 pb-20 relative text-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-xl rounded-full mb-8 border border-white/10">
-              <HelpCircle className="w-10 h-10 text-yellow-400 animate-pulse" />
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-xl rounded-full mb-8 border border-white/20">
+              <HelpCircle className="w-10 h-10 text-amber-400 animate-pulse" />
             </div>
             
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 Frequently Asked
               </span>
               <br />
-              <span className="bg-gradient-to-r from-yellow-400 via-orange-400 to-pink-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">
                 Questions
               </span>
             </h1>
             
-            <p className="text-xl sm:text-2xl max-w-4xl mx-auto mb-12 text-slate-300 leading-relaxed">
+            <p className="text-xl sm:text-2xl max-w-4xl mx-auto mb-12 text-gray-300 leading-relaxed">
               Get answers to common questions about our community and resources at Queen&rsquo;s University.
             </p>
           </div>
         </section>
 
-        {/* FAQ Section */}
         <section className="py-24 relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 via-purple-900/20 to-pink-900/20 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-slate-800/20 backdrop-blur-sm" />
           <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="space-y-6">
               {faqs.map((faq, idx) => (
                 <div
                   key={idx}
                   className="bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20
-                            hover:border-white/40 transition-all duration-300"
+                            hover:border-amber-400/40 transition-all duration-300"
                 >
                   <button
                     onClick={() => toggleFAQ(idx)}
@@ -141,13 +135,12 @@ const FAQ: React.FC = () => {
                       {faq.q}
                     </h3>
                     <ChevronDown
-                      className={`w-6 h-6 text-yellow-400 transition-transform duration-500 ease-in-out ${
+                      className={`w-6 h-6 text-amber-400 transition-transform duration-500 ease-in-out ${
                         openFAQ === idx ? 'rotate-180' : ''
                       }`}
                     />
                   </button>
                   
-                  {/* Animated content container */}
                   <div 
                     className={`overflow-hidden transition-all duration-500 ease-in-out ${
                       openFAQ === idx 
@@ -157,7 +150,7 @@ const FAQ: React.FC = () => {
                   >
                     <div className="px-8 pb-8">
                       <div className="pt-4 border-t border-white/20">
-                        <p className="text-slate-300 leading-relaxed text-lg">
+                        <p className="text-gray-300 leading-relaxed text-lg">
                           {faq.a}
                         </p>
                       </div>
@@ -169,19 +162,18 @@ const FAQ: React.FC = () => {
           </div>
         </section>
 
-        {/* Footer */}
         <footer className="py-20 relative text-center">
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent" />
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-xl rounded-full mb-6 border border-white/10">
-              <Heart className="w-8 h-8 text-pink-400 animate-pulse" />
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-xl rounded-full mb-6 border border-white/20">
+              <Heart className="w-8 h-8 text-amber-400 animate-pulse" />
             </div>
             
             <h3 className="text-3xl font-bold mb-4 text-white">
               Built with love for our community
             </h3>
             
-            <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
               This resource hub was created to strengthen our bonds and make essential 
               services easily accessible for all QUMSA members and friends.
             </p>
@@ -192,8 +184,8 @@ const FAQ: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-2 px-6 py-3 bg-white/10 hover:bg-white/20 
-                           backdrop-blur-xl rounded-full border border-white/20 hover:border-white/40
-                           text-white hover:text-yellow-300 transition-all duration-300"
+                           backdrop-blur-xl rounded-full border border-white/20 hover:border-amber-400/40
+                           text-white hover:text-amber-300 transition-all duration-300"
               >
                 <MessageCircle className="w-5 h-5" />
                 <span>Join WhatsApp</span>
@@ -203,8 +195,8 @@ const FAQ: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-2 px-6 py-3 bg-white/10 hover:bg-white/20 
-                           backdrop-blur-xl rounded-full border border-white/20 hover:border-white/40
-                           text-white hover:text-yellow-300 transition-all duration-300"
+                           backdrop-blur-xl rounded-full border border-white/20 hover:border-amber-400/40
+                           text-white hover:text-amber-300 transition-all duration-300"
               >
                 <MessageCircle className="w-5 h-5" />
                 <span>Send Feedback</span>
@@ -212,7 +204,7 @@ const FAQ: React.FC = () => {
             </div>
             
             <div className="mt-12 pt-8 border-t border-white/20">
-              <p className="text-slate-400">
+              <p className="text-gray-400">
                 © 2025 QUMSA & Collaborators
               </p>
             </div>

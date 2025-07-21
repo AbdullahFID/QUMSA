@@ -79,7 +79,26 @@ const HalalFoodMap = () => {
           "lng": -76.5036196,
         },
         "verified": true,
-        "description": "Authentic Syrian and Lebanese Cuisine - Our catering services offers Syrian and Lebanese authentic cuisines are perfect for any size, any style, and are customized to your budget."
+        "description": "Shawarma Damascus is a family‑run eatery at 101 Dalton Ave in Kingston, specializing in authentic Syrian and Lebanese shawarma. We serve marinated spit‑roasted cuts of meat (chicken, beef, lamb) wrapped in fresh pita or served as hearty platters with vibrant veggies, pickles, and flavorful sauces. Ideal for casual meals, group take‑out, or dine‑in, with large portions, warm hospitality, and affordable prices."
+      },
+      {
+        "id": 3,
+        "name": "Dingaling's Chicken Wings",
+        "type": "restaurant",
+        "cuisine": "American/Canadian casual",
+        "rating": 4.1,
+        "priceRange": "$$",
+        "address": " 2511 Princess St, Kingston, ON K7M 7N2",
+        "phone": "(613) 634-0444",
+        "hours": "11:00 A.M - 3:00 A.M (Varies)",
+        "website": "https://dingalings.ca/",
+        "image": "https://i0.wp.com/dingalings.ca/wp-content/uploads/bb-plugin/cache/PHOTO-2021-10-14-00-19-46-square.jpg?w=1200&ssl=1",
+        "coordinates": {
+          "lat": 44.2578197,
+          "lng": -76.5676094,
+        },
+        "verified": true,
+        "description": "Dingaling’s Chicken Wings serves fresh, homestyle battered wings in a wide variety of bold sauces—from sweet to fiery. Perfect for casual dining, group meals, or take-out, our menu includes sandwiches, nachos, and classic sides like mac-and-cheese bites and jalapeño poppers. Great for any group size or occasion, with friendly service and a cozy atmosphere."
       },
   ];
 
