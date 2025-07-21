@@ -5,12 +5,11 @@ import { Package, Sparkles, Clock } from 'lucide-react'
 
 export default function MerchPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 flex items-center justify-center p-4">
       <div className="max-w-2xl mx-auto text-center">
-        {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
-            className="absolute top-20 left-10 w-20 h-20 bg-purple-500/20 rounded-full blur-xl"
+            className="absolute top-20 left-10 w-20 h-20 bg-amber-500/20 rounded-full blur-xl"
             animate={{
               y: [0, -20, 0],
               x: [0, 10, 0],
@@ -22,7 +21,7 @@ export default function MerchPage() {
             }}
           />
           <motion.div
-            className="absolute bottom-32 right-16 w-32 h-32 bg-blue-500/20 rounded-full blur-xl"
+            className="absolute bottom-32 right-16 w-32 h-32 bg-white/10 rounded-full blur-xl"
             animate={{
               y: [0, 15, 0],
               x: [0, -15, 0],
@@ -34,7 +33,7 @@ export default function MerchPage() {
             }}
           />
           <motion.div
-            className="absolute top-1/2 left-20 w-16 h-16 bg-indigo-500/20 rounded-full blur-xl"
+            className="absolute top-1/2 left-20 w-16 h-16 bg-gray-400/20 rounded-full blur-xl"
             animate={{
               y: [0, -25, 0],
               x: [0, 20, 0],
@@ -47,9 +46,7 @@ export default function MerchPage() {
           />
         </div>
 
-        {/* Main content */}
         <div className="relative z-10">
-          {/* Icon animation */}
           <motion.div
             className="flex justify-center mb-8"
             initial={{ scale: 0, rotate: -180 }}
@@ -82,12 +79,11 @@ export default function MerchPage() {
                   ease: "easeInOut",
                 }}
               >
-                <Sparkles className="w-8 h-8 text-yellow-300" />
+                <Sparkles className="w-8 h-8 text-amber-400" />
               </motion.div>
             </motion.div>
           </motion.div>
 
-          {/* Title */}
           <motion.h1
             className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6"
             initial={{ opacity: 0, y: 30 }}
@@ -97,12 +93,11 @@ export default function MerchPage() {
               delay: 0.3,
             }}
           >
-            <span className="bg-gradient-to-r from-purple-300 via-pink-300 to-blue-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-amber-200 via-white to-amber-200 bg-clip-text text-transparent">
               Coming Soon
             </span>
           </motion.h1>
 
-          {/* Subtitle */}
           <motion.p
             className="text-lg md:text-xl text-gray-300 mb-8 px-4"
             initial={{ opacity: 0, y: 20 }}
@@ -117,9 +112,8 @@ export default function MerchPage() {
             Get ready for something amazing!
           </motion.p>
 
-          {/* Status indicator */}
           <motion.div
-            className="flex items-center justify-center space-x-3 text-purple-200"
+            className="flex items-center justify-center space-x-3 text-gray-200"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
@@ -144,9 +138,8 @@ export default function MerchPage() {
             </span>
           </motion.div>
 
-          {/* Decorative line */}
           <motion.div
-            className="mt-12 mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-purple-300 to-transparent"
+            className="mt-12 mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-amber-300 to-transparent"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{
