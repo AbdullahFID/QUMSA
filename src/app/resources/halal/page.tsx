@@ -119,26 +119,368 @@ const HalalFoodMap = () => {
         "verified": true,
         "description": "Kebab44 brings a bold taste of the Mediterranean to Kingston with freshly grilled kebabs, shawarma, and vibrant sides. Inspired by authentic recipes and rich spices, our menu is packed with flavour—from savoury wraps and rice plates to crispy falafel and creamy hummus. Whether you're dining in, grabbing take-out, or feeding a group, Kebab44 offers warm hospitality, generous portions, and a cozy, welcoming atmosphere—perfect for any occasion."
       },
-      // {
-      //   "id": 5,
-      //   "name": "Manoosheh",
-      //   "type": "restaurant",
-      //   "cuisine": "Mediterranean / Middle‑Eastern grill",
-      //   "rating": 4.8,
-      //   "priceRange": "$$",
-      //   "address": "1117 Midland Ave Unit 2, Kingston, ON K7P 2X8",
-      //   "phone": "(613) 384-8222",
-      //   "hours": "11:00 A.M - 10:00 P.M",
-      //   "website": "https://kebab44.ca/",
-      //   "image": "https://kebab44.ca/cdn/shop/files/WhatsApp_Image_2024-07-11_at_1.54.42_AM.jpg?v=1720645301&width=600",
-      //   "coordinates": {
-      //     "lat": 44.2640654,
-      //     "lng": -76.5777643,
-      //   },
-      //   "verified": true,
-      //   "description": "Kebab44 brings a bold taste of the Mediterranean to Kingston with freshly grilled kebabs, shawarma, and vibrant sides. Inspired by authentic recipes and rich spices, our menu is packed with flavour—from savoury wraps and rice plates to crispy falafel and creamy hummus. Whether you're dining in, grabbing take-out, or feeding a group, Kebab44 offers warm hospitality, generous portions, and a cozy, welcoming atmosphere—perfect for any occasion."
-      // },
-  ];
+    {
+        "id": 5,
+        "name": "Manoosheh",
+        "type": "restaurant",
+        "cuisine": "Lebanese",
+        "rating": 4.9,
+        "priceRange": "$",
+        "address": "163 Division St, Kingston, ON K7L 3M7",
+        "phone": "(613) 767-1111",
+        "hours": "9:30 A.M - 10:00 P.M",
+        "website": "https://www.manoosheh.ca/",
+        "image": "https://5580198897d57ebe730e.cdn6.editmysite.com/uploads/b/5580198897d57ebe730e7f9bb10f9d7c3cb869679fa2344f6a07aa450980aa78/post%202_1681142119.jpg?width=2400&optimize=medium",
+        "coordinates": {
+            "lat": 44.2328171,
+            "lng": -76.4927682
+        },
+        "verified": true,
+        "description": "Manoosheh is a Lebanese restaurant in Kingston, ON, offering authentic flatbreads (Manaeesh) and other traditional dishes. They are known for their fresh ingredients and flavorful food, including Muhammara, Labneh wraps, and hummus."
+    },
+    {
+        "id": 6,
+        "name": "MightyBird",
+        "type": "restaurant",
+        "cuisine": "American/Canadian casual, Chicken",
+        "rating": 4.8,
+        "priceRange": "$$",
+        "address": "764 Gardiners Rd Unit F001-A, Kingston, ON, K7M 3X9",
+        "phone": "(613) 767-0731",
+        "hours": "11:00 AM to 09:00 PM (Mon-Thu, Sun), 11:00 AM to 10:00 PM (Fri-Sat)",
+        "website": "https://mightybird.ca/",
+        "image": "https://tb-static.uber.com/prod/image-proc/processed_images/4e359b99aeaeb83760f78940805d93e1/30be7d11a3ed6f6183354d1933fbb6c7.jpeg",
+        "coordinates": {
+            "lat": 44.2488147,
+            "lng": -76.5702374
+        },
+        "verified": true,
+        "description": "MightyBird is a chicken restaurant in Kingston, ON, specializing in crispy chicken sandwiches, tenders, and waffles. They offer a variety of sauces and sides, including dirty fries and milkshakes."
+    },
+    {
+        "id": 7,
+        "name": "Osmow’s Shawarma",
+        "type": "restaurant",
+        "cuisine": "Mediterranean",
+        "rating": 3.8,
+        "priceRange": "$",
+        "address": "339 Princess St, Kingston, ON, K7L 1B7",
+        "phone": "(613) 766-4659",
+        "hours": "11:00 AM - 3:00 AM (Mon-Sun)",
+        "website": "https://osmows.com/",
+        "image": "https://osmows.com/wp-content/uploads/2021/11/Overhead_hero19413.jpg",
+        "coordinates": {
+            "lat": 44.2489119,
+            "lng": -76.650063
+        },
+        "verified": true,
+        "description": "Osmow's Shawarma on Princess Street is a Mediterranean restaurant known for its chicken shawarma, falafel, and other Middle Eastern staples. They offer wraps, plates, and poutines with their signature sauces."
+    },
+    {
+        "id": 8,
+        "name": "Osmow’s Shawarma",
+        "type": "restaurant",
+        "cuisine": "Mediterranean",
+        "rating": 4.2,
+        "priceRange": "$",
+        "address": "656 Gardiners Rd Unit 20B, Kingston, ON, K7M 3X9",
+        "phone": "(613) 384-0656",
+        "hours": "11:00 AM - 11:00 PM (Mon-Wed, Sun), 11:00 AM - 1:00 AM (Thu-Sat)",
+        "website": "https://osmows.com/",
+        "image": "https://osmows.com/wp-content/uploads/2023/04/Desktop-Banner.jpg",
+        "coordinates": {
+            "lat": 44.2489119,
+            "lng": -76.6500636
+        },
+        "verified": true,
+        "description": "This Osmow's Shawarma location on Gardiners Road offers the same modern Mediterranean cuisine as its sister stores. They serve a variety of shawarma options, including chicken, beef, and lamb, as well as falafel and poutine."
+    },
+    {
+        "id": 9,
+        "name": "Shelby’s Shawarma",
+        "type": "restaurant",
+        "cuisine": "Middle Eastern",
+        "rating": 4.7,
+        "priceRange": "$$",
+        "address": "575 Princess St, Kingston, ON, K7L 0G7",
+        "phone": "(613) 344-2075",
+        "hours": "11:00 AM to 9:00 PM (Mon-Sun)",
+        "website": "https://shelbys.ca/",
+        "image": "https://display.blogto.com/articles/2024316-shelbys-shawarma.jpg",
+        "coordinates": {
+            "lat": 44.2362152,
+            "lng": -76.5178403
+        },
+        "verified": true,
+        "description": "Shelby's Legendary Shawarma on Princess Street is a popular spot for Middle Eastern food. They are known for their generous portions and unique creations like the Shelby's Wrap and shawarma poutine. They also offer traditional shawarma bowls and wraps."
+    },
+    {
+        "id": 10,
+        "name": "Shawarma Dubai",
+        "type": "restaurant",
+        "cuisine": "Middle Eastern",
+        "rating": 4.8,
+        "priceRange": "$",
+        "address": "208 Division St, Kingston, ON K7K 3Z1",
+        "phone": "(613) 531-7778",
+        "hours": "11 a.m.–12 a.m. (Mon-Sun), except Fri is 12 p.m.–12 a.m.",
+        "website": "",
+        "image": "https://www.timeoutdubai.com/cloud/timeoutdubai/2023/01/13/Late-night-shawarma-at-Allo-Beirut.jpg",
+        "coordinates": {
+            "lat": 44.2342596,
+            "lng": -76.4960007
+        },
+        "verified": true,
+        "description": "Shawarma Dubai is a family-run Middle Eastern restaurant in Kingston, known for its fresh and flavorful shawarma. They offer generous portions of chicken and beef shawarma, as well as platters and family deals."
+    },
+    {
+        "id": 11,
+        "name": "Dr. Shawarma & Curries",
+        "type": "restaurant",
+        "cuisine": "Indian, Middle Eastern",
+        "rating": 3.8,
+        "priceRange": "$$",
+        "address": "383 Princess St, Kingston, ON, K7L 1B9",
+        "phone": "(613) 877-9770",
+        "hours": "11:00 AM - 1:00 AM (Mon-Thu, Sun), 11:00 AM - 3:00 AM (Fri-Sat)",
+        "website": "https://www.drshawarmacanada.com/",
+        "image": "https://tb-static.uber.com/prod/image-proc/processed_images/feff419ecfd87424d0c7f463914cb952/9b3aae4cf90f897799a5ed357d60e09d.jpeg",
+        "coordinates": {
+            "lat": 44.2331313,
+            "lng": -76.4938621
+        },
+        "verified": true,
+        "description": "Dr. Shawarma & Curries is a women-owned restaurant in Kingston that offers a fusion of South Asian and Middle Eastern cuisine. They serve a variety of shawarmas, curries, biryanis, and other dishes. Customers can customize the spice level of their food."
+    },
+    {
+        "id": 12,
+        "name": "Shawarma El Mina",
+        "type": "restaurant",
+        "cuisine": "Middle Eastern, Lebanese",
+        "rating": 4.7,
+        "priceRange": "$$",
+        "address": "1759 Bath Rd, Kingston, ON, K7M 4Y3",
+        "phone": "(613) 776-9997",
+        "hours": "11:00 AM - 8:00 PM (Mon-Sun), except Fri is 11:00 AM - 9:00 PM",
+        "website": "https://shawarmaelmina.com/",
+        "image": "https://www.elmina.ca/wp-content/uploads/sites/72/2022/07/274774883_3026838584233035_2703289771940462282_n.jpg",
+        "coordinates": {
+            "lat": 44.2372353,
+            "lng": -76.5776249
+        },
+        "verified": true,
+        "description": "Shawarma El Mina is a Middle Eastern restaurant in Kingston that specializes in authentic shawarma. They offer a variety of platters, wraps, and family deals with chicken, beef, and lamb options. They are also known for their fresh ingredients and generous portions."
+    },
+    {
+        "id": 13,
+        "name": "Pita Land Shawarma",
+        "type": "restaurant",
+        "cuisine": "Middle Eastern",
+        "rating": 4.0,
+        "priceRange": "$$",
+        "address": "759 Bayridge Dr, Kingston, ON, K7P 2P1",
+        "phone": "(613) 384-1233",
+        "hours": "11:00 AM and closes at 9:00 PM",
+        "website": "https://pitaland.ca/pita-land-kingston/",
+        "image": "https://pitaland.ca/wp-content/uploads/2021/11/Pita-Land-Fries.jpg",
+        "coordinates": {
+            "lat": 43.8921854,
+            "lng": -79.5085661
+        },
+        "verified": true,
+        "description": "Pita Land Shawarma is a restaurant in Kingston that has been serving Mideast cuisine since 2003. They offer a wide variety of pitas, shawarma, and other Middle Eastern dishes. They are known for their fresh and healthy food."
+    },
+    {
+        "id": 14,
+        "name": "Naan Stop Express",
+        "type": "restaurant",
+        "cuisine": "Indian, Pakistani",
+        "rating": 4.7,
+        "priceRange": "$",
+        "address": "331 Bath Rd, C, Kingston, ON, K7M 2X6",
+        "phone": "(613) 766-3312",
+        "hours": "11:00 A.M - 9:00 P.M",
+        "website": "",
+        "image": "https://tb-static.uber.com/prod/image-proc/processed_images/4307871ba167cbceaae5b7768d314994/fb86662148be855d931b37d6c1e5fcbe.jpeg",
+        "coordinates": {
+            "lat": 44.240236,
+            "lng": -76.5299849
+        },
+        "verified": true,
+        "description": "Naan Stop Express is a family-run Pakistani restaurant in Kingston. They are known for their authentic dishes, such as butter chicken, chapli kabab, and fresh naan. They offer a cozy and welcoming atmosphere."
+    },
+    {
+        "id": 15,
+        "name": "Pasha",
+        "type": "Bakery",
+        "cuisine": "Turkish, Middle Eastern",
+        "rating": 4.5,
+        "priceRange": "$",
+        "address": "61 Division St, Kingston, ON, K7L 3L8",
+        "phone": "(613) 542-8282",
+        "hours": "9:00 A.M - 10:00 P.M",
+        "website": "http://pashakingston.com/",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHl_RCFyzYmTkfy3Ci8gOHP86Du0Vmpy2QpA&s",
+        "coordinates": {
+            "lat": 44.22941,
+            "lng": -76.48625
+        },
+        "verified": true,
+        "description": "Pasha is a Turkish restaurant in Kingston that serves a variety of Middle Eastern dishes, including shawarma, kababs, and baklava. They are also known for their fresh-baked goods, such as simit and pide. The restaurant has a professional and friendly staff."
+    },
+    {
+        "id": 16,
+        "name": "Tahini’s",
+        "type": "restaurant",
+        "cuisine": "Middle Eastern",
+        "rating": 4.6,
+        "priceRange": "$$",
+        "address": "320 Princess St, Kingston, ON, K7L 1B6",
+        "phone": "(343) 344-4088",
+        "hours": "10:00 A.M - 1:00 A.M",
+        "website": "https://tahinis.com/",
+        "image": "https://tb-static.uber.com/prod/image-proc/processed_images/90bd69414cd0e9f89ce646b5d5043419/30be7d11a3ed6f6183354d1933fbb6c7.jpeg",
+        "coordinates": {
+            "lat": 44.2325036,
+            "lng": -76.4920465
+        },
+        "verified": true,
+        "description": "Tahini's is a Middle Eastern restaurant on Princess Street that offers a modern twist on classic dishes. They are known for their fusion shawarmas, such as the Jamaican Jerk and Butter Chicken wraps. They also serve traditional bowls, poutines, and a variety of appetizers."
+    },
+    {
+        "id": 17,
+        "name": "House Of Donair & Shawarma",
+        "type": "restaurant",
+        "cuisine": "Mediterranean, Lebanese",
+        "rating": 4.3,
+        "priceRange": "$",
+        "address": "394 Princess St #5, Kingston, ON, K7L 1B8",
+        "phone": "(613) 766-3373",
+        "hours": "11:30 AM - 9:00 PM",
+        "website": "https://houseofdonair.ca/",
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhfa8kySSqSZ1OzWqehDmFefFqB_EGF0Ih_weVXaXJMke188Ij2acKfcOWT08zOqeXJChbeMUfNBXD31fCckNJ6Y1Is51ORd5R77eJTW5wFXY5DXEuubyQs5EubPO8b29ZaQwbkuH-DXk06HM9nX5O8iVoL2AyRptvPW5Yq67EIUzaXOSnNZ7ryg_Yzsw/s16000/House%20of%20Donair_Kingston_Ontario.jpg",
+        "coordinates": {
+            "lat": 44.2326424,
+            "lng": -76.5283908
+        },
+        "verified": true,
+        "description": "House of Donair & Shawarma is a family-run business that serves authentic Mediterranean and Lebanese cuisine. They specialize in donair and shawarma, offering a variety of pitas, plates, and family meals. They also have unique items like donair poutine and pizza."
+    },
+    {
+        "id": 18,
+        "name": "House of Donair",
+        "type": "restaurant",
+        "cuisine": "Mediterranean, Lebanese",
+        "rating": 4.6,
+        "priceRange": "$",
+        "address": "1755 Bath Rd, Kingston, ON, K7M 4Y1",
+        "phone": "(613) 634-6160",
+        "hours": "11:00 A.M - 9:00 P.M",
+        "website": "https://houseofdonair.ca/",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRE15SAmjOy20KrjH3amMeDB3jlGKGiyEINw&s",
+        "coordinates": {
+            "lat": 44.24153,
+            "lng": -76.5781
+        },
+        "verified": true,
+        "description": "House of Donair on Bath Road is another location of the family-run restaurant, serving the Kingston community since 2004. They are known for their authentic donairs and shawarmas, made with fresh, homemade ingredients. They offer dine-in, takeout, and delivery services."
+    },
+    {
+        "id": 19,
+        "name": "Villa Madina (TEMPORARILY CLOSED)",
+        "type": "restaurant",
+        "cuisine": "Mediterranean, Middle Eastern",
+        "rating": 4.6,
+        "priceRange": "$$",
+        "address": "945 Gardiners Rd Building B, Unit 1, Kingston, ON, K7M 7H4",
+        "phone": "(613) 389-6662",
+        "hours": "10 AM - 8 PM (Mon-Fri), 10 AM - 6 PM (Sat), 11 AM - 5 PM (Sun)",
+        "website": "https://villamadina.com/",
+        "image": "https://img.cdn4dd.com/cdn-cgi/image/fit=cover,width=600,height=400,format=auto,quality=80/https://doordash-static.s3.amazonaws.com/media/store/header/8e55f7d2-3ce3-41f9-861f-cb6ca0824934.jpg",
+        "coordinates": {
+            "lat": 44.2563468,
+            "lng": -76.5747459
+        },
+        "verified": true,
+        "description": "Villa Madina, located in the Cataraqui Centre, has been serving Mediterranean and Middle Eastern cuisine for over 19 years. They offer a variety of shawarma options, including plates, sandwiches, salads, and poutines. They are known for their flavorful shawarma and friendly service."
+    },
+    {
+        "id": 20,
+        "name": "Hakka Horizon",
+        "type": "restaurant",
+        "cuisine": "Indo-Chinese, Thai, Nepalese",
+        "rating": 4.4,
+        "priceRange": "$$",
+        "address": "304 Bagot St, Kingston, ON K7K 3B4",
+        "phone": "(613) 542-4258",
+        "hours": "11am to 11pm (Mon, Wed-Sun), Closed Tue",
+        "website": "https://hakkahorizon.com/",
+        "image": "https://tb-static.uber.com/prod/image-proc/processed_images/d6c4b2bf5bf94e58c4a51a4d63452bed/30be7d11a3ed6f6183354d1933fbb6c7.jpeg",
+        "coordinates": {
+            "lat": 44.2323838,
+            "lng": -76.5026956
+        },
+        "verified": true,
+        "description": "Hakka Horizon offers a fusion of Indo-Chinese, Thai, and Nepalese cuisine. They are known for their flavorful Hakka dishes, momos (dumplings), and curries. The restaurant has a cozy and friendly atmosphere."
+    },
+    {
+        "id": 21,
+        "name": "Mary Brown’s Chicken",
+        "type": "restaurant",
+        "cuisine": "Fried Chicken, Canadian",
+        "rating": 4.5,
+        "priceRange": "$$",
+        "address": "2815 Princess St, Unit 7, Kingston, ON, K7P 2X2",
+        "phone": "(613) 389-7878",
+        "hours": "11:00 AM - 10:00 PM (Mon-Sun)",
+        "website": "https://marybrowns.com/",
+        "image": "https://img.cdn4dd.com/cdn-cgi/image/fit=cover,width=600,height=400,format=auto,quality=80/https://doordash-static.s3.amazonaws.com/media/store/header/c8d6f869-cfd4-4c25-bf43-313f0b7626a1.jpg",
+        "coordinates": {
+            "lat": 44.2590813,
+            "lng": -76.6016017
+        },
+        "verified": true,
+        "description": "Mary Brown's Chicken is a Canadian fast-food chain that is famous for its fried chicken and taters. They use fresh, Grade A chicken and have a signature recipe. The Kingston location is known for its friendly service and clean environment."
+    },
+    {
+        "id": 22,
+        "name": "Popeyes Louisiana Kitchen",
+        "type": "restaurant",
+        "cuisine": "Fried Chicken, Cajun, American",
+        "rating": 3.7,
+        "priceRange": "$$",
+        "address": "1046 Princess St, Unit C5, Kingston, ON, K7L 1H2",
+        "phone": "(613) 542-2020",
+        "hours": "10:30 a.m. - 11:00 p.m. (Mon-Sun)",
+        "website": "https://www.popeyes.com/",
+        "image": "https://img.cdn4dd.com/cdn-cgi/image/fit=cover,width=600,height=400,format=auto,quality=80/https://doordash-static.s3.amazonaws.com/media/store/header/1896b9dd-17b7-4cf3-96e5-d09602a54de5.jpg",
+        "coordinates": {
+            "lat": 44.2591895,
+            "lng": -76.6737031
+        },
+        "verified": true,
+        "description": "Popeyes Louisiana Kitchen is a global fast-food chain that specializes in New Orleans-style fried chicken. Their menu features spicy chicken, tenders, shrimp, and other regional items. The Kingston location offers both dine-in and delivery services."
+    },
+    {
+        "id": 23,
+        "name": "Meltwich Food Co",
+        "type": "restaurant",
+        "cuisine": "American, Sandwiches",
+        "rating": 4.6,
+        "priceRange": "$$",
+        "address": "495 Princess St Unit A, Kingston, ON, K7L 1C5",
+        "phone": "(613) 331-3863",
+        "hours": "11am-2am (Sun-Mon, Wed-Sat), 12pm-2am (Tue)",
+        "website": "https://meltwich.ca/",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV54BLEYZ7NNzMuoXstXZqr6D64SEBLP1JcQ&s",
+        "coordinates": {
+            "lat": 44.2328125,
+            "lng": -79.2313468
+        },
+        "verified": true,
+        "description": "Meltwich Food Co. is a restaurant that specializes in gourmet grilled cheese sandwiches. They also offer a variety of burgers, poutines, and Philly cheesesteaks. The Kingston location has a modern and inviting atmosphere."
+    }
+]
 
   const filteredSpots = halalSpots.filter((spot) => {
     const q = searchQuery.toLowerCase();

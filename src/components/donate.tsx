@@ -18,9 +18,60 @@ import {
   ExternalLink
 } from 'lucide-react';
 
-// Configurable arrays for easy management by exec members
+// Define the Star interface for TypeScript
+interface StarType {
+  id: number;
+  x: number;
+  y: number;
+  delay: number;
+  duration: number;
+}
+
+const AnimatedBackground = () => {
+  const [stars, setStars] = React.useState<StarType[]>([]);
+
+  React.useEffect(() => {
+    const starArray: StarType[] = Array.from({ length: 40 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      delay: Math.random() * 5,
+      duration: 3 + Math.random() * 4,
+    }));
+    setStars(starArray);
+  }, []);
+
+  return (
+    <div className="fixed inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-navy-900" />
+
+      {stars.map((star) => (
+        <div
+          key={star.id}
+          className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
+          style={{
+            left: `${star.x}%`,
+            top: `${star.y}%`,
+            animationDelay: `${star.delay}s`,
+            animationDuration: `${star.duration}s`,
+          }}
+        />
+      ))}
+
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 rounded-full blur-3xl animate-pulse" />
+      <div
+        className="absolute top-3/4 right-1/4 w-96 h-96 bg-gradient-to-r from-blue-600/10 to-slate-600/10 rounded-full blur-3xl animate-pulse"
+        style={{ animationDelay: '2s' }}
+      />
+      <div
+        className="absolute top-1/2 left-1/2 w-48 h-48 bg-gradient-to-r from-amber-400/15 to-yellow-400/15 rounded-full blur-3xl animate-pulse"
+        style={{ animationDelay: '4s' }}
+      />
+    </div>
+  );
+};
+
 const DONATION_CONFIG = {
-  // Fundraising goal configuration
   goal: {
     title: "Annual Operations Fund",
     target: 15000,
@@ -28,7 +79,6 @@ const DONATION_CONFIG = {
     description: "Help us reach our goal to fund all QUMSA programs for the year"
   },
   
-  // Where proceeds go - easily configurable
   proceedsAllocation: [
     {
       icon: Calendar,
@@ -56,12 +106,10 @@ const DONATION_CONFIG = {
     }
   ],
   
-  // E-transfer details
   etransfer: {
     email: "treasurer@qumsa.ca",
     message: "Please include your name and 'QUMSA Donation' in the message"
   },
-  
 };
 
 export default function ModernDonate() {
@@ -80,131 +128,127 @@ export default function ModernDonate() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 relative">
-      {/* Animated background elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 -right-20 md:-top-40 md:-right-40 w-48 h-48 md:w-96 md:h-96 bg-yellow-500/5 md:bg-yellow-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-20 -left-20 md:-bottom-40 md:-left-40 w-48 h-48 md:w-96 md:h-96 bg-green-500/5 md:bg-green-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-96 md:h-96 bg-blue-500/3 md:bg-blue-500/5 rounded-full blur-3xl animate-pulse delay-500"></div>
-      </div>
+    <div className="min-h-screen relative overflow-hidden">
+      <AnimatedBackground />
       
       <div className="relative z-10">
-        {/* Hero Section */}
         <section className="pt-24 pb-8 text-center">
           <div className="max-w-4xl mx-auto px-4">
- 
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-xl rounded-full mb-8 border border-white/20">
+              <HeartHandshake className="w-10 h-10 text-amber-400 animate-pulse" />
+            </div>
             
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent leading-tight">
-              Support <span className="bg-gradient-to-r from-yellow-400 to-green-500 bg-clip-text text-transparent">QUMSA</span>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                Support
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">
+                QUMSA
+              </span>
             </h1>
             
-            <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed px-2">
-              Your contribution builds stronger faith, friendship, and community at Queen's University. 
-              <span className="text-yellow-400 font-medium block sm:inline mt-1 sm:mt-0"> Every dollar makes a difference.</span>
+            <p className="text-xl sm:text-2xl max-w-4xl mx-auto mb-12 text-gray-300 leading-relaxed">
+              Your contribution builds stronger faith, friendship, and community at Queen's University.
+              <span className="text-amber-400 font-medium block sm:inline mt-1 sm:mt-0"> Every dollar makes a difference.</span>
             </p>
           </div>
         </section>
 
         <div className="max-w-7xl mx-auto px-4 pb-32">
-          {/* Data Disclaimer */}
-          <div className="mb-6 bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4">
-            <div className="flex items-start gap-3">
-              <AlertTriangle className="w-5 h-5 text-yellow-400 mt-0.5 flex-shrink-0" />
+          <div className="mb-6 bg-amber-500/10 border border-amber-500/30 rounded-3xl p-6 backdrop-blur-xl">
+            <div className="flex items-start gap-4">
+              <AlertTriangle className="w-6 h-6 text-amber-400 mt-0.5 flex-shrink-0" />
               <div>
-                <h3 className="text-sm font-semibold text-yellow-400 mb-1">Data Update Notice</h3>
-                <p className="text-sm text-yellow-200/80 leading-relaxed">
+                <h3 className="text-lg font-semibold text-amber-400 mb-2">Data Update Notice</h3>
+                <p className="text-gray-300 leading-relaxed">
                   The fundraising progress and statistics displayed on this page are updated periodically and may not reflect the most current QUMSA donation totals or activities.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Mobile Layout: Stack everything vertically */}
           <div className="lg:hidden space-y-6">
-            {/* Goal Progress Card */}
-            <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-4 shadow-2xl">
-              <div className="flex items-center gap-3 mb-4">
-                <Target className="w-5 h-5 text-green-400" />
-                <h2 className="text-xl font-bold text-white">{DONATION_CONFIG.goal.title}</h2>
+            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-6 hover:border-amber-400/40 transition-all duration-300">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="bg-amber-400/20 p-3 rounded-full">
+                  <Target className="w-6 h-6 text-amber-400" />
+                </div>
+                <h2 className="text-2xl font-bold text-white">{DONATION_CONFIG.goal.title}</h2>
               </div>
               
-              <div className="bg-slate-700/50 rounded-full h-3 mb-4 overflow-hidden">
+              <div className="bg-gray-800/50 rounded-full h-4 mb-6 overflow-hidden">
                 <div 
-                  className="bg-gradient-to-r from-yellow-400 to-green-500 h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden"
+                  className="bg-gradient-to-r from-amber-400 to-yellow-400 h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden"
                   style={{ width: `${Math.min(progressPercentage, 100)}%` }}
                 >
                   <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
                 </div>
               </div>
               
-              <div className="flex flex-col sm:flex-row sm:justify-between gap-2 text-sm mb-3">
-                <span className="text-slate-300">
-                  <span className="font-bold text-green-400 text-lg">${DONATION_CONFIG.goal.current.toLocaleString()}</span> raised
+              <div className="flex flex-col sm:flex-row sm:justify-between gap-2 mb-4">
+                <span className="text-gray-300">
+                  <span className="font-bold text-amber-400 text-xl">${DONATION_CONFIG.goal.current.toLocaleString()}</span> raised
                 </span>
-                <span className="text-slate-400">
-                  Goal: <span className="font-bold text-lg">${DONATION_CONFIG.goal.target.toLocaleString()}</span>
+                <span className="text-gray-400">
+                  Goal: <span className="font-bold text-xl text-white">${DONATION_CONFIG.goal.target.toLocaleString()}</span>
                 </span>
               </div>
               
-              <p className="text-slate-400 text-sm leading-relaxed">{DONATION_CONFIG.goal.description}</p>
+              <p className="text-gray-300 leading-relaxed">{DONATION_CONFIG.goal.description}</p>
             </div>
 
-            {/* E-Transfer Section */}
-            <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-4 shadow-2xl">
-              <div className="bg-gradient-to-r from-blue-500/10 to-green-500/10 border border-blue-500/20 rounded-xl p-4">
-                <div className="flex flex-col sm:flex-row sm:items-start gap-4">
-                  <div className="bg-blue-500/20 p-3 rounded-xl flex-shrink-0 self-start sm:self-auto">
-                    <HandCoins className="w-6 h-6 text-blue-400" />
+            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-6 hover:border-amber-400/40 transition-all duration-300">
+              <div className="text-center mb-6">
+                <div className="bg-amber-400/20 p-4 rounded-full inline-flex mb-4">
+                  <HandCoins className="w-8 h-8 text-amber-400" />
+                </div>
+                <h3 className="text-2xl font-semibold text-white">Quick Donate</h3>
+                <p className="text-gray-400 text-sm mt-2">Send via E-Transfer</p>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="bg-gray-800/50 rounded-xl p-4">
+                  <div className="flex items-center gap-2 mb-3 justify-center">
+                    <Mail className="w-5 h-5 text-gray-400" />
+                    <span className="text-base font-medium text-gray-300">Send to:</span>
                   </div>
-                  
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-xl font-semibold text-white mb-4 text-center sm:text-left">E-Transfer Instructions</h3>
-                    
-                    <div className="space-y-4">
-                      <div className="bg-slate-800/50 rounded-xl p-4">
-                        <div className="flex items-center gap-2 mb-3 justify-center sm:justify-start">
-                          <Mail className="w-5 h-5 text-slate-400 flex-shrink-0" />
-                          <span className="text-base font-medium text-slate-300">Send to:</span>
-                        </div>
-                        <div className="flex flex-col sm:flex-row items-center gap-3">
-                          <code className="bg-slate-700 px-4 py-3 rounded-lg text-base text-yellow-400 font-mono w-full sm:flex-1 text-center sm:text-left break-all">
-                            {DONATION_CONFIG.etransfer.email}
-                          </code>
-                          <button
-                            onClick={copyEmail}
-                            className="p-3 hover:bg-slate-600 rounded-lg transition-colors flex-shrink-0 bg-slate-700/50 w-full sm:w-auto justify-center flex items-center gap-2"
-                            aria-label="Copy email"
-                          >
-                            {emailCopied ? (
-                              <>
-                                <Check className="w-5 h-5 text-green-400" />
-                                <span className="sm:hidden text-green-400 font-medium">Copied!</span>
-                              </>
-                            ) : (
-                              <>
-                                <Copy className="w-5 h-5 text-slate-400" />
-                                <span className="sm:hidden text-slate-400 font-medium">Copy Email</span>
-                              </>
-                            )}
-                          </button>
-                        </div>
-                      </div>
-                      
-                      <div className="bg-slate-700/20 rounded-lg p-4 text-center sm:text-left">
-                        <p className="text-sm text-slate-300 leading-relaxed">
-                          {DONATION_CONFIG.etransfer.message}
-                        </p>
-                      </div>
-                    </div>
+                  <div className="space-y-3">
+                    <code className="bg-gray-800 px-4 py-3 rounded-lg text-base text-amber-400 font-mono block text-center break-all">
+                      {DONATION_CONFIG.etransfer.email}
+                    </code>
+                    <button
+                      onClick={copyEmail}
+                      className="w-full p-3 hover:bg-gray-700 rounded-lg transition-colors bg-gray-800/50 flex items-center justify-center gap-2"
+                    >
+                      {emailCopied ? (
+                        <>
+                          <Check className="w-5 h-5 text-amber-400" />
+                          <span className="text-amber-400 font-medium">Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-5 h-5 text-gray-400" />
+                          <span className="text-gray-400 font-medium">Copy Email</span>
+                        </>
+                      )}
+                    </button>
                   </div>
+                </div>
+                
+                <div className="bg-gray-800/30 rounded-lg p-4 text-center">
+                  <p className="text-sm text-gray-300 leading-relaxed">
+                    {DONATION_CONFIG.etransfer.message}
+                  </p>
                 </div>
               </div>
             </div>
 
-            {/* Where Your Donation Goes */}
-            <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-4 shadow-2xl">
-              <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-green-400" />
+            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-6 hover:border-amber-400/40 transition-all duration-300">
+              <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                <div className="bg-amber-400/20 p-2 rounded-full">
+                  <TrendingUp className="w-5 h-5 text-amber-400" />
+                </div>
                 Where Your Donation Goes
               </h3>
               
@@ -214,13 +258,13 @@ export default function ModernDonate() {
                   return (
                     <div key={index} className="group">
                       <div className="flex items-center gap-3 mb-3">
-                        <div className="bg-gradient-to-br from-yellow-400/20 to-green-500/20 p-2 rounded-lg group-hover:scale-110 transition-transform flex-shrink-0">
-                          <Icon className="w-4 h-4 text-yellow-400" />
+                        <div className="bg-amber-400/20 p-2 rounded-lg group-hover:scale-110 transition-transform flex-shrink-0">
+                          <Icon className="w-4 h-4 text-amber-400" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
                             <h4 className="font-semibold text-white text-sm">{item.title}</h4>
-                            <span className="text-xs font-bold bg-green-500/20 text-green-400 px-2 py-1 rounded-full self-start">
+                            <span className="text-xs font-bold bg-amber-400/20 text-amber-400 px-2 py-1 rounded-full self-start">
                               {item.percentage}%
                             </span>
                           </div>
@@ -228,13 +272,13 @@ export default function ModernDonate() {
                       </div>
                       
                       <div className="ml-8">
-                        <div className="bg-slate-700/30 rounded-full h-2 mb-2">
+                        <div className="bg-gray-800/50 rounded-full h-2 mb-2">
                           <div 
-                            className="bg-gradient-to-r from-yellow-400 to-green-500 h-2 rounded-full transition-all duration-1000 delay-300"
+                            className="bg-gradient-to-r from-amber-400 to-yellow-400 h-2 rounded-full transition-all duration-1000 delay-300"
                             style={{ width: `${item.percentage}%` }}
                           ></div>
                         </div>
-                        <p className="text-xs text-slate-400 leading-relaxed">{item.description}</p>
+                        <p className="text-xs text-gray-400 leading-relaxed">{item.description}</p>
                       </div>
                     </div>
                   );
@@ -243,45 +287,45 @@ export default function ModernDonate() {
             </div>
           </div>
 
-          {/* Desktop Layout: Two-column grid */}
           <div className="hidden lg:block">
             <div className="grid lg:grid-cols-3 gap-8">
-              {/* Left Column - Main Content (2/3 width) */}
               <div className="lg:col-span-2 space-y-8">
-                {/* Goal Progress Card - Full width on desktop */}
-                <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 shadow-2xl">
-                  <div className="flex items-center gap-4 mb-6">
-                    <Target className="w-8 h-8 text-green-400" />
-                    <h2 className="text-3xl font-bold text-white">{DONATION_CONFIG.goal.title}</h2>
+                <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 hover:border-amber-400/40 transition-all duration-300">
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="bg-amber-400/20 p-4 rounded-full">
+                      <Target className="w-8 h-8 text-amber-400" />
+                    </div>
+                    <h2 className="text-4xl font-bold text-white">{DONATION_CONFIG.goal.title}</h2>
                   </div>
                   
-                  <div className="bg-slate-700/50 rounded-full h-6 mb-6 overflow-hidden">
+                  <div className="bg-gray-800/50 rounded-full h-6 mb-8 overflow-hidden">
                     <div 
-                      className="bg-gradient-to-r from-yellow-400 to-green-500 h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden"
+                      className="bg-gradient-to-r from-amber-400 to-yellow-400 h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden"
                       style={{ width: `${Math.min(progressPercentage, 100)}%` }}
                     >
                       <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
                     </div>
                   </div>
                   
-                  <div className="flex justify-between items-center mb-4">
+                  <div className="flex justify-between items-center mb-6">
                     <div className="text-left">
-                      <div className="text-3xl font-bold text-green-400">${DONATION_CONFIG.goal.current.toLocaleString()}</div>
-                      <div className="text-slate-300">raised</div>
+                      <div className="text-4xl font-bold text-amber-400">${DONATION_CONFIG.goal.current.toLocaleString()}</div>
+                      <div className="text-gray-300 text-lg">raised</div>
                     </div>
                     <div className="text-right">
-                      <div className="text-xl text-slate-400">Goal:</div>
-                      <div className="text-2xl font-bold text-white">${DONATION_CONFIG.goal.target.toLocaleString()}</div>
+                      <div className="text-xl text-gray-400">Goal:</div>
+                      <div className="text-3xl font-bold text-white">${DONATION_CONFIG.goal.target.toLocaleString()}</div>
                     </div>
                   </div>
                   
-                  <p className="text-slate-400 text-lg leading-relaxed">{DONATION_CONFIG.goal.description}</p>
+                  <p className="text-gray-300 text-lg leading-relaxed">{DONATION_CONFIG.goal.description}</p>
                 </div>
 
-                {/* Where Your Donation Goes - Desktop optimized */}
-                <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 shadow-2xl">
-                  <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-                    <TrendingUp className="w-7 h-7 text-green-400" />
+                <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 hover:border-amber-400/40 transition-all duration-300">
+                  <h3 className="text-3xl font-bold text-white mb-8 flex items-center gap-4">
+                    <div className="bg-amber-400/20 p-3 rounded-full">
+                      <TrendingUp className="w-7 h-7 text-amber-400" />
+                    </div>
                     Where Your Donation Goes
                   </h3>
                   
@@ -289,15 +333,15 @@ export default function ModernDonate() {
                     {DONATION_CONFIG.proceedsAllocation.map((item, index) => {
                       const Icon = item.icon;
                       return (
-                        <div key={index} className="group bg-slate-800/30 rounded-2xl p-6 hover:bg-slate-800/50 transition-all">
+                        <div key={index} className="group bg-white/5 rounded-2xl p-6 hover:bg-white/10 transition-all border border-white/10 hover:border-amber-400/30">
                           <div className="flex items-center gap-4 mb-4">
-                            <div className="bg-gradient-to-br from-yellow-400/20 to-green-500/20 p-4 rounded-xl group-hover:scale-110 transition-transform">
-                              <Icon className="w-6 h-6 text-yellow-400" />
+                            <div className="bg-amber-400/20 p-4 rounded-xl group-hover:scale-110 transition-transform">
+                              <Icon className="w-6 h-6 text-amber-400" />
                             </div>
                             <div className="flex-1">
                               <div className="flex items-center justify-between">
                                 <h4 className="font-semibold text-white text-lg">{item.title}</h4>
-                                <span className="text-sm font-bold bg-green-500/20 text-green-400 px-3 py-1 rounded-full">
+                                <span className="text-sm font-bold bg-amber-400/20 text-amber-400 px-3 py-1 rounded-full">
                                   {item.percentage}%
                                 </span>
                               </div>
@@ -305,13 +349,13 @@ export default function ModernDonate() {
                           </div>
                           
                           <div className="mb-4">
-                            <div className="bg-slate-700/30 rounded-full h-3 mb-3">
+                            <div className="bg-gray-800/50 rounded-full h-3 mb-3">
                               <div 
-                                className="bg-gradient-to-r from-yellow-400 to-green-500 h-3 rounded-full transition-all duration-1000 delay-300"
+                                className="bg-gradient-to-r from-amber-400 to-yellow-400 h-3 rounded-full transition-all duration-1000 delay-300"
                                 style={{ width: `${item.percentage}%` }}
                               ></div>
                             </div>
-                            <p className="text-sm text-slate-400 leading-relaxed">{item.description}</p>
+                            <p className="text-sm text-gray-400 leading-relaxed">{item.description}</p>
                           </div>
                         </div>
                       );
@@ -320,54 +364,49 @@ export default function ModernDonate() {
                 </div>
               </div>
 
-              {/* Right Column - Sidebar (1/3 width) */}
               <div className="space-y-8">
-                {/* E-Transfer Section - Sticky sidebar */}
-                <div className="sticky top-8 z-10 bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-6 shadow-2xl">
-                  <div className="bg-gradient-to-r from-blue-500/10 to-green-500/10 border border-blue-500/20 rounded-2xl p-6">
-                    <div className="text-center mb-6">
-                      <div className="bg-blue-500/20 p-4 rounded-2xl inline-flex mb-4">
-                        <HandCoins className="w-8 h-8 text-blue-400" />
+                <div className="sticky top-8 z-10 bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-6 hover:border-amber-400/40 transition-all duration-300">
+                  <div className="text-center mb-6">
+                    <div className="bg-amber-400/20 p-4 rounded-full inline-flex mb-4">
+                      <HandCoins className="w-8 h-8 text-amber-400" />
+                    </div>
+                    <h3 className="text-2xl font-semibold text-white">Quick Donate</h3>
+                    <p className="text-gray-400 text-sm mt-2">Send via E-Transfer</p>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div className="bg-gray-800/50 rounded-xl p-4">
+                      <div className="flex items-center gap-2 mb-3 justify-center">
+                        <Mail className="w-5 h-5 text-gray-400" />
+                        <span className="text-base font-medium text-gray-300">Send to:</span>
                       </div>
-                      <h3 className="text-2xl font-semibold text-white">Quick Donate</h3>
-                      <p className="text-slate-400 text-sm mt-2">Send via E-Transfer</p>
+                      <div className="space-y-3">
+                        <code className="bg-gray-800 px-4 py-3 rounded-lg text-base text-amber-400 font-mono block text-center break-all">
+                          {DONATION_CONFIG.etransfer.email}
+                        </code>
+                        <button
+                          onClick={copyEmail}
+                          className="w-full p-3 hover:bg-gray-700 rounded-lg transition-colors bg-gray-800/50 flex items-center justify-center gap-2"
+                        >
+                          {emailCopied ? (
+                            <>
+                              <Check className="w-5 h-5 text-amber-400" />
+                              <span className="text-amber-400 font-medium">Copied!</span>
+                            </>
+                          ) : (
+                            <>
+                              <Copy className="w-5 h-5 text-gray-400" />
+                              <span className="text-gray-400 font-medium">Copy Email</span>
+                            </>
+                          )}
+                        </button>
+                      </div>
                     </div>
                     
-                    <div className="space-y-4">
-                      <div className="bg-slate-800/50 rounded-xl p-4">
-                        <div className="flex items-center gap-2 mb-3 justify-center">
-                          <Mail className="w-5 h-5 text-slate-400" />
-                          <span className="text-base font-medium text-slate-300">Send to:</span>
-                        </div>
-                        <div className="space-y-3">
-                          <code className="bg-slate-700 px-4 py-3 rounded-lg text-base text-yellow-400 font-mono block text-center break-all">
-                            {DONATION_CONFIG.etransfer.email}
-                          </code>
-                          <button
-                            onClick={copyEmail}
-                            className="w-full p-3 hover:bg-slate-600 rounded-lg transition-colors bg-slate-700/50 flex items-center justify-center gap-2"
-                            aria-label="Copy email"
-                          >
-                            {emailCopied ? (
-                              <>
-                                <Check className="w-5 h-5 text-green-400" />
-                                <span className="text-green-400 font-medium">Copied!</span>
-                              </>
-                            ) : (
-                              <>
-                                <Copy className="w-5 h-5 text-slate-400" />
-                                <span className="text-slate-400 font-medium">Copy Email</span>
-                              </>
-                            )}
-                          </button>
-                        </div>
-                      </div>
-                      
-                      <div className="bg-slate-700/20 rounded-lg p-4 text-center">
-                        <p className="text-sm text-slate-300 leading-relaxed">
-                          {DONATION_CONFIG.etransfer.message}
-                        </p>
-                      </div>
+                    <div className="bg-gray-800/30 rounded-lg p-4 text-center">
+                      <p className="text-sm text-gray-300 leading-relaxed">
+                        {DONATION_CONFIG.etransfer.message}
+                      </p>
                     </div>
                   </div>
                 </div>
