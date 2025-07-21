@@ -2,17 +2,12 @@
 
 import React, { useState, useEffect } from 'react'
 import {
-  ChevronDown,
   ExternalLink,
-  ArrowRight,
   Star,
   Search,
   Sparkles,
-  Moon,
-  Sun,
   Calendar,
   HeartHandshake,
-  UserPlus,
   AlertTriangle,
   MessageSquareText,
   Mic,
@@ -29,7 +24,7 @@ import {
   Gavel,
   CircleEqual,
   Heart,
-  HelpCircle,
+  Pin,
 } from 'lucide-react'
 
 interface Resource {
@@ -66,7 +61,7 @@ const AnimatedBackground = () => {
       {stars.map((star) => (
         <div
           key={star.id}
-          className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
+          className="absolute w-1 h-1 bg-white rounded-full"
           style={{
             left: `${star.x}%`,
             top: `${star.y}%`,
@@ -76,13 +71,13 @@ const AnimatedBackground = () => {
         />
       ))}
 
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-amber-500/10 to-yellow-500/10 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-amber-500/10 to-yellow-500/10 rounded-full blur-3xl " />
       <div
-        className="absolute top-3/4 right-1/4 w-96 h-96 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 rounded-full blur-3xl animate-pulse"
+        className="absolute top-3/4 right-1/4 w-96 h-96 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 rounded-full blur-3xl "
         style={{ animationDelay: '2s' }}
       />
       <div
-        className="absolute top-1/2 left-1/2 w-48 h-48 bg-gradient-to-r from-amber-400/15 to-yellow-400/15 rounded-full blur-3xl animate-pulse"
+        className="absolute top-1/2 left-1/2 w-48 h-48 bg-gradient-to-r from-amber-400/15 to-yellow-400/15 rounded-full blur-3xl"
         style={{ animationDelay: '4s' }}
       />
     </div>
@@ -241,7 +236,7 @@ const ResourcePanel: React.FC = () => {
         <section className="pt-24 pb-20 relative text-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-amber-500/20 backdrop-blur-xl rounded-full mb-8 border border-amber-400/30">
-              <Sparkles className="w-10 h-10 text-amber-400 animate-pulse" />
+              <Sparkles className="w-10 h-10 text-amber-400 " />
             </div>
             
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
@@ -318,7 +313,7 @@ const ResourcePanel: React.FC = () => {
                     >
                       {item.featured && (
                         <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-amber-400 to-yellow-400 rounded-full flex items-center justify-center">
-                          <Star className="w-4 h-4 text-white" />
+                          <Pin className="w-4 h-4 text-white" />
                         </div>
                       )}
                       
@@ -362,7 +357,7 @@ const ResourcePanel: React.FC = () => {
               <div className="text-center mb-16">
                 <div className="inline-flex items-center space-x-3 mb-6">
                   <div className="p-4 bg-amber-400/20 rounded-full">
-                    <Star className="w-8 h-8 text-amber-400 animate-pulse" />
+                    <Pin className="w-8 h-8 text-amber-400 " />
                   </div>
                   <span className="text-2xl font-bold text-amber-400">Featured Resources</span>
                 </div>
@@ -444,8 +439,8 @@ const ResourcePanel: React.FC = () => {
                         onMouseLeave={() => setHoveredCard(null)}
                       >
                         {item.featured && (
-                            <div className="absolute -top-3 -right-3 w-10 h-10 bg-gradient-to-r from-amber-400 to-yellow-400 rounded-full flex items-center justify-center animate-pulse">
-                          <Star className="w-5 h-5 text-white" />
+                            <div className="absolute -top-3 -right-3 w-10 h-10 bg-gradient-to-r from-amber-400 to-yellow-400 rounded-full flex items-center justify-center ">
+                          <Pin className="w-5 h-5 text-white" />
                         </div>
                         )}
                         
