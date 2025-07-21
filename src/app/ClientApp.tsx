@@ -1,9 +1,9 @@
 'use client'
 
 import { useState, useEffect, ReactNode } from 'react'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import Preloader from '../components/Preloader'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import Preloader from '@/components/Preloader'
 import Script from 'next/script'
 
 export default function ClientApp({ children }: { children: ReactNode }) {
@@ -62,7 +62,7 @@ export default function ClientApp({ children }: { children: ReactNode }) {
           "contactPoint": {
             "@type": "ContactPoint",
             "contactType": "General Inquiry",
-            "email": "info@qumsa.ca"
+            "email": "qumsachair@gmail.com"
           },
           "sameAs": [
             "https://www.facebook.com/QUMSA",

@@ -3,9 +3,65 @@ import { UsersRound, Users, Sparkles } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Executive Team – QUMSA',
-  description:
-    'Meet the passionate volunteers who lead Queen\'s University Muslim Students Association.',
+  title: 'Executive Team - QUMSA | Queen\'s University Muslim Students Association',
+  description: 'Meet the passionate volunteers who lead Queen\'s University Muslim Students Association. Dedicated students driving faith, friendship, and community at Queen\'s University.',
+  keywords: [
+    'QUMSA executive team',
+    'Queen\'s Muslim student leaders',
+    'QUMSA board members',
+    'Muslim student association executives',
+    'Queen\'s Islamic leadership',
+    'QUMSA volunteers',
+    'Muslim community leaders Kingston',
+    'Queen\'s student government',
+    'Islamic student leadership',
+    'QUMSA president',
+    'Muslim student representatives',
+    'Queen\'s Islamic community leaders',
+    'QUMSA committee members',
+    'Muslim student council'
+  ],
+  authors: [{ name: 'QUMSA' }],
+  creator: 'Queen\'s University Muslim Students Association',
+  publisher: 'QUMSA',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    title: 'Executive Team - QUMSA | Queen\'s University Muslim Students Association',
+    description: 'Meet the passionate volunteers who lead Queen\'s University Muslim Students Association. Dedicated students driving faith, friendship, and community.',
+    url: 'https://qumsa.ca/team',
+    siteName: 'QUMSA',
+    images: [
+      {
+        url: '/images/QUMSA_LOGO.png',
+        width: 1200,
+        height: 630,
+        alt: 'QUMSA Executive Team - Queen\'s University Muslim Students Association',
+      },
+    ],
+    locale: 'en_CA',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Executive Team - QUMSA | Queen\'s University Muslim Students Association',
+    description: 'Meet the passionate volunteers who lead Queen\'s University Muslim Students Association.',
+    images: ['/images/QUMSA_LOGO.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 }
 
 export default function TeamPage() {
