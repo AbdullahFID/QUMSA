@@ -494,7 +494,7 @@ export default function Events() {
               <div className="inline-flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
                 <Star className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400" />
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white">
-                  Featured Upcoming Events
+                  Special Upcoming Events
                 </h2>
                 <Star className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400" />
               </div>
