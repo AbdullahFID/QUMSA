@@ -275,7 +275,7 @@ export default function Homepage() {
       </section>
 
       {/* ───────────── RESOURCES ───────────── */}
-      <section className="py-20 sm:py-24 px-4 sm:px-6 bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-800">
+      <section className="py-20 sm:py-24 px-4 sm:px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-navy-900">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -284,10 +284,10 @@ export default function Homepage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-slate-800 to-slate-600 dark:from-slate-200 dark:to-slate-400 bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white">
               Campus Resources
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               Everything you need to thrive as a Muslim student at Queen's University
             </p>
           </motion.div>

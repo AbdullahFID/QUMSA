@@ -20,7 +20,7 @@ export default function ResourceTile({
   return (
     <Link
       href={href}
-      className="group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+      className="group relative overflow-hidden rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
     >
       <div
         className={`absolute inset-0 bg-gradient-to-br ${color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
@@ -32,11 +32,11 @@ export default function ResourceTile({
           <Icon className="w-8 h-8 text-white" />
         </div>
 
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-islamic-gold transition-colors">
+<h3 className="text-xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors">
           {title}
         </h3>
 
-        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{description}</p>
+<p className="text-gray-200 leading-relaxed">{description}</p>
       </div>
 
       <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-islamic-gold to-islamic-emerald transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />

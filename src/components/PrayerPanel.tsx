@@ -123,12 +123,12 @@ export default function PrayerPanel() {
             </aside>
 
             {/* Prayer Resources */}
-            <aside className="bg-white rounded-3xl p-4 sm:p-6 shadow border border-slate-100">
+            <aside className="bg-gradient-to-br from-blue-900 to-slate-800 rounded-3xl p-4 sm:p-6 text-white shadow-lg">
               <div className="flex items-center space-x-3 mb-4">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-amber-500 to-amber-600 rounded-xl flex items-center justify-center">
                   <BrainCog className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                 </div>
-                <h3 className="text-base sm:text-lg font-bold text-slate-900">Prayer Resources</h3>
+                <h3 className="text-base sm:text-lg font-bold text-white text-slate-900">Prayer Resources</h3>
               </div>
               <div className="space-y-3">
                 {[
