@@ -370,33 +370,31 @@ export default function HomePage() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            {[
-              { Icon: UsersRound, count: '500+', label: 'Active Members', delay: 0.1 },
-              { Icon: Calendar1, count: '30+', label: 'Events Annually', delay: 0.2 },
-              { Icon: Medal, count: '65+', label: 'Years of Service', delay: 0.3 },
-            ].map(({ Icon, count, label, delay }) => (
-              <motion.div
-                key={label}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay, duration: 0.6 }}
-                viewport={{ once: true }}
-                className="group relative p-8 rounded-2xl border border-gray-700/30 backdrop-blur-md bg-white/5 transition-all duration-300 md:hover:scale-105 md:hover:bg-white/10 md:hover:border-amber-400/40"
-              >
-                {/* Glowing circular accent */}
-                <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full bg-gradient-to-r from-amber-400/15 to-yellow-400/15 opacity-0 blur-xl group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute top-2 right-2 w-8 h-8 rounded-full bg-gradient-to-r from-amber-400/40 to-yellow-400/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                
-                <Icon className="mx-auto h-14 w-14 mb-6 md:group-hover:scale-110 md:group-hover:text-amber-400 transition-all duration-300 text-gray-300" />
-                <p className="text-5xl sm:text-6xl font-bold mb-3 text-white group-hover:text-amber-100 transition-colors duration-300">
-                  {count}
-                </p>
-                <p className="text-lg font-medium text-gray-400 group-hover:text-gray-300 transition-colors duration-300">{label}</p>
+           {[
+            { Icon: UsersRound, count: '500+', label: 'Active Members', delay: 0.1 },
+            { Icon: Calendar1, count: '30+', label: 'Events Annually', delay: 0.2 },
+            { Icon: Medal, count: '65+', label: 'Years of Service', delay: 0.3 },
+          ].map(({ Icon, count, label, delay }) => (
+            <motion.div
+              key={label}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="group relative p-8 rounded-2xl border border-gray-300 dark:border-gray-700/30 bg-gradient-to-b from-navy-800 to-navy-900 dark:bg-white/5 transition-all duration-300 md:hover:scale-105 md:hover:border-yellow-400 dark:md:hover:bg-white/10"
+            >
+              <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full bg-yellow-400/15 opacity-0 blur-xl group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute top-2 right-2 w-8 h-8 rounded-full bg-yellow-400/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
+              <Icon className="mx-auto h-14 w-14 mb-6 text-white dark:text-gray-300 md:group-hover:scale-110 md:group-hover:text-yellow-400 transition-all duration-300" />
+              <p className="text-5xl sm:text-6xl font-bold mb-3 text-white dark:text-white group-hover:text-yellow-400 transition-colors duration-300">
+                {count}
+              </p>
+              <p className="text-lg font-medium text-gray-300 dark:text-gray-400 group-hover:text-white dark:group-hover:text-gray-300 transition-colors duration-300">{label}</p>
 
-                {/* Translucent bottom accent */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 rounded-b-2xl bg-gradient-to-r from-amber-400 to-yellow-500 opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
-              </motion.div>
-            ))}
+              <div className="absolute bottom-0 left-0 right-0 h-1 rounded-b-2xl bg-yellow-400 opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+            </motion.div>
+          ))}
           </div>
         </div>
       </section>
