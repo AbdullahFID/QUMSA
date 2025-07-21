@@ -232,12 +232,12 @@ export default function PrayerTime() {
         {/* Location */}
         <div className="flex items-center justify-center space-x-2 text-slate-600 dark:text-slate-400 mb-4 sm:mb-6">
           <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
-          <span className="text-xs sm:text-sm">Kingston, ON</span>
+          <span className="text-xs sm:text-sm text-white">Kingston, ON</span>
           {prayerData?.date && (
             <>
               <span className="text-slate-400 hidden xs:inline">•</span>
               <CalendarDays className="w-3 h-3 sm:w-4 sm:h-4 hidden xs:inline" />
-              <span className="text-xs sm:text-sm hidden xs:inline">{prayerData.date.readable}</span>
+              <span className="text-xs sm:text-sm hidden xs:inline text-white">{prayerData.date.readable}</span>
             </>
           )}
         </div>
