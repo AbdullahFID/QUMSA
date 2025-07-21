@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import Homepage from '@/components/HomePage'
 
 export const metadata: Metadata = {
-  title: 'QUMSA | Queen\'s University Muslim Students Association - Building Faith, Friendship & Community',
+  title: 'QUMSA | Queen\'s University Muslim Students Association - Home Page',
   description: 'Join Queen\'s University Muslim Students Association (QUMSA) - building faith, friendship, and community at Queen\'s University. Prayer times, halal food, events, and Islamic resources for Muslim students in Kingston, Ontario.',
   keywords: [
     'QUMSA',
