@@ -91,7 +91,7 @@ const sampleEvents: Event[] = [
     description: 'Join us for a community iftar dinner with traditional foods and fellowship.',
     type: 'social',
     recurring: 'none',
-    color: 'white',
+    color: 'gold',
     attendees: 80,
     organizer: 'Sister Fatima Ali'
   },
