@@ -97,7 +97,7 @@ export default function PrayerTime() {
       setLoading(true)
       setError(null)
 
-      // Hit our edge‑cached API route (24 h TTL)
+      // Hit our edge‑cached API route (24 h TTL)
       const response = await fetch('/api/prayer-times')
       if (!response.ok) throw new Error('Failed to fetch prayer times')
 
@@ -147,7 +147,7 @@ export default function PrayerTime() {
       }
     }
 
-    // If all prayers passed, next is tomorrow’s Fajr
+    // If all prayers passed, next is tomorrow's Fajr
     return prayers[0]
   }
 
@@ -218,7 +218,7 @@ export default function PrayerTime() {
       {/* Current Time & Next Prayer Header */}
       <div className="text-center">
         {/* Current Time */}
-        <div className="inline-flex items-center space-x-2 sm:space-x-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full mb-3 sm:mb-4 shadow-lg">
+        <div className="inline-flex items-center space-x-2 sm:space-x-3 bg-gradient-to-r from-amber-600 to-yellow-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full mb-3 sm:mb-4 shadow-lg">
           <ClockAlert className="w-4 h-4 sm:w-5 sm:h-5" />
           <span className="text-base sm:text-lg font-semibold">
             {currentTime.toLocaleTimeString('en-US', { 
@@ -252,9 +252,9 @@ export default function PrayerTime() {
 
         {/* Next Prayer Countdown */}
         {nextPrayer && (
-          <div className="bg-gradient-to-r from-slate-50 to-emerald-50 dark:from-slate-800 dark:to-emerald-900 border border-emerald-200 dark:border-emerald-700 rounded-2xl p-4 sm:p-6 max-w-sm mx-auto shadow-sm">
+          <div className="bg-gradient-to-br from-slate-50 to-amber-50 dark:from-slate-800 dark:to-amber-900 border border-amber-200 dark:border-amber-700 rounded-2xl p-4 sm:p-6 max-w-sm mx-auto shadow-sm">
             <div className="flex items-center justify-center space-x-2 mb-2 sm:mb-3">
-              <Bell className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600" />
+              <Bell className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600" />
               <span className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">Next Prayer</span>
             </div>
             
@@ -262,7 +262,7 @@ export default function PrayerTime() {
               <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
                 {nextPrayer.name} - {formatTime(nextPrayer.time)}
               </h3>
-              <p className="text-emerald-600 dark:text-emerald-400 font-medium text-sm sm:text-base">
+              <p className="text-amber-600 dark:text-amber-400 font-medium text-sm sm:text-base">
                 in {getTimeUntilNext()}
               </p>
             </div>
@@ -273,8 +273,8 @@ export default function PrayerTime() {
       {/* Hijri Date */}
       {prayerData?.date?.hijri && (
         <div className="text-center">
-          <div className="inline-flex items-center space-x-2 bg-slate-100 dark:bg-slate-800 px-3 py-2 sm:px-4 sm:py-2 rounded-full">
-            <span className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-slate-800 to-blue-900 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-full">
+            <span className="text-xs sm:text-sm">
               {prayerData.date.hijri.date} {prayerData.date.hijri.month.en} {prayerData.date.hijri.year} AH
             </span>
           </div>
@@ -296,10 +296,10 @@ export default function PrayerTime() {
               key={prayerName}
               className={`relative overflow-hidden rounded-xl sm:rounded-2xl p-4 sm:p-6 transition-all duration-300 hover:scale-105 ${
                 isNext 
-                  ? 'bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-xl ring-2 ring-emerald-400' 
+                  ? 'bg-gradient-to-br from-amber-500 to-yellow-600 text-white shadow-xl ring-2 ring-amber-400' 
                   : isMainPrayer
-                  ? 'bg-white dark:bg-slate-800 hover:shadow-xl border border-slate-200 dark:border-slate-700'
-                  : 'bg-slate-50 dark:bg-slate-800/50 hover:shadow-md border border-slate-200 dark:border-slate-700'
+                  ? 'bg-gradient-to-br from-slate-800 to-blue-900 text-white hover:shadow-xl border border-slate-600'
+                  : 'bg-gradient-to-br from-slate-700 to-slate-800 text-white hover:shadow-md border border-slate-600'
               }`}
             >
               {/* Prayer Icon */}
@@ -323,31 +323,25 @@ export default function PrayerTime() {
               {/* Prayer Info */}
               <div className="space-y-1 sm:space-y-2">
                 <div className="flex items-center justify-between">
-                  <h3 className={`text-base sm:text-lg font-bold ${
-                    isNext ? 'text-white' : 'text-slate-900 dark:text-white'
-                  }`}>
+                  <h3 className="text-base sm:text-lg font-bold text-white">
                     {prayerName}
                   </h3>
                   {!isMainPrayer && (
                     <span className={`text-xs px-2 py-1 rounded-full ${
                       isNext 
                         ? 'bg-white/20 text-white' 
-                        : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-400'
+                        : 'bg-white/20 text-white'
                     }`}>
                       Info
                     </span>
                   )}
                 </div>
                 
-                <p className={`text-xs sm:text-sm ${
-                  isNext ? 'text-white/70' : 'text-slate-500 dark:text-slate-400'
-                }`}>
+                <p className="text-xs sm:text-sm text-white/70">
                   {config.arabic}
                 </p>
                 
-                <p className={`text-xl sm:text-2xl font-bold font-mono ${
-                  isNext ? 'text-white' : 'text-slate-900 dark:text-white'
-                }`}>
+                <p className="text-xl sm:text-2xl font-bold font-mono text-white">
                   {formatTime(prayerData.timings[prayerName])}
                 </p>
               </div>
@@ -357,13 +351,13 @@ export default function PrayerTime() {
       </div>
 
       {/* Qibla Direction */}
-      <div className="bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-800 dark:to-blue-900 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center">
+      <div className="bg-gradient-to-r from-slate-800 to-blue-900 text-white rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center border border-slate-600">
         <div className="flex items-center justify-center space-x-2 mb-2 sm:mb-3">
-          <Navigation className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
-          <span className="font-semibold text-slate-900 dark:text-white text-sm sm:text-base">Qibla Direction</span>
+          <Navigation className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400" />
+          <span className="font-semibold text-white text-sm sm:text-base">Qibla Direction</span>
         </div>
-        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
-          From Kingston, ON: <span className="font-semibold">58° NE</span>
+        <p className="text-xs sm:text-sm text-slate-300">
+          From Kingston, ON: <span className="font-semibold text-amber-400">58° NE</span>
         </p>
       </div>
     </div>
