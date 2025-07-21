@@ -88,7 +88,7 @@ const HalalFoodMap = () => {
         "cuisine": "American/Canadian casual",
         "rating": 4.1,
         "priceRange": "$$",
-        "address": " 2511 Princess St, Kingston, ON K7M 7N2",
+        "address": "2511 Princess St, Kingston, ON K7M 7N2",
         "phone": "(613) 634-0444",
         "hours": "11:00 A.M - 3:00 A.M (Varies)",
         "website": "https://dingalings.ca/",
@@ -100,6 +100,44 @@ const HalalFoodMap = () => {
         "verified": true,
         "description": "Dingaling’s Chicken Wings serves fresh, homestyle battered wings in a wide variety of bold sauces—from sweet to fiery. Perfect for casual dining, group meals, or take-out, our menu includes sandwiches, nachos, and classic sides like mac-and-cheese bites and jalapeño poppers. Great for any group size or occasion, with friendly service and a cozy atmosphere."
       },
+      {
+        "id": 4,
+        "name": "Kebab44",
+        "type": "restaurant",
+        "cuisine": "Mediterranean / Middle‑Eastern grill",
+        "rating": 4.8,
+        "priceRange": "$$",
+        "address": "1117 Midland Ave Unit 2, Kingston, ON K7P 2X8",
+        "phone": "(613) 384-8222",
+        "hours": "11:00 A.M - 10:00 P.M",
+        "website": "https://kebab44.ca/",
+        "image": "https://kebab44.ca/cdn/shop/files/WhatsApp_Image_2024-07-11_at_1.54.42_AM.jpg?v=1720645301&width=600",
+        "coordinates": {
+          "lat": 44.2640654,
+          "lng": -76.5777643,
+        },
+        "verified": true,
+        "description": "Kebab44 brings a bold taste of the Mediterranean to Kingston with freshly grilled kebabs, shawarma, and vibrant sides. Inspired by authentic recipes and rich spices, our menu is packed with flavour—from savoury wraps and rice plates to crispy falafel and creamy hummus. Whether you're dining in, grabbing take-out, or feeding a group, Kebab44 offers warm hospitality, generous portions, and a cozy, welcoming atmosphere—perfect for any occasion."
+      },
+      // {
+      //   "id": 5,
+      //   "name": "Manoosheh",
+      //   "type": "restaurant",
+      //   "cuisine": "Mediterranean / Middle‑Eastern grill",
+      //   "rating": 4.8,
+      //   "priceRange": "$$",
+      //   "address": "1117 Midland Ave Unit 2, Kingston, ON K7P 2X8",
+      //   "phone": "(613) 384-8222",
+      //   "hours": "11:00 A.M - 10:00 P.M",
+      //   "website": "https://kebab44.ca/",
+      //   "image": "https://kebab44.ca/cdn/shop/files/WhatsApp_Image_2024-07-11_at_1.54.42_AM.jpg?v=1720645301&width=600",
+      //   "coordinates": {
+      //     "lat": 44.2640654,
+      //     "lng": -76.5777643,
+      //   },
+      //   "verified": true,
+      //   "description": "Kebab44 brings a bold taste of the Mediterranean to Kingston with freshly grilled kebabs, shawarma, and vibrant sides. Inspired by authentic recipes and rich spices, our menu is packed with flavour—from savoury wraps and rice plates to crispy falafel and creamy hummus. Whether you're dining in, grabbing take-out, or feeding a group, Kebab44 offers warm hospitality, generous portions, and a cozy, welcoming atmosphere—perfect for any occasion."
+      // },
   ];
 
   const filteredSpots = halalSpots.filter((spot) => {
