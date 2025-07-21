@@ -62,6 +62,25 @@ const HalalFoodMap = () => {
         "verified": true,
         "description": "Limestone Kabob House - a fusion restaurant in the heart of Kingston, Ontario. Enjoy a nice dinner with your family, friends. Contemporary style seating , beautiful tapestry and authentic homemade food creates a relaxing atmosphere."
       },
+      {
+        "id": 2,
+        "name": "Shawarma Damascus Kingston",
+        "type": "restaurant",
+        "cuisine": "Syrian, and Lebanese",
+        "rating": 4.7,
+        "priceRange": "$",
+        "address": "101 Dalton Ave B8, Kingston, ON K7K 0C4",
+        "phone": "(613) 541-1222",
+        "hours": "11:00 A.M - 8:00 P.M (9:00 P.M Friday)",
+        "website": "https://shawarmadamascuskingston.ca/",
+        "image": "https://shawarmadamascuskingston.ca/wp-content/uploads/2023/09/shawarmadamascuskingston-mix-chicken-or-beef-family.webp",
+        "coordinates": {
+          "lat": 44.2684492,
+          "lng": -76.5036196,
+        },
+        "verified": true,
+        "description": "Authentic Syrian and Lebanese Cuisine - Our catering services offers Syrian and Lebanese authentic cuisines are perfect for any size, any style, and are customized to your budget."
+      },
   ];
 
   const filteredSpots = halalSpots.filter((spot) => {
