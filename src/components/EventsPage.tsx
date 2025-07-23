@@ -17,6 +17,7 @@ import {
   Heart,
   Trophy,
   Mountain,
+  Clock6,
   Flame,
   X
 } from 'lucide-react'
@@ -25,6 +26,7 @@ import EventCard, { EventCategory } from '@/components/EventCard'
 import EventsCalendar from '@/components/Calendar'
 import Image from 'next/image'
 
+// 🎉 FIXED: Added url? property to Event interface
 interface Event {
   date: string
   title: string
@@ -34,6 +36,7 @@ interface Event {
   attendees: number
   category: EventCategory
   featured: boolean
+  url?: string  // 🎉 ADD THIS LINE - makes URL optional
 }
 
 interface AnnualEvent {
@@ -60,6 +63,7 @@ const upcomingEvents: Event[] = [
     attendees: 150,
     category: 'Social',
     featured: true,
+    url: 'https://forms.gle/example123',  // ✅ Now TypeScript accepts this!
   },
   {
     date: 'Sep 13 2025',
@@ -70,6 +74,7 @@ const upcomingEvents: Event[] = [
     attendees: 200,
     category: 'Religious',
     featured: false,
+    // ✅ No url property = button stays as placeholder
   },
   {
     date: 'Oct 7‑11 2025',
@@ -80,6 +85,7 @@ const upcomingEvents: Event[] = [
     attendees: 500,
     category: 'Educational',
     featured: true,
+    url: 'https://qumsa.ca/islam-awareness-week',  // ✅ Another example URL
   },
 ]
 

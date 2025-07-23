@@ -20,6 +20,7 @@ export interface EventCardProps {
   attendees?: number
   category?: EventCategory
   featured?: boolean
+  url?: string  // 🎉 NEW: Add URL prop
 }
 
 export default function EventCard({
@@ -31,6 +32,7 @@ export default function EventCard({
   attendees = 45,
   category = 'Social',
   featured = true,
+  url,  // 🎉 NEW: Destructure URL prop
 }: EventCardProps) {
   const bgChip: Record<EventCategory, string> = {
     Social: 'bg-amber-400/10 border-amber-400/20',
@@ -38,6 +40,12 @@ export default function EventCard({
     Educational: 'bg-amber-400/10 border-amber-400/20',
     General: 'bg-gray-500/10 border-gray-500/20',
   }
+
+  // 🎉 NEW: Create button element based on whether URL exists
+  const ButtonElement = url ? 'a' : 'button'
+  const buttonProps = url 
+    ? { href: url, target: '_blank', rel: 'noopener noreferrer' }
+    : { type: 'button' as const }
 
   return (
     <div className="min-h-screen p-8 flex items-center justify-center">
@@ -116,10 +124,14 @@ export default function EventCard({
             )}
           </div>
 
-          <button className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-300 hover:to-yellow-400 text-slate-900 font-semibold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
+          {/* 🎉 UPDATED: Dynamic button/link element */}
+          <ButtonElement 
+            {...buttonProps}
+            className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-300 hover:to-yellow-400 text-slate-900 font-semibold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+          >
             <span className="text-lg">Learn&nbsp;More</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-          </button>
+          </ButtonElement>
         </div>
 
         <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-400 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />

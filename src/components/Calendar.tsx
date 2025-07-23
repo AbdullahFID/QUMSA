@@ -17,7 +17,6 @@ import {
   Coffee,
   Heart,
   Sun,
-  Moon
 } from 'lucide-react';
 
 interface Event {
@@ -122,7 +121,7 @@ const sampleEvents: Event[] = [
     color: 'lightGold',
     attendees: 50,
     organizer: 'QUMSA Volunteers'
-  }
+  },
 ];
 
 const eventTypeIcons: Record<EventType, React.ComponentType<any>> = {
