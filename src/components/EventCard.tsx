@@ -9,7 +9,7 @@ import {
   ArrowRight,
 } from 'lucide-react'
 
-export type EventCategory = 'Social' | 'Religious' | 'Educational' | 'General'
+export type EventCategory = 'Social' | 'Religious' | 'Educational' | 'General' | 'Academic'
 
 export interface EventCardProps {
   date: string
@@ -39,6 +39,7 @@ export default function EventCard({
     Religious: 'bg-amber-400/10 border-amber-400/20',
     Educational: 'bg-amber-400/10 border-amber-400/20',
     General: 'bg-gray-500/10 border-gray-500/20',
+    Academic: 'bg-indigo-400/10 border-indigo-400/20'
   }
 
   // 🎉 NEW: Create button element based on whether URL exists
