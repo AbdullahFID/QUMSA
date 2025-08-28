@@ -51,78 +51,216 @@ interface ColorConfig {
   border: string;
 }
 
-const sampleEvents: Event[] = [
+// ✅ Single source of truth for everything you want visible on the calendar
+const allEvents: Event[] = [
+  // —— One-off events ——
   {
-    id: 1,
-    title: 'Jummah Prayer',
-    date: '2025-07-25',
-    time: '12:30 PM',
-    endTime: '1:15 PM',
-    location: 'JDUC Pub',
-    description: 'Join us for congregational Friday prayers at the John Deutsch University Centre Pub',
-    type: 'prayer',
-    recurring: 'weekly',
-    color: 'gold',
-    attendees: 45,
-    organizer: 'QUMSA Executive'
-  },
-  {
-    id: 2,
-    title: 'Halaqa Study Circle',
-    date: '2025-07-27',
-    time: '7:00 PM',
-    endTime: '8:30 PM',
-    location: 'JDUC Room 201',
-    description: 'Weekly Islamic study circle focusing on Quranic verses and Hadith discussions. All levels welcome!',
-    type: 'education',
-    recurring: 'weekly',
-    color: 'lightGold',
-    attendees: 25,
-    organizer: 'Br. Ahmed Hassan'
-  },
-  {
-    id: 3,
-    title: 'Community Iftar',
-    date: '2025-07-28',
-    time: '6:30 PM',
+    id: 101,
+    title: 'Tricolour Open House',
+    date: '2025-09-03',
+    time: '4:00 PM',
     endTime: '8:00 PM',
-    location: 'Community Center',
-    description: 'Join us for a community iftar dinner with traditional foods and fellowship.',
+    location: "Queen's Campus",
+    description: 'Explore student clubs & services — visit the QUMSA table.',
+    type: 'community',
+    recurring: 'none',
+    color: 'gold',
+    attendees: 0,
+    organizer: 'QUMSA'
+  },
+  {
+    id: 102,
+    title: 'Health Sciences Expo',
+    date: '2025-09-06',
+    time: '11:45 AM',
+    endTime: '12:45 PM',
+    location: "Queen's Campus",
+    description: 'Health Sci resources & networking.',
+    type: 'education',
+    recurring: 'none',
+    color: 'lightGold',
+    attendees: 0,
+    organizer: 'QUMSA'
+  },
+  {
+    id: 103,
+    title: 'Queens in the Park',
+    date: '2025-09-07',
+    time: '4:20 PM',
+    endTime: '7:30 PM',
+    location: 'City Park',
+    description: 'Community hangout in the park — meet & mingle.',
     type: 'social',
     recurring: 'none',
     color: 'gold',
-    attendees: 80,
-    organizer: 'Sister Fatima Ali'
+    attendees: 0,
+    organizer: 'QUMSA'
   },
   {
-    id: 4,
-    title: 'Islamic Finance Workshop',
-    date: '2025-07-30',
-    time: '2:00 PM',
-    endTime: '4:00 PM',
-    location: 'Business Building Room 305',
-    description: 'Learn about Islamic banking principles and halal investment strategies.',
-    type: 'workshop',
-    recurring: 'monthly',
+    id: 104,
+    title: '1st Year Brothers Game Night',
+    date: '2025-09-13',
+    time: '6:00 PM',        // placeholder time
+    endTime: '8:00 PM',     // placeholder time
+    location: 'TBA',
+    description: 'TBA – check WhatsApp for details.',
+    type: 'social',
+    recurring: 'none',
     color: 'gold',
-    attendees: 35,
-    organizer: 'Dr. Muhammad Khan'
+    attendees: 0,
+    organizer: 'QUMSA Brothers'
   },
   {
-    id: 5,
-    title: 'Community Service Day',
-    date: '2025-08-02',
-    time: '9:00 AM',
-    endTime: '3:00 PM',
-    location: 'Downtown Kingston',
-    description: 'Join us for a day of community service helping local organizations.',
+    id: 105,
+    title: 'Sisters Fall Social',
+    date: '2025-09-13',
+    time: '12:00 PM',
+    endTime: '1:30 PM',
+    location: 'TBA',
+    description: 'Meet sisters, make friends, enjoy a cozy afternoon.',
+    type: 'social',
+    recurring: 'none',
+    color: 'gold',
+    attendees: 0,
+    organizer: 'QUMSA Sisters'
+  },
+  {
+    id: 106,
+    title: 'BBQ @ City Park',
+    date: '2025-09-21',
+    time: '12:00 PM',       // placeholder time
+    endTime: '1:00 PM',     // placeholder time
+    location: 'City Park',
+    description: 'TBA – check WhatsApp for details.',
     type: 'community',
-    recurring: 'monthly',
+    recurring: 'none',
+    color: 'gold',
+    attendees: 0,
+    organizer: 'QUMSA'
+  },
+
+  // —— Weekly Fridays (Jummah 13:30; Halaqa 17:00–19:00) ——
+  // Fri Sep 5
+  {
+    id: 201,
+    title: 'Jummah Prayer',
+    date: '2025-09-05',
+    time: '1:30 PM',
+    endTime: '2:15 PM',
+    location: 'On Campus',
+    description: 'Weekly Friday prayer.',
+    type: 'prayer',
+    recurring: 'weekly',
+    color: 'gold',
+    attendees: 0,
+    organizer: 'QUMSA'
+  },
+  {
+    id: 202,
+    title: 'Halaqa Study Circle',
+    date: '2025-09-05',
+    time: '5:00 PM',
+    endTime: '7:00 PM',
+    location: 'On Campus',
+    description: 'Weekly study circle.',
+    type: 'education',
+    recurring: 'weekly',
     color: 'lightGold',
-    attendees: 50,
-    organizer: 'QUMSA Volunteers'
+    attendees: 0,
+    organizer: 'QUMSA'
+  },
+
+  // Fri Sep 12
+  {
+    id: 203,
+    title: 'Jummah Prayer',
+    date: '2025-09-12',
+    time: '1:30 PM',
+    endTime: '2:15 PM',
+    location: 'On Campus',
+    description: 'Weekly Friday prayer.',
+    type: 'prayer',
+    recurring: 'weekly',
+    color: 'gold',
+    attendees: 0,
+    organizer: 'QUMSA'
+  },
+  {
+    id: 204,
+    title: 'Halaqa Study Circle',
+    date: '2025-09-12',
+    time: '5:00 PM',
+    endTime: '7:00 PM',
+    location: 'On Campus',
+    description: 'Weekly study circle.',
+    type: 'education',
+    recurring: 'weekly',
+    color: 'lightGold',
+    attendees: 0,
+    organizer: 'QUMSA'
+  },
+
+  // Fri Sep 19
+  {
+    id: 205,
+    title: 'Jummah Prayer',
+    date: '2025-09-19',
+    time: '1:30 PM',
+    endTime: '2:15 PM',
+    location: 'On Campus',
+    description: 'Weekly Friday prayer.',
+    type: 'prayer',
+    recurring: 'weekly',
+    color: 'gold',
+    attendees: 0,
+    organizer: 'QUMSA'
+  },
+  {
+    id: 206,
+    title: 'Halaqa Study Circle',
+    date: '2025-09-19',
+    time: '5:00 PM',
+    endTime: '7:00 PM',
+    location: 'On Campus',
+    description: 'Weekly study circle.',
+    type: 'education',
+    recurring: 'weekly',
+    color: 'lightGold',
+    attendees: 0,
+    organizer: 'QUMSA'
+  },
+
+  // Fri Sep 26
+  {
+    id: 207,
+    title: 'Jummah Prayer',
+    date: '2025-09-26',
+    time: '1:30 PM',
+    endTime: '2:15 PM',
+    location: 'On Campus',
+    description: 'Weekly Friday prayer.',
+    type: 'prayer',
+    recurring: 'weekly',
+    color: 'gold',
+    attendees: 0,
+    organizer: 'QUMSA'
+  },
+  {
+    id: 208,
+    title: 'Halaqa Study Circle',
+    date: '2025-09-26',
+    time: '5:00 PM',
+    endTime: '7:00 PM',
+    location: 'On Campus',
+    description: 'Weekly study circle.',
+    type: 'education',
+    recurring: 'weekly',
+    color: 'lightGold',
+    attendees: 0,
+    organizer: 'QUMSA'
   },
 ];
+
 
 const eventTypeIcons: Record<EventType, React.ComponentType<any>> = {
   prayer: Star,
@@ -164,7 +302,8 @@ export default function EventsCalendar() {
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [viewMode, setViewMode] = useState<'month' | 'list'>('month');
-  const [events, setEvents] = useState<Event[]>(sampleEvents);
+  const [events, setEvents] = useState<Event[]>(allEvents);
+  
 
   const today = new Date();
   const currentMonth = currentDate.getMonth();
@@ -230,29 +369,40 @@ export default function EventsCalendar() {
   };
 
   const generateAllEventsICS = (): string => {
-    const formatDate = (date: Date): string => {
-      return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-    };
+  const formatDate = (date: Date): string =>
+    date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
 
-    const convertTo24Hour = (time12h: string): string => {
-      const [time, modifier] = time12h.split(' ');
-      let [hours, minutes] = time.split(':');
-      if (hours === '12') hours = '00';
-      if (modifier === 'PM') hours = String(parseInt(hours, 10) + 12);
-      return `${hours.padStart(2, '0')}:${minutes}:00`;
-    };
+  const convertTo24Hour = (time12h: string): string => {
+    // Defensive: skip if malformed
+    if (!time12h || /TBA/i.test(time12h)) return '';
+    const parts = time12h.trim().split(' ');
+    if (parts.length !== 2) return '';
+    const [time, modifier] = parts;
+    let [hours, minutes] = time.split(':');
+    if (!hours || !minutes) return '';
+    if (hours === '12') hours = '00';
+    if (modifier?.toUpperCase() === 'PM') hours = String(parseInt(hours, 10) + 12);
+    return `${hours.padStart(2, '0')}:${minutes}:00`;
+  };
 
-    let icsContent = `BEGIN:VCALENDAR
+  let icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//QUMSA//Event Calendar//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH`;
 
-    events.forEach(event => {
-      const startDate = new Date(`${event.date}T${convertTo24Hour(event.time)}`);
-      const endDate = new Date(`${event.date}T${convertTo24Hour(event.endTime)}`);
-      
-      icsContent += `
+  events.forEach(event => {
+    // ✅ Skip TBA events (no times)
+    if (/TBA/i.test(event.time) || /TBA/i.test(event.endTime)) return;
+
+    const start24 = convertTo24Hour(event.time);
+    const end24   = convertTo24Hour(event.endTime);
+    if (!start24 || !end24) return; // malformed times → skip
+
+    const startDate = new Date(`${event.date}T${start24}`);
+    const endDate   = new Date(`${event.date}T${end24}`);
+
+    icsContent += `
 BEGIN:VEVENT
 UID:${event.id}@qumsa.ca
 DTSTAMP:${formatDate(new Date())}
@@ -265,13 +415,14 @@ ORGANIZER:CN=${event.organizer}
 CATEGORIES:${event.type.toUpperCase()}
 STATUS:CONFIRMED
 END:VEVENT`;
-    });
+  });
 
-    icsContent += `
+  icsContent += `
 END:VCALENDAR`;
 
-    return icsContent;
-  };
+  return icsContent;
+};
+
 
   const downloadAllEventsICS = (): void => {
     const icsContent = generateAllEventsICS();
@@ -285,22 +436,46 @@ END:VCALENDAR`;
   };
 
   const generateSingleEventICS = (event: Event): string => {
-    const convertTo24Hour = (time12h: string): string => {
-      const [time, modifier] = time12h.split(' ');
-      let [hours, minutes] = time.split(':');
-      if (hours === '12') hours = '00';
-      if (modifier === 'PM') hours = String(parseInt(hours, 10) + 12);
-      return `${hours.padStart(2, '0')}:${minutes}:00`;
-    };
+  const convertTo24Hour = (time12h: string): string => {
+    if (!time12h || /TBA/i.test(time12h)) return '';
+    const parts = time12h.trim().split(' ');
+    if (parts.length !== 2) return '';
+    const [time, modifier] = parts;
+    let [hours, minutes] = time.split(':');
+    if (!hours || !minutes) return '';
+    if (hours === '12') hours = '00';
+    if (modifier?.toUpperCase() === 'PM') hours = String(parseInt(hours, 10) + 12);
+    return `${hours.padStart(2, '0')}:${minutes}:00`;
+  };
 
-    const startDate = new Date(`${event.date}T${convertTo24Hour(event.time)}`);
-    const endDate = new Date(`${event.date}T${convertTo24Hour(event.endTime)}`);
-    
-    const formatDate = (date: Date): string => {
-      return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-    };
+  const formatDate = (date: Date): string =>
+    date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
 
+  // Skip if TBA
+  if (/TBA/i.test(event.time) || /TBA/i.test(event.endTime)) {
     return `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//QUMSA//Event Calendar//EN
+BEGIN:VEVENT
+UID:${event.id}@qumsa.ca
+DTSTAMP:${formatDate(new Date())}
+SUMMARY:${event.title}
+DESCRIPTION:${event.description}\\n(Time TBA)
+LOCATION:${event.location}
+ORGANIZER:CN=${event.organizer}
+STATUS:TENTATIVE
+END:VEVENT
+END:VCALENDAR`;
+  }
+
+  const start24 = convertTo24Hour(event.time);
+  const end24   = convertTo24Hour(event.endTime);
+  if (!start24 || !end24) return ''; // nothing to download if malformed
+
+  const startDate = new Date(`${event.date}T${start24}`);
+  const endDate   = new Date(`${event.date}T${end24}`);
+
+  return `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//QUMSA//Event Calendar//EN
 BEGIN:VEVENT
@@ -312,9 +487,11 @@ SUMMARY:${event.title}
 DESCRIPTION:${event.description}
 LOCATION:${event.location}
 ORGANIZER:CN=${event.organizer}
+STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR`;
-  };
+};
+
 
   const downloadSingleEventICS = (event: Event): void => {
     const icsContent = generateSingleEventICS(event);
