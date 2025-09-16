@@ -51,12 +51,11 @@ interface ColorConfig {
   border: string;
 }
 
-// ✅ Single source of truth for everything you want visible on the calendar
 const allEvents: Event[] = [
   // —— One-off events ——
   {
     id: 101,
-    title: 'Tricolour Open House',
+    title: 'Tricolor Open House',
     date: '2025-09-03',
     time: '4:00 PM',
     endTime: '8:00 PM',
@@ -98,10 +97,10 @@ const allEvents: Event[] = [
   },
   {
     id: 104,
-    title: '1st Year Brothers Game Night',
+    title: "First Year Brothers' Game Night",
     date: '2025-09-13',
-    time: '6:00 PM',        // placeholder time
-    endTime: '8:00 PM',     // placeholder time
+    time: '6:30 PM',
+    endTime: '8:30 PM',
     location: 'TBA',
     description: 'TBA – check WhatsApp for details.',
     type: 'social',
@@ -128,15 +127,57 @@ const allEvents: Event[] = [
     id: 106,
     title: 'BBQ @ City Park',
     date: '2025-09-21',
-    time: '12:00 PM',       // placeholder time
-    endTime: '1:00 PM',     // placeholder time
+    time: '1:00 PM',
+    endTime: '2:00 PM', // placeholder end
     location: 'City Park',
-    description: 'TBA – check WhatsApp for details.',
+    description: 'Community BBQ — details on WhatsApp.',
     type: 'community',
     recurring: 'none',
     color: 'gold',
     attendees: 0,
     organizer: 'QUMSA'
+  },
+  {
+    id: 107,
+    title: 'Shaykh Ahzar Iqbal Lecture',
+    date: '2025-09-24',
+    time: '5:00 PM',
+    endTime: '7:00 PM',
+    location: 'TBA',
+    description: 'Evening lecture.',
+    type: 'education',
+    recurring: 'none',
+    color: 'lightGold',
+    attendees: 0,
+    organizer: 'QUMSA'
+  },
+  {
+    id: 108,
+    title: 'Brothers Soccer Tournament',
+    date: '2025-09-27',
+    time: '3:00 PM',
+    endTime: '6:00 PM',
+    location: 'TBD',
+    description: 'Bring your A-game.',
+    type: 'social',
+    recurring: 'none',
+    color: 'gold',
+    attendees: 0,
+    organizer: 'QUMSA Brothers'
+  },
+  {
+    id: 109,
+    title: 'Sisters Game Night',
+    date: '2025-09-27',
+    time: '3:00 PM',
+    endTime: '5:00 PM',
+    location: 'TBA',
+    description: 'Games and snacks with the sisters.',
+    type: 'social',
+    recurring: 'none',
+    color: 'gold',
+    attendees: 0,
+    organizer: 'QUMSA Sisters'
   },
 
   // —— Weekly Fridays (Jummah 13:30; Halaqa 17:00–19:00) ——

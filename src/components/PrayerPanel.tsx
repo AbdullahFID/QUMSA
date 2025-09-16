@@ -13,6 +13,8 @@ import {
   CalendarHeart,
   CalendarClock,
   Landmark,
+  CalendarDays,
+  Calendar,
 } from 'lucide-react'
 
 export default function PrayerPanel() {
@@ -159,6 +161,46 @@ export default function PrayerPanel() {
                 ))}
               </div>
             </aside>
+          </div>
+        </div>
+
+        {/* NEW SECTION: Monthly Prayer Schedule Image */}
+        <div className="bg-gradient-to-br from-blue-900 to-slate-800 rounded-3xl p-6 sm:p-8 shadow-lg border border-slate-100">
+          <div className="flex items-center space-x-3 mb-6">
+            <div className="w-10 h-10 bg-amber-500 rounded-xl flex items-center justify-center">
+              <Calendar className="w-5 h-5 text-white" />
+            </div>
+            <h2 className="text-xl sm:text-2xl font-bold text-white">September 2025 - QUMSA Congregational Prayer Times</h2>
+          </div>
+          
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-white/20">
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <Image
+                src="/images/Juma/prayerTimings.png"
+                alt="September 2025 QUMSA Congregational Prayer Times"
+                width={1400}
+                height={900}
+                className="w-full h-auto object-contain"
+                priority
+              />
+            </div>
+            
+            <div className="mt-6 space-y-3">
+              <div className="flex flex-wrap gap-4 justify-center">
+                <div className="inline-flex items-center space-x-2 bg-amber-500/20 backdrop-blur-sm border border-amber-300/30 rounded-full px-4 py-2">
+                  <MapPin className="w-4 h-4 text-amber-300" />
+                  <span className="text-sm text-amber-200">Room: Mitchell Rm.210</span>
+                </div>
+                <div className="inline-flex items-center space-x-2 bg-amber-500/20 backdrop-blur-sm border border-amber-300/30 rounded-full px-4 py-2">
+                  <CalendarDays className="w-4 h-4 text-amber-300" />
+                  <span className="text-sm text-amber-200">Iqama: 5 mins after Adhan</span>
+                </div>
+              </div>
+              
+              <p className="text-center text-sm text-amber-100 italic mt-4">
+                * Friday prayer times are separate and will be posted on QUMSA's social media platforms
+              </p>
+            </div>
           </div>
         </div>
 
