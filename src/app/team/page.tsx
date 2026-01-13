@@ -224,7 +224,7 @@ const eventsCoordinators: TeamMember[] = [
   {
     name: 'Karim Ali',
     role: 'Director of Events',
-    img: localImg('karim.jpeg'),
+    img: localImg('Karim.jpeg'),
     description: 'I like horses.',
     profileUrl: '#',
     email: 'events@qumsa.ca',
