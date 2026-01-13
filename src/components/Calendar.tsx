@@ -52,7 +52,49 @@ interface ColorConfig {
 }
 
 const allEvents: Event[] = [
-  // —— One-off events ——
+  // —— One-off events, new added to top ——
+  {
+    id: 212,
+    title: 'QUMSA Skate Day',
+    date: '2026-01-31',
+    time: '1:00 PM',
+    endTime: '3:00 PM',
+    location: "Springer Market Square",
+    description: 'Join us for a relaxing day of skating.',
+    type: 'community',
+    recurring: 'none',
+    color: 'gold',
+    attendees: 20,
+    organizer: 'QUMSA'
+  },
+  {
+    id: 211,
+    title: 'Sisters Potluck Social',
+    date: '2026-01-30',
+    time: '5:00 PM',
+    endTime: '7:30 PM',
+    location: "Queen's Campus",
+    description: 'Join us for a chill and delicious evening to wind down and catch up with friends.',
+    type: 'social',
+    recurring: 'none',
+    color: 'gold',
+    attendees: 20,
+    organizer: 'QUMSA'
+  },
+  {
+    id: 210,
+    title: 'Dawah Training',
+    date: '2026-01-17',
+    time: '10:00 AM',
+    endTime: '4:00 PM',
+    location: "MacCorry Hall, B201",
+    description: 'Learn how to invite others to Islam with wisdom and compassion.',
+    type: 'education',
+    recurring: 'none',
+    color: 'gold',
+    attendees: 15,
+    organizer: 'QUMSA'
+  },
   {
     id: 101,
     title: 'Tricolor Open House',
