@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import PrayerTime from './PrayerTime'
 import Image from 'next/image'
 import {
@@ -7,8 +8,6 @@ import {
   MapPin,
   MapPinHouse,
   BrainCog,
-  UserRoundPlus,
-  Heart,
   AlarmClock,
   CalendarHeart,
   CalendarClock,
@@ -18,6 +17,18 @@ import {
 } from 'lucide-react'
 
 export default function PrayerPanel() {
+  // Dynamic month/year (client-side to avoid hydration mismatch)
+  const [monthYear, setMonthYear] = useState('')
+
+  useEffect(() => {
+    const now = new Date()
+    const formatted = now.toLocaleDateString('en-CA', {
+      month: 'long',
+      year: 'numeric',
+    })
+    setMonthYear(formatted)
+  }, [])
+
   return (
     <div className="min-h-screen bg-linear-to-b from-blue-900 via-slate-800 to-slate-900 text-white">
       {/* Hero Section */}
@@ -38,7 +49,7 @@ export default function PrayerPanel() {
           </h1>
 
           <p className="text-base sm:text-lg lg:text-xl text-amber-100 max-w-2xl mx-auto mb-8 sm:mb-12 px-4">
-            Accurate, real‑time Islamic prayer times and community events for Kingston, Ontario.
+            Accurate, real-time Islamic prayer times and community events for Kingston, Ontario.
           </p>
 
           {/* Quick Stats */}
@@ -88,7 +99,7 @@ export default function PrayerPanel() {
                 </div>
                 <h3 className="text-base sm:text-lg font-bold">Jummah Prayer</h3>
               </div>
-              
+
               {/* Juma Poster Image */}
               <div className="mb-4 rounded-xl overflow-hidden shadow-md">
                 <Image
@@ -106,7 +117,7 @@ export default function PrayerPanel() {
                   <p className="text-sm font-medium mb-1">Every Friday</p>
                   <p className="text-xs text-amber-100">Wallace Hall, JDUC • 1:30 PM</p>
                 </div>
-                
+
                 {/* Juma Location Image */}
                 <div className="rounded-lg overflow-hidden">
                   <Image
@@ -117,9 +128,10 @@ export default function PrayerPanel() {
                     className="w-full h-auto object-cover"
                   />
                 </div>
-                
+
                 <p className="text-xs text-amber-100">
-                  Join us for congregational Friday prayers at Wallace Hall in the John Deutsch University Centre
+                  Join us for congregational Friday prayers at Wallace Hall in the John Deutsch
+                  University Centre
                 </p>
               </div>
             </aside>
@@ -132,27 +144,30 @@ export default function PrayerPanel() {
                 </div>
                 <h3 className="text-base sm:text-lg font-bold text-white">Prayer Resources</h3>
               </div>
+
               <div className="space-y-3">
                 {[
                   {
                     title: 'Prayer Guide',
                     desc: 'Learn how to perform Islamic prayers',
-                    href: 'https://www.mymasjid.ca/beginners-guide-learn-pray-salah/chapter-4/'
+                    href: 'https://www.mymasjid.ca/beginners-guide-learn-pray-salah/chapter-4/',
                   },
                   {
                     title: 'Qibla Direction',
                     desc: 'Find the direction to Mecca from Kingston',
-                    href: 'https://www.quranbookk.com/qibla-finder'
+                    href: 'https://www.quranbookk.com/qibla-finder',
                   },
                   {
                     title: "Du'a Collection",
                     desc: 'Essential prayers and supplications',
-                    href: 'https://qaryah.wordpress.com/wp-content/uploads/2008/09/collection-of-duaa-and-thikr-from-the-quraan-and-authentic-sunnah-abdul-muhsin-al-abbaad.pdf'
-                  }
+                    href: 'https://qaryah.wordpress.com/wp-content/uploads/2008/09/collection-of-duaa-and-thikr-from-the-quraan-and-authentic-sunnah-abdul-muhsin-al-abbaad.pdf',
+                  },
                 ].map((r) => (
                   <a
                     key={r.title}
                     href={r.href}
+                    target="_blank"
+                    rel="noreferrer"
                     className="block p-3 bg-sky-50 rounded-xl hover:bg-sky-100 hover:border-sky-200 border border-transparent transition-all"
                   >
                     <h4 className="font-semibold text-slate-900 text-sm">{r.title}</h4>
@@ -164,27 +179,30 @@ export default function PrayerPanel() {
           </div>
         </div>
 
-        {/* NEW SECTION: Monthly Prayer Schedule Image */}
+        {/* Monthly Prayer Schedule Image */}
         <div className="bg-linear-to-br from-blue-900 to-slate-800 rounded-3xl p-6 sm:p-8 shadow-lg border border-slate-100">
           <div className="flex items-center space-x-3 mb-6">
             <div className="w-10 h-10 bg-amber-500 rounded-xl flex items-center justify-center">
               <Calendar className="w-5 h-5 text-white" />
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-white">September 2025 - QUMSA Congregational Prayer Times</h2>
+
+            <h2 className="text-xl sm:text-2xl font-bold text-white">
+              {monthYear || 'Loading...'} - QUMSA Congregational Prayer Times
+            </h2>
           </div>
-          
+
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-white/20">
             <div className="rounded-xl overflow-hidden shadow-2xl">
               <Image
                 src="/images/Juma/JCalendar.png"
-                alt="September 2025 QUMSA Congregational Prayer Times"
+                alt={`${monthYear || 'Monthly'} QUMSA Congregational Prayer Times`}
                 width={1400}
                 height={900}
                 className="w-full h-auto object-contain"
                 priority
               />
             </div>
-            
+
             <div className="mt-6 space-y-3">
               <div className="flex flex-wrap gap-4 justify-center">
                 <div className="inline-flex items-center space-x-2 bg-amber-500/20 backdrop-blur-sm border border-amber-300/30 rounded-full px-4 py-2">
@@ -196,9 +214,10 @@ export default function PrayerPanel() {
                   <span className="text-sm text-amber-200">Iqama: 5 mins after Adhan</span>
                 </div>
               </div>
-              
+
               <p className="text-center text-sm text-amber-100 italic mt-4">
-                * Friday prayer times are separate and will be posted on QUMSA's social media platforms
+                * Friday prayer times are separate and will be posted on QUMSA&apos;s social media
+                platforms
               </p>
             </div>
           </div>
@@ -217,21 +236,9 @@ export default function PrayerPanel() {
 
             <div className="space-y-4 sm:space-y-6">
               {[
-                { 
-                  title: 'Friday Prayer', 
-                  desc: 'Wallace Hall, JDUC every Friday', 
-                  time: '1:30 PM'
-                },
-                { 
-                  title: 'Halaqa Study Circle', 
-                  desc: 'Weekly Islamic education', 
-                  time: 'Sun 7 PM'
-                },
-                { 
-                  title: 'Social Night', 
-                  desc: 'Community gathering', 
-                  time: 'Thu 8 PM'
-                },
+                { title: 'Friday Prayer', desc: 'Wallace Hall, JDUC every Friday', time: '1:30 PM' },
+                { title: 'Halaqa Study Circle', desc: 'Weekly Islamic education', time: 'Sun 7 PM' },
+                { title: 'Social Night', desc: 'Community gathering', time: 'Thu 8 PM' },
               ].map((e) => (
                 <div
                   key={e.title}
@@ -239,7 +246,9 @@ export default function PrayerPanel() {
                 >
                   <div className="flex justify-between items-start mb-3">
                     <div>
-                      <h4 className="font-semibold text-white text-base sm:text-lg mb-1">{e.title}</h4>
+                      <h4 className="font-semibold text-white text-base sm:text-lg mb-1">
+                        {e.title}
+                      </h4>
                       <p className="text-sm text-white/80">{e.desc}</p>
                     </div>
                     <span className="bg-white text-blue-900 text-sm px-3 py-1 rounded-full font-medium whitespace-nowrap">
@@ -252,7 +261,8 @@ export default function PrayerPanel() {
 
             <div className="mt-8 p-4 sm:p-6 bg-white/10 rounded-xl border border-white/20">
               <p className="text-sm sm:text-base text-white text-center">
-                <strong>Note:</strong> Join our community for regular prayers, educational programs, and social events throughout the year.
+                <strong>Note:</strong> Join our community for regular prayers, educational programs,
+                and social events throughout the year.
               </p>
             </div>
           </div>
@@ -265,71 +275,58 @@ export default function PrayerPanel() {
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-white">Campus Prayer Spaces</h3>
             </div>
+
             <div className="space-y-4">
-              <div className="p-4 sm:p-6 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all">
-                <h4 className="font-semibold text-white text-base mb-2">JDUC Prayer Room</h4>
-                <p className="text-sm text-white/80 mb-3">
-                  John Deutsch University Centre, Room 348 (3rd floor)
-                </p>
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
-                  <span className="text-sm text-amber-200 font-medium">Bookable for large sessions</span>
+              {[
+                {
+                  name: 'JDUC Prayer Room',
+                  location: 'John Deutsch University Centre, Room 348 (3rd floor)',
+                  hours: 'Bookable for large sessions',
+                },
+                {
+                  name: 'Mitchell Hall Interfaith Room',
+                  location: '2nd floor, Room 210',
+                  hours: 'Open during building hours',
+                },
+                {
+                  name: 'Goodes Hall',
+                  location: 'Kolias Family Prayer Room, LL109',
+                  hours: 'Business hours',
+                },
+                {
+                  name: 'Stauffer Library',
+                  location: 'Prayer & Meditation Room, 2nd floor',
+                  hours: 'Building hours',
+                },
+                {
+                  name: 'School of Medicine',
+                  location: 'Prayer & Meditation Room, LL011',
+                  hours: '7:30 AM – 5:30 PM',
+                },
+                {
+                  name: 'Law Building',
+                  location: 'Multifaith Room, 1st floor Room 103',
+                  hours: 'Building hours',
+                },
+              ].map((space) => (
+                <div
+                  key={space.name}
+                  className="p-4 sm:p-6 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all"
+                >
+                  <h4 className="font-semibold text-white text-base mb-2">{space.name}</h4>
+                  <p className="text-sm text-white/80 mb-3">{space.location}</p>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-amber-400 rounded-full" />
+                    <span className="text-sm text-amber-200 font-medium">{space.hours}</span>
+                  </div>
                 </div>
-              </div>
-              <div className="p-4 sm:p-6 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all">
-                <h4 className="font-semibold text-white text-base mb-2">Mitchell Hall Interfaith Room</h4>
-                <p className="text-sm text-white/80 mb-3">
-                  2nd floor, Room 210
-                </p>
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
-                  <span className="text-sm text-amber-200 font-medium">Open during building hours</span>
-                </div>
-              </div>
-              <div className="p-4 sm:p-6 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all">
-                <h4 className="font-semibold text-white text-base mb-2">Goodes Hall</h4>
-                <p className="text-sm text-white/80 mb-3">
-                  Kolias Family Prayer Room, LL109
-                </p>
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
-                  <span className="text-sm text-amber-200 font-medium">Business hours</span>
-                </div>
-              </div>
-              <div className="p-4 sm:p-6 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all">
-                <h4 className="font-semibold text-white text-base mb-2">Stauffer Library</h4>
-                <p className="text-sm text-white/80 mb-3">
-                  Prayer & Meditation Room, 2nd floor
-                </p>
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
-                  <span className="text-sm text-amber-200 font-medium">Building hours</span>
-                </div>
-              </div>
-              <div className="p-4 sm:p-6 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all">
-                <h4 className="font-semibold text-white text-base mb-2">School of Medicine</h4>
-                <p className="text-sm text-white/80 mb-3">
-                  Prayer & Meditation Room, LL011
-                </p>
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
-                  <span className="text-sm text-amber-200 font-medium">7:30 AM – 5:30 PM</span>
-                </div>
-              </div>
-              <div className="p-4 sm:p-6 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all">
-                <h4 className="font-semibold text-white text-base mb-2">Law Building</h4>
-                <p className="text-sm text-white/80 mb-3">
-                  Multifaith Room, 1st floor Room 103
-                </p>
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
-                  <span className="text-sm text-amber-200 font-medium">Building hours</span>
-                </div>
-              </div>
+              ))}
             </div>
+
             <div className="mt-6 p-4 bg-white/10 rounded-xl border border-white/20">
               <p className="text-sm text-white/80 text-center">
-                <strong>Note:</strong> Prayer rooms have mats & Qibla markers. Please respect shared spaces.
+                <strong>Note:</strong> Prayer rooms have mats &amp; Qibla markers. Please respect
+                shared spaces.
               </p>
             </div>
           </aside>
