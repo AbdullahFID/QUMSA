@@ -21,7 +21,7 @@ const AnimatedBackground = () => {
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none">
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-navy-900" />
+      <div className="absolute inset-0 bg-linear-to-br from-slate-900 via-blue-900 to-navy-900" />
 
       {stars.map((star) => (
         <div
@@ -36,13 +36,13 @@ const AnimatedBackground = () => {
         />
       ))}
 
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-linear-to-r from-amber-500/20 to-yellow-500/20 rounded-full blur-3xl animate-pulse" />
       <div
-        className="absolute top-3/4 right-1/4 w-96 h-96 bg-gradient-to-r from-blue-600/10 to-slate-600/10 rounded-full blur-3xl animate-pulse"
+        className="absolute top-3/4 right-1/4 w-96 h-96 bg-linear-to-r from-blue-600/10 to-slate-600/10 rounded-full blur-3xl animate-pulse"
         style={{ animationDelay: '2s' }}
       />
       <div
-        className="absolute top-1/2 left-1/2 w-48 h-48 bg-gradient-to-r from-amber-400/15 to-yellow-400/15 rounded-full blur-3xl animate-pulse"
+        className="absolute top-1/2 left-1/2 w-48 h-48 bg-linear-to-r from-amber-400/15 to-yellow-400/15 rounded-full blur-3xl animate-pulse"
         style={{ animationDelay: '4s' }}
       />
     </div>
@@ -101,11 +101,11 @@ const FAQ: React.FC = () => {
             </div>
             
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 Frequently Asked
               </span>
               <br />
-              <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">
                 Questions
               </span>
             </h1>
@@ -117,7 +117,7 @@ const FAQ: React.FC = () => {
         </section>
 
         <section className="py-24 relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-slate-800/20 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-linear-to-r from-blue-900/20 to-slate-800/20 backdrop-blur-sm" />
           <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="space-y-6">
               {faqs.map((faq, idx) => (
@@ -163,7 +163,7 @@ const FAQ: React.FC = () => {
         </section>
 
         <footer className="py-20 relative text-center">
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-slate-900 to-transparent" />
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-xl rounded-full mb-6 border border-white/20">
               <Heart className="w-8 h-8 text-amber-400 animate-pulse" />

@@ -124,7 +124,7 @@ export default function Navbar() {
           {/* Brand */}
           <SmoothLink href="/" className="flex items-center gap-3 group">
             <div className="relative group-hover:shadow-lg transition">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-400 to-green-600 p-0.5">
+              <div className="absolute inset-0 rounded-full bg-linear-to-r from-yellow-400 to-green-600 p-0.5">
                 <div className="w-full h-full rounded-full bg-white"></div>
               </div>
               <div className="relative p-2 rounded-full bg-white">
@@ -361,7 +361,7 @@ export default function Navbar() {
                           href={href}
                           onClick={() => setMobileOpen(false)}
                           className={`
-                            block transition text-sm flex items-center
+                            block transition text-sm items-center
                             ${isSubActive
                               ? 'text-yellow-400'
                               : 'text-white hover:text-yellow-400'
@@ -384,8 +384,8 @@ export default function Navbar() {
                     text-white bg-transparent backdrop-blur-sm
                     shadow-[0_2px_6px_rgba(255,255,255,0.1),0_0_1px_rgba(255,255,255,0.25)]
                     hover:shadow-[0_4px_12px_rgba(255,255,255,0.2),0_0_2px_rgba(255,255,255,0.4)]
-                    ring-1 ring-inset ring-white/10 hover:ring-white/20
-                    ring-2 ring-amber-400
+                    ring-1 ring-inset hover:ring-white/20
+                    ring-amber-400
                     transition-all duration-300
                   "
                 >

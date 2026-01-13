@@ -19,7 +19,7 @@ import {
 
 export default function PrayerPanel() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-900 via-slate-800 to-slate-900 text-white">
+    <div className="min-h-screen bg-linear-to-b from-blue-900 via-slate-800 to-slate-900 text-white">
       {/* Hero Section */}
       <section className="pt-16 sm:pt-24 pb-12 sm:pb-16 text-center px-4">
         <div className="max-w-4xl mx-auto">
@@ -32,7 +32,7 @@ export default function PrayerPanel() {
 
           <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 px-2">
             Prayer Times for{' '}
-            <span className="bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">
               Kingston
             </span>
           </h1>
@@ -68,7 +68,7 @@ export default function PrayerPanel() {
         {/* Top Section - Prayer Times and Sidebar */}
         <div className="grid lg:grid-cols-4 gap-6 lg:gap-8">
           {/* Prayer Times Panel */}
-          <div className="lg:col-span-3 bg-gradient-to-br from-blue-900 to-slate-800 rounded-3xl p-4 sm:p-6 lg:p-8 shadow border border-slate-100 text-white">
+          <div className="lg:col-span-3 bg-linear-to-br from-blue-900 to-slate-800 rounded-3xl p-4 sm:p-6 lg:p-8 shadow border border-slate-100 text-white">
             <div className="flex items-center space-x-3 mb-4 sm:mb-6">
               <div className="w-8 h-8 sm:w-10 sm:h-10 bg-amber-500 rounded-xl flex items-center justify-center">
                 <CalendarClock className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
@@ -81,7 +81,7 @@ export default function PrayerPanel() {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Juma Prayer Information */}
-            <aside className="bg-gradient-to-br from-blue-900 to-slate-800 rounded-3xl p-4 sm:p-6 text-white shadow-lg">
+            <aside className="bg-linear-to-br from-blue-900 to-slate-800 rounded-3xl p-4 sm:p-6 text-white shadow-lg">
               <div className="flex items-center space-x-3 mb-4">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-amber-500 rounded-xl flex items-center justify-center">
                   <Landmark className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
@@ -125,12 +125,12 @@ export default function PrayerPanel() {
             </aside>
 
             {/* Prayer Resources */}
-            <aside className="bg-gradient-to-br from-blue-900 to-slate-800 rounded-3xl p-4 sm:p-6 text-white shadow-lg">
+            <aside className="bg-linear-to-br from-blue-900 to-slate-800 rounded-3xl p-4 sm:p-6 text-white shadow-lg">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-amber-500 to-amber-600 rounded-xl flex items-center justify-center">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-linear-to-r from-amber-500 to-amber-600 rounded-xl flex items-center justify-center">
                   <BrainCog className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                 </div>
-                <h3 className="text-base sm:text-lg font-bold text-white text-slate-900">Prayer Resources</h3>
+                <h3 className="text-base sm:text-lg font-bold text-white">Prayer Resources</h3>
               </div>
               <div className="space-y-3">
                 {[
@@ -165,7 +165,7 @@ export default function PrayerPanel() {
         </div>
 
         {/* NEW SECTION: Monthly Prayer Schedule Image */}
-        <div className="bg-gradient-to-br from-blue-900 to-slate-800 rounded-3xl p-6 sm:p-8 shadow-lg border border-slate-100">
+        <div className="bg-linear-to-br from-blue-900 to-slate-800 rounded-3xl p-6 sm:p-8 shadow-lg border border-slate-100">
           <div className="flex items-center space-x-3 mb-6">
             <div className="w-10 h-10 bg-amber-500 rounded-xl flex items-center justify-center">
               <Calendar className="w-5 h-5 text-white" />
@@ -207,7 +207,7 @@ export default function PrayerPanel() {
         {/* Bottom Section - Weekly Schedule and Campus Prayer Spaces */}
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
           {/* Regular Weekly Schedule - Left Side */}
-          <div className="bg-gradient-to-br from-blue-900 to-slate-800 rounded-3xl p-6 sm:p-8 shadow border border-slate-100 text-white">
+          <div className="bg-linear-to-br from-blue-900 to-slate-800 rounded-3xl p-6 sm:p-8 shadow border border-slate-100 text-white">
             <div className="flex items-center space-x-3 mb-6 sm:mb-8">
               <div className="w-10 h-10 bg-amber-500 rounded-xl flex items-center justify-center">
                 <AlarmClock className="w-5 h-5 text-white" />
@@ -258,7 +258,7 @@ export default function PrayerPanel() {
           </div>
 
           {/* Campus Prayer Spaces - Right Side */}
-          <aside className="bg-gradient-to-br from-blue-900 to-slate-800 rounded-3xl p-6 sm:p-8 shadow border border-slate-100 text-white">
+          <aside className="bg-linear-to-br from-blue-900 to-slate-800 rounded-3xl p-6 sm:p-8 shadow border border-slate-100 text-white">
             <div className="flex items-center space-x-3 mb-6">
               <div className="w-10 h-10 bg-amber-500 rounded-xl flex items-center justify-center">
                 <MapPin className="w-5 h-5 text-white" />

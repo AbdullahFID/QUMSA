@@ -192,12 +192,12 @@ export default function TeamPage() {
   // const teamSections = getTeamSections();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-navy-900 text-white relative overflow-hidden">
+    <div className="min-h-screen bg-linear-to-br from-slate-900 via-blue-900 to-navy-900 text-white relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/40 via-blue-800/30 to-blue-900/40" />
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-r from-amber-400/10 to-yellow-400/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-r from-yellow-400/10 to-amber-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute inset-0 bg-linear-to-br from-slate-800/40 via-blue-800/30 to-blue-900/40" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-linear-to-r from-amber-400/10 to-yellow-400/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-linear-to-r from-yellow-400/10 to-amber-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
 
       {/* Hero Section */}
@@ -206,7 +206,7 @@ export default function TeamPage() {
           {/* Header Badge */}
           <div className="flex justify-center mb-8 sm:mb-12">
             <div className="inline-flex items-center space-x-3 px-6 py-3 bg-white/5 backdrop-blur-xl rounded-full border border-white/10 hover:bg-white/10 transition-all duration-300">
-              <div className="p-2 bg-gradient-to-r from-amber-400 to-yellow-400 rounded-full">
+              <div className="p-2 bg-linear-to-r from-amber-400 to-yellow-400 rounded-full">
                 <UsersRound className="w-4 h-4 text-slate-900" />
               </div>
               <span className="text-amber-400 font-medium text-sm sm:text-base">Meet the Team</span>
@@ -218,7 +218,7 @@ export default function TeamPage() {
           <div className="text-center mb-8 sm:mb-16">
             <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold mb-6 leading-tight">
               Executive&nbsp;
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 animate-gradient">
+              <span className="bg-clip-text text-transparent bg-linear-to-r from-amber-400 via-yellow-400 to-amber-500 animate-gradient">
                 Team
               </span>
             </h1>
@@ -240,7 +240,7 @@ export default function TeamPage() {
           <div className="flex justify-center items-center min-h-[40vh] sm:min-h-[50vh]">
             <div className="max-w-md w-full text-center">
               <div className="p-8 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
-                <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-amber-400 to-yellow-400 rounded-full flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-6 bg-linear-to-r from-amber-400 to-yellow-400 rounded-full flex items-center justify-center">
                   <Users className="w-8 h-8 text-slate-900" />
                 </div>
                 <h3 className="text-xl font-semibold mb-4 text-white">Coming Soon</h3>
@@ -265,7 +265,7 @@ export default function TeamPage() {
             members.length > 0 && (
               <div key={sectionName} className="mb-16 sm:mb-24">
                 <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12">
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-400">
+                  <span className="bg-clip-text text-transparent bg-linear-to-r from-amber-400 to-yellow-400">
                     {formatSectionName(sectionName)}
                   </span>
                 </h2>
@@ -292,7 +292,7 @@ export default function TeamPage() {
       ====== END TEAM CARDS SECTION ====== */}
 
       {/* Bottom Accent */}
-      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500" />
+      <div className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-amber-400 via-yellow-400 to-amber-500" />
     </div>
   )
 }

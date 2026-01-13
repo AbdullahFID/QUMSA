@@ -200,7 +200,7 @@ export default function MissionPanels(): JSX.Element {
                 <div className="grid md:grid-cols-2 gap-8">
                   {coreAreasBatch1.map(({ Icon, title, desc, color }) => (
                     <div key={title} className="group text-center">
-                      <div className={`w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br ${color} flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 mb-6`}>
+                      <div className={`w-20 h-20 mx-auto rounded-2xl bg-linear-to-br ${color} flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 mb-6`}>
                         <Icon className="h-10 w-10 text-white" />
                       </div>
                       <h3 className="text-2xl font-bold text-white mb-4">{title}</h3>
@@ -220,7 +220,7 @@ export default function MissionPanels(): JSX.Element {
                 <div className="grid md:grid-cols-2 gap-8">
                   {coreAreasBatch2.map(({ Icon, title, desc, color }) => (
                     <div key={title} className="group text-center">
-                      <div className={`w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br ${color} flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 mb-6`}>
+                      <div className={`w-20 h-20 mx-auto rounded-2xl bg-linear-to-br ${color} flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 mb-6`}>
                         <Icon className="h-10 w-10 text-white" />
                       </div>
                       <h3 className="text-2xl font-bold text-white mb-4">{title}</h3>
@@ -263,7 +263,7 @@ export default function MissionPanels(): JSX.Element {
                   {servicesBatch1.map(({ Icon, title, desc, color }, index) => (
                     <div key={title} className="group relative overflow-hidden">
                       <div className="h-full p-4 lg:p-5 rounded-xl lg:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
-                        <div className={`w-10 h-10 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl bg-gradient-to-br ${color} flex items-center justify-center mb-3 lg:mb-4 group-hover:rotate-3 transition-transform duration-300`}>
+                        <div className={`w-10 h-10 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl bg-linear-to-br ${color} flex items-center justify-center mb-3 lg:mb-4 group-hover:rotate-3 transition-transform duration-300`}>
                           <Icon className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
                         </div>
                         <h3 className="text-base lg:text-lg font-bold text-white mb-2 lg:mb-3 group-hover:text-amber-200 transition-colors duration-300">
@@ -272,7 +272,7 @@ export default function MissionPanels(): JSX.Element {
                         <p className="text-slate-300 text-xs lg:text-sm leading-relaxed group-hover:text-slate-200 transition-colors duration-300">
                           {desc}
                         </p>
-                        <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-br ${color} transition-opacity duration-500 rounded-xl lg:rounded-2xl`} />
+                        <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 bg-linear-to-br ${color} transition-opacity duration-500 rounded-xl lg:rounded-2xl`} />
                       </div>
                     </div>
                   ))}
@@ -290,7 +290,7 @@ export default function MissionPanels(): JSX.Element {
                   {servicesBatch2.map(({ Icon, title, desc, color }, index) => (
                     <div key={title} className="group relative overflow-hidden">
                       <div className="h-full p-4 lg:p-5 rounded-xl lg:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
-                        <div className={`w-10 h-10 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl bg-gradient-to-br ${color} flex items-center justify-center mb-3 lg:mb-4 group-hover:rotate-3 transition-transform duration-300`}>
+                        <div className={`w-10 h-10 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl bg-linear-to-br ${color} flex items-center justify-center mb-3 lg:mb-4 group-hover:rotate-3 transition-transform duration-300`}>
                           <Icon className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
                         </div>
                         <h3 className="text-base lg:text-lg font-bold text-white mb-2 lg:mb-3 group-hover:text-amber-200 transition-colors duration-300">
@@ -299,7 +299,7 @@ export default function MissionPanels(): JSX.Element {
                         <p className="text-slate-300 text-xs lg:text-sm leading-relaxed group-hover:text-slate-200 transition-colors duration-300">
                           {desc}
                         </p>
-                        <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-br ${color} transition-opacity duration-500 rounded-xl lg:rounded-2xl`} />
+                        <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 bg-linear-to-br ${color} transition-opacity duration-500 rounded-xl lg:rounded-2xl`} />
                       </div>
                     </div>
                   ))}
@@ -317,7 +317,7 @@ export default function MissionPanels(): JSX.Element {
                   {servicesBatch3.map(({ Icon, title, desc, color }, index) => (
                     <div key={title} className="group relative overflow-hidden">
                       <div className="h-full p-4 lg:p-5 rounded-xl lg:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
-                        <div className={`w-10 h-10 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl bg-gradient-to-br ${color} flex items-center justify-center mb-3 lg:mb-4 group-hover:rotate-3 transition-transform duration-300`}>
+                        <div className={`w-10 h-10 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl bg-linear-to-br ${color} flex items-center justify-center mb-3 lg:mb-4 group-hover:rotate-3 transition-transform duration-300`}>
                           <Icon className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
                         </div>
                         <h3 className="text-base lg:text-lg font-bold text-white mb-2 lg:mb-3 group-hover:text-amber-200 transition-colors duration-300">
@@ -326,7 +326,7 @@ export default function MissionPanels(): JSX.Element {
                         <p className="text-slate-300 text-xs lg:text-sm leading-relaxed group-hover:text-slate-200 transition-colors duration-300">
                           {desc}
                         </p>
-                        <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-br ${color} transition-opacity duration-500 rounded-xl lg:rounded-2xl`} />
+                        <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 bg-linear-to-br ${color} transition-opacity duration-500 rounded-xl lg:rounded-2xl`} />
                       </div>
                     </div>
                   ))}

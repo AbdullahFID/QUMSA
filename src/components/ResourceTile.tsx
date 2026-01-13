@@ -23,11 +23,11 @@ export default function ResourceTile({
       className="group relative overflow-hidden rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
     >
       <div
-        className={`absolute inset-0 bg-gradient-to-br ${color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
+        className={`absolute inset-0 bg-linear-to-br ${color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
       />
       <div className="relative p-8">
         <div
-          className={`inline-flex p-4 rounded-xl bg-gradient-to-r ${color} mb-6 group-hover:scale-110 transition-transform`}
+          className={`inline-flex p-4 rounded-xl bg-linear-to-r ${color} mb-6 group-hover:scale-110 transition-transform`}
         >
           <Icon className="w-8 h-8 text-white" />
         </div>
@@ -39,7 +39,7 @@ export default function ResourceTile({
 <p className="text-gray-200 leading-relaxed">{description}</p>
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-islamic-gold to-islamic-emerald transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+      <div className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-islamic-gold to-islamic-emerald transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
     </Link>
   )
 }

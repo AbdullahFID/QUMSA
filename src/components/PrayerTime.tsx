@@ -172,15 +172,15 @@ export default function PrayerTime() {
       <div className="space-y-6 sm:space-y-8">
         {/* Loading Header */}
         <div className="text-center animate-pulse">
-          <div className="h-6 sm:h-8 bg-gradient-to-r from-slate-200 to-slate-300 rounded-lg mb-3 sm:mb-4 mx-auto max-w-xs"></div>
+          <div className="h-6 sm:h-8 bg-linear-to-r from-slate-200 to-slate-300 rounded-lg mb-3 sm:mb-4 mx-auto max-w-xs"></div>
           <div className="h-3 sm:h-4 bg-slate-200 rounded mb-2 mx-auto max-w-32"></div>
-          <div className="h-12 sm:h-16 bg-gradient-to-r from-slate-200 to-slate-300 rounded-xl mx-auto max-w-sm"></div>
+          <div className="h-12 sm:h-16 bg-linear-to-r from-slate-200 to-slate-300 rounded-xl mx-auto max-w-sm"></div>
         </div>
         
         {/* Loading Grid */}
         <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
           {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="h-28 sm:h-32 bg-gradient-to-r from-slate-200 to-slate-300 rounded-xl animate-pulse"></div>
+            <div key={i} className="h-28 sm:h-32 bg-linear-to-r from-slate-200 to-slate-300 rounded-xl animate-pulse"></div>
           ))}
         </div>
       </div>
@@ -246,7 +246,7 @@ export default function PrayerTime() {
 
         {/* Next Prayer Countdown */}
         {nextPrayer && (
-          <div className="bg-gradient-to-br from-slate-100 to-blue-50 border-2 border-amber-400 rounded-2xl p-4 sm:p-6 max-w-sm mx-auto shadow-lg">
+          <div className="bg-linear-to-br from-slate-100 to-blue-50 border-2 border-amber-400 rounded-2xl p-4 sm:p-6 max-w-sm mx-auto shadow-lg">
             <div className="flex items-center justify-center space-x-2 mb-2 sm:mb-3">
               <Bell className="w-4 h-4 sm:w-5 sm:h-5 text-blue-900" />
               <span className="text-xs sm:text-sm font-medium text-slate-600">Next Prayer</span>
@@ -290,9 +290,9 @@ export default function PrayerTime() {
               key={prayerName}
               className={`relative overflow-hidden rounded-xl sm:rounded-2xl p-4 sm:p-6 transition-all duration-300 hover:scale-105 ${
                 isNext 
-                  ? 'bg-gradient-to-br from-slate-100 to-blue-100 text-blue-900 shadow-xl border-2 border-amber-400' 
+                  ? 'bg-linear-to-br from-slate-100 to-blue-100 text-blue-900 shadow-xl border-2 border-amber-400' 
                   : prayerName === 'Sunrise'
-                  ? 'bg-gradient-to-br from-slate-400 to-slate-300 text-white hover:shadow-md'
+                  ? 'bg-linear-to-br from-slate-400 to-slate-300 text-white hover:shadow-md'
                   : 'bg-blue-900 text-white hover:shadow-xl'
               }`}
             >

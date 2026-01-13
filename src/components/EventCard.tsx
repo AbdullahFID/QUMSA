@@ -51,16 +51,16 @@ export default function EventCard({
   return (
     <div className="min-h-screen p-8 flex items-center justify-center">
       <article
-        className={`group relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-800/80 via-blue-900/60 to-slate-700/80 backdrop-blur-xl shadow-xl hover:shadow-2xl max-w-md w-full transform transition-all duration-400 hover:-translate-y-2 hover:scale-105 ${
+        className={`group relative overflow-hidden rounded-3xl bg-linear-to-br from-slate-800/80 via-blue-900/60 to-slate-700/80 backdrop-blur-xl shadow-xl hover:shadow-2xl max-w-md w-full transform transition-all duration-400 hover:-translate-y-2 hover:scale-105 ${
               featured ? 'ring-2 ring-amber-400/40 shadow-amber-400/20' : ''
         }`}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-400/5 via-transparent to-amber-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-linear-to-br from-amber-400/5 via-transparent to-amber-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
         <div className="relative p-8">
           <div className="flex items-start justify-between mb-8">
             <div className="flex items-center gap-4">
-              <div className="p-4 bg-gradient-to-r from-amber-400 to-yellow-500 rounded-2xl shadow-lg">
+              <div className="p-4 bg-linear-to-r from-amber-400 to-yellow-500 rounded-2xl shadow-lg">
                 <Calendar className="w-6 h-6 text-slate-900" />
               </div>
               <div>
@@ -73,7 +73,7 @@ export default function EventCard({
 
             <div className="flex flex-col items-end gap-3">
               {featured && (
-                <div className="flex items-center gap-2 bg-gradient-to-r from-amber-400 to-yellow-500 text-slate-900 px-4 py-2 rounded-full text-sm font-semibold shadow-lg animate-pulse">
+                <div className="flex items-center gap-2 bg-linear-to-r from-amber-400 to-yellow-500 text-slate-900 px-4 py-2 rounded-full text-sm font-semibold shadow-lg animate-pulse">
                   <Star className="w-4 h-4" />
                   Featured
                 </div>
@@ -98,7 +98,7 @@ export default function EventCard({
             </span>
           </div>
 
-          <h3 className="text-2xl font-bold text-white mb-6 group-hover:bg-gradient-to-r group-hover:from-amber-400 group-hover:to-yellow-400 group-hover:bg-clip-text group-hover:text-transparent transition-colors line-clamp-2">
+          <h3 className="text-2xl font-bold text-white mb-6 group-hover:bg-linear-to-r group-hover:from-amber-400 group-hover:to-yellow-400 group-hover:bg-clip-text group-hover:text-transparent transition-colors line-clamp-2">
             {title}
           </h3>
 
@@ -128,14 +128,14 @@ export default function EventCard({
           {/* 🎉 UPDATED: Dynamic button/link element */}
           <ButtonElement 
             {...buttonProps}
-            className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-300 hover:to-yellow-400 text-slate-900 font-semibold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+            className="w-full flex items-center justify-center gap-3 bg-linear-to-r from-amber-400 to-yellow-500 hover:from-amber-300 hover:to-yellow-400 text-slate-900 font-semibold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
           >
             <span className="text-lg">Learn&nbsp;More</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
           </ButtonElement>
         </div>
 
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-400 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-amber-400 via-yellow-500 to-amber-400 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
       </article>
     </div>
   )

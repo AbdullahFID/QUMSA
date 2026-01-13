@@ -5,7 +5,7 @@ import { Package, Sparkles, Clock } from 'lucide-react'
 
 export default function MerchPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-linear-to-br from-blue-950 via-blue-900 to-blue-800 flex items-center justify-center p-4">
       <div className="max-w-2xl mx-auto text-center">
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
@@ -93,7 +93,7 @@ export default function MerchPage() {
               delay: 0.3,
             }}
           >
-            <span className="bg-gradient-to-r from-amber-200 via-white to-amber-200 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-amber-200 via-white to-amber-200 bg-clip-text text-transparent">
               Coming Soon
             </span>
           </motion.h1>
@@ -139,7 +139,7 @@ export default function MerchPage() {
           </motion.div>
 
           <motion.div
-            className="mt-12 mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-amber-300 to-transparent"
+            className="mt-12 mx-auto w-24 h-0.5 bg-linear-to-r from-transparent via-amber-300 to-transparent"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{

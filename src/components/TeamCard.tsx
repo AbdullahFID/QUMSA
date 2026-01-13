@@ -41,7 +41,7 @@ export default function TeamCard({
   return (
     <div
       ref={cardRef}
-      className="group relative w-full h-[420px] sm:h-[460px] cursor-pointer"
+      className="group relative w-full h-105 sm:h-115 cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onMouseMove={handleMouseMove}
@@ -55,9 +55,9 @@ export default function TeamCard({
       />
 
       {/* Main Card */}
-      <div className="relative w-full h-full bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl border border-white/20 hover:border-white/30 transition-all duration-500 overflow-hidden group-hover:scale-105 group-hover:rotate-1">
+      <div className="relative w-full h-full bg-linear-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl border border-white/20 hover:border-white/30 transition-all duration-500 overflow-hidden group-hover:scale-105 group-hover:rotate-1">
         {/* Shimmer Effect */}
-        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12" />
+        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-linear-to-r from-transparent via-white/10 to-transparent skew-x-12" />
 
         {/* Content */}
         <div className="relative p-6 sm:p-8 h-full flex flex-col">
@@ -67,7 +67,7 @@ export default function TeamCard({
             <div className="relative mb-6 group/avatar">
               <div className="w-24 h-24 sm:w-32 sm:h-32 relative">
                 {/* Rotating Border */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-400 via-teal-400 to-blue-400 animate-spin group-hover:animate-none transition-all duration-500" />
+                <div className="absolute inset-0 rounded-full bg-linear-to-r from-emerald-400 via-teal-400 to-blue-400 animate-spin group-hover:animate-none transition-all duration-500" />
                 <div className="absolute inset-0.5 rounded-full bg-black" />
                 
                 {/* Profile Image */}
@@ -82,13 +82,13 @@ export default function TeamCard({
               </div>
               
               {/* Floating Icon */}
-              <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 animate-bounce">
+              <div className="absolute -top-2 -right-2 w-8 h-8 bg-linear-to-r from-emerald-400 to-teal-400 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 animate-bounce">
                 <Sparkles className="w-4 h-4 text-black" />
               </div>
             </div>
 
             {/* Name and Role */}
-            <h3 className="text-xl sm:text-2xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
+            <h3 className="text-xl sm:text-2xl font-bold mb-2 bg-clip-text text-transparent bg-linear-to-r from-white to-gray-300">
               {name}
             </h3>
             <p className="text-sm sm:text-base text-emerald-400 font-medium mb-4 px-3 py-1 bg-emerald-400/10 rounded-full border border-emerald-400/20">
@@ -128,7 +128,7 @@ export default function TeamCard({
         </div>
 
         {/* Corner Accent */}
-        <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-emerald-400/20 to-transparent rounded-bl-3xl" />
+        <div className="absolute top-0 right-0 w-20 h-20 bg-linear-to-bl from-emerald-400/20 to-transparent rounded-bl-3xl" />
       </div>
 
       {/* Floating Particles */}

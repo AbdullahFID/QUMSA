@@ -56,7 +56,7 @@ const AnimatedBackground = () => {
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none">
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-navy-900" />
+      <div className="absolute inset-0 bg-linear-to-br from-slate-900 via-blue-900 to-navy-900" />
 
       {stars.map((star) => (
         <div
@@ -71,13 +71,13 @@ const AnimatedBackground = () => {
         />
       ))}
 
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-amber-500/10 to-yellow-500/10 rounded-full blur-3xl " />
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-linear-to-r from-amber-500/10 to-yellow-500/10 rounded-full blur-3xl " />
       <div
-        className="absolute top-3/4 right-1/4 w-96 h-96 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 rounded-full blur-3xl "
+        className="absolute top-3/4 right-1/4 w-96 h-96 bg-linear-to-r from-blue-600/10 to-indigo-600/10 rounded-full blur-3xl "
         style={{ animationDelay: '2s' }}
       />
       <div
-        className="absolute top-1/2 left-1/2 w-48 h-48 bg-gradient-to-r from-amber-400/15 to-yellow-400/15 rounded-full blur-3xl"
+        className="absolute top-1/2 left-1/2 w-48 h-48 bg-linear-to-r from-amber-400/15 to-yellow-400/15 rounded-full blur-3xl"
         style={{ animationDelay: '4s' }}
       />
     </div>
@@ -229,7 +229,7 @@ const ResourcePanel: React.FC = () => {
         )
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-blue-800">
+    <div className="min-h-screen relative overflow-hidden bg-linear-to-br from-slate-900 via-blue-900 to-blue-800">
       <AnimatedBackground />
       
       <div className="relative z-10">
@@ -240,11 +240,11 @@ const ResourcePanel: React.FC = () => {
             </div>
             
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-white via-gray-200 to-gray-300 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-white via-gray-200 to-gray-300 bg-clip-text text-transparent">
                 Community
               </span>
               <br />
-              <span className="bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-amber-400 via-yellow-400 to-amber-500 bg-clip-text text-transparent">
                 Resources
               </span>
             </h1>
@@ -270,7 +270,7 @@ const ResourcePanel: React.FC = () => {
                 <div className="absolute left-6 top-1/2 -translate-y-1/2 flex items-center">
                   <Search className="w-6 h-6 text-gray-300 peer-focus:text-amber-400 transition-colors duration-300" />
                 </div>
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-amber-500/0 via-yellow-500/0 to-amber-500/0 group-hover:from-amber-500/10 group-hover:via-yellow-500/10 group-hover:to-amber-500/10 transition-all duration-500 pointer-events-none" />
+                <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-amber-500/0 via-yellow-500/0 to-amber-500/0 group-hover:from-amber-500/10 group-hover:via-yellow-500/10 group-hover:to-amber-500/10 transition-all duration-500 pointer-events-none" />
               </div>
             </div>
           </div>
@@ -312,7 +312,7 @@ const ResourcePanel: React.FC = () => {
                       onMouseLeave={() => setHoveredCard(null)}
                     >
                       {item.featured && (
-                        <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-amber-400 to-yellow-400 rounded-full flex items-center justify-center">
+                        <div className="absolute -top-2 -right-2 w-8 h-8 bg-linear-to-r from-amber-400 to-yellow-400 rounded-full flex items-center justify-center">
                           <Pin className="w-4 h-4 text-white" />
                         </div>
                       )}
@@ -340,7 +340,7 @@ const ResourcePanel: React.FC = () => {
                       </div>
                       
                       {hoveredCard === `search-${idx}` && (
-                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-amber-500/10 via-yellow-500/10 to-amber-500/10 pointer-events-none" />
+                        <div className="absolute inset-0 rounded-3xl bg-linear-to-r from-amber-500/10 via-yellow-500/10 to-amber-500/10 pointer-events-none" />
                       )}
                     </a>
                   ))}
@@ -352,7 +352,7 @@ const ResourcePanel: React.FC = () => {
 
         {!searchTerm && (
           <section className="py-20 relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 via-amber-900/10 to-blue-900/20 backdrop-blur-sm" />
+            <div className="absolute inset-0 bg-linear-to-r from-blue-900/20 via-amber-900/10 to-blue-900/20 backdrop-blur-sm" />
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <div className="inline-flex items-center space-x-3 mb-6">
@@ -376,9 +376,9 @@ const ResourcePanel: React.FC = () => {
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative p-8 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl 
+                    className="group relative p-8 bg-linear-to-br from-white/10 to-white/5 backdrop-blur-xl 
                                rounded-3xl border border-white/20 hover:border-amber-400/50
-                               hover:bg-gradient-to-br hover:from-white/20 hover:to-white/10
+                               hover:bg-linear-to-br hover:from-white/20 hover:to-white/10
                                transition-all duration-500 hover:scale-105 text-center"
                     onMouseEnter={() => setHoveredCard(`featured-${idx}`)}
                     onMouseLeave={() => setHoveredCard(null)}
@@ -397,7 +397,7 @@ const ResourcePanel: React.FC = () => {
                       </p>
                       
                       {hoveredCard === `featured-${idx}` && (
-                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-amber-500/10 to-yellow-500/10 pointer-events-none" />
+                        <div className="absolute inset-0 rounded-3xl bg-linear-to-br from-amber-500/10 to-yellow-500/10 pointer-events-none" />
                       )}
                     </div>
                   </a>
@@ -415,13 +415,13 @@ const ResourcePanel: React.FC = () => {
                 id={category.replace(/\s+/g, '-').toLowerCase()}
                 className="scroll-mt-20 relative"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-transparent to-white/5 rounded-3xl" />
+                <div className="absolute inset-0 bg-linear-to-r from-white/5 via-transparent to-white/5 rounded-3xl" />
                 <div className="relative">
                   <div className="text-center mb-16">
                     <h2 className="text-5xl font-bold mb-6 text-white">
                       {category}
                     </h2>
-                    <div className="w-24 h-1 bg-gradient-to-r from-amber-400 to-yellow-400 mx-auto rounded-full" />
+                    <div className="w-24 h-1 bg-linear-to-r from-amber-400 to-yellow-400 mx-auto rounded-full" />
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -439,7 +439,7 @@ const ResourcePanel: React.FC = () => {
                         onMouseLeave={() => setHoveredCard(null)}
                       >
                         {item.featured && (
-                            <div className="absolute -top-3 -right-3 w-10 h-10 bg-gradient-to-r from-amber-400 to-yellow-400 rounded-full flex items-center justify-center ">
+                            <div className="absolute -top-3 -right-3 w-10 h-10 bg-linear-to-r from-amber-400 to-yellow-400 rounded-full flex items-center justify-center ">
                           <Pin className="w-5 h-5 text-white" />
                         </div>
                         )}
@@ -464,7 +464,7 @@ const ResourcePanel: React.FC = () => {
                         </div>
                         
                         {hoveredCard === `${category}-${idx}` && (
-                          <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-amber-500/10 via-yellow-500/10 to-amber-500/10 pointer-events-none" />
+                          <div className="absolute inset-0 rounded-3xl bg-linear-to-r from-amber-500/10 via-yellow-500/10 to-amber-500/10 pointer-events-none" />
                         )}
                       </a>
                     ))}
@@ -476,7 +476,7 @@ const ResourcePanel: React.FC = () => {
         )}
 
         <footer className="py-20 relative text-center">
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-slate-900 to-transparent" />
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-500/20 backdrop-blur-xl rounded-full mb-6 border border-amber-400/30">
               <Heart className="w-8 h-8 text-amber-400 animate-pulse" />

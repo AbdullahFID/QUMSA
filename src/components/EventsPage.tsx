@@ -287,7 +287,7 @@ function PhotoSlideshow() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.6 }}
-            className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-amber-400/20 via-yellow-400/20 to-amber-500/20"
+            className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-amber-400/20 via-yellow-400/20 to-amber-500/20"
           >
             {/* logo */}
             <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10">
@@ -335,7 +335,7 @@ function PhotoSlideshow() {
       {/* progress bar */}
       <div className="absolute bottom-0 left-0 w-full h-1 bg-white/20">
         <motion.div
-          className="h-full bg-gradient-to-r from-amber-400 to-yellow-500"
+          className="h-full bg-linear-to-r from-amber-400 to-yellow-500"
           initial={{ width: 0 }}
           animate={{ width: play ? '100%' : `${((idx + 1) / slides.length) * 100}%` }}
           transition={{ duration: play ? 4 : 0.3, ease: play ? 'linear' : 'easeOut' }}
@@ -412,13 +412,13 @@ export default function EventPage() {
   const regular = upcomingEvents.filter((e) => !e.featured)
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-900 to-slate-800 text-white relative overflow-hidden">
+    <div className="min-h-screen bg-linear-to-b from-slate-900 via-blue-900 to-slate-800 text-white relative overflow-hidden">
       {/* background orbs */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-slate-800/20 to-blue-800/30" />
-        <div className="absolute top-0 left-1/3 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-r from-amber-400/10 to-yellow-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 right-1/3 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-r from-blue-500/10 to-slate-600/10 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-r from-amber-500/5 to-blue-500/5 rounded-full blur-3xl animate-pulse delay-2000" />
+        <div className="absolute inset-0 bg-linear-to-br from-blue-900/30 via-slate-800/20 to-blue-800/30" />
+        <div className="absolute top-0 left-1/3 w-64 h-64 sm:w-96 sm:h-96 bg-linear-to-r from-amber-400/10 to-yellow-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 right-1/3 w-64 h-64 sm:w-96 sm:h-96 bg-linear-to-r from-blue-500/10 to-slate-600/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/2 w-64 h-64 sm:w-96 sm:h-96 bg-linear-to-r from-amber-500/5 to-blue-500/5 rounded-full blur-3xl animate-pulse delay-2000" />
       </div>
 
       {/* HERO */}
@@ -427,7 +427,7 @@ export default function EventPage() {
           {[...Array(12)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-1 h-1 bg-gradient-to-r from-amber-400 to-yellow-500 rounded-full"
+              className="absolute w-1 h-1 bg-linear-to-r from-amber-400 to-yellow-500 rounded-full"
               style={{ left: `${10 + i * 8}%`, top: `${15 + i * 6}%` }}
               animate={{ y: [-30, 30, -30], opacity: [0.2, 0.8, 0.2], scale: [0.5, 1.5, 0.5] }}
               transition={{ duration: 4 + i * 0.3, repeat: Infinity, ease: 'easeInOut' }}
@@ -439,7 +439,7 @@ export default function EventPage() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <div className="flex justify-center mb-6 sm:mb-8 lg:mb-12">
               <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 bg-white/5 backdrop-blur-xl rounded-full border border-white/10 hover:bg-white/10 transition">
-                <div className="p-1.5 sm:p-2 bg-gradient-to-r from-amber-400 to-yellow-500 rounded-full">
+                <div className="p-1.5 sm:p-2 bg-linear-to-r from-amber-400 to-yellow-500 rounded-full">
                   <Ticket className="w-3 h-3 sm:w-4 sm:h-4 text-black" />
                 </div>
                 <span className="text-amber-400 font-medium text-xs sm:text-sm lg:text-base">Events & Activities</span>
@@ -447,7 +447,7 @@ export default function EventPage() {
               </div>
             </div>
             <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-8xl font-bold mb-4 sm:mb-6 leading-tight">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-500">QUMSA</span>
+              <span className="bg-clip-text text-transparent bg-linear-to-r from-amber-400 to-yellow-500">QUMSA</span>
               <br />
               <span className="text-white">Events</span>
             </h1>
@@ -547,7 +547,7 @@ export default function EventPage() {
                 </div>
                 <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-amber-400 transition">{ev.title}</h3>
                 <p className="text-gray-300 text-sm sm:text-base">{ev.description}</p>
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 to-yellow-500 origin-left scale-x-0 group-hover:scale-x-100 transition-transform" />
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-amber-400 to-yellow-500 origin-left scale-x-0 group-hover:scale-x-100 transition-transform" />
               </motion.div>
             ))}
           </div>
@@ -558,12 +558,12 @@ export default function EventPage() {
       <section className="relative pb-20 sm:pb-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <motion.div className="relative group cursor-pointer" initial={{ opacity: 0, y: 30, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-            <div className="absolute inset-0 bg-gradient-to-r from-amber-400/20 to-yellow-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute inset-0 bg-linear-to-r from-amber-400/20 to-yellow-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
           </motion.div>
         </div>
       </section>
 
-      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 to-yellow-500" />
+      <div className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-amber-400 to-yellow-500" />
     </div>
   )
 }

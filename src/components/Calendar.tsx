@@ -583,10 +583,10 @@ END:VCALENDAR`;
     .slice(0, 5);
 
   return (
-    <div className="bg-gradient-to-br from-white via-slate-100 to-slate-200 rounded-2xl p-4 sm:p-6 max-w-4xl mx-auto border border-slate-200 shadow-xl">
+    <div className="bg-linear-to-br from-white via-slate-100 to-slate-200 rounded-2xl p-4 sm:p-6 max-w-4xl mx-auto border border-slate-200 shadow-xl">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 sm:mb-6">
         <div className="flex items-center space-x-3 mb-4 sm:mb-0">
-          <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-xl flex items-center justify-center shadow-lg">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 bg-linear-to-r from-amber-500 to-yellow-500 rounded-xl flex items-center justify-center shadow-lg">
             <Sun className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
           </div>
           <h2 className="text-lg sm:text-xl font-bold text-slate-800">QUMSA Events</h2>
@@ -608,7 +608,7 @@ END:VCALENDAR`;
           </button>
           <button
             onClick={goToToday}
-            className="px-3 py-2 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white rounded-lg text-sm font-medium transition-all shadow-lg"
+            className="px-3 py-2 bg-linear-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white rounded-lg text-sm font-medium transition-all shadow-lg"
           >
             Today
           </button>
@@ -647,7 +647,7 @@ END:VCALENDAR`;
             {calendarDays.map((dayObj, index) => (
               <div
                 key={index}
-                className={`min-h-[60px] sm:min-h-[70px] p-1 sm:p-2 border rounded-lg transition-all ${
+                className={`min-h-15 sm:min-h-17.5 p-1 sm:p-2 border rounded-lg transition-all ${
                   !dayObj.isCurrentMonth 
                     ? 'bg-slate-100 text-slate-400 border-slate-200' 
                     : 'bg-white hover:bg-slate-50 border-slate-200'
@@ -674,7 +674,7 @@ END:VCALENDAR`;
                         onClick={() => setSelectedEvent(event)}
                         className={`w-full text-left p-1 rounded text-xs ${colors.light} ${colors.text} hover:opacity-75 transition-opacity flex items-center space-x-1 border ${colors.border}`}
                       >
-                        <Icon className="w-2.5 h-2.5 sm:w-3 sm:h-3 flex-shrink-0" />
+                        <Icon className="w-2.5 h-2.5 sm:w-3 sm:h-3 shrink-0" />
                         <span className="truncate text-[10px] sm:text-xs">{event.title}</span>
                       </button>
                     );
@@ -782,7 +782,7 @@ END:VCALENDAR`;
                 </div>
                 <button
                   onClick={() => setSelectedEvent(null)}
-                  className="p-1.5 sm:p-2 hover:bg-slate-100 rounded-xl transition-colors flex-shrink-0"
+                  className="p-1.5 sm:p-2 hover:bg-slate-100 rounded-xl transition-colors shrink-0"
                 >
                   <X className="w-4 h-4 sm:w-5 sm:h-5 text-slate-600" />
                 </button>
@@ -790,7 +790,7 @@ END:VCALENDAR`;
 
               <div className="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
                 <div className="flex items-start space-x-3 text-slate-800">
-                  <div className="w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div className="w-5 h-5 flex items-center justify-center shrink-0 mt-0.5">
                     <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-slate-500" />
                   </div>
                   <div className="min-w-0 flex-1">
@@ -809,14 +809,14 @@ END:VCALENDAR`;
                 </div>
 
                 <div className="flex items-center space-x-3 text-slate-800">
-                  <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                  <div className="w-5 h-5 flex items-center justify-center shrink-0">
                     <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-slate-500" />
                   </div>
                   <p className="text-sm sm:text-base min-w-0 flex-1">{selectedEvent.location}</p>
                 </div>
 
                 <div className="flex items-center space-x-3 text-slate-800">
-                  <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                  <div className="w-5 h-5 flex items-center justify-center shrink-0">
                     <Users className="w-4 h-4 sm:w-5 sm:h-5 text-slate-500" />
                   </div>
                   <p className="text-sm sm:text-base">{selectedEvent.attendees} expected attendees</p>
@@ -831,7 +831,7 @@ END:VCALENDAR`;
                 <div className="flex flex-col sm:flex-row gap-2">
                   <a
                     href="/events"
-                    className="flex-1 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white px-4 py-2.5 sm:py-3 rounded-xl font-medium text-center transition-all flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105"
+                    className="flex-1 bg-linear-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white px-4 py-2.5 sm:py-3 rounded-xl font-medium text-center transition-all flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105"
                   >
                     <ExternalLink className="w-4 h-4" />
                     <span className="text-sm sm:text-base">View Events Page</span>
@@ -849,7 +849,7 @@ END:VCALENDAR`;
                     href={generateCalendarUrls(selectedEvent).google}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white rounded-xl text-xs sm:text-sm font-medium transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
+                    className="flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-linear-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white rounded-xl text-xs sm:text-sm font-medium transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
                   >
                     <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
                     <span>Google</span>
@@ -858,7 +858,7 @@ END:VCALENDAR`;
                     href={generateCalendarUrls(selectedEvent).outlook}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-yellow-600 to-yellow-700 hover:from-yellow-700 hover:to-orange-800 text-white rounded-xl text-xs sm:text-sm font-medium transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
+                    className="flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-linear-to-r from-yellow-600 to-yellow-700 hover:from-yellow-700 hover:to-orange-800 text-white rounded-xl text-xs sm:text-sm font-medium transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
                   >
                     <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
                     <span>Outlook</span>

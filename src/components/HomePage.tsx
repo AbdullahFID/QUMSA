@@ -67,7 +67,7 @@ export default function Homepage() {
 
   /* ────────────────────────────────── UI ───────────────────────────────── */
   return (
-    <div className="bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900 text-slate-900 dark:text-slate-50">
+    <div className="bg-linear-to-br from-slate-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900 text-slate-900 dark:text-slate-50">
       {/* ───────────── HERO ───────────── */}
       {/* ───────────── HERO ───────────── */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -78,7 +78,7 @@ export default function Homepage() {
           priority
           className="object-cover object-center scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/70 via-blue-900/60 to-navy-900/70" />
+        <div className="absolute inset-0 bg-linear-to-br from-slate-900/70 via-blue-900/60 to-navy-900/70" />
         
         {/* Floating particles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -131,7 +131,7 @@ export default function Homepage() {
             >
               <p className="mb-4">
                 Building&nbsp;
-                <span className="inline-flex px-2 h-8 sm:h-10 overflow-hidden rounded-lg bg-gradient-to-r from-red-500/20 to-pink-500/20 backdrop-blur-sm">
+                <span className="inline-flex px-2 h-8 sm:h-10 overflow-hidden rounded-lg bg-linear-to-r from-red-500/20 to-pink-500/20 backdrop-blur-sm">
                   <AnimatePresence mode="wait">
                     <motion.span
                       key={i1}
@@ -140,7 +140,7 @@ export default function Homepage() {
                       animate="animate"
                       exit="exit"
                       transition={{ duration: 0.6 }}
-                      className="block text-red-300 whitespace-nowrap flex items-center"
+                      className=" text-red-300 whitespace-nowrap flex items-center"
                     >
                       {first[i1]}
                     </motion.span>
@@ -150,7 +150,7 @@ export default function Homepage() {
               </p>
               <p>
                 at Queen's University while sharing&nbsp;
-                <span className="inline-flex px-2 h-8 sm:h-10 overflow-hidden rounded-lg bg-gradient-to-r from-red-500/20 to-pink-500/20 backdrop-blur-sm">
+                <span className="inline-flex px-2 h-8 sm:h-10 overflow-hidden rounded-lg bg-linear-to-r from-red-500/20 to-pink-500/20 backdrop-blur-sm">
                   <AnimatePresence mode="wait">
                     <motion.span
                       key={i2}
@@ -159,7 +159,7 @@ export default function Homepage() {
                       animate="animate"
                       exit="exit"
                       transition={{ duration: 0.6 }}
-                      className="block text-red-300 whitespace-nowrap flex items-center"
+                      className=" text-red-300 whitespace-nowrap flex items-center"
                     >
                       {second[i2]}
                     </motion.span>
@@ -177,7 +177,7 @@ export default function Homepage() {
             >
               <Link
                 href="/mission"
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-900 font-semibold rounded-2xl hover:from-yellow-300 hover:to-amber-400 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
+                className="group inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-yellow-400 to-amber-500 text-slate-900 font-semibold rounded-2xl hover:from-yellow-300 hover:to-amber-400 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
               >
                 <Sparkles className="w-5 h-5" />
                 Learn More
@@ -189,7 +189,7 @@ export default function Homepage() {
       </section>
 
       {/* ───────────── DU'A SECTION ───────────── */}
-      <section className="relative py-16 sm:py-20 bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900 text-white overflow-hidden">
+      <section className="relative py-16 sm:py-20 bg-linear-to-b from-slate-900 via-blue-900 to-slate-900 text-white overflow-hidden">
         {/* Subtle background pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-yellow-400 rounded-full blur-3xl" />
@@ -214,7 +214,7 @@ export default function Homepage() {
             >
               <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-4 leading-tight" 
                   style={{ fontFamily: 'Noto Sans Arabic, serif' }}>
-                <span className="bg-gradient-to-r from-yellow-400 via-amber-300 to-yellow-500 bg-clip-text text-transparent">
+                <span className="bg-linear-to-r from-yellow-400 via-amber-300 to-yellow-500 bg-clip-text text-transparent">
                   وَوَجَدَكَ ضَالًّا فَهَدَىٰ
                 </span>
               </h2>
@@ -244,7 +244,7 @@ export default function Homepage() {
               viewport={{ once: true }}
               className="flex justify-center pt-4"
             >
-              <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
+              <div className="w-24 h-0.5 bg-linear-to-r from-transparent via-yellow-400 to-transparent"></div>
             </motion.div>
           </motion.div>
         </div>
@@ -275,7 +275,7 @@ export default function Homepage() {
       </section>
 
       {/* ───────────── RESOURCES ───────────── */}
-      <section className="py-20 sm:py-24 px-4 sm:px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-navy-900">
+      <section className="py-20 sm:py-24 px-4 sm:px-6 bg-linear-to-br from-slate-900 via-blue-900 to-navy-900">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -341,13 +341,13 @@ export default function Homepage() {
         </div>
       </section>
 
-    <section className="relative py-20 sm:py-24 pb-32 sm:pb-40 bg-gradient-to-br from-slate-900 via-blue-900 to-navy-900 overflow-hidden">
+    <section className="relative py-20 sm:py-24 pb-32 sm:pb-40 bg-linear-to-br from-slate-900 via-blue-900 to-navy-900 overflow-hidden">
         {/* Background Effects */}
         <div className="absolute inset-0 pointer-events-none">
           {/* Large floating circles with translucency */}
-          <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-gradient-to-r from-amber-400/15 to-yellow-400/15 blur-xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-48 h-48 rounded-full bg-gradient-to-r from-slate-400/10 to-gray-300/10 blur-lg animate-pulse" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gradient-to-r from-blue-950/20 to-slate-800/20 blur-2xl"></div>
+          <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-linear-to-r from-amber-400/15 to-yellow-400/15 blur-xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-48 h-48 rounded-full bg-linear-to-r from-slate-400/10 to-gray-300/10 blur-lg animate-pulse" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-linear-to-r from-blue-950/20 to-slate-800/20 blur-2xl"></div>
           
           {/* Modern geometric shapes */}
           <div className="absolute top-40 right-20 w-32 h-32 rounded-full border-2 border-white/10 backdrop-blur-sm"></div>
@@ -363,7 +363,7 @@ export default function Homepage() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">Our Impact</h2>
-            <div className="w-16 h-1 mx-auto mb-6 rounded-full bg-gradient-to-r from-amber-400 to-yellow-500"></div>
+            <div className="w-16 h-1 mx-auto mb-6 rounded-full bg-linear-to-r from-amber-400 to-yellow-500"></div>
             <p className="text-xl max-w-2xl mx-auto text-gray-300">
               Building a stronger Muslim community at Queen's University
             </p>
@@ -381,7 +381,7 @@ export default function Homepage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay, duration: 0.6 }}
               viewport={{ once: true }}
-              className="group relative p-8 rounded-2xl border border-gray-300 dark:border-gray-700/30 bg-gradient-to-b from-navy-800 to-navy-900 dark:bg-white/5 transition-all duration-300 md:hover:scale-105 md:hover:border-yellow-400 dark:md:hover:bg-white/10"
+              className="group relative p-8 rounded-2xl border border-gray-300 dark:border-gray-700/30 bg-linear-to-b from-navy-800 to-navy-900 dark:bg-white/5 transition-all duration-300 md:hover:scale-105 md:hover:border-yellow-400 dark:md:hover:bg-white/10"
             >
               <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full bg-yellow-400/15 opacity-0 blur-xl group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="absolute top-2 right-2 w-8 h-8 rounded-full bg-yellow-400/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -407,15 +407,15 @@ export default function Homepage() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="relative z-20 bg-gradient-to-br from-slate-900/95 via-blue-900/95 to-slate-900/95 backdrop-blur-xl border border-white/20 rounded-3xl p-8 sm:p-12 text-center shadow-2xl overflow-hidden"
+            className="relative z-20 bg-linear-to-br from-slate-900/95 via-blue-900/95 to-slate-900/95 backdrop-blur-xl border border-white/20 rounded-3xl p-8 sm:p-12 text-center shadow-2xl overflow-hidden"
           >
             {/* Background gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/10 via-transparent to-emerald-400/10" />
+            <div className="absolute inset-0 bg-linear-to-br from-yellow-400/10 via-transparent to-emerald-400/10" />
             
             <div className="relative z-10">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-white">
                 Ready to join our{' '}
-                <span className="bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
+                <span className="bg-linear-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
                   community
                 </span>
                 ?
@@ -435,7 +435,7 @@ export default function Homepage() {
                 </Link>
                 <Link
                   href="/events"
-                  className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-900 font-semibold rounded-2xl hover:from-yellow-300 hover:to-amber-400 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
+                  className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-linear-to-r from-yellow-400 to-amber-500 text-slate-900 font-semibold rounded-2xl hover:from-yellow-300 hover:to-amber-400 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
                 >
                   <CalendarCheck className="w-5 h-5" />
                   View Events

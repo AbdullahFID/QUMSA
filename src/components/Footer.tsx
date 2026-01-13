@@ -4,7 +4,6 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import {
-  MoonStar,               // brand mark (crescent + star)
   Instagram as InstagramIcon,
   Mail,
   MapPin,
@@ -58,7 +57,7 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-2">
             <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-6">
               <div className="relative w-fit hidden sm:block">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-islamic-gold to-islamic-emerald p-0.5">
+                <div className="absolute inset-0 rounded-full bg-linear-to-r from-islamic-gold to-islamic-emerald p-0.5">
                   <div className="w-full h-full rounded-full bg-white"></div>
                 </div>
                 <div className="relative p-2 rounded-full bg-white">
@@ -212,7 +211,7 @@ export default function Footer() {
             <h4 className="text-lg font-bold mb-6 text-islamic-emerald">Contact</h4>
             <div className="space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-start space-y-2 sm:space-y-0 sm:space-x-3">
-                <MapPin className="w-5 h-5 text-islamic-gold mt-0.5 flex-shrink-0 mx-auto sm:mx-0" />
+                <MapPin className="w-5 h-5 text-islamic-gold mt-0.5 shrink-0 mx-auto sm:mx-0" />
                 <div className="text-center sm:text-left">
                   <p className="text-gray-300 text-sm sm:text-base">JDUC Room 329, 331</p>
                   <p className="text-gray-300 text-sm sm:text-base">John Deutsch University Centre</p>
@@ -221,7 +220,7 @@ export default function Footer() {
               </div>
 
               <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
-                <Mail className="w-5 h-5 text-islamic-gold flex-shrink-0 mx-auto sm:mx-0" />
+                <Mail className="w-5 h-5 text-islamic-gold shrink-0 mx-auto sm:mx-0" />
                 <a
                   href="mailto:qumsachair@gmail.com"
                   className="text-gray-300 hover:text-islamic-gold transition-colors text-sm sm:text-base focus:outline-none focus:text-islamic-gold"

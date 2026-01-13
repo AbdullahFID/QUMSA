@@ -43,7 +43,7 @@ const AnimatedBackground = () => {
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none">
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-navy-900" />
+      <div className="absolute inset-0 bg-linear-to-br from-slate-900 via-blue-900 to-navy-900" />
 
       {stars.map((star) => (
         <div
@@ -58,13 +58,13 @@ const AnimatedBackground = () => {
         />
       ))}
 
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-linear-to-r from-amber-500/20 to-yellow-500/20 rounded-full blur-3xl animate-pulse" />
       <div
-        className="absolute top-3/4 right-1/4 w-96 h-96 bg-gradient-to-r from-blue-600/10 to-slate-600/10 rounded-full blur-3xl animate-pulse"
+        className="absolute top-3/4 right-1/4 w-96 h-96 bg-linear-to-r from-blue-600/10 to-slate-600/10 rounded-full blur-3xl animate-pulse"
         style={{ animationDelay: '2s' }}
       />
       <div
-        className="absolute top-1/2 left-1/2 w-48 h-48 bg-gradient-to-r from-amber-400/15 to-yellow-400/15 rounded-full blur-3xl animate-pulse"
+        className="absolute top-1/2 left-1/2 w-48 h-48 bg-linear-to-r from-amber-400/15 to-yellow-400/15 rounded-full blur-3xl animate-pulse"
         style={{ animationDelay: '4s' }}
       />
     </div>
@@ -139,11 +139,11 @@ export default function ModernDonate() {
             </div>
             
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 Support
               </span>
               <br />
-              <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">
                 QUMSA
               </span>
             </h1>
@@ -158,7 +158,7 @@ export default function ModernDonate() {
         <div className="max-w-7xl mx-auto px-4 pb-32">
           <div className="mb-6 bg-amber-500/10 border border-amber-500/30 rounded-3xl p-6 backdrop-blur-xl">
             <div className="flex items-start gap-4">
-              <AlertTriangle className="w-6 h-6 text-amber-400 mt-0.5 flex-shrink-0" />
+              <AlertTriangle className="w-6 h-6 text-amber-400 mt-0.5 shrink-0" />
               <div>
                 <h3 className="text-lg font-semibold text-amber-400 mb-2">Data Update Notice</h3>
                 <p className="text-gray-300 leading-relaxed">
@@ -179,7 +179,7 @@ export default function ModernDonate() {
               
               <div className="bg-gray-800/50 rounded-full h-4 mb-6 overflow-hidden">
                 <div 
-                  className="bg-gradient-to-r from-amber-400 to-yellow-400 h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden"
+                  className="bg-linear-to-r from-amber-400 to-yellow-400 h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden"
                   style={{ width: `${Math.min(progressPercentage, 100)}%` }}
                 >
                   <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
@@ -258,7 +258,7 @@ export default function ModernDonate() {
                   return (
                     <div key={index} className="group">
                       <div className="flex items-center gap-3 mb-3">
-                        <div className="bg-amber-400/20 p-2 rounded-lg group-hover:scale-110 transition-transform flex-shrink-0">
+                        <div className="bg-amber-400/20 p-2 rounded-lg group-hover:scale-110 transition-transform shrink-0">
                           <Icon className="w-4 h-4 text-amber-400" />
                         </div>
                         <div className="flex-1 min-w-0">
@@ -274,7 +274,7 @@ export default function ModernDonate() {
                       <div className="ml-8">
                         <div className="bg-gray-800/50 rounded-full h-2 mb-2">
                           <div 
-                            className="bg-gradient-to-r from-amber-400 to-yellow-400 h-2 rounded-full transition-all duration-1000 delay-300"
+                            className="bg-linear-to-r from-amber-400 to-yellow-400 h-2 rounded-full transition-all duration-1000 delay-300"
                             style={{ width: `${item.percentage}%` }}
                           ></div>
                         </div>
@@ -300,7 +300,7 @@ export default function ModernDonate() {
                   
                   <div className="bg-gray-800/50 rounded-full h-6 mb-8 overflow-hidden">
                     <div 
-                      className="bg-gradient-to-r from-amber-400 to-yellow-400 h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden"
+                      className="bg-linear-to-r from-amber-400 to-yellow-400 h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden"
                       style={{ width: `${Math.min(progressPercentage, 100)}%` }}
                     >
                       <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
@@ -351,7 +351,7 @@ export default function ModernDonate() {
                           <div className="mb-4">
                             <div className="bg-gray-800/50 rounded-full h-3 mb-3">
                               <div 
-                                className="bg-gradient-to-r from-amber-400 to-yellow-400 h-3 rounded-full transition-all duration-1000 delay-300"
+                                className="bg-linear-to-r from-amber-400 to-yellow-400 h-3 rounded-full transition-all duration-1000 delay-300"
                                 style={{ width: `${item.percentage}%` }}
                               ></div>
                             </div>
