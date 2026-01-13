@@ -176,7 +176,7 @@ export default function PrayerPanel() {
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-white/20">
             <div className="rounded-xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/Juma/prayerTimings.png"
+                src="/images/Juma/JCalendar.png"
                 alt="September 2025 QUMSA Congregational Prayer Times"
                 width={1400}
                 height={900}
