@@ -62,7 +62,7 @@ const upcomingEvents: Event[] = [
     location: 'MacCorry Hall, B201',
     time: '10:00 AM – 4:00 PM',
     attendees: 15,
-    category: 'Education',
+    category: 'Educational',
     featured: true,
   },
   {
@@ -82,7 +82,7 @@ const upcomingEvents: Event[] = [
     location: 'Springer Market Square',
     time: '1:00 PM - 3:00 PM',
     attendees: 20,
-    category: 'Community',
+    category: 'Social',
     featured: true,
   },
 
