@@ -81,6 +81,7 @@ const allEvents: Event[] = [
     attendees: 0,
     organizer: 'QUMSA'
   },
+  
   {
     id: 103,
     title: 'Queens in the Park',
