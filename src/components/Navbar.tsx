@@ -115,7 +115,7 @@ export default function Navbar() {
         className={`
           hidden md:block fixed inset-x-0 top-0 z-50 transition-all duration-300
           ${scroll
-            ? 'bg-[#131C65] shadow-xl backdrop-blur-md'
+            ? 'bg-[#131C65]/70 shadow-xl backdrop-blur-xl border-b border-white/10'
             : 'bg-transparent'
           }
         `}
@@ -251,7 +251,7 @@ export default function Navbar() {
           }}
           className={`
             fixed right-4 bottom-20 z-50 w-14 h-14 rounded-full
-            bg-[#131C65]/95 backdrop-blur-md border border-gray-800 shadow-2xl
+           bg-[#131C65]/60 backdrop-blur-xl border border-white/10 shadow-2xl
             flex items-center justify-center transition-all duration-300
             hover:shadow-3xl hover:scale-105 active:scale-95
             ${showFloatingBtn ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0 pointer-events-none'}
@@ -274,7 +274,7 @@ export default function Navbar() {
           `}
         >
           <div className="flex justify-center px-4 pb-4 pt-2">
-            <div className="bg-[#131C65]/95 backdrop-blur-md rounded-2xl px-6 py-4 shadow-2xl border border-gray-800 max-w-sm w-full">
+            <div className="bg-[#131C65]/60 backdrop-blur-xl rounded-2xl px-6 py-4 shadow-2xl border border-gray-800 max-w-sm w-full">
               <div className="flex items-center justify-between">
                 {primaryLinks.slice(0, 4).map(({ href, label, icon: Icon }) => {
                   const isActive = isActiveLink(href)
