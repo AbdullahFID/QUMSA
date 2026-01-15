@@ -160,7 +160,7 @@ export default function Footer() {
                 <li key={l.href} className="text-center sm:text-left">
                   <Link
                     href={l.href}
-                    className="text-gray-300 hover:text-islamic-gold transition-colors duration-300 inline-flex items-center group text-sm sm:text-base focus:outline-none focus:text-islamic-gold"
+                    className="text-gray-300 hover:text-islamic-gold transition-colors duration-300 flex sm:inline-flex items-center justify-center sm:justify-start group text-sm sm:text-base focus:outline-none focus:text-islamic-gold"
                   >
                     <ChevronRight className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {l.label}
@@ -199,7 +199,7 @@ export default function Footer() {
                   href="/donate"
                   className="text-gray-300 hover:text-islamic-gold transition-colors duration-300 inline-flex items-center group text-sm sm:text-base focus:outline-none focus:text-islamic-gold"
                 >
-                  <ChevronRight className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <ChevronRight className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-opacity hidden sm:block" />
                   Donate
                 </Link>
               </li>
@@ -211,7 +211,7 @@ export default function Footer() {
             <h4 className="text-lg font-bold mb-6 text-islamic-emerald">Contact</h4>
             <div className="space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-start space-y-2 sm:space-y-0 sm:space-x-3">
-                <MapPin className="w-5 h-5 text-islamic-gold mt-0.5 shrink-0 mx-auto sm:mx-0" />
+                <MapPin className="w-5 h-5 text-islamic-gold mt-0.5 shrink-0 self-center sm:self-start" />
                 <div className="text-center sm:text-left">
                   <p className="text-gray-300 text-sm sm:text-base">JDUC Room 329, 331</p>
                   <p className="text-gray-300 text-sm sm:text-base">John Deutsch University Centre</p>
@@ -220,7 +220,7 @@ export default function Footer() {
               </div>
 
               <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
-                <Mail className="w-5 h-5 text-islamic-gold shrink-0 mx-auto sm:mx-0" />
+                <Mail className="w-5 h-5 text-islamic-gold shrink-0 self-center sm:self-start" />
                 <a
                   href="mailto:qumsachair@gmail.com"
                   className="text-gray-300 hover:text-islamic-gold transition-colors text-sm sm:text-base focus:outline-none focus:text-islamic-gold"
