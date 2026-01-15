@@ -244,28 +244,32 @@ export default function Navbar() {
         )}
 
         <button
-          onClick={() => {
-            setShowMobileNav(true)
-            setShowFloatingBtn(false)
-            setMobileOpen(false)
-          }}
-          className={`
-            fixed right-4 bottom-20 z-50 w-14 h-14 rounded-full
-           bg-[#131C65]/60 backdrop-blur-xl border border-white/10 shadow-2xl
-            flex items-center justify-center transition-all duration-300
-            hover:shadow-3xl hover:scale-105 active:scale-95
-            ${showFloatingBtn ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0 pointer-events-none'}
-          `}
-        >
-          <svg
-            className="w-6 h-6 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
+  onClick={() => {
+    setShowMobileNav(true)
+    setShowFloatingBtn(false)
+    setMobileOpen(false)
+  }}
+  className={`
+    fixed right-4 bottom-20 z-50 w-14 h-14 rounded-full
+    bg-[#131C65]/70 backdrop-blur-md
+    border-[1.5px] border-[#FFD700]/50
+    shadow-[0_4px_20px_rgba(0,0,0,0.3)]
+    flex items-center justify-center transition-all duration-300
+    hover:bg-[#131C65]/80 hover:border-[#FFD700]/70
+    hover:shadow-[0_4px_24px_rgba(255,215,0,0.25)]
+    hover:scale-105 active:scale-95
+    ${showFloatingBtn ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0 pointer-events-none'}
+  `}
+>
+  <svg
+    className="w-6 h-6 text-white/90"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+  </svg>
+</button>
 
         <nav
           className={`
@@ -274,8 +278,7 @@ export default function Navbar() {
           `}
         >
           <div className="flex justify-center px-4 pb-4 pt-2">
-            <div className="bg-[#131C65]/60 backdrop-blur-xl rounded-2xl px-6 py-4 shadow-2xl border border-gray-800 max-w-sm w-full">
-              <div className="flex items-center justify-between">
+<div className="bg-[#131C65]/70 backdrop-blur-xl rounded-2xl px-6 py-4 shadow-2xl border-[1.5px] border-[#FFD700]/30 max-w-sm w-full">              <div className="flex items-center justify-between">
                 {primaryLinks.slice(0, 4).map(({ href, label, icon: Icon }) => {
                   const isActive = isActiveLink(href)
                   return (

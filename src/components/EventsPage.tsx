@@ -409,7 +409,7 @@ export default function EventPage() {
             </motion.div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
               {featured.map((ev, i) => (
-                <motion.div key={ev.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1, duration: 0.6 }} viewport={{ once: true }}>
+                <motion.div key={`${ev.title}-${ev.date}`} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1, duration: 0.6 }} viewport={{ once: true }}>
                   <EventCard {...ev} />
                 </motion.div>
               ))}
@@ -427,7 +427,7 @@ export default function EventPage() {
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
             {regular.map((ev, i) => (
-              <motion.div key={ev.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1, duration: 0.6 }} viewport={{ once: true }}>
+              <motion.div key={`${ev.title}-${ev.date}`} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1, duration: 0.6 }} viewport={{ once: true }}>
                 <EventCard {...ev} />
               </motion.div>
             ))}

@@ -157,49 +157,50 @@ export default function Footer() {
                 { href: '/events', label: 'Events' },
                 { href: '/team', label: 'Executive Team' },
               ].map((l) => (
-                <li key={l.href} className="text-center sm:text-left">
+                <li key={l.href}>
                   <Link
                     href={l.href}
-                    className="text-gray-300 hover:text-islamic-gold transition-colors duration-300 flex sm:inline-flex items-center justify-center sm:justify-start group text-sm sm:text-base focus:outline-none focus:text-islamic-gold"
+                    className="relative text-gray-300 hover:text-islamic-gold transition-colors duration-300 inline-flex items-center group text-sm sm:text-base focus:outline-none focus:text-islamic-gold"
                   >
-                    <ChevronRight className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <ChevronRight className="w-4 h-4 absolute -left-5 opacity-0 group-hover:opacity-100 transition-opacity hidden sm:block" />
                     {l.label}
                   </Link>
                 </li>
               ))}
-              <li className="text-center sm:text-left">
+              <li>
                 <button
                   onClick={() => setIsResourcesOpen(!isResourcesOpen)}
-                  className="text-gray-300 hover:text-islamic-gold transition-colors duration-300 inline-flex items-center group text-sm sm:text-base focus:outline-none focus:text-islamic-gold"
+                  className="relative text-gray-300 hover:text-islamic-gold transition-colors duration-300 inline-flex items-center group text-sm sm:text-base focus:outline-none focus:text-islamic-gold"
                 >
-                  <ChevronDown className={`w-4 h-4 mr-2 transition-transform duration-200 ${isResourcesOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 absolute -left-5 transition-transform duration-200 hidden sm:block ${isResourcesOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 mr-1 transition-transform duration-200 sm:hidden ${isResourcesOpen ? 'rotate-180' : ''}`} />
                   Resources
                 </button>
-                <div className={`mt-2 ml-0 sm:ml-6 space-y-2 transition-all duration-200 overflow-hidden ${isResourcesOpen ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}`}>
+                <div className={`mt-2 space-y-2 transition-all duration-200 overflow-hidden ${isResourcesOpen ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}`}>
                   {[
                     { href: '/resources/halal', label: 'Halal' },
                     { href: '/resources/links', label: 'Important Links & Guides' },
                     { href: '/resources/faq', label: 'FAQ and More' },
                     { href: '/resources/merch', label: 'Merch Coming Soon' }
                   ].map((resource) => (
-                    <div key={resource.href} className="text-center sm:text-left">
+                    <div key={resource.href} className="sm:ml-2">
                       <Link
                         href={resource.href}
-                        className="text-gray-400 hover:text-islamic-emerald transition-colors duration-300 inline-flex items-center group text-xs sm:text-sm focus:outline-none focus:text-islamic-emerald"
+                        className="relative text-gray-400 hover:text-islamic-emerald transition-colors duration-300 inline-flex items-center group text-xs sm:text-sm focus:outline-none focus:text-islamic-emerald"
                       >
-                        <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <ChevronRight className="w-3 h-3 absolute -left-4 opacity-0 group-hover:opacity-100 transition-opacity hidden sm:block" />
                         {resource.label}
                       </Link>
                     </div>
                   ))}
                 </div>
               </li>
-              <li className="text-center sm:text-left">
+              <li>
                 <Link
                   href="/donate"
-                  className="text-gray-300 hover:text-islamic-gold transition-colors duration-300 inline-flex items-center group text-sm sm:text-base focus:outline-none focus:text-islamic-gold"
+                  className="relative text-gray-300 hover:text-islamic-gold transition-colors duration-300 inline-flex items-center group text-sm sm:text-base focus:outline-none focus:text-islamic-gold"
                 >
-                  <ChevronRight className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-opacity hidden sm:block" />
+                  <ChevronRight className="w-4 h-4 absolute -left-5 opacity-0 group-hover:opacity-100 transition-opacity hidden sm:block" />
                   Donate
                 </Link>
               </li>
