@@ -26,6 +26,7 @@ import EventCard, { EventCategory } from '@/components/EventCard'
 import EventsCalendar from '@/components/Calendar'
 import Image from 'next/image'
 import eventsData from '@/content/events.json'
+import siteData from '@/content/site.json'
 
 // 🎉 FIXED: Added url? property to Event interface
 interface Event {
@@ -100,8 +101,7 @@ const weeklyPrograms: Event[] = eventsData.weekly.map((w) => ({
   featured: false,
 }))
 
-const annualEvents
-: AnnualEvent[] = [
+const annualEvents: AnnualEvent[] = [
   // {
   //   title: 'End of Year Dinner',
   //   description:
@@ -422,12 +422,12 @@ export default function EventPage() {
                 Follow us on Instagram so you never miss an announcement.
               </p>
               <a
-                href="https://instagram.com/qumsaqueens"
+                href={siteData.socials.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-amber-400 to-yellow-500 text-slate-900 font-semibold rounded-full hover:shadow-lg hover:shadow-amber-400/30 transition-all duration-300 hover:scale-105"
               >
-                <span>Follow @qumsaqueens</span>
+                <span>Follow @{siteData.socials.instagram.split('/').filter(Boolean).pop()}</span>
                 <Sparkles className="w-4 h-4" />
               </a>
             </motion.div>
@@ -453,6 +453,7 @@ export default function EventPage() {
       </section>
 
       {/* 5️⃣ SIGNATURE ANNUAL EVENTS */}
+      {annualEvents.length > 0 && (
       <section className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div className="text-center mb-12 sm:mb-16" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
@@ -473,6 +474,7 @@ export default function EventPage() {
           </div>
         </div>
       </section>
+      )}
 
       {/* bottom accent */}
       <section className="relative pb-20 sm:pb-24">

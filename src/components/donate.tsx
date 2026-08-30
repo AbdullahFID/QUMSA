@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from 'react';
+import siteData from '@/content/site.json';
 import {
   HeartHandshake,
   HandCoins,
@@ -78,13 +79,8 @@ const AnimatedBackground = () => {
 };
 
 const DONATION_CONFIG = {
-  ramadan: {
-    title: "Ramadan 2026 Iftar Program",
-    goal: 20000,
-    current: 3238,
-    launchGoodUrl: "https://www.launchgood.com/v4/campaign/qumsa_2026_ramadan_iftar_program?src=2539141",
-    description: "Help us provide free daily iftars for 200+ Muslim students at Queen's University throughout Ramadan."
-  },
+  // Campaign title/goal/raised managed through QUMSA ADMIN (/admin → Homepage tab)
+  ramadan: siteData.ramadanCampaign,
 
   sponsorshipTiers: [
     {

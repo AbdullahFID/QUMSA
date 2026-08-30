@@ -10,10 +10,49 @@ export const inputClass =
   'w-full rounded-xl bg-white/5 border border-white/15 px-4 py-2.5 text-white placeholder-gray-500 ' +
   'focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30 outline-none transition text-sm'
 
-export function Field({ label, children, hint }: { label: string; children: React.ReactNode; hint?: string }) {
+// Little "?" that reveals an explanation on hover, focus, or tap — for execs
+// seeing this dashboard for the first time
+export function HelpTip({ text }: { text: string }) {
+  return (
+    <span className="relative inline-flex group/tip align-middle">
+      <button
+        type="button"
+        tabIndex={0}
+        aria-label={`Help: ${text}`}
+        className="w-4 h-4 rounded-full bg-white/10 border border-white/20 text-gray-400 text-[10px] font-bold leading-none inline-flex items-center justify-center hover:bg-amber-400 hover:border-amber-400 hover:text-slate-900 focus:bg-amber-400 focus:border-amber-400 focus:text-slate-900 focus:outline-none transition-colors cursor-help"
+      >
+        ?
+      </button>
+      <span
+        role="tooltip"
+        className="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-56 opacity-0 invisible group-hover/tip:opacity-100 group-hover/tip:visible group-focus-within/tip:opacity-100 group-focus-within/tip:visible transition-opacity duration-150 z-40 normal-case tracking-normal"
+      >
+        <span className="block bg-slate-950 border border-white/20 text-gray-200 text-xs font-normal leading-relaxed rounded-xl px-3.5 py-2.5 shadow-2xl text-left">
+          {text}
+        </span>
+        <span className="absolute top-full left-1/2 -translate-x-1/2 border-[5px] border-transparent border-t-slate-950" />
+      </span>
+    </span>
+  )
+}
+
+export function Field({
+  label,
+  children,
+  hint,
+  help,
+}: {
+  label: string
+  children: React.ReactNode
+  hint?: string
+  help?: string
+}) {
   return (
     <label className="block">
-      <span className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">{label}</span>
+      <span className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">
+        {label}
+        {help && <HelpTip text={help} />}
+      </span>
       {children}
       {hint && <span className="block text-xs text-gray-500 mt-1">{hint}</span>}
     </label>
@@ -36,8 +75,19 @@ export function Select(props: React.SelectHTMLAttributes<HTMLSelectElement>) {
   )
 }
 
-export function Toggle({ checked, onChange, label }: { checked: boolean; onChange: (v: boolean) => void; label: string }) {
+export function Toggle({
+  checked,
+  onChange,
+  label,
+  help,
+}: {
+  checked: boolean
+  onChange: (v: boolean) => void
+  label: string
+  help?: string
+}) {
   return (
+    <span className="inline-flex items-center gap-2">
     <button
       type="button"
       onClick={() => onChange(!checked)}
@@ -45,18 +95,21 @@ export function Toggle({ checked, onChange, label }: { checked: boolean; onChang
       aria-pressed={checked}
     >
       <span
-        className={`relative w-10 h-6 rounded-full transition-colors ${
+        aria-hidden
+        className={`relative inline-block w-10 h-6 shrink-0 rounded-full transition-colors ${
           checked ? 'bg-amber-400' : 'bg-white/15'
         }`}
       >
         <span
-          className={`absolute top-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform ${
-            checked ? 'translate-x-[18px]' : 'translate-x-0.5'
+          className={`absolute top-0.5 block w-5 h-5 rounded-full bg-white shadow transition-[left] duration-200 ${
+            checked ? 'left-[18px]' : 'left-0.5'
           }`}
         />
       </span>
       <span className="text-sm text-gray-300 group-hover:text-white transition-colors">{label}</span>
     </button>
+    {help && <HelpTip text={help} />}
+    </span>
   )
 }
 
@@ -130,11 +183,13 @@ export function ImagePicker({
   value,
   folder,
   onChange,
+  help,
 }: {
   label: string
   value: string
   folder: 'headshots' | 'juma' | 'general'
   onChange: (path: string) => void
+  help?: string
 }) {
   const inputRef = useRef<HTMLInputElement>(null)
   const [preview, setPreview] = useState<string | null>(null)
@@ -160,7 +215,10 @@ export function ImagePicker({
 
   return (
     <div>
-      <span className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">{label}</span>
+      <span className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">
+        {label}
+        {help && <HelpTip text={help} />}
+      </span>
       <div className="flex items-center gap-3">
         <div className="w-16 h-16 rounded-xl overflow-hidden bg-white/5 border border-white/15 shrink-0 flex items-center justify-center">
           {preview || value ? (

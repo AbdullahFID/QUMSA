@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react'
 import { ChevronDown, HelpCircle, Heart, MessageCircle } from 'lucide-react'
+// Managed through QUMSA ADMIN (/admin) — stored in src/content/faq.json
+import faqData from '@/content/faq.json'
 
 const AnimatedBackground = () => {
   const [stars, setStars] = React.useState<
@@ -52,40 +54,7 @@ const AnimatedBackground = () => {
 const FAQ: React.FC = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null)
 
-  const faqs = [
-    {
-      q: 'Can non-Muslims attend QUMSA events?',
-      a: 'Absolutely! Our events are open to everyone interested in learning about Islam and building community. We welcome people of all backgrounds who want to engage respectfully and learn more about Islamic culture and values.',
-    },
-    {
-      q: 'Is there a membership fee for QUMSA?',
-      a: "No membership fee required! All Queen's students are welcome to join at no cost. Some special events may have a small ticket fee, but we always strive to keep events accessible.",
-    },
-    {
-      q: 'Where and when do Friday prayers take place?',
-      a: 'During the academic term, Jummah prayers are held in Mitchell Hall Auditorium every Friday. Follow @qumsa on Instagram or join our WhatsApp channel for weekly timing/location updates.',
-    },
-    {
-      q: 'How can I get involved with QUMSA activities?',
-      a: 'Join our WhatsApp groups, attend events, volunteer for Ramadan Iftars, become a Khatib volunteer, or fill out our feedback form to suggest new initiatives. We love enthusiastic community members!',
-    },
-    {
-      q: 'What resources are available for new Muslim students?',
-      a: 'We provide prayer-space info, halal-food guides, connection to local Islamic communities, mental-health resources via Naseeha, academic-support networks, and above all a welcoming community.',
-    },
-    {
-      q: 'How do I report concerns or incidents?',
-      a: 'Use our confidential incident-reporting form in the Community Support section. All reports are taken seriously and addressed promptly—your safety and well-being are priorities.',
-    },
-    {
-      q: 'Are there opportunities for Islamic education and learning?',
-      a: 'Yes! We host study circles, guest speakers, and workshops. Watch our socials/WhatsApp for upcoming events, or suggest topics through the feedback form.',
-    },
-    {
-      q: "How can I contribute to QUMSA's charitable initiatives?",
-      a: 'Donate to our Ramadan Iftar, Palestine relief, or propose new initiatives. Volunteers are always needed to organise and execute service projects throughout the year.',
-    },
-  ]
+  const faqs = faqData.faqs
 
   const toggleFAQ = (idx: number) => setOpenFAQ(openFAQ === idx ? null : idx)
 

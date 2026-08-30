@@ -16,6 +16,8 @@ import {
   Twitter,
   Github,
 } from 'lucide-react'
+// Contact info + social links managed through QUMSA ADMIN (/admin)
+import siteData from '@/content/site.json'
 
 export default function Footer() {
   const [isResourcesOpen, setIsResourcesOpen] = useState(false)
@@ -84,7 +86,7 @@ export default function Footer() {
             {/* Social Media Links */}
             <div className="flex justify-center sm:justify-start space-x-4 mt-2">
               <a
-                href="https://instagram.com/qumsa"
+                href={siteData.socials.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative group p-3 rounded-full bg-gray-800 hover:bg-pink-500 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-islamic-gold focus:ring-offset-2 focus:ring-offset-gray-900"
@@ -97,7 +99,7 @@ export default function Footer() {
                 </div>
               </a>
               <a
-                href="https://whatsapp.com/channel/0029VaEZcoSLNSZyWbQK390Q"
+                href={siteData.socials.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative group p-3 rounded-full bg-gray-800 hover:bg-green-500 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900"
@@ -110,7 +112,7 @@ export default function Footer() {
                 </div>
               </a>
               <a
-                href="https://www.facebook.com/QUMSA/"
+                href={siteData.socials.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative group p-3 rounded-full bg-gray-800 hover:bg-blue-600 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900"
@@ -123,7 +125,7 @@ export default function Footer() {
                 </div>
               </a>
               <a
-                href="https://x.com/qumsa"
+                href={siteData.socials.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative group p-3 rounded-full bg-gray-800 hover:bg-blue-400 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-gray-900"
@@ -218,19 +220,19 @@ export default function Footer() {
               <div className="flex flex-col sm:flex-row sm:items-start space-y-2 sm:space-y-0 sm:space-x-3">
                 <MapPin className="w-5 h-5 text-islamic-gold mt-0.5 shrink-0 self-center sm:self-start" />
                 <div className="text-center sm:text-left">
-                  <p className="text-gray-300 text-sm sm:text-base">JDUC Room 329, 331</p>
-                  <p className="text-gray-300 text-sm sm:text-base">John Deutsch University Centre</p>
-                  <p className="text-gray-400 text-xs sm:text-sm">99 University Ave, Kingston, ON K7L 3N6</p>
+                  <p className="text-gray-300 text-sm sm:text-base">{siteData.contact.roomLine1}</p>
+                  <p className="text-gray-300 text-sm sm:text-base">{siteData.contact.roomLine2}</p>
+                  <p className="text-gray-400 text-xs sm:text-sm">{siteData.contact.address}</p>
                 </div>
               </div>
 
               <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
                 <Mail className="w-5 h-5 text-islamic-gold shrink-0 self-center sm:self-start" />
                 <a
-                  href="mailto:qumsachair@gmail.com"
+                  href={`mailto:${siteData.contact.email}`}
                   className="text-gray-300 hover:text-islamic-gold transition-colors text-sm sm:text-base focus:outline-none focus:text-islamic-gold"
                 >
-                  qumsachair@gmail.com
+                  {siteData.contact.email}
                 </a>
               </div>
             </div>

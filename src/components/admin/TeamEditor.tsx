@@ -128,8 +128,8 @@ export default function TeamEditor() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <Field label="Name"><TextInput value={m.name} onChange={(e) => setMember(si, mi, { name: e.target.value })} /></Field>
                           <Field label="Role"><TextInput value={m.role} onChange={(e) => setMember(si, mi, { role: e.target.value })} placeholder="Director of Events" /></Field>
-                          <Field label="Email"><TextInput type="email" value={m.email} onChange={(e) => setMember(si, mi, { email: e.target.value })} placeholder="events@qumsa.ca" /></Field>
-                          <ImagePicker label="Headshot" value={m.img} folder="headshots" onChange={(path) => setMember(si, mi, { img: path })} />
+                          <Field label="Email" help="Shown as the contact button on their team card."><TextInput type="email" value={m.email} onChange={(e) => setMember(si, mi, { email: e.target.value })} placeholder="events@qumsa.ca" /></Field>
+                          <ImagePicker label="Headshot" value={m.img} folder="headshots" onChange={(path) => setMember(si, mi, { img: path })} help="A square-ish photo works best. It uploads to the website the moment you pick it — but only shows publicly after you Save & Publish." />
                           <div className="sm:col-span-2">
                             <Field label="Fun fact" hint="Shown on the flip side of their card">
                               <TextArea value={m.description} onChange={(e) => setMember(si, mi, { description: e.target.value })} />

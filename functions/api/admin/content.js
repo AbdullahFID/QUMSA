@@ -18,6 +18,8 @@ const FILES = {
   resources: 'src/content/resources.json',
   prayer: 'src/content/prayer.json',
   site: 'src/content/site.json',
+  faq: 'src/content/faq.json',
+  halal: 'src/content/halal.json',
 }
 
 export async function onRequestGet({ request, env }) {

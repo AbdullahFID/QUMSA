@@ -1,6 +1,6 @@
 // Client for the QUMSA Admin API (functions/api/admin/*)
 
-export type ContentFileName = 'events' | 'team' | 'resources' | 'prayer' | 'site'
+export type ContentFileName = 'events' | 'team' | 'resources' | 'prayer' | 'site' | 'faq' | 'halal'
 
 async function parseError(res: Response): Promise<string> {
   try {

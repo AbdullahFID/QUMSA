@@ -14,6 +14,7 @@ import type { LucideIcon } from 'lucide-react'
 import type { Metadata } from 'next'
 import TeamCard from '@/components/TeamCard'
 import teamData from '@/content/team.json'
+import siteData from '@/content/site.json'
 
 export const metadata: Metadata = {
   title: "Executive Team - QUMSA | Queen's University Muslim Students Association",
@@ -304,12 +305,12 @@ export default function TeamPage() {
               volunteer opportunities!
             </p>
             <a
-              href="https://instagram.com/qumsaqueens"
+              href={siteData.socials.instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-3 px-8 py-4 bg-linear-to-r from-amber-400 to-yellow-400 text-slate-900 font-semibold rounded-full hover:shadow-lg hover:shadow-amber-400/30 transition-all duration-300 hover:scale-105"
             >
-              <span>Follow @qumsaqueens</span>
+              <span>Follow @{siteData.socials.instagram.split('/').filter(Boolean).pop()}</span>
               <Sparkles className="w-5 h-5" />
             </a>
           </div>

@@ -112,7 +112,7 @@ export default function ResourcesEditor() {
                           </div>
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <Field label="Title"><TextInput value={item.title} onChange={(e) => setItem(ci, ii, { title: e.target.value })} /></Field>
-                            <Field label="Icon">
+                            <Field label="Icon" help="The small symbol on the link's card — pick whichever fits the vibe.">
                               <Select value={item.icon} onChange={(e) => setItem(ci, ii, { icon: e.target.value })}>
                                 {Object.keys(ICONS).map((name) => <option key={name} value={name}>{name}</option>)}
                               </Select>
@@ -123,7 +123,7 @@ export default function ResourcesEditor() {
                             <div className="sm:col-span-2">
                               <Field label="Description"><TextArea value={item.description} onChange={(e) => setItem(ci, ii, { description: e.target.value })} /></Field>
                             </div>
-                            <Toggle checked={item.featured} onChange={(v) => setItem(ci, ii, { featured: v })} label="Featured (Most Essential Links)" />
+                            <Toggle checked={item.featured} onChange={(v) => setItem(ci, ii, { featured: v })} label="Featured" help="Featured links also appear with a gold pin in the 'Most Essential Links' row at the top of the resources page." />
                           </div>
                         </div>
                       )

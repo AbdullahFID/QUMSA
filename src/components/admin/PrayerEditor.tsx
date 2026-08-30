@@ -52,7 +52,7 @@ export default function PrayerEditor() {
         <p className="text-xs text-gray-500 mb-5">Upload the new calendar image at the start of each month.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="sm:col-span-2">
-            <ImagePicker label="Calendar image" value={content.monthlyCalendar.image} folder="juma" onChange={(path) => update((c) => ({ ...c, monthlyCalendar: { ...c.monthlyCalendar, image: path } }))} />
+            <ImagePicker label="Calendar image" help="The monthly prayer timetable graphic. Upload the new month's image here — JPG or PNG." value={content.monthlyCalendar.image} folder="juma" onChange={(path) => update((c) => ({ ...c, monthlyCalendar: { ...c.monthlyCalendar, image: path } }))} />
           </div>
           <Field label="Room"><TextInput value={content.monthlyCalendar.room} onChange={(e) => update((c) => ({ ...c, monthlyCalendar: { ...c.monthlyCalendar, room: e.target.value } }))} /></Field>
           <Field label="Iqama note"><TextInput value={content.monthlyCalendar.iqamaNote} onChange={(e) => update((c) => ({ ...c, monthlyCalendar: { ...c.monthlyCalendar, iqamaNote: e.target.value } }))} /></Field>

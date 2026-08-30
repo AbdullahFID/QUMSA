@@ -26,5 +26,24 @@
     "المحبة",
     "المجتمع",
     "الصدق"
-  ]
+  ],
+  "contact": {
+    "email": "qumsachair@gmail.com",
+    "roomLine1": "JDUC Room 329, 331",
+    "roomLine2": "John Deutsch University Centre",
+    "address": "99 University Ave, Kingston, ON K7L 3N6"
+  },
+  "socials": {
+    "instagram": "https://instagram.com/qumsa",
+    "whatsapp": "https://whatsapp.com/channel/0029VaEZcoSLNSZyWbQK390Q",
+    "facebook": "https://www.facebook.com/QUMSA/",
+    "twitter": "https://x.com/qumsa"
+  },
+  "ramadanCampaign": {
+    "title": "Ramadan 2026 Iftar Program",
+    "goal": 20000,
+    "current": 3238,
+    "launchGoodUrl": "https://www.launchgood.com/v4/campaign/qumsa_2026_ramadan_iftar_program?src=2539141",
+    "description": "Help us provide free daily iftars for 200+ Muslim students at Queen's University throughout Ramadan."
+  }
 }

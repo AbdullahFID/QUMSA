@@ -122,8 +122,8 @@ export default function EventsEditor() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               <Field label="Title"><TextInput value={ev.title} onChange={(e) => setEvent(i, { title: e.target.value })} placeholder="QUMSA Skate Day" /></Field>
-              <Field label="Date"><TextInput type="date" value={ev.date} onChange={(e) => setEvent(i, { date: e.target.value })} /></Field>
-              <Field label="Type">
+              <Field label="Date" help="The event automatically disappears from the Events page the day after this date (it stays on the calendar's history)."><TextInput type="date" value={ev.date} onChange={(e) => setEvent(i, { date: e.target.value })} /></Field>
+              <Field label="Type" help="Sets the label on the event card and the icon + colour on the calendar.">
                 <Select value={ev.type} onChange={(e) => setEvent(i, { type: e.target.value })}>
                   {EVENT_TYPES.map((t) => <option key={t.value} value={t.value}>{t.label}</option>)}
                 </Select>
@@ -134,13 +134,13 @@ export default function EventsEditor() {
               <div className="sm:col-span-2">
                 <Field label="Description"><TextArea value={ev.description} onChange={(e) => setEvent(i, { description: e.target.value })} /></Field>
               </div>
-              <Field label="Expected attendees"><TextInput type="number" min={0} value={ev.attendees} onChange={(e) => setEvent(i, { attendees: Math.max(0, parseInt(e.target.value, 10) || 0) })} /></Field>
+              <Field label="Expected attendees" help="Shows as a small people-counter on the event card. Leave at 0 to hide it."><TextInput type="number" min={0} value={ev.attendees} onChange={(e) => setEvent(i, { attendees: Math.max(0, parseInt(e.target.value, 10) || 0) })} /></Field>
               <Field label="Organizer"><TextInput value={ev.organizer} onChange={(e) => setEvent(i, { organizer: e.target.value })} placeholder="QUMSA" /></Field>
               <div className="sm:col-span-2">
                 <Field label="Link (optional)" hint="Sign-up form, tickets, etc."><TextInput value={ev.url} onChange={(e) => setEvent(i, { url: e.target.value })} placeholder="https://…" /></Field>
               </div>
               <div className="flex items-end pb-1">
-                <Toggle checked={ev.featured} onChange={(v) => setEvent(i, { featured: v })} label="Featured event" />
+                <Toggle checked={ev.featured} onChange={(v) => setEvent(i, { featured: v })} label="Featured event" help="Featured events get a gold star and their own big 'Special Upcoming Events' spotlight at the top of the Events page." />
               </div>
             </div>
           </GlassCard>

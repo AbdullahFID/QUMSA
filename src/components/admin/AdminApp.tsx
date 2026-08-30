@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react'
 import {
   ShieldCheck, LogOut, ExternalLink, Loader2, CalendarClock, Users,
-  Link2, Landmark, Home, Lock, User, Eye, EyeOff,
+  Link2, Landmark, Home, Lock, User, Eye, EyeOff, HelpCircle, Utensils,
+  Pencil, Rocket, Globe, X,
 } from 'lucide-react'
 import { apiLogin, apiLogout, apiSession } from './adminApi'
 import EventsEditor from './EventsEditor'
@@ -11,14 +12,18 @@ import TeamEditor from './TeamEditor'
 import ResourcesEditor from './ResourcesEditor'
 import PrayerEditor from './PrayerEditor'
 import SiteEditor from './SiteEditor'
+import FaqEditor from './FaqEditor'
+import HalalEditor from './HalalEditor'
 
-type Tab = 'events' | 'team' | 'resources' | 'prayer' | 'site'
+type Tab = 'events' | 'team' | 'resources' | 'prayer' | 'halal' | 'faq' | 'site'
 
 const TABS: { id: Tab; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
   { id: 'events', label: 'Events', icon: CalendarClock },
   { id: 'team', label: 'Team', icon: Users },
   { id: 'resources', label: 'Resources', icon: Link2 },
   { id: 'prayer', label: 'Prayer', icon: Landmark },
+  { id: 'halal', label: 'Halal Food', icon: Utensils },
+  { id: 'faq', label: 'FAQ', icon: HelpCircle },
   { id: 'site', label: 'Homepage', icon: Home },
 ]
 
@@ -166,6 +171,66 @@ function LoginScreen({ onLogin }: { onLogin: (username: string) => void }) {
   )
 }
 
+/* ─────────────────────────── first-run guide ─────────────────────────── */
+
+function WelcomeGuide() {
+  const [dismissed, setDismissed] = useState(true)
+
+  useEffect(() => {
+    try {
+      setDismissed(localStorage.getItem('qumsa-admin-guide-dismissed') === '1')
+    } catch {
+      setDismissed(false)
+    }
+  }, [])
+
+  const dismiss = () => {
+    setDismissed(true)
+    try {
+      localStorage.setItem('qumsa-admin-guide-dismissed', '1')
+    } catch {
+      // fine — it'll just show again next visit
+    }
+  }
+
+  if (dismissed) return null
+
+  const steps = [
+    { icon: Pencil, title: '1 · Edit', text: 'Pick a tab above and change anything — text, images, add or remove items. Nothing goes live yet.' },
+    { icon: Rocket, title: '2 · Save & Publish', text: 'Hit the gold button at the bottom of the tab. That saves your changes for everyone.' },
+    { icon: Globe, title: '3 · Wait ~2 minutes', text: 'The website rebuilds itself, then your changes are live on qumsa.ca. Refresh to see them.' },
+  ]
+
+  return (
+    <div className="relative mb-8 p-5 sm:p-6 bg-linear-to-br from-amber-400/10 to-yellow-500/5 border border-amber-400/25 rounded-2xl">
+      <button
+        onClick={dismiss}
+        className="absolute top-3 right-3 p-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition"
+        aria-label="Dismiss guide"
+      >
+        <X className="w-4 h-4" />
+      </button>
+      <h3 className="font-bold text-white mb-1">First time here? It&apos;s three steps 👋</h3>
+      <p className="text-xs text-gray-400 mb-4">
+        Anywhere you see a <span className="inline-flex w-4 h-4 rounded-full bg-white/10 border border-white/20 text-gray-300 text-[10px] font-bold items-center justify-center align-middle">?</span> hover it for an explanation. You can&apos;t break anything — every change is tracked and reversible.
+      </p>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        {steps.map(({ icon: Icon, title, text }) => (
+          <div key={title} className="flex gap-3 p-3 bg-white/5 rounded-xl border border-white/10">
+            <div className="p-2 h-fit rounded-lg bg-amber-400/15 border border-amber-400/20 shrink-0">
+              <Icon className="w-4 h-4 text-amber-400" />
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-white">{title}</p>
+              <p className="text-xs text-gray-400 leading-relaxed mt-0.5">{text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 /* ─────────────────────────── dashboard ─────────────────────────── */
 
 function Dashboard({ user, onLogout }: { user: string; onLogout: () => void }) {
@@ -239,10 +304,13 @@ function Dashboard({ user, onLogout }: { user: string; onLogout: () => void }) {
 
       {/* Editors stay mounted so switching tabs never loses unsaved edits */}
       <main className="relative max-w-6xl mx-auto px-4 sm:px-6 py-8 pb-24">
+        <WelcomeGuide />
         <div hidden={tab !== 'events'}><EventsEditor /></div>
         <div hidden={tab !== 'team'}><TeamEditor /></div>
         <div hidden={tab !== 'resources'}><ResourcesEditor /></div>
         <div hidden={tab !== 'prayer'}><PrayerEditor /></div>
+        <div hidden={tab !== 'halal'}><HalalEditor /></div>
+        <div hidden={tab !== 'faq'}><FaqEditor /></div>
         <div hidden={tab !== 'site'}><SiteEditor /></div>
       </main>
     </div>
