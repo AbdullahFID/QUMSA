@@ -15,6 +15,8 @@ import {
   CalendarDays,
   Calendar,
 } from 'lucide-react'
+// Managed through QUMSA ADMIN (/admin) — stored in src/content/prayer.json
+import prayerData from '@/content/prayer.json'
 
 export default function PrayerPanel() {
   // Dynamic month/year (client-side to avoid hydration mismatch)
@@ -103,7 +105,7 @@ export default function PrayerPanel() {
               {/* Juma Poster Image */}
               <div className="mb-4 rounded-xl overflow-hidden shadow-md">
                 <Image
-                  src="/images/Juma/JumaImage.png"
+                  src={prayerData.jummah.posterImage}
                   alt="Jummah Prayer Information"
                   width={300}
                   height={200}
@@ -115,13 +117,13 @@ export default function PrayerPanel() {
               <div className="space-y-3">
                 <div className="bg-amber-500/20 rounded-lg p-3 border border-amber-300/30">
                   <p className="text-sm font-medium mb-1">Every Friday</p>
-                  <p className="text-xs text-amber-100">Wallace Hall, JDUC • 1:30 PM</p>
+                  <p className="text-xs text-amber-100">{prayerData.jummah.location} • {prayerData.jummah.time}</p>
                 </div>
 
                 {/* Juma Location Image */}
                 <div className="rounded-lg overflow-hidden">
                   <Image
-                    src="/images/Juma/JumaLocation.png"
+                    src={prayerData.jummah.locationImage}
                     alt="Jummah Prayer Location Map"
                     width={300}
                     height={150}
@@ -129,10 +131,7 @@ export default function PrayerPanel() {
                   />
                 </div>
 
-                <p className="text-xs text-amber-100">
-                  Join us for congregational Friday prayers at Wallace Hall in the John Deutsch
-                  University Centre
-                </p>
+                <p className="text-xs text-amber-100">{prayerData.jummah.note}</p>
               </div>
             </aside>
 
@@ -194,7 +193,7 @@ export default function PrayerPanel() {
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-white/20">
             <div className="rounded-xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/Juma/JCalendar.png"
+                src={prayerData.monthlyCalendar.image}
                 alt={`${monthYear || 'Monthly'} QUMSA Congregational Prayer Times`}
                 width={1400}
                 height={900}
@@ -207,17 +206,16 @@ export default function PrayerPanel() {
               <div className="flex flex-wrap gap-4 justify-center">
                 <div className="inline-flex items-center space-x-2 bg-amber-500/20 backdrop-blur-sm border border-amber-300/30 rounded-full px-4 py-2">
                   <MapPin className="w-4 h-4 text-amber-300" />
-                  <span className="text-sm text-amber-200">Room: Mitchell Rm.210</span>
+                  <span className="text-sm text-amber-200">Room: {prayerData.monthlyCalendar.room}</span>
                 </div>
                 <div className="inline-flex items-center space-x-2 bg-amber-500/20 backdrop-blur-sm border border-amber-300/30 rounded-full px-4 py-2">
                   <CalendarDays className="w-4 h-4 text-amber-300" />
-                  <span className="text-sm text-amber-200">Iqama: 5 mins after Adhan</span>
+                  <span className="text-sm text-amber-200">{prayerData.monthlyCalendar.iqamaNote}</span>
                 </div>
               </div>
 
               <p className="text-center text-sm text-amber-100 italic mt-4">
-                * Friday prayer times are separate and will be posted on QUMSA&apos;s social media
-                platforms
+                {prayerData.monthlyCalendar.footnote}
               </p>
             </div>
           </div>
@@ -235,11 +233,7 @@ export default function PrayerPanel() {
             </div>
 
             <div className="space-y-4 sm:space-y-6">
-              {[
-                { title: 'Friday Prayer', desc: 'Wallace Hall, JDUC every Friday', time: '1:30 PM' },
-                { title: 'Halaqa Study Circle', desc: 'Weekly Islamic education', time: 'Sun 7 PM' },
-                { title: 'Social Night', desc: 'Community gathering', time: 'Thu 8 PM' },
-              ].map((e) => (
+              {prayerData.weeklySchedule.map((e) => (
                 <div
                   key={e.title}
                   className="bg-white/10 rounded-xl p-4 sm:p-6 border border-white/20 hover:bg-white/20 transition-all"
@@ -277,38 +271,7 @@ export default function PrayerPanel() {
             </div>
 
             <div className="space-y-4">
-              {[
-                {
-                  name: 'JDUC Prayer Room',
-                  location: 'John Deutsch University Centre, Room 348 (3rd floor)',
-                  hours: 'Bookable for large sessions',
-                },
-                {
-                  name: 'Mitchell Hall Interfaith Room',
-                  location: '2nd floor, Room 210',
-                  hours: 'Open during building hours',
-                },
-                {
-                  name: 'Goodes Hall',
-                  location: 'Kolias Family Prayer Room, LL109',
-                  hours: 'Business hours',
-                },
-                {
-                  name: 'Stauffer Library',
-                  location: 'Prayer & Meditation Room, 2nd floor',
-                  hours: 'Building hours',
-                },
-                {
-                  name: 'School of Medicine',
-                  location: 'Prayer & Meditation Room, LL011',
-                  hours: '7:30 AM – 5:30 PM',
-                },
-                {
-                  name: 'Law Building',
-                  location: 'Multifaith Room, 1st floor Room 103',
-                  hours: 'Building hours',
-                },
-              ].map((space) => (
+              {prayerData.prayerSpaces.map((space) => (
                 <div
                   key={space.name}
                   className="p-4 sm:p-6 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all"

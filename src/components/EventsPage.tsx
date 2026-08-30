@@ -25,6 +25,7 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import EventCard, { EventCategory } from '@/components/EventCard'
 import EventsCalendar from '@/components/Calendar'
 import Image from 'next/image'
+import eventsData from '@/content/events.json'
 
 // 🎉 FIXED: Added url? property to Event interface
 interface Event {
@@ -53,105 +54,54 @@ interface Slide {
   description: string
 }
 
-const upcomingEvents: Event[] = [
-  // 📅 Special events (from the sheet/photo)
-  {
-    date: 'Jan 17 2026',
-    title: 'Dawah Training',
-    desc: 'Learn how to share the message of Islam.',
-    location: 'MacCorry Hall, B201',
-    time: '10:00 AM – 4:00 PM',
-    attendees: 15,
-    category: 'Educational',
-    featured: true,
-  },
-  {
-    date: 'Jan 30 2026',
-    title: 'Sisters Potluck Social',
-    desc: 'Join us for a chill and delicious evening.',
-    location: 'Queens Campus',
-    time: '5:00 PM - 7:30 PM',
-    attendees: 20,
-    category: 'Social',
-    featured: true,
-  },
-  {
-    date: 'Jan 31 2026',
-    title: 'QUMSA Skate Day',
-    desc: 'Join us for a relaxing day of skating.',
-    location: 'Springer Market Square',
-    time: '1:00 PM - 3:00 PM',
-    attendees: 20,
-    category: 'Social',
-    featured: true,
-  },
+// Events are managed through QUMSA ADMIN (/admin) — stored in src/content/events.json.
+// Past events drop off this page automatically; weekly programs come from recurring rules.
 
-  // 🕌 Recurring Fridays in Jan 2026
-  // Jummah (12:30 and 1:30 PM) & Halaqa (5–7 PM)
-  {
-    date: 'Jan 16 2026',
-    title: 'Jummah Prayer',
-    desc: 'Weekly Friday prayer.',
-    location: 'JDUC Wallace Hall',
-    time: '12:30 PM & 1:30 PM',
-    attendees: 30,
-    category: 'Religious',
-    featured: false,
-  },
-  {
-    date: 'Jan 16 2026',
-    title: 'Halaqa',
-    desc: 'Weekly study circle.',
-    location: 'Goodwin Hall Rm 254',
-    time: '5:00 PM – 7:00 PM',
-    attendees: 10,
-    category: 'Religious',
-    featured: false,
-  },
-  {
-    date: 'Jan 23 2026',
-    title: 'Jummah Prayer',
-    desc: 'Weekly Friday prayer.',
-    location: 'JDUC Wallace Hall',
-    time: '12:30 PM & 1:30 PM',
-    attendees: 30,
-    category: 'Religious',
-    featured: false,
-  },
-  {
-    date: 'Jan 23 2026',
-    title: 'Halaqa',
-    desc: 'Weekly study circle.',
-    location: 'Goodwin Hall Rm 254',
-    time: '5:00 PM – 7:00 PM',
-    attendees: 10,
-    category: 'Religious',
-    featured: false,
-  },
-  {
-    date: 'Jan 30 2026',
-    title: 'Jummah Prayer',
-    desc: 'Weekly Friday prayer.',
-    location: 'JDUC Wallace Hall',
-    time: '12:30 PM & 1:30 PM',
-    attendees: 30,
-    category: 'Religious',
-    featured: false,
-  },
-  {
-    date: 'Jan 30 2026',
-    title: 'Halaqa',
-    desc: 'Weekly study circle.',
-    location: 'Goodwin Hall Rm 254',
-    time: '5:00 PM – 7:00 PM',
-    attendees: 10,
-    category: 'Religious',
-    featured: false,
-  },
-]
+const typeToCategory: Record<string, EventCategory> = {
+  prayer: 'Religious',
+  education: 'Educational',
+  workshop: 'Educational',
+  social: 'Social',
+  community: 'Social',
+  meeting: 'General',
+}
 
+const formatEventDate = (iso: string) =>
+  new Date(`${iso}T12:00:00`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
 
-const annualEvents: AnnualEvent[] = [
+const todayISO = () => {
+  const d = new Date()
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+}
+
+const upcomingEvents: Event[] = eventsData.events
+  .filter((e) => e.date >= todayISO())
+  .sort((a, b) => a.date.localeCompare(b.date))
+  .map((e) => ({
+    date: formatEventDate(e.date),
+    title: e.title,
+    desc: e.description,
+    location: e.location,
+    time: e.endTime ? `${e.time} – ${e.endTime}` : e.time,
+    attendees: e.attendees ?? 0,
+    category: typeToCategory[e.type] ?? 'General',
+    featured: !!e.featured,
+    url: e.url || undefined,
+  }))
+
+const weeklyPrograms: Event[] = eventsData.weekly.map((w) => ({
+  date: `Every ${w.weekday}`,
+  title: w.title,
+  desc: w.description,
+  location: w.location,
+  time: w.endTime ? `${w.time} – ${w.endTime}` : w.time,
+  attendees: 0,
+  category: typeToCategory[w.type] ?? 'Religious',
+  featured: false,
+}))
+
+const annualEvents
+: AnnualEvent[] = [
   // {
   //   title: 'End of Year Dinner',
   //   description:
@@ -423,20 +373,65 @@ export default function EventPage() {
         </section>
       )}
 
-      {/* 3️⃣ UPCOMING EVENTS */}
+      {/* 3️⃣ WEEKLY PROGRAMS */}
+      {weeklyPrograms.length > 0 && (
+        <section className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6">
+          <div className="max-w-7xl mx-auto">
+            <motion.div className="text-center mb-12 sm:mb-16" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+              <div className="inline-flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                <Clock6 className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400" />
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white">Weekly Programs</h2>
+                <Clock6 className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400" />
+              </div>
+              <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto">Our regular rhythm — the same time, the same place, every single week</p>
+            </motion.div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
+              {weeklyPrograms.map((ev, i) => (
+                <motion.div key={`${ev.title}-${ev.date}`} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1, duration: 0.6 }} viewport={{ once: true }}>
+                  <EventCard {...ev} />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* 4️⃣ UPCOMING EVENTS */}
       <section className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div className="text-center mb-12 sm:mb-16" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 text-white">Upcoming Events</h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-400 max-w-3xl mx-auto">Stay updated with all upcoming QUMSA events and activities</p>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
-            {regular.map((ev, i) => (
-              <motion.div key={`${ev.title}-${ev.date}`} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1, duration: 0.6 }} viewport={{ once: true }}>
-                <EventCard {...ev} />
-              </motion.div>
-            ))}
-          </div>
+          {regular.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+              {regular.map((ev, i) => (
+                <motion.div key={`${ev.title}-${ev.date}`} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1, duration: 0.6 }} viewport={{ once: true }}>
+                  <EventCard {...ev} />
+                </motion.div>
+              ))}
+            </div>
+          ) : featured.length === 0 ? (
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="max-w-2xl mx-auto text-center p-10 sm:p-14 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-400/20 rounded-2xl mb-6 border border-amber-400/30">
+                <Sparkles className="w-8 h-8 text-amber-400" />
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">New events are brewing</h3>
+              <p className="text-gray-300 leading-relaxed mb-6">
+                Nothing on the books right now — but Jummah and Halaqa run every week, and new events drop all the time.
+                Follow us on Instagram so you never miss an announcement.
+              </p>
+              <a
+                href="https://instagram.com/qumsaqueens"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-amber-400 to-yellow-500 text-slate-900 font-semibold rounded-full hover:shadow-lg hover:shadow-amber-400/30 transition-all duration-300 hover:scale-105"
+              >
+                <span>Follow @qumsaqueens</span>
+                <Sparkles className="w-4 h-4" />
+              </a>
+            </motion.div>
+          ) : null}
         </div>
       </section>
 

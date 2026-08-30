@@ -1,0 +1,153 @@
+{
+  "categories": [
+    {
+      "name": "Ramadan & Community",
+      "items": [
+        {
+          "title": "Ramadan Iftar Donation",
+          "url": "https://www.launchgood.com/v4/campaign/qumsa_2025_ramadan_iftar_program",
+          "icon": "HeartHandshake",
+          "description": "Support our community Iftar program during the holy month",
+          "featured": true
+        },
+        {
+          "title": "Ramadan Resources",
+          "url": "https://drive.google.com/drive/folders/1rMCYRXNlu8cpHgLiOhBz7Ea6EMdUu7hm",
+          "icon": "Calendar",
+          "description": "Complete collection of Ramadan materials and spiritual resources",
+          "featured": false
+        }
+      ]
+    },
+    {
+      "name": "Community Support",
+      "items": [
+        {
+          "title": "Report an Incident",
+          "url": "https://docs.google.com/forms/d/e/1FAIpQLScvCBcbHT54johcw318W4A84TyzVXpTkn6VNAL1jO7sr8ipxg/viewform",
+          "icon": "AlertTriangle",
+          "description": "Safe and confidential reporting for any community concerns",
+          "featured": true
+        },
+        {
+          "title": "QUMSA Feedback Form",
+          "url": "https://docs.google.com/forms/d/e/1FAIpQLSehVDpbg6QM56gaW5Y51gFH-t0b55TF_qrMA7b0-mCKg0PWPw/viewform",
+          "icon": "MessageSquareText",
+          "description": "Share your thoughts, suggestions, and help us improve",
+          "featured": false
+        },
+        {
+          "title": "Khatib Volunteer",
+          "url": "https://docs.google.com/forms/d/e/1FAIpQLSeGpLRbyscX3qdrJes9tcT2H7J3615sSqLnnnL48Y3fl2jxEQ/viewform?usp=send_form",
+          "icon": "Mic",
+          "description": "Volunteer to give Friday sermons and serve the community",
+          "featured": false
+        },
+        {
+          "title": "Naseeha Mental Health Resources",
+          "url": "https://www.naseeha.org/about-us/",
+          "icon": "HeartPulse",
+          "description": "Professional mental-health support specifically for Muslims",
+          "featured": false
+        }
+      ]
+    },
+    {
+      "name": "Palestine Solidarity",
+      "items": [
+        {
+          "title": "Joint Statement on Palestine",
+          "url": "https://docs.google.com/forms/d/e/1FAIpQLSfN1szzgpHRcSXOJph5s4XOHirMXHc72srT1JBxu1kJHRpmzg/viewform",
+          "icon": "Scale",
+          "description": "Queen's Palestine Solidarity Groups official statement",
+          "featured": false
+        },
+        {
+          "title": "Donate to Palestine -- Islamic Relief",
+          "url": "https://www.islamicreliefcanada.org/emergencies/palestine-appeal",
+          "icon": "HandHeart",
+          "description": "Support Palestinian relief efforts through Islamic Relief Canada",
+          "featured": true
+        },
+        {
+          "title": "Donate to Palestine -- LaunchGood",
+          "url": "https://www.launchgood.com/v4/campaign/palestine_under_attack",
+          "icon": "HeartPlus",
+          "description": "Emergency humanitarian aid for Palestine through LaunchGood",
+          "featured": false
+        }
+      ]
+    },
+    {
+      "name": "Connect & Communicate",
+      "items": [
+        {
+          "title": "QUMSA WhatsApp Channel",
+          "url": "https://www.whatsapp.com/channel/0029VaEZcoSLNSZyWbQK390Q",
+          "icon": "MessageCircle",
+          "description": "Stay updated with official announcements and community news",
+          "featured": true
+        },
+        {
+          "title": "Brothers WhatsApp Group",
+          "url": "https://chat.whatsapp.com/KtJKrInPRiaKfZ4HmCOl5q?mode=r_c",
+          "icon": "MessagesSquare",
+          "description": "Connect with brothers in the community and build friendships",
+          "featured": false
+        },
+        {
+          "title": "Sisters WhatsApp Group",
+          "url": "https://chat.whatsapp.com/I3bo4j8jmvi5i7z02YF7qT",
+          "icon": "MessageSquare",
+          "description": "Connect with sisters in the community and build friendships",
+          "featured": false
+        }
+      ]
+    },
+    {
+      "name": "Local Resources",
+      "items": [
+        {
+          "title": "Islamic Society of Kingston",
+          "url": "https://kingstonmuslims.ca/",
+          "icon": "MapPin",
+          "description": "Local Islamic community centre and mosque services",
+          "featured": false
+        },
+        {
+          "title": "OSAP for Muslims",
+          "url": "https://osapformuslims.ca/",
+          "icon": "Zap",
+          "description": "Financial-aid guidance specifically for Muslim students",
+          "featured": false
+        },
+        {
+          "title": "Kingston Mosque Bus Stop Petition",
+          "url": "https://www.change.org/p/kingston-city-officials-kingston-ontario-mosque-bus-stop",
+          "icon": "Locate",
+          "description": "Support better public-transit access to the local mosque",
+          "featured": false
+        }
+      ]
+    },
+    {
+      "name": "Human Rights",
+      "items": [
+        {
+          "title": "Petition Against Uyghur Forced Labour",
+          "url": "https://www.change.org/p/justin-trudeau-ban-products-made-from-uyghur-forced-labour",
+          "icon": "Gavel",
+          "description": "Stand against Uyghur persecution and forced-labour products",
+          "featured": false
+        },
+        {
+          "title": "Black Lives Matter Resources",
+          "url": "https://blacklivesmatters.carrd.co/",
+          "icon": "CircleEqual",
+          "description": "Support racial-justice initiatives and community solidarity",
+          "featured": false
+        }
+      ]
+    }
+  ]
+}

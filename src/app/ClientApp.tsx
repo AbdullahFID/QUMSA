@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, ReactNode } from 'react'
+import { usePathname } from 'next/navigation'
 import { MotionConfig } from 'framer-motion'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -10,6 +11,8 @@ const PRELOAD_MS = 2400 // how long the du'a screen holds (progress bar complete
 const REVEAL_MS = 1000  // crossfade into the page
 
 export default function ClientApp({ children }: { children: ReactNode }) {
+  const pathname = usePathname()
+  const isAdmin = pathname?.startsWith('/admin') ?? false
   const [isExiting, setIsExiting] = useState(false)
   const [showPreloader, setShowPreloader] = useState(true)
 
@@ -29,11 +32,20 @@ export default function ClientApp({ children }: { children: ReactNode }) {
 
   // Keep the page from scrolling behind the preloader
   useEffect(() => {
-    document.body.style.overflow = showPreloader ? 'hidden' : ''
+    document.body.style.overflow = showPreloader && !isAdmin ? 'hidden' : ''
     return () => {
       document.body.style.overflow = ''
     }
-  }, [showPreloader])
+  }, [showPreloader, isAdmin])
+
+  // QUMSA ADMIN runs chrome-free: no navbar, footer, or du'a preloader
+  if (isAdmin) {
+    return (
+      <MotionConfig reducedMotion="user">
+        <main className="flex-1 relative">{children}</main>
+      </MotionConfig>
+    )
+  }
 
   return (
     <MotionConfig reducedMotion="user">

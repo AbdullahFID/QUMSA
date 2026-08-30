@@ -1,0 +1,64 @@
+{
+  "jummah": {
+    "location": "Wallace Hall, JDUC",
+    "time": "1:30 PM",
+    "note": "Join us for congregational Friday prayers at Wallace Hall in the John Deutsch University Centre",
+    "posterImage": "/images/Juma/JumaImage.png",
+    "locationImage": "/images/Juma/JumaLocation.png"
+  },
+  "monthlyCalendar": {
+    "image": "/images/Juma/JCalendar.png",
+    "room": "Mitchell Rm.210",
+    "iqamaNote": "Iqama: 5 mins after Adhan",
+    "footnote": "* Friday prayer times are separate and will be posted on QUMSA's social media platforms"
+  },
+  "weeklySchedule": [
+    {
+      "title": "Friday Prayer",
+      "desc": "Wallace Hall, JDUC every Friday",
+      "time": "1:30 PM"
+    },
+    {
+      "title": "Halaqa Study Circle",
+      "desc": "Weekly Islamic education",
+      "time": "Sun 7 PM"
+    },
+    {
+      "title": "Social Night",
+      "desc": "Community gathering",
+      "time": "Thu 8 PM"
+    }
+  ],
+  "prayerSpaces": [
+    {
+      "name": "JDUC Prayer Room",
+      "location": "John Deutsch University Centre, Room 348 (3rd floor)",
+      "hours": "Bookable for large sessions"
+    },
+    {
+      "name": "Mitchell Hall Interfaith Room",
+      "location": "2nd floor, Room 210",
+      "hours": "Open during building hours"
+    },
+    {
+      "name": "Goodes Hall",
+      "location": "Kolias Family Prayer Room, LL109",
+      "hours": "Business hours"
+    },
+    {
+      "name": "Stauffer Library",
+      "location": "Prayer & Meditation Room, 2nd floor",
+      "hours": "Building hours"
+    },
+    {
+      "name": "School of Medicine",
+      "location": "Prayer & Meditation Room, LL011",
+      "hours": "7:30 AM – 5:30 PM"
+    },
+    {
+      "name": "Law Building",
+      "location": "Multifaith Room, 1st floor Room 103",
+      "hours": "Building hours"
+    }
+  ]
+}

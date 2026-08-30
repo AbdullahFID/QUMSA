@@ -20,31 +20,14 @@ import {
   Sparkles,
 } from 'lucide-react'
 
+// Managed through QUMSA ADMIN (/admin) — stored in src/content/site.json
+import siteData from '@/content/site.json'
+
+const impactIcons = [UsersRound, Calendar1, Medal]
+
 export default function Homepage() {
   /* ───────────────────────── rotating words ───────────────────────── */
-  const first = [
-  'faith',
-  'friendship',
-  'belonging',
-  'growth',
-  'service',
-  'connection',
-  'hope',
-  'purpose',
-  'support',
-  'trust',
-  'السلام',
-  'الرحمة',
-  'الإيمان',
-  'الصحبة',
-  'العطاء',
-  'الوحدة',
-  'البركة',
-  'النية',
-  'المحبة',
-  'المجتمع',
-  'الصدق',
-]
+  const first = siteData.rotatingWords
 
   const second = ['Islam', 'الإسلام']
   const [i1, setI1] = useState(0)
@@ -372,11 +355,12 @@ export default function Homepage() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-           {[
-            { Icon: UsersRound, count: '500+', label: 'Active Members', delay: 0.1 },
-            { Icon: Calendar1, count: '30+', label: 'Events Annually', delay: 0.2 },
-            { Icon: Medal, count: '65+', label: 'Years of Service', delay: 0.3 },
-          ].map(({ Icon, count, label, delay }) => (
+           {siteData.impactStats.map(({ count, label }, i) => ({
+            Icon: impactIcons[i % impactIcons.length],
+            count,
+            label,
+            delay: 0.1 * (i + 1),
+          })).map(({ Icon, count, label, delay }) => (
             <motion.div
               key={label}
               initial={{ opacity: 0, y: 30 }}

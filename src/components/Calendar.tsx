@@ -18,9 +18,10 @@ import {
   Heart,
   Sun,
 } from 'lucide-react';
+import eventsData from '@/content/events.json';
 
 interface Event {
-  id: number;
+  id: string;
   title: string;
   date: string;
   time: string;
@@ -51,302 +52,76 @@ interface ColorConfig {
   border: string;
 }
 
-const allEvents: Event[] = [
-  // —— One-off events, new added to top ——
-  {
-    id: 212,
-    title: 'QUMSA Skate Day',
-    date: '2026-01-31',
-    time: '1:00 PM',
-    endTime: '3:00 PM',
-    location: "Springer Market Square",
-    description: 'Join us for a relaxing day of skating.',
-    type: 'community',
-    recurring: 'none',
-    color: 'gold',
-    attendees: 20,
-    organizer: 'QUMSA'
-  },
-  {
-    id: 211,
-    title: 'Sisters Potluck Social',
-    date: '2026-01-30',
-    time: '5:00 PM',
-    endTime: '7:30 PM',
-    location: "Queen's Campus",
-    description: 'Join us for a chill and delicious evening to wind down and catch up with friends.',
-    type: 'social',
-    recurring: 'none',
-    color: 'gold',
-    attendees: 20,
-    organizer: 'QUMSA'
-  },
-  {
-    id: 210,
-    title: 'Dawah Training',
-    date: '2026-01-17',
-    time: '10:00 AM',
-    endTime: '4:00 PM',
-    location: "MacCorry Hall, B201",
-    description: 'Learn how to invite others to Islam with wisdom and compassion.',
-    type: 'education',
-    recurring: 'none',
-    color: 'gold',
-    attendees: 15,
-    organizer: 'QUMSA'
-  },
-  {
-    id: 101,
-    title: 'Tricolor Open House',
-    date: '2025-09-03',
-    time: '4:00 PM',
-    endTime: '8:00 PM',
-    location: "Queen's Campus",
-    description: 'Explore student clubs & services — visit the QUMSA table.',
-    type: 'community',
-    recurring: 'none',
-    color: 'gold',
-    attendees: 0,
-    organizer: 'QUMSA'
-  },
-  {
-    id: 102,
-    title: 'Health Sciences Expo',
-    date: '2025-09-06',
-    time: '11:45 AM',
-    endTime: '12:45 PM',
-    location: "Queen's Campus",
-    description: 'Health Sci resources & networking.',
-    type: 'education',
-    recurring: 'none',
-    color: 'lightGold',
-    attendees: 0,
-    organizer: 'QUMSA'
-  },
-  
-  {
-    id: 103,
-    title: 'Queens in the Park',
-    date: '2025-09-07',
-    time: '4:20 PM',
-    endTime: '7:30 PM',
-    location: 'City Park',
-    description: 'Community hangout in the park — meet & mingle.',
-    type: 'social',
-    recurring: 'none',
-    color: 'gold',
-    attendees: 0,
-    organizer: 'QUMSA'
-  },
-  {
-    id: 104,
-    title: "First Year Brothers' Game Night",
-    date: '2025-09-13',
-    time: '6:30 PM',
-    endTime: '8:30 PM',
-    location: 'TBA',
-    description: 'TBA – check WhatsApp for details.',
-    type: 'social',
-    recurring: 'none',
-    color: 'gold',
-    attendees: 0,
-    organizer: 'QUMSA Brothers'
-  },
-  {
-    id: 105,
-    title: 'Sisters Fall Social',
-    date: '2025-09-13',
-    time: '12:00 PM',
-    endTime: '1:30 PM',
-    location: 'TBA',
-    description: 'Meet sisters, make friends, enjoy a cozy afternoon.',
-    type: 'social',
-    recurring: 'none',
-    color: 'gold',
-    attendees: 0,
-    organizer: 'QUMSA Sisters'
-  },
-  {
-    id: 106,
-    title: 'BBQ @ City Park',
-    date: '2025-09-21',
-    time: '1:00 PM',
-    endTime: '2:00 PM', // placeholder end
-    location: 'City Park',
-    description: 'Community BBQ — details on WhatsApp.',
-    type: 'community',
-    recurring: 'none',
-    color: 'gold',
-    attendees: 0,
-    organizer: 'QUMSA'
-  },
-  {
-    id: 107,
-    title: 'Shaykh Ahzar Iqbal Lecture',
-    date: '2025-09-24',
-    time: '5:00 PM',
-    endTime: '7:00 PM',
-    location: 'TBA',
-    description: 'Evening lecture.',
-    type: 'education',
-    recurring: 'none',
-    color: 'lightGold',
-    attendees: 0,
-    organizer: 'QUMSA'
-  },
-  {
-    id: 108,
-    title: 'Brothers Soccer Tournament',
-    date: '2025-09-27',
-    time: '3:00 PM',
-    endTime: '6:00 PM',
-    location: 'TBD',
-    description: 'Bring your A-game.',
-    type: 'social',
-    recurring: 'none',
-    color: 'gold',
-    attendees: 0,
-    organizer: 'QUMSA Brothers'
-  },
-  {
-    id: 109,
-    title: 'Sisters Game Night',
-    date: '2025-09-27',
-    time: '3:00 PM',
-    endTime: '5:00 PM',
-    location: 'TBA',
-    description: 'Games and snacks with the sisters.',
-    type: 'social',
-    recurring: 'none',
-    color: 'gold',
-    attendees: 0,
-    organizer: 'QUMSA Sisters'
-  },
+// Events are managed through QUMSA ADMIN (/admin) — stored in src/content/events.json.
+// One-off events live in `events`; `weekly` holds recurring rules (e.g. Jummah every
+// Friday) that are expanded into dated occurrences below, so nobody has to re-enter
+// them month after month.
 
-  // —— Weekly Fridays (Jummah 13:30; Halaqa 17:00–19:00) ——
-  // Fri Sep 5
-  {
-    id: 201,
-    title: 'Jummah Prayer',
-    date: '2025-09-05',
-    time: '1:30 PM',
-    endTime: '2:15 PM',
-    location: 'On Campus',
-    description: 'Weekly Friday prayer.',
-    type: 'prayer',
-    recurring: 'weekly',
-    color: 'gold',
-    attendees: 0,
-    organizer: 'QUMSA'
-  },
-  {
-    id: 202,
-    title: 'Halaqa Study Circle',
-    date: '2025-09-05',
-    time: '5:00 PM',
-    endTime: '7:00 PM',
-    location: 'On Campus',
-    description: 'Weekly study circle.',
-    type: 'education',
-    recurring: 'weekly',
-    color: 'lightGold',
-    attendees: 0,
-    organizer: 'QUMSA'
-  },
+const WEEKDAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
-  // Fri Sep 12
-  {
-    id: 203,
-    title: 'Jummah Prayer',
-    date: '2025-09-12',
-    time: '1:30 PM',
-    endTime: '2:15 PM',
-    location: 'On Campus',
-    description: 'Weekly Friday prayer.',
-    type: 'prayer',
-    recurring: 'weekly',
-    color: 'gold',
-    attendees: 0,
-    organizer: 'QUMSA'
-  },
-  {
-    id: 204,
-    title: 'Halaqa Study Circle',
-    date: '2025-09-12',
-    time: '5:00 PM',
-    endTime: '7:00 PM',
-    location: 'On Campus',
-    description: 'Weekly study circle.',
-    type: 'education',
-    recurring: 'weekly',
-    color: 'lightGold',
-    attendees: 0,
-    organizer: 'QUMSA'
-  },
+const typeColor: Record<string, ColorType> = {
+  prayer: 'gold',
+  community: 'gold',
+  social: 'gold',
+  education: 'lightGold',
+  workshop: 'lightGold',
+  meeting: 'grey',
+}
 
-  // Fri Sep 19
-  {
-    id: 205,
-    title: 'Jummah Prayer',
-    date: '2025-09-19',
-    time: '1:30 PM',
-    endTime: '2:15 PM',
-    location: 'On Campus',
-    description: 'Weekly Friday prayer.',
-    type: 'prayer',
-    recurring: 'weekly',
-    color: 'gold',
-    attendees: 0,
-    organizer: 'QUMSA'
-  },
-  {
-    id: 206,
-    title: 'Halaqa Study Circle',
-    date: '2025-09-19',
-    time: '5:00 PM',
-    endTime: '7:00 PM',
-    location: 'On Campus',
-    description: 'Weekly study circle.',
-    type: 'education',
-    recurring: 'weekly',
-    color: 'lightGold',
-    attendees: 0,
-    organizer: 'QUMSA'
-  },
+const baseEvents: Event[] = eventsData.events.map((e) => ({
+  id: e.id,
+  title: e.title,
+  date: e.date,
+  time: e.time,
+  endTime: e.endTime,
+  location: e.location,
+  description: e.description,
+  type: (e.type as EventType) || 'community',
+  recurring: 'none',
+  color: typeColor[e.type] ?? 'gold',
+  attendees: e.attendees ?? 0,
+  organizer: e.organizer || 'QUMSA',
+}))
 
-  // Fri Sep 26
-  {
-    id: 207,
-    title: 'Jummah Prayer',
-    date: '2025-09-26',
-    time: '1:30 PM',
-    endTime: '2:15 PM',
-    location: 'On Campus',
-    description: 'Weekly Friday prayer.',
-    type: 'prayer',
-    recurring: 'weekly',
-    color: 'gold',
-    attendees: 0,
-    organizer: 'QUMSA'
-  },
-  {
-    id: 208,
-    title: 'Halaqa Study Circle',
-    date: '2025-09-26',
-    time: '5:00 PM',
-    endTime: '7:00 PM',
-    location: 'On Campus',
-    description: 'Weekly study circle.',
-    type: 'education',
-    recurring: 'weekly',
-    color: 'lightGold',
-    attendees: 0,
-    organizer: 'QUMSA'
-  },
-];
+// Expand weekly rules into dated occurrences over a rolling window
+// (8 weeks back through 26 weeks ahead keeps the grid and list populated)
+function expandWeeklyEvents(): Event[] {
+  const out: Event[] = []
+  const today = new Date()
+  const start = new Date(today)
+  start.setDate(start.getDate() - 7 * 8)
+  const end = new Date(today)
+  end.setDate(end.getDate() + 7 * 26)
 
+  for (const rule of eventsData.weekly) {
+    const weekday = WEEKDAY_NAMES.indexOf(rule.weekday)
+    if (weekday < 0) continue
+    const d = new Date(start)
+    d.setDate(d.getDate() + ((weekday - d.getDay() + 7) % 7))
+    while (d <= end) {
+      const iso = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+      out.push({
+        id: `${rule.id}-${iso}`,
+        title: rule.title,
+        date: iso,
+        time: rule.time,
+        endTime: rule.endTime,
+        location: rule.location,
+        description: rule.description,
+        type: (rule.type as EventType) || 'prayer',
+        recurring: 'weekly',
+        color: typeColor[rule.type] ?? 'gold',
+        attendees: 0,
+        organizer: 'QUMSA',
+      })
+      d.setDate(d.getDate() + 7)
+    }
+  }
+  return out
+}
 
-const eventTypeIcons: Record<EventType, React.ComponentType<any>> = {
+const eventTypeIcons
+: Record<EventType, React.ComponentType<any>> = {
   prayer: Star,
   education: BookOpen,
   social: Users,
@@ -386,8 +161,13 @@ export default function EventsCalendar() {
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [viewMode, setViewMode] = useState<'month' | 'list'>('month');
-  const [events, setEvents] = useState<Event[]>(allEvents);
-  
+  // Weekly occurrences are date-relative, so expand them client-side after mount
+  // to keep the server-rendered HTML hydration-safe
+  const [events, setEvents] = useState<Event[]>(baseEvents);
+  useEffect(() => {
+    setEvents([...baseEvents, ...expandWeeklyEvents()]);
+  }, []);
+
 
   const today = new Date();
   const currentMonth = currentDate.getMonth();
@@ -788,7 +568,7 @@ END:VCALENDAR`;
           </div>
           <div>
             <div className="text-base sm:text-lg font-bold text-slate-800">
-              {events.filter(e => e.recurring === 'weekly').length}
+              {eventsData.weekly.length}
             </div>
             <div className="text-xs text-slate-500">Weekly Events</div>
           </div>

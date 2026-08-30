@@ -10,8 +10,10 @@ import {
   Megaphone,
   Star,
 } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import type { Metadata } from 'next'
 import TeamCard from '@/components/TeamCard'
+import teamData from '@/content/team.json'
 
 export const metadata: Metadata = {
   title: "Executive Team - QUMSA | Queen's University Muslim Students Association",
@@ -79,289 +81,48 @@ export const metadata: Metadata = {
 }
 
 // ===================== TEAM DATA =====================
-// Local images: /images/headshots/[name].jpeg
-// Drive fallback for missing headshots
+// Managed through QUMSA ADMIN (/admin) — stored in src/content/team.json
 
 type TeamMember = {
   name: string
   role: string
   img: string
   description: string
-  profileUrl: string
   email: string
 }
 
-const PLACEHOLDER_IMG = '/images/team/placeholder.png'
+type TeamSection = {
+  id: string
+  title: string
+  subtitle: string
+  members: TeamMember[]
+}
 
-// Helper for local images
-const localImg = (filename: string) => `/images/headshots/${filename}`
+// Icon + gradient styling per section id; sections added via the admin fall back gracefully
+const sectionStyles: Record<string, { icon: LucideIcon; gradient: string }> = {
+  presidents: { icon: Crown, gradient: 'from-amber-400 via-yellow-400 to-orange-400' },
+  directors: { icon: Briefcase, gradient: 'from-emerald-400 via-teal-400 to-cyan-400' },
+  affairs: { icon: Heart, gradient: 'from-rose-400 via-pink-400 to-fuchsia-400' },
+  events: { icon: Calendar, gradient: 'from-violet-400 via-purple-400 to-indigo-400' },
+  marketing: { icon: Megaphone, gradient: 'from-blue-400 via-sky-400 to-cyan-400' },
+  firstyear: { icon: Star, gradient: 'from-lime-400 via-green-400 to-emerald-400' },
+}
 
-// Helper for Drive images (fallback)
-const driveImg = (id?: string) =>
-  id ? `https://drive.google.com/uc?export=view&id=${id}` : PLACEHOLDER_IMG
-
-// --- Co-Presidents ---
-const coPresidents: TeamMember[] = [
-  {
-    name: 'Amaan Hussaini',
-    role: 'Co-President',
-    img: localImg('amaan-hussaini.jpeg'),
-    description: "I once went to an abandoned house and it wasn't abandoned....",
-    profileUrl: '#',
-    email: 'president@qumsa.ca',
-  },
-  {
-    name: 'Aisha Bharuchi',
-    role: 'Co-President',
-    img: localImg('aisha-bharuchi.jpeg'),
-    description: 'I read 15 books this summer.',
-    profileUrl: '#',
-    email: 'president@qumsa.ca',
-  },
+const fallbackGradients = [
+  'from-amber-400 via-yellow-400 to-orange-400',
+  'from-emerald-400 via-teal-400 to-cyan-400',
+  'from-rose-400 via-pink-400 to-fuchsia-400',
+  'from-violet-400 via-purple-400 to-indigo-400',
+  'from-blue-400 via-sky-400 to-cyan-400',
+  'from-lime-400 via-green-400 to-emerald-400',
 ]
 
-// --- Directors & Operations ---
-const vicePresidents: TeamMember[] = [
-  {
-    name: 'Shahmeer Raza',
-    role: 'Treasurer',
-    img: localImg('shahmeer-raza.jpeg'),
-    description: "I've visited the Eiffel Tower.",
-    profileUrl: '#',
-    email: 'finance@qumsa.ca',
-  },
-  {
-    name: 'Aasiya Ahmad',
-    role: 'Director of Ops & Logs',
-    img: localImg("aasiya.jpeg"), // TODO: No local file found
-    description: "I've stayed asleep for over 20 hours.",
-    profileUrl: '#',
-    email: 'operations@qumsa.ca',
-  },
-  {
-    name: 'Salem Cherif',
-    role: 'Supplies & Sourcing Coordinator',
-    img: localImg('salem-cherif.jpeg'),
-    description:
-      'I have two older brothers - one born in the same year as me, and the other born exactly 4 years apart.',
-    profileUrl: '#',
-    email: 'operations@qumsa.ca',
-  },
-  {
-    name: 'Seham Kettaneh',
-    role: 'Director of Fundraising',
-    img: localImg('sehem.jpeg'), // TODO: No local file found
-    description: 'I am a certified trainee firefighter.',
-    profileUrl: '#',
-    email: 'fundraising@qumsa.ca',
-  },
-  {
-    name: 'Zaid Alam',
-    role: 'Director of Outreach',
-    img: localImg('zaid-alam.jpeg'),
-    description:
-      'I SOMETIMES wear my glasses even though I should wear them all the time.',
-    profileUrl: '#',
-    email: 'outreach@qumsa.ca',
-  },
-  {
-    name: 'Cleon Aristo',
-    role: "Director of Da'wah & Islamic Affairs",
-    img: localImg('cleon-aristo.jpeg'),
-    description: 'Guess the origin of my name.',
-    profileUrl: '#',
-    email: 'dawah@qumsa.ca',
-  },
-]
+const teamSections = (teamData.sections as TeamSection[]).map((section, i) => ({
+  ...section,
+  icon: sectionStyles[section.id]?.icon ?? UsersRound,
+  gradient: sectionStyles[section.id]?.gradient ?? fallbackGradients[i % fallbackGradients.length],
+}))
 
-// --- Affairs / Reps ---
-const affairsCoordinators: TeamMember[] = [
-  {
-    name: 'Aumama Al-Naib',
-    role: 'Director of External Affairs',
-    img: localImg('Aumama_Al_Naib.jpg'),
-    description:
-      'This past summer, I got to spend time in 3 different countries (layover not included🥲)!',
-    profileUrl: '#',
-    email: 'external@qumsa.ca',
-  },
-  {
-    name: 'Ajwaad',
-    role: 'Director of Internal Affairs',
-    img: localImg('ajwaad-khan.jpeg'),
-    description: 'I like birds.',
-    profileUrl: '#',
-    email: 'internal@qumsa.ca',
-  },
-  {
-    name: 'Saad Rizvi',
-    role: "Brother's Representative",
-    img: localImg('saad-rizvi.jpg'),
-    description: 'I was a professional basketball player in 1972.',
-    profileUrl: '#',
-    email: 'brothers@qumsa.ca',
-  },
-  {
-    name: 'Taha Salah',
-    role: "Brothers' Representative",
-    img: localImg('Taha.jpeg'), // TODO: File says "Taha Elatrash" - name mismatch, keeping Drive
-    description: 'None.',
-    profileUrl: '#',
-    email: 'brothers@qumsa.ca',
-  },
-  {
-    name: 'Fatima Aboujassoum',
-    role: "Sisters' Representative",
-    img: localImg('fatima-aboujassoum.jpeg'),
-    description: 'I qualified for a CrossFit competition a year ago!',
-    profileUrl: '#',
-    email: 'sisters@qumsa.ca',
-  },
-]
-
-// --- Events Team ---
-const eventsCoordinators: TeamMember[] = [
-  {
-    name: 'Karim Ali',
-    role: 'Director of Events',
-    img: localImg('Karim.jpeg'),
-    description: 'I like horses.',
-    profileUrl: '#',
-    email: 'events@qumsa.ca',
-  },
-  {
-    name: 'Hussam Hayek',
-    role: 'Special Events Coordinator',
-    img: localImg('Hussam.jpeg'), // TODO: No local file found
-    description: "I'm the best rock paper scissors player in the province.",
-    profileUrl: '#',
-    email: 'events@qumsa.ca',
-  },
-  {
-    name: 'Mihran Asadullah',
-    role: 'Special Events Coordinator',
-    img: localImg('mihran-asadullah.jpeg'),
-    description: "I'm the best rock paper scissors player in the province.",
-    profileUrl: '#',
-    email: 'events@qumsa.ca',
-  },
-]
-
-// --- Media / Digital / Graphics ---
-const marketingCoordinators: TeamMember[] = [
-  {
-    name: 'Zahra Abba',
-    role: 'Director of Media & Communications',
-    img: localImg('zahra-abba.jpeg'),
-    description: 'I read over 200 books during the pandemic!',
-    profileUrl: '#',
-    email: 'media@qumsa.ca',
-  },
-  {
-    name: 'Yaseen Malam',
-    role: 'Digital Content Coordinator',
-    img: localImg('yaseen-malam.jpeg'),
-    description: 'I reread the entire Red Rising series in 2 weeks.',
-    profileUrl: '#',
-    email: 'media@qumsa.ca',
-  },
-  {
-    name: 'Sahar Hakimi',
-    role: 'Digital Content Coordinator',
-    img: localImg('honestlyidk.png'), // TODO: No local file found
-    description: 'I hate strawberries.',
-    profileUrl: '#',
-    email: 'media@qumsa.ca',
-  },
-  {
-    name: 'Samrah Junaid',
-    role: 'Graphics Coordinator',
-    img: localImg("Taha.jpeg"), // No headshot available
-    description: "I've been on the second tallest roller coaster in the world.",
-    profileUrl: '#',
-    email: 'graphics@qumsa.ca',
-  },
-  {
-    name: 'Rayyan Shaikh',
-    role: 'Graphics Coordinator',
-    img: localImg('rayyan-shaikh.jpeg'),
-    description: 'I love ice cream.',
-    profileUrl: '#',
-    email: 'graphics@qumsa.ca',
-  },
-  {
-    name: 'Iffah Sami',
-    role: 'Graphics Coordinator',
-    img: localImg('iffah.jpeg'), // No headshot available
-    description: '',
-    profileUrl: '#',
-    email: 'graphics@qumsa.ca',
-  },
-]
-
-// --- First Year Reps ---
-const firstYearReps: TeamMember[] = [
-  {
-    name: 'Sarah Hussain',
-    role: 'First Year Representative',
-    img: localImg('sarah-hussain.jpeg'),
-    description: 'I have a 6 year old cat :).',
-    profileUrl: '#',
-    email: 'firstyear@qumsa.ca',
-  },
-]
-
-// Team sections configuration with icons
-const teamSections = [
-  {
-    id: 'presidents',
-    title: 'Co-Presidents',
-    subtitle: 'Leading with vision and purpose',
-    members: coPresidents,
-    icon: Crown,
-    gradient: 'from-amber-400 via-yellow-400 to-orange-400',
-  },
-  {
-    id: 'directors',
-    title: 'Directors & Operations',
-    subtitle: 'Keeping QUMSA running strong',
-    members: vicePresidents,
-    icon: Briefcase,
-    gradient: 'from-emerald-400 via-teal-400 to-cyan-400',
-  },
-  {
-    id: 'affairs',
-    title: 'Affairs & Representatives',
-    subtitle: 'Supporting students and strengthening community',
-    members: affairsCoordinators,
-    icon: Heart,
-    gradient: 'from-rose-400 via-pink-400 to-fuchsia-400',
-  },
-  {
-    id: 'events',
-    title: 'Events Team',
-    subtitle: 'Creating memorable experiences',
-    members: eventsCoordinators,
-    icon: Calendar,
-    gradient: 'from-violet-400 via-purple-400 to-indigo-400',
-  },
-  {
-    id: 'marketing',
-    title: 'Media & Creative Team',
-    subtitle: 'Amplifying our voice and presence',
-    members: marketingCoordinators,
-    icon: Megaphone,
-    gradient: 'from-blue-400 via-sky-400 to-cyan-400',
-  },
-  {
-    id: 'firstyear',
-    title: 'First Year Representatives',
-    subtitle: 'Bridging new students to our community',
-    members: firstYearReps,
-    icon: Star,
-    gradient: 'from-lime-400 via-green-400 to-emerald-400',
-  },
-] as const
 
 const TEAM_MEMBER_COUNT = teamSections.reduce((sum, s) => sum + s.members.length, 0)
 const DEPARTMENT_COUNT = teamSections.length
@@ -517,7 +278,7 @@ export default function TeamPage() {
                         role={member.role}
                         img={member.img}
                         description={member.description}
-                        profileUrl={member.profileUrl}
+                        profileUrl="#"
                         email={member.email}
                       />
                     </div>

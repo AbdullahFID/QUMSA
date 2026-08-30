@@ -26,6 +26,39 @@ import {
   Heart,
   Pin,
 } from 'lucide-react'
+import resourcesData from '@/content/resources.json'
+
+// Icon names stored in resources.json map to these lucide components;
+// unknown names fall back to Sparkles so a typo can never break the page
+const resourceIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  HeartHandshake,
+  Calendar,
+  AlertTriangle,
+  MessageSquareText,
+  Mic,
+  HeartPulse,
+  Scale,
+  HandHeart,
+  HeartPlus,
+  MessageCircle,
+  MessagesSquare,
+  MessageSquare,
+  MapPin,
+  Zap,
+  Locate,
+  Gavel,
+  CircleEqual,
+  Heart,
+  Star,
+  Pin,
+  Sparkles,
+  ExternalLink,
+}
+
+function renderResourceIcon(name: string): React.ReactNode {
+  const Icon = resourceIcons[name] ?? Sparkles
+  return <Icon className="w-6 h-6" />
+}
 
 interface Resource {
   title: string
@@ -88,133 +121,22 @@ const ResourcePanel: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [hoveredCard, setHoveredCard] = useState<string | null>(null)
 
-  const resources: ResourceCategory = {
-    'Ramadan & Community': [
-      {
-        title: 'Ramadan Iftar Donation',
-        url: 'https://www.launchgood.com/v4/campaign/qumsa_2025_ramadan_iftar_program',
-        icon: <HeartHandshake className="w-6 h-6" />,
-        description: 'Support our community Iftar program during the holy month',
-        featured: true,
-      },
-      {
-        title: 'Ramadan Resources',
-        url: 'https://drive.google.com/drive/folders/1rMCYRXNlu8cpHgLiOhBz7Ea6EMdUu7hm',
-        icon: <Calendar className="w-6 h-6" />,
-        description: 'Complete collection of Ramadan materials and spiritual resources',
-      },
-    ],
+  // Resources are managed through QUMSA ADMIN (/admin) — stored in src/content/resources.json
+  const resources: ResourceCategory = Object.fromEntries(
+    resourcesData.categories.map((cat) => [
+      cat.name,
+      cat.items.map((item) => ({
+        title: item.title,
+        url: item.url,
+        icon: renderResourceIcon(item.icon),
+        description: item.description,
+        featured: item.featured,
+      })),
+    ])
+  )
 
-    'Community Support': [
-      {
-        title: 'Report an Incident',
-        url: 'https://docs.google.com/forms/d/e/1FAIpQLScvCBcbHT54johcw318W4A84TyzVXpTkn6VNAL1jO7sr8ipxg/viewform',
-        icon: <AlertTriangle className="w-6 h-6" />,
-        description: 'Safe and confidential reporting for any community concerns',
-        featured: true,
-      },
-      {
-        title: 'QUMSA Feedback Form',
-        url: 'https://docs.google.com/forms/d/e/1FAIpQLSehVDpbg6QM56gaW5Y51gFH-t0b55TF_qrMA7b0-mCKg0PWPw/viewform',
-        icon: <MessageSquareText className="w-6 h-6" />,
-        description: 'Share your thoughts, suggestions, and help us improve',
-      },
-      {
-        title: 'Khatib Volunteer',
-        url: 'https://docs.google.com/forms/d/e/1FAIpQLSeGpLRbyscX3qdrJes9tcT2H7J3615sSqLnnnL48Y3fl2jxEQ/viewform?usp=send_form',
-        icon: <Mic className="w-6 h-6" />,
-        description: 'Volunteer to give Friday sermons and serve the community',
-      },
-      {
-        title: 'Naseeha Mental Health Resources',
-        url: 'https://www.naseeha.org/about-us/',
-        icon: <HeartPulse className="w-6 h-6" />,
-        description: 'Professional mental-health support specifically for Muslims',
-      },
-    ],
-
-    'Palestine Solidarity': [
-      {
-        title: 'Joint Statement on Palestine',
-        url: 'https://docs.google.com/forms/d/e/1FAIpQLSfN1szzgpHRcSXOJph5s4XOHirMXHc72srT1JBxu1kJHRpmzg/viewform',
-        icon: <Scale className="w-6 h-6" />,
-        description: "Queen's Palestine Solidarity Groups official statement",
-      },
-      {
-        title: 'Donate to Palestine -- Islamic Relief',
-        url: 'https://www.islamicreliefcanada.org/emergencies/palestine-appeal',
-        icon: <HandHeart className="w-6 h-6" />,
-        description: 'Support Palestinian relief efforts through Islamic Relief Canada',
-        featured: true,
-      },
-      {
-        title: 'Donate to Palestine -- LaunchGood',
-        url: 'https://www.launchgood.com/v4/campaign/palestine_under_attack',
-        icon: <HeartPlus className="w-6 h-6" />,
-        description: 'Emergency humanitarian aid for Palestine through LaunchGood',
-      },
-    ],
-
-    'Connect & Communicate': [
-      {
-        title: 'QUMSA WhatsApp Channel',
-        url: 'https://www.whatsapp.com/channel/0029VaEZcoSLNSZyWbQK390Q',
-        icon: <MessageCircle className="w-6 h-6" />,
-        description: 'Stay updated with official announcements and community news',
-        featured: true,
-      },
-      {
-        title: 'Brothers WhatsApp Group',
-        url: 'https://chat.whatsapp.com/KtJKrInPRiaKfZ4HmCOl5q?mode=r_c',
-        icon: <MessagesSquare className="w-6 h-6" />,
-        description: 'Connect with brothers in the community and build friendships',
-      },
-      {
-        title: 'Sisters WhatsApp Group',
-        url: 'https://chat.whatsapp.com/I3bo4j8jmvi5i7z02YF7qT',
-        icon: <MessageSquare className="w-6 h-6" />,
-        description: 'Connect with sisters in the community and build friendships',
-      },
-    ],
-
-    'Local Resources': [
-      {
-        title: 'Islamic Society of Kingston',
-        url: 'https://kingstonmuslims.ca/',
-        icon: <MapPin className="w-6 h-6" />,
-        description: 'Local Islamic community centre and mosque services',
-      },
-      {
-        title: 'OSAP for Muslims',
-        url: 'https://osapformuslims.ca/',
-        icon: <Zap className="w-6 h-6" />,
-        description: 'Financial-aid guidance specifically for Muslim students',
-      },
-      {
-        title: 'Kingston Mosque Bus Stop Petition',
-        url: 'https://www.change.org/p/kingston-city-officials-kingston-ontario-mosque-bus-stop',
-        icon: <Locate className="w-6 h-6" />,
-        description: 'Support better public-transit access to the local mosque',
-      },
-    ],
-
-    'Human Rights': [
-      {
-        title: 'Petition Against Uyghur Forced Labour',
-        url: 'https://www.change.org/p/justin-trudeau-ban-products-made-from-uyghur-forced-labour',
-        icon: <Gavel className="w-6 h-6" />,
-        description: 'Stand against Uyghur persecution and forced-labour products',
-      },
-      {
-        title: 'Black Lives Matter Resources',
-        url: 'https://blacklivesmatters.carrd.co/',
-        icon: <CircleEqual className="w-6 h-6" />,
-        description: 'Support racial-justice initiatives and community solidarity',
-      },
-    ],
-  }
-
-  const allResources = Object.entries(resources).flatMap(([category, items]) =>
+  const allResources
+ = Object.entries(resources).flatMap(([category, items]) =>
     items.map((item) => ({ ...item, category }))
   )
   const featuredResources = allResources.filter((r) => r.featured)
