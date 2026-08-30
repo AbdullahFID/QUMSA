@@ -14,11 +14,14 @@ import PrayerEditor from './PrayerEditor'
 import SiteEditor from './SiteEditor'
 import FaqEditor from './FaqEditor'
 import HalalEditor from './HalalEditor'
+import PhotosEditor from './PhotosEditor'
+import { Camera } from 'lucide-react'
 
-type Tab = 'events' | 'team' | 'resources' | 'prayer' | 'halal' | 'faq' | 'site'
+type Tab = 'events' | 'photos' | 'team' | 'resources' | 'prayer' | 'halal' | 'faq' | 'site'
 
 const TABS: { id: Tab; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
   { id: 'events', label: 'Events', icon: CalendarClock },
+  { id: 'photos', label: 'Photos', icon: Camera },
   { id: 'team', label: 'Team', icon: Users },
   { id: 'resources', label: 'Resources', icon: Link2 },
   { id: 'prayer', label: 'Prayer', icon: Landmark },
@@ -306,6 +309,7 @@ function Dashboard({ user, onLogout }: { user: string; onLogout: () => void }) {
       <main className="relative max-w-6xl mx-auto px-4 sm:px-6 py-8 pb-24">
         <WelcomeGuide />
         <div hidden={tab !== 'events'}><EventsEditor /></div>
+        <div hidden={tab !== 'photos'}><PhotosEditor /></div>
         <div hidden={tab !== 'team'}><TeamEditor /></div>
         <div hidden={tab !== 'resources'}><ResourcesEditor /></div>
         <div hidden={tab !== 'prayer'}><PrayerEditor /></div>

@@ -27,6 +27,7 @@ import EventsCalendar from '@/components/Calendar'
 import Image from 'next/image'
 import eventsData from '@/content/events.json'
 import siteData from '@/content/site.json'
+import slideshowData from '@/content/slideshow.json'
 
 // 🎉 FIXED: Added url? property to Event interface
 interface Event {
@@ -51,6 +52,7 @@ interface AnnualEvent {
 
 interface Slide {
   id: number
+  src: string
   title: string
   description: string
 }
@@ -117,19 +119,13 @@ function PhotoSlideshow() {
   const [play, setPlay] = useState(true)
   const [showThumbnails, setShowThumbnails] = useState(false)
 
-  const excludedIds = [
-    2, 3, 6, 9, 14, 15, 16, 17, 31, 36,
-    13, 18, 23, 27, 28, 34, 35, 37, 39, 40,
-    44, 45, 46, 47, 49
-  ]
-
-  const allSlides: Slide[] = Array.from({ length: 70 }, (_, i) => ({
+  // Photos are managed through QUMSA ADMIN (/admin → Photos tab)
+  const slides: Slide[] = slideshowData.slides.map((src, i) => ({
     id: i + 1,
+    src,
     title: `Community Event ${i + 1}`,
     description: 'Beautiful moments from our QUMSA family gatherings',
   }))
-
-  const slides: Slide[] = allSlides.filter(slide => !excludedIds.includes(slide.id))
 
   useEffect(() => {
     if (!play) return
@@ -173,7 +169,7 @@ function PhotoSlideshow() {
 
             {/* slide image */}
             <Image
-              src={`/slideshow/slide-${slides[idx].id}.jpg`}
+              src={slides[idx].src}
               alt={slides[idx].title}
               fill
               className="object-cover"
@@ -240,7 +236,7 @@ function PhotoSlideshow() {
                   }`}
                 >
                   <Image
-                    src={`/slideshow/slide-${slide.id}.jpg`}
+                    src={slide.src}
                     alt={slide.title}
                     fill
                     className="object-cover"

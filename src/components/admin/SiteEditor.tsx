@@ -14,6 +14,7 @@ type SiteContent = {
   contact: { email: string; roomLine1: string; roomLine2: string; address: string }
   socials: { instagram: string; whatsapp: string; facebook: string; twitter: string }
   ramadanCampaign: { title: string; goal: number; current: number; launchGoodUrl: string; description: string }
+  donation: { etransferEmail: string; etransferMessage: string; studentsServed: string; nights: string; costPerMeal: string }
 }
 
 export default function SiteEditor() {
@@ -23,6 +24,9 @@ export default function SiteEditor() {
 
   if (loading) return <LoadingPane />
   if (!content) return <ErrorPane message={error || 'Could not load homepage settings'} />
+  if (!content.contact || !content.socials || !content.ramadanCampaign || !content.donation) {
+    return <ErrorPane message="The site is mid-update — give the current deploy ~2 minutes to finish, then refresh this page." />
+  }
 
   const addWord = () => {
     const word = newWord.trim()
@@ -78,6 +82,13 @@ export default function SiteEditor() {
           <div className="sm:col-span-2">
             <Field label="Description"><TextArea value={content.ramadanCampaign.description} onChange={(e) => update((c) => ({ ...c, ramadanCampaign: { ...c.ramadanCampaign, description: e.target.value } }))} /></Field>
           </div>
+          <Field label="E-transfer email" help="The email donors send Interac e-transfers to — update this when the treasurer changes.">
+            <TextInput type="email" value={content.donation.etransferEmail} onChange={(e) => update((c) => ({ ...c, donation: { ...c.donation, etransferEmail: e.target.value } }))} />
+          </Field>
+          <Field label="E-transfer note"><TextInput value={content.donation.etransferMessage} onChange={(e) => update((c) => ({ ...c, donation: { ...c.donation, etransferMessage: e.target.value } }))} /></Field>
+          <Field label="Students served"><TextInput value={content.donation.studentsServed} onChange={(e) => update((c) => ({ ...c, donation: { ...c.donation, studentsServed: e.target.value } }))} placeholder="200+" /></Field>
+          <Field label="Iftar nights"><TextInput value={content.donation.nights} onChange={(e) => update((c) => ({ ...c, donation: { ...c.donation, nights: e.target.value } }))} placeholder="30" /></Field>
+          <Field label="Cost per meal"><TextInput value={content.donation.costPerMeal} onChange={(e) => update((c) => ({ ...c, donation: { ...c.donation, costPerMeal: e.target.value } }))} placeholder="$8" /></Field>
         </div>
       </GlassCard>
 

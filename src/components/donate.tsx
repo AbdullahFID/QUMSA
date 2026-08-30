@@ -149,14 +149,14 @@ const DONATION_CONFIG = {
   ],
 
   etransfer: {
-    email: "treasurer@qumsa.ca",
-    message: "Please include your name and 'QUMSA Donation' in the message"
+    email: siteData.donation.etransferEmail,
+    message: siteData.donation.etransferMessage
   },
 
   stats: {
-    studentsServed: "200+",
-    nights: "30",
-    costPerMeal: "$8"
+    studentsServed: siteData.donation.studentsServed,
+    nights: siteData.donation.nights,
+    costPerMeal: siteData.donation.costPerMeal
   }
 };
 

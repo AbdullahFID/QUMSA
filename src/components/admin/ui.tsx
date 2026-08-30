@@ -187,7 +187,7 @@ export function ImagePicker({
 }: {
   label: string
   value: string
-  folder: 'headshots' | 'juma' | 'general'
+  folder: 'headshots' | 'juma' | 'slideshow' | 'general'
   onChange: (path: string) => void
   help?: string
 }) {

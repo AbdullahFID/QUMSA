@@ -27,6 +27,7 @@ import {
   Pin,
 } from 'lucide-react'
 import resourcesData from '@/content/resources.json'
+import siteData from '@/content/site.json'
 
 // Icon names stored in resources.json map to these lucide components;
 // unknown names fall back to Sparkles so a typo can never break the page
@@ -135,8 +136,7 @@ const ResourcePanel: React.FC = () => {
     ])
   )
 
-  const allResources
- = Object.entries(resources).flatMap(([category, items]) =>
+  const allResources = Object.entries(resources).flatMap(([category, items]) =>
     items.map((item) => ({ ...item, category }))
   )
   const featuredResources = allResources.filter((r) => r.featured)
@@ -415,7 +415,7 @@ const ResourcePanel: React.FC = () => {
             
             <div className="flex flex-wrap justify-center gap-4">
               <a
-                href="https://www.whatsapp.com/channel/0029VaEZcoSLNSZyWbQK390Q"
+                href={siteData.socials.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-2 px-6 py-3 bg-white/10 hover:bg-white/20 

@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { ChevronDown, HelpCircle, Heart, MessageCircle } from 'lucide-react'
 // Managed through QUMSA ADMIN (/admin) — stored in src/content/faq.json
 import faqData from '@/content/faq.json'
+import siteData from '@/content/site.json'
 
 const AnimatedBackground = () => {
   const [stars, setStars] = React.useState<
@@ -149,7 +150,7 @@ const FAQ: React.FC = () => {
             
             <div className="flex flex-wrap justify-center gap-4">
               <a
-                href="https://www.whatsapp.com/channel/0029VaEZcoSLNSZyWbQK390Q"
+                href={siteData.socials.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-2 px-6 py-3 bg-white/10 hover:bg-white/20 

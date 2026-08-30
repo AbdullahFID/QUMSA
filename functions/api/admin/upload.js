@@ -6,6 +6,7 @@ import { json, ghPutFile } from './_lib.js'
 const FOLDERS = {
   headshots: 'public/images/headshots',
   juma: 'public/images/Juma',
+  slideshow: 'public/slideshow',
   general: 'public/images',
 }
 

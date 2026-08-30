@@ -1,6 +1,6 @@
 // Client for the QUMSA Admin API (functions/api/admin/*)
 
-export type ContentFileName = 'events' | 'team' | 'resources' | 'prayer' | 'site' | 'faq' | 'halal'
+export type ContentFileName = 'events' | 'team' | 'resources' | 'prayer' | 'site' | 'faq' | 'halal' | 'slideshow'
 
 async function parseError(res: Response): Promise<string> {
   try {
@@ -52,7 +52,7 @@ export async function apiPutContent<T>(file: ContentFileName, content: T): Promi
 }
 
 export async function apiUploadImage(
-  folder: 'headshots' | 'juma' | 'general',
+  folder: 'headshots' | 'juma' | 'slideshow' | 'general',
   file: File
 ): Promise<string> {
   const dataBase64 = await new Promise<string>((resolve, reject) => {

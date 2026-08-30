@@ -20,6 +20,7 @@ const FILES = {
   site: 'src/content/site.json',
   faq: 'src/content/faq.json',
   halal: 'src/content/halal.json',
+  slideshow: 'src/content/slideshow.json',
 }
 
 export async function onRequestGet({ request, env }) {
