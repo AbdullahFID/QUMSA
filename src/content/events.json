@@ -37,7 +37,7 @@
       "location": "MacCorry Hall, B201",
       "description": "Learn how to invite others to Islam with wisdom and compassion.",
       "type": "education",
-      "featured": true,
+      "featured": false,
       "attendees": 15,
       "organizer": "QUMSA",
       "url": ""
