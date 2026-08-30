@@ -91,11 +91,35 @@ export default function PrayerTime() {
       setLoading(true)
       setError(null)
 
-      // Hit our edge‑cached API route (24 h TTL)
-      const response = await fetch('/api/prayer-times')
-      if (!response.ok) throw new Error('Failed to fetch prayer times')
+      let data: PrayerData | null = null
 
-      const data = await response.json()
+      // Prefer our edge‑cached API route (24 h TTL)
+      try {
+        const response = await fetch('/api/prayer-times')
+        if (response.ok) {
+          const json = await response.json()
+          if (json?.timings) data = json
+        }
+      } catch {
+        // fall through to the direct call below
+      }
+
+      // Edge route unavailable (e.g. local dev) — call Aladhan directly by coordinates
+      if (!data) {
+        const now = new Date()
+        const dd = String(now.getDate()).padStart(2, '0')
+        const mm = String(now.getMonth() + 1).padStart(2, '0')
+        const yyyy = now.getFullYear()
+        const response = await fetch(
+          `https://api.aladhan.com/v1/timings/${dd}-${mm}-${yyyy}` +
+            `?latitude=44.2312&longitude=-76.4860&method=2&tune=0,2,-2,1,0,1,0,1,0`
+        )
+        if (!response.ok) throw new Error('Failed to fetch prayer times')
+        const json = await response.json()
+        data = json?.data
+      }
+
+      if (!data?.timings) throw new Error('Failed to fetch prayer times')
       setPrayerData(data)
     } catch (err) {
       console.error('Error fetching prayer times:', err)

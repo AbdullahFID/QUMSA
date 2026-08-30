@@ -1,85 +1,46 @@
 'use client'
 
 import { useState, useEffect, ReactNode } from 'react'
+import { MotionConfig } from 'framer-motion'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Preloader from '@/components/Preloader'
-import Script from 'next/script'
+
+const PRELOAD_MS = 2400 // how long the du'a screen holds (progress bar completes at ~2.2s)
+const REVEAL_MS = 1000  // crossfade into the page
 
 export default function ClientApp({ children }: { children: ReactNode }) {
-  const [loading, setLoading] = useState(true)
   const [isExiting, setIsExiting] = useState(false)
-  const [showContent, setShowContent] = useState(false)
+  const [showPreloader, setShowPreloader] = useState(true)
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsExiting(true)
-      // Allow exit animation to complete before hiding preloader
-      setTimeout(() => {
-        setLoading(false)
-        // Add a small delay before showing content to ensure clean transition
-        setTimeout(() => setShowContent(true), 50)
-      }, 800)
-    }, 2200)
+    // Reduced motion: the CSS crossfade is instant, so don't hold the
+    // (invisible) overlay and scroll lock for the full reveal duration
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const revealMs = reducedMotion ? 100 : REVEAL_MS
 
-    return () => clearTimeout(timer)
+    const exitTimer = setTimeout(() => setIsExiting(true), PRELOAD_MS)
+    const doneTimer = setTimeout(() => setShowPreloader(false), PRELOAD_MS + revealMs)
+    return () => {
+      clearTimeout(exitTimer)
+      clearTimeout(doneTimer)
+    }
   }, [])
 
-  if (loading) {
-    return <Preloader isExiting={isExiting} />
-  }
-
-  if (!showContent) {
-    return <div className="fixed inset-0 bg-white" />
-  }
+  // Keep the page from scrolling behind the preloader
+  useEffect(() => {
+    document.body.style.overflow = showPreloader ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [showPreloader])
 
   return (
-    <>
+    <MotionConfig reducedMotion="user">
       <Navbar />
-      <main className="flex-1 relative animate-fadeInUp">
-        {children}
-      </main>
+      <main className="flex-1 relative">{children}</main>
       <Footer />
-      <Script
-        id="structured-data"
-        type="application/ld+json"
-        strategy="afterInteractive"
-      >
-        {`        {
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "QUMSA",
-          "alternateName": "Queen's University Muslim Students Association",
-          "url": "https://qumsa.ca",
-          "logo": "https://qumsa.ca/images/QUMSA_LOGO.png",
-          "description": "Building faith, friendship, and community on campus. Kingston's premier Muslim student organization at Queen's University.",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Kingston",
-            "addressRegion": "Ontario",
-            "addressCountry": "CA"
-          },
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "contactType": "General Inquiry",
-            "email": "qumsachair@gmail.com"
-          },
-          "sameAs": [
-            "https://www.facebook.com/QUMSA",
-            "https://twitter.com/QUMSA_Kingston",
-            "https://instagram.com/qumsa"
-          ],
-          "memberOf": {
-            "@type": "EducationalOrganization",
-            "name": "Queen's University",
-            "url": "https://queensu.ca"
-          },
-          "foundingLocation": {
-            "@type": "Place",
-            "name": "Kingston, Ontario, Canada"
-          }
-        }        `}
-      </Script>
-    </>
+      {showPreloader && <Preloader isExiting={isExiting} />}
+    </MotionConfig>
   )
 }

@@ -16,99 +16,103 @@ type Particle = {
   left: string
   top: string
   delay: string
+  duration: string
 }
+
+// Shown instantly (and whenever the edge API is unreachable, e.g. local dev)
+const FALLBACK_QUOTES: QuranQuote[] = [
+  { quranQuote: 'And He found you lost and guided you.', reference: 'Quran 93:7' },
+  { quranQuote: 'Indeed, with hardship comes ease.', reference: 'Quran 94:6' },
+  { quranQuote: 'And whoever puts their trust in Allah, He will be sufficient for them.', reference: 'Quran 65:3' },
+  { quranQuote: 'So remember Me; I will remember you.', reference: 'Quran 2:152' },
+  { quranQuote: 'Allah does not burden a soul beyond that it can bear.', reference: 'Quran 2:286' },
+  { quranQuote: 'And My mercy encompasses all things.', reference: 'Quran 7:156' },
+]
 
 export default function Preloader({ isExiting = false }: PreloaderProps) {
   const [quote, setQuote] = useState<QuranQuote | null>(null)
   const [progress, setProgress] = useState(0)
-  
-  // ✅ Generate particles CLIENT-SIDE ONLY — empty array on SSR, populated after mount
+
+  // Particles are generated client-side only — empty array on SSR keeps hydration safe
   const [particles, setParticles] = useState<Particle[]>([])
 
   useEffect(() => {
-    // Hydration-safe: runs only on client after initial render
     setParticles(
-      Array.from({ length: 20 }, () => ({
+      Array.from({ length: 18 }, () => ({
         left: `${Math.random() * 100}%`,
         top: `${Math.random() * 100}%`,
-        delay: `${Math.random() * 500}ms`,
+        delay: `${Math.random() * 3000}ms`,
+        duration: `${2500 + Math.random() * 2500}ms`,
       }))
     )
   }, [])
 
   useEffect(() => {
-    let retryTimer: NodeJS.Timeout | null = null
-    let progressTimer: NodeJS.Timeout | null = null
+    let cancelled = false
+
+    // Show a quote immediately; upgrade to the full API pool if it responds in time
+    setQuote(FALLBACK_QUOTES[Math.floor(Math.random() * FALLBACK_QUOTES.length)])
 
     const loadQuote = async () => {
       try {
         const res = await fetch('/api/quran-quotes', { cache: 'no-store' })
-        if (!res.ok) throw new Error('edge miss')
+        if (!res.ok) return
         const quotes: QuranQuote[] = await res.json()
-        setQuote(quotes[Math.floor(Math.random() * quotes.length)])
-        if (retryTimer) clearInterval(retryTimer)
+        if (!cancelled && Array.isArray(quotes) && quotes.length > 0) {
+          setQuote(quotes[Math.floor(Math.random() * quotes.length)])
+        }
       } catch {
-        // first edge call of the day may 502; retry
+        // fallback quote is already on screen
       }
     }
-
     loadQuote()
-    retryTimer = setInterval(loadQuote, 5000)
-    progressTimer = setInterval(() => {
+
+    const progressTimer = setInterval(() => {
       setProgress(p => (p >= 100 ? 100 : p + 2))
     }, 44)
 
     return () => {
-      if (retryTimer) clearInterval(retryTimer)
-      if (progressTimer) clearInterval(progressTimer)
+      cancelled = true
+      clearInterval(progressTimer)
     }
   }, [])
 
   return (
     <div
-      className={`fixed inset-0 z-50 transition-all duration-800 ease-in-out ${
-        isExiting ? 'opacity-0 scale-110' : 'opacity-100 scale-100'
+      className={`fixed inset-0 z-[60] transition-opacity duration-1000 ease-out ${
+        isExiting ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >
       {/* Background image */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1542816417-0983c9c9ad53?q=80&w=2940&auto=format&fit=crop"
+          src="/images/preloader-architecture.jpg"
           alt="Islamic Architecture Background"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-linear-to-br from-green-900/60 via-blue-900/50 to-purple-900/60" />
       </div>
 
-      {/* Expanding shapes */}
-      <div
-        className={`absolute inset-0 transition-all duration-700 ${
-          isExiting ? 'opacity-100' : 'opacity-0'
-        }`}
-      >
-        <div
-          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-700 ${
-            isExiting ? 'w-96 h-96' : 'w-0 h-0'
-          } bg-white/10 rounded-full`}
-        />
-        <div
-          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 delay-100 ${
-            isExiting ? 'w-64 h-64' : 'w-0 h-0'
-          } bg-white/20 rounded-full`}
-        />
-        <div
-          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-300 delay-200 ${
-            isExiting ? 'w-32 h-32' : 'w-0 h-0'
-          } bg-white/30 rounded-full`}
-        />
+      {/* Ambient twinkling particles */}
+      <div className="absolute inset-0 pointer-events-none">
+        {particles.map((p, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-white/70 rounded-full animate-pulse"
+            style={{
+              left: p.left,
+              top: p.top,
+              animationDelay: p.delay,
+              animationDuration: p.duration,
+            }}
+          />
+        ))}
       </div>
 
-      {/* Main content */}
+      {/* Main content — drifts up softly as the page beneath is revealed */}
       <div
-        className={`relative z-10 flex flex-col items-center justify-center h-full px-6 transition-all duration-500 ${
-          isExiting
-            ? '-translate-y-8 opacity-0 scale-75'
-            : 'translate-y-0 opacity-100 scale-100'
+        className={`relative z-10 flex flex-col items-center justify-center h-full px-6 transition-all duration-700 ease-out ${
+          isExiting ? '-translate-y-3 opacity-0' : 'translate-y-0 opacity-100'
         }`}
       >
         {/* Quote card */}
@@ -162,33 +166,12 @@ export default function Preloader({ isExiting = false }: PreloaderProps) {
               Built by <span className="text-green-300">Abdullah Khan</span>
             </p>
             <p className="text-white/70">abdullah.khan@queensu.ca</p>
-            <p>First-Year CMPE at Queen&apos;s University</p>
+            <p>Second-Year CMPE at Queen&apos;s University</p>
             <p>
               In Association with <span className="text-blue-300 font-semibold">QUMSA</span>
             </p>
           </div>
         </div>
-      </div>
-
-      {/* Particles — only rendered after client mount */}
-      <div
-        className={`absolute inset-0 transition-opacity duration-300 ${
-          isExiting ? 'opacity-100' : 'opacity-0'
-        }`}
-      >
-        {particles.map((p, i) => (
-          <div
-            key={i}
-            className={`absolute w-1 h-1 bg-white rounded-full transition-all duration-700 ${
-              isExiting ? 'animate-ping' : ''
-            }`}
-            style={{
-              left: p.left,
-              top: p.top,
-              animationDelay: p.delay,
-            }}
-          />
-        ))}
       </div>
     </div>
   )

@@ -35,9 +35,9 @@ export const metadata: Metadata = {
     siteName: 'QUMSA',
     images: [
       {
-        url: '/images/QUMSA_LOGO.png',
-        width: 1200,
-        height: 630,
+        url: '/images/QUMSA_Banner.png',
+        width: 851,
+        height: 315,
         alt: 'QUMSA Prayer Times - Queen\'s University Muslim Students Association',
       },
     ],
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "Prayer Times & Events - QUMSA | Queen's University Muslim Students Association",
     description: 'Accurate, real‑time Islamic prayer times for Kingston, Ontario, plus upcoming community events.',
-    images: ['/images/QUMSA_LOGO.png'],
+    images: ['/images/QUMSA_Banner.png'],
   },
   robots: {
     index: true,

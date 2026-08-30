@@ -91,6 +91,10 @@ export default function Footer() {
                 aria-label="Follow QUMSA on Instagram"
               >
                 <InstagramIcon className="w-5 h-5" />
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-lg">
+                  Follow us on Instagram
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-gray-900"></div>
+                </div>
               </a>
               <a
                 href="https://whatsapp.com/channel/0029VaEZcoSLNSZyWbQK390Q"

@@ -42,9 +42,9 @@ export const metadata: Metadata = {
     siteName: 'QUMSA',
     images: [
       {
-        url: '/images/QUMSA_LOGO.png',
-        width: 1200,
-        height: 630,
+        url: '/images/QUMSA_Banner.png',
+        width: 851,
+        height: 315,
         alt: 'QUMSA - Queen\'s University Muslim Students Association',
       },
     ],
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'QUMSA | Queen\'s University Muslim Students Association',
     description: 'Building faith, friendship, and community at Queen\'s University. Join our vibrant Muslim student community.',
-    images: ['/images/QUMSA_LOGO.png'],
+    images: ['/images/QUMSA_Banner.png'],
   },
   robots: {
     index: true,

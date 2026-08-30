@@ -4,7 +4,7 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import ResourceTile from './ResourceTile'
 import {
   Utensils,
@@ -49,6 +49,7 @@ export default function Homepage() {
   const second = ['Islam', 'الإسلام']
   const [i1, setI1] = useState(0)
   const [i2, setI2] = useState(0)
+  const shouldReduceMotion = useReducedMotion()
 
   useEffect(() => {
     const a = setInterval(() => setI1((i) => (i + 1) % first.length), 3000)
@@ -72,7 +73,7 @@ export default function Homepage() {
       {/* ───────────── HERO ───────────── */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <Image
-          src="https://cdn.prod.website-files.com/667c59abb9df9789d17407a6/667dd742313853241f5dcc64_Story-DJI_0031.jpeg"
+          src="/images/campus-aerial.jpg"
           alt="Queen's campus aerial"
           fill
           priority
@@ -90,10 +91,11 @@ export default function Homepage() {
                 left: `${20 + i * 15}%`,
                 top: `${30 + i * 10}%`,
               }}
-              animate={{
-                y: [-20, 20, -20],
-                opacity: [0.3, 0.7, 0.3],
-              }}
+              animate={
+                shouldReduceMotion
+                  ? undefined
+                  : { y: [-20, 20, -20], opacity: [0.3, 0.7, 0.3] }
+              }
               transition={{
                 duration: 3 + i * 0.5,
                 repeat: Infinity,
@@ -259,11 +261,11 @@ export default function Homepage() {
                 left: `${10 + i * 10}%`,
                 top: `${20 + (i % 3) * 25}%`,
               }}
-              animate={{
-                y: [-10, 10, -10],
-                opacity: [0.2, 0.8, 0.2],
-                scale: [0.5, 1.2, 0.5],
-              }}
+              animate={
+                shouldReduceMotion
+                  ? undefined
+                  : { y: [-10, 10, -10], opacity: [0.2, 0.8, 0.2], scale: [0.5, 1.2, 0.5] }
+              }
               transition={{
                 duration: 4 + i * 0.3,
                 repeat: Infinity,

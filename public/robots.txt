@@ -1,4 +1,9 @@
+# *
 User-agent: *
 Allow: /
 
-Sitemap: https://qumsa.pages.dev/sitemap.xml
+# Host
+Host: https://qumsa.ca
+
+# Sitemaps
+Sitemap: https://qumsa.ca/sitemap.xml

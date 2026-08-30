@@ -408,7 +408,7 @@ const ResourcePanel: React.FC = () => {
         )}
 
         {!searchTerm && (
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-32">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-20">
             {Object.entries(resources).map(([category, items], categoryIdx) => (
               <section
                 key={category}
@@ -416,7 +416,7 @@ const ResourcePanel: React.FC = () => {
                 className="scroll-mt-20 relative"
               >
                 <div className="absolute inset-0 bg-linear-to-r from-white/5 via-transparent to-white/5 rounded-3xl" />
-                <div className="relative">
+                <div className="relative px-6 py-14 sm:px-10 sm:py-16">
                   <div className="text-center mb-16">
                     <h2 className="text-5xl font-bold mb-6 text-white">
                       {category}

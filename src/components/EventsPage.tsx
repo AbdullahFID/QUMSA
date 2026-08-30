@@ -21,7 +21,7 @@ import {
   Flame,
   X
 } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import EventCard, { EventCategory } from '@/components/EventCard'
 import EventsCalendar from '@/components/Calendar'
 import Image from 'next/image'
@@ -330,6 +330,7 @@ function PhotoSlideshow() {
 export default function EventPage() {
   const featured = upcomingEvents.filter((e) => e.featured)
   const regular = upcomingEvents.filter((e) => !e.featured)
+  const shouldReduceMotion = useReducedMotion()
 
   return (
     <div className="min-h-screen bg-linear-to-b from-slate-900 via-blue-900 to-slate-800 text-white relative overflow-hidden">
@@ -349,7 +350,11 @@ export default function EventPage() {
               key={i}
               className="absolute w-1 h-1 bg-linear-to-r from-amber-400 to-yellow-500 rounded-full"
               style={{ left: `${10 + i * 8}%`, top: `${15 + i * 6}%` }}
-              animate={{ y: [-30, 30, -30], opacity: [0.2, 0.8, 0.2], scale: [0.5, 1.5, 0.5] }}
+              animate={
+                shouldReduceMotion
+                  ? undefined
+                  : { y: [-30, 30, -30], opacity: [0.2, 0.8, 0.2], scale: [0.5, 1.5, 0.5] }
+              }
               transition={{ duration: 4 + i * 0.3, repeat: Infinity, ease: 'easeInOut' }}
             />
           ))}

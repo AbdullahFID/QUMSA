@@ -31,9 +31,9 @@ export const metadata: Metadata = {
     siteName: 'QUMSA',
     images: [
       {
-        url: '/images/QUMSA_LOGO.png',
-        width: 1200,
-        height: 630,
+        url: '/images/QUMSA_Banner.png',
+        width: 851,
+        height: 315,
         alt: 'Support QUMSA - Queen\'s University Muslim Students Association',
       },
     ],
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Donate - QUMSA | Queen\'s University Muslim Students Association',
     description: 'Support Queen\'s University Muslim Students Association. Your contribution fuels our programs, events, and student services.',
-    images: ['/images/QUMSA_LOGO.png'],
+    images: ['/images/QUMSA_Banner.png'],
   },
   robots: {
     index: true,

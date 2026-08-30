@@ -31,9 +31,9 @@ export const metadata: Metadata = {
     siteName: 'QUMSA',
     images: [
       {
-        url: '/images/QUMSA_LOGO.png',
-        width: 1200,
-        height: 630,
+        url: '/images/QUMSA_Banner.png',
+        width: 851,
+        height: 315,
         alt: 'QUMSA Events - Queen\'s University Muslim Students Association',
       },
     ],
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Events - QUMSA | Queen\'s University Muslim Students Association',
     description: 'Join us for meaningful events that strengthen our community, celebrate our faith, and create lasting memories together.',
-    images: ['/images/QUMSA_LOGO.png'],
+    images: ['/images/QUMSA_Banner.png'],
   },
   robots: {
     index: true,

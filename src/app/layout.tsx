@@ -1,9 +1,49 @@
 import './globals.css'
 import ClientApp from './ClientApp'
 import { Inter } from 'next/font/google'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
+
+export const viewport: Viewport = {
+  themeColor: '#131C65',
+}
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'QUMSA',
+  alternateName: "Queen's University Muslim Students Association",
+  url: 'https://qumsa.ca',
+  logo: 'https://qumsa.ca/images/QUMSA_LOGO.png',
+  description:
+    "Building faith, friendship, and community on campus. Kingston's premier Muslim student organization at Queen's University.",
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Kingston',
+    addressRegion: 'Ontario',
+    addressCountry: 'CA',
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'General Inquiry',
+    email: 'qumsachair@gmail.com',
+  },
+  sameAs: [
+    'https://www.facebook.com/QUMSA',
+    'https://twitter.com/QUMSA_Kingston',
+    'https://instagram.com/qumsa',
+  ],
+  memberOf: {
+    '@type': 'EducationalOrganization',
+    name: "Queen's University",
+    url: 'https://queensu.ca',
+  },
+  foundingLocation: {
+    '@type': 'Place',
+    name: 'Kingston, Ontario, Canada',
+  },
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://qumsa.ca'),
@@ -51,9 +91,9 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     images: [
       {
-        url: '/images/QUMSA_BANNER.png',
-        width: 1200,
-        height: 630,
+        url: '/images/QUMSA_Banner.png',
+        width: 851,
+        height: 315,
         alt: 'QUMSA - Building Muslim community at Queens University',
         type: 'image/png'
       }
@@ -88,6 +128,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} antialiased flex flex-col min-h-screen islamic-pattern`}>
         <ClientApp>{children}</ClientApp>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
       </body>
     </html>
   )
