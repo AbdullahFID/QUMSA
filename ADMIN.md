@@ -7,10 +7,13 @@
 | Tab | Controls |
 |---|---|
 | Events | One-off events (auto-hide once past) + weekly programs (Jummah/Halaqa repeat forever) |
+| Photos | The Community Memories slideshow — upload, remove, reorder event photos |
 | Team | Sections and members — names, roles, fun facts, emails, headshot uploads, reordering |
 | Resources | The /resources/links hub — categories, links, icons, featured picks |
 | Prayer | Jummah info + images, the monthly calendar image, weekly schedule, campus prayer spaces |
-| Homepage | Impact stats and the rotating hero words |
+| Halal Food | Every restaurant/store on the /resources/halal map, including coordinates and verified badges |
+| FAQ | The questions and answers on /resources/faq |
+| Homepage | Impact stats, rotating hero words, footer contact info, social links, donation campaign + e-transfer details |
 
 Daily prayer times are automatic (Aladhan API) and never need editing.
 
