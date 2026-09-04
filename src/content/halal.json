@@ -267,25 +267,6 @@
       "description": "Naan Stop Express is a family-run Pakistani restaurant in Kingston. They are known for their authentic dishes, such as butter chicken, chapli kabab, and fresh naan. They offer a cozy and welcoming atmosphere."
     },
     {
-      "id": 15,
-      "name": "Pasha",
-      "type": "Bakery",
-      "cuisine": "Turkish, Middle Eastern",
-      "rating": 4.5,
-      "priceRange": "$",
-      "address": "61 Division St, Kingston, ON, K7L 3L8",
-      "phone": "(613) 542-8282",
-      "hours": "9:00 A.M - 10:00 P.M",
-      "website": "http://pashakingston.com/",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHl_RCFyzYmTkfy3Ci8gOHP86Du0Vmpy2QpA&s",
-      "coordinates": {
-        "lat": 44.22941,
-        "lng": -76.48625
-      },
-      "verified": true,
-      "description": "Pasha is a Turkish restaurant in Kingston that serves a variety of Middle Eastern dishes, including shawarma, kababs, and baklava. They are also known for their fresh-baked goods, such as simit and pide. The restaurant has a professional and friendly staff."
-    },
-    {
       "id": 16,
       "name": "Tahini's",
       "type": "restaurant",
