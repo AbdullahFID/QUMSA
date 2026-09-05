@@ -88,6 +88,13 @@
           "img": "",
           "description": "My favourite sport is cricket 🏏\n\nProgram: Commerce - Year: 4",
           "email": ""
+        },
+        {
+          "name": "Ajwaad Khan",
+          "role": "Director of Outreach",
+          "img": "/images/headshots/img_4808---ajwaad-khan-202609051455.jpeg",
+          "description": "Program: Computing - Year: 4",
+          "email": ""
         }
       ]
     },
@@ -100,35 +107,35 @@
           "name": "Aumama Al-Naib",
           "role": "Director of External Affairs",
           "img": "/images/headshots/Aumama_Al_Naib.jpg",
-          "description": "This past summer, I got to spend time in 3 different countries (layover not included🥲)!",
+          "description": "I love classical Arabic poetry!\n\nProgram: Con-Ed - Year: 5",
           "email": "external@qumsa.ca"
         },
         {
-          "name": "Ajwaad",
+          "name": "Rakin Riaz",
+          "role": "Director of External Affairs",
+          "img": "/images/headshots/img_0546---rakin-riaz-202609051454.jpeg",
+          "description": "I’m a barber of 3 years.\n\nProgram: Health Sciences - Year: 2",
+          "email": "external@qumsa.ca"
+        },
+        {
+          "name": "Zaid Alam",
           "role": "Director of Internal Affairs",
-          "img": "/images/headshots/ajwaad-khan.jpeg",
-          "description": "I like birds.",
+          "img": "/images/headshots/6711ff4e-cca4-4671-8c82-8aaef1b55c49---zaid-alam-202609051454.jpeg",
+          "description": "I am left handed!\n\nProgram: Computing - Year: 3",
           "email": "internal@qumsa.ca"
         },
         {
-          "name": "Saad Rizvi",
+          "name": "Ahmed Ezzein",
           "role": "Brother's Representative",
-          "img": "/images/headshots/saad-rizvi.jpg",
-          "description": "I was a professional basketball player in 1972.",
+          "img": "/images/headshots/screenshot-2026-09-05-104230-202609051442.png",
+          "description": "I love sports. \n\nProgram: Computer Engineering - Year: 3",
           "email": "brothers@qumsa.ca"
         },
         {
-          "name": "Taha Salah",
-          "role": "Brothers' Representative",
-          "img": "/images/headshots/Taha.jpeg",
-          "description": "None.",
-          "email": "brothers@qumsa.ca"
-        },
-        {
-          "name": "Fatima Aboujassoum",
-          "role": "Sisters' Representative",
-          "img": "/images/headshots/fatima-aboujassoum.jpeg",
-          "description": "I qualified for a CrossFit competition a year ago!",
+          "name": "Hibah Tahir",
+          "role": "Sister's Representative",
+          "img": "/images/headshots/img_7346---hibah-tahir-202609051444.jpeg",
+          "description": "I love to bake!\n\nProgram: Life Sciences - Year: 2",
           "email": "sisters@qumsa.ca"
         }
       ]
@@ -139,24 +146,24 @@
       "subtitle": "Creating memorable experiences",
       "members": [
         {
-          "name": "Karim Ali",
+          "name": "Sarah Hussain",
           "role": "Director of Events",
-          "img": "/images/headshots/Karim.jpeg",
-          "description": "I like horses.",
+          "img": "/images/headshots/c35266b6-96ac-4fe1-805d-2adec015397e_original---sarah-hussai-202609051445.jpeg",
+          "description": "I have a 7 year old cat 🐈\n\nProgram: Kinesiology - Year: 2",
           "email": "events@qumsa.ca"
         },
         {
-          "name": "Hussam Hayek",
+          "name": "Ali Mezher",
           "role": "Special Events Coordinator",
-          "img": "/images/headshots/Hussam.jpeg",
-          "description": "I'm the best rock paper scissors player in the province.",
+          "img": "/images/headshots/headshot---ali-202609051446.png",
+          "description": "I’m left-handed but right-footed. \n\nProgram: Health Sciences - Year: 2",
           "email": "events@qumsa.ca"
         },
         {
-          "name": "Mihran Asadullah",
+          "name": "Ishraq Sheikh",
           "role": "Special Events Coordinator",
-          "img": "/images/headshots/mihran-asadullah.jpeg",
-          "description": "I'm the best rock paper scissors player in the province.",
+          "img": "/images/headshots/screenshot-2026-09-05-102224-202609051446.png",
+          "description": "I was born on the 3rd day of Ramadan at 3:03 PM and I was 3 kg!\n\nProgram: Life Sciences - Year: 2",
           "email": "events@qumsa.ca"
         }
       ]
@@ -167,46 +174,46 @@
       "subtitle": "Amplifying our voice and presence",
       "members": [
         {
-          "name": "Zahra Abba",
-          "role": "Director of Media & Communications",
-          "img": "/images/headshots/zahra-abba.jpeg",
-          "description": "I read over 200 books during the pandemic!",
-          "email": "media@qumsa.ca"
-        },
-        {
-          "name": "Yaseen Malam",
-          "role": "Digital Content Coordinator",
-          "img": "/images/headshots/yaseen-malam.jpeg",
-          "description": "I reread the entire Red Rising series in 2 weeks.",
-          "email": "media@qumsa.ca"
-        },
-        {
-          "name": "Sahar Hakimi",
-          "role": "Digital Content Coordinator",
-          "img": "/images/headshots/honestlyidk.png",
-          "description": "I hate strawberries.",
-          "email": "media@qumsa.ca"
-        },
-        {
-          "name": "Samrah Junaid",
-          "role": "Graphics Coordinator",
-          "img": "/images/headshots/Taha.jpeg",
-          "description": "I've been on the second tallest roller coaster in the world.",
-          "email": "graphics@qumsa.ca"
-        },
-        {
-          "name": "Rayyan Shaikh",
-          "role": "Graphics Coordinator",
-          "img": "/images/headshots/rayyan-shaikh.jpeg",
-          "description": "I love ice cream.",
-          "email": "graphics@qumsa.ca"
-        },
-        {
           "name": "Iffah Sami",
+          "role": "Director of Marketing",
+          "img": "/images/headshots/img_3112---iffah-sami-202609051447.jpeg",
+          "description": "Program: Health Sciences - Year: 2",
+          "email": "qumsamarketing@gmail.com"
+        },
+        {
+          "name": "Yasameen Ihsan",
+          "role": "Merchandise Coordinator",
+          "img": "/images/headshots/screenshot-2026-09-05-102224-202609051449.png",
+          "description": "I’ve been to Machu Picchu!\n\nProgram: Medicine - Year 2",
+          "email": "qumsamarketing@gmail.com"
+        },
+        {
+          "name": "Mysha Afzal",
           "role": "Graphics Coordinator",
-          "img": "/images/headshots/iffah.jpeg",
-          "description": "",
-          "email": "graphics@qumsa.ca"
+          "img": "/images/headshots/img_2639---mysha-afzal-202609051450.jpeg",
+          "description": "I enjoy doing word puzzles.\n\nProgram: BSc. (Hons) Biology - Year: 5th ",
+          "email": "qumsamarketing@gmail.com"
+        },
+        {
+          "name": "Fatima Sattar",
+          "role": "Graphics Coordinator",
+          "img": "/images/headshots/img_2333---fatima-202609051451.jpg",
+          "description": "I have a low taper fade.\n\nProgram: Life Sciences - Year: 2",
+          "email": "qumsamarketing@gmail.com"
+        },
+        {
+          "name": "Nabeeha Ahsan",
+          "role": "Digital Content Coordinator",
+          "img": "/images/headshots/img_2066---nabeeha-ahsan-202609051452.jpeg",
+          "description": "I’m scared of butterflies.\n\nProgram: Mechanical Engineering - Year: 2",
+          "email": "qumsamarketing@gmail.com"
+        },
+        {
+          "name": "Ramy Elagan",
+          "role": "Digital Content Coordinator",
+          "img": "/images/headshots/img_9105---ramy-elagan-202609051453.jpeg",
+          "description": "I’ve done CPR for 2 hours.\n\nProgram: Health Sciences - Year: 2",
+          "email": "qumsamarketing@gmail.com"
         }
       ]
     },
@@ -216,10 +223,17 @@
       "subtitle": "Bridging new students to our community",
       "members": [
         {
-          "name": "Sarah Hussain",
-          "role": "First Year Representative",
-          "img": "/images/headshots/sarah-hussain.jpeg",
-          "description": "I have a 6 year old cat :).",
+          "name": "Amber Elias",
+          "role": "Sister's First Year Representative",
+          "img": "/images/headshots/img_7778---amber-elias-202609051456.jpeg",
+          "description": "I love to travel!\n\nProgram: Health Sciences - Year: 1",
+          "email": "firstyear@qumsa.ca"
+        },
+        {
+          "name": "Ali Elbahlawan",
+          "role": "Brother's First Year Representative ",
+          "img": "/images/headshots/screenshot-2026-09-05-105751-202609051457.png",
+          "description": "I’m a (self-proclaimed) Osmow’s ambassador.\n\nProgram: Health Sciences - Year: 1",
           "email": "firstyear@qumsa.ca"
         }
       ]
