@@ -27,46 +27,67 @@
       "subtitle": "Keeping QUMSA running strong",
       "members": [
         {
-          "name": "Shahmeer Raza",
+          "name": "Fateen Elhaam",
           "role": "Treasurer",
-          "img": "/images/headshots/shahmeer-raza.jpeg",
-          "description": "I've visited the Eiffel Tower.",
+          "img": "/images/headshots/screenshot_20240518-214823---ichigo-kurosaki-202609051419.png",
+          "description": "I like to play volleyball.\n\nProgram: Engineering - Year: 4",
           "email": "finance@qumsa.ca"
         },
         {
-          "name": "Aasiya Ahmad",
-          "role": "Director of Ops & Logs",
-          "img": "/images/headshots/aasiya.jpeg",
-          "description": "I've stayed asleep for over 20 hours.",
-          "email": "operations@qumsa.ca"
+          "name": "Alia Azzouzi",
+          "role": "Treasurer",
+          "img": "/images/headshots/screenshot-2026-09-05-102224-202609051422.png",
+          "description": "I have a twin!\n\nProgram: Commerce - Year: 2",
+          "email": "finance@qumsa.ca"
         },
         {
-          "name": "Salem Cherif",
+          "name": "Abdullah Mohsin",
           "role": "Supplies & Sourcing Coordinator",
-          "img": "/images/headshots/salem-cherif.jpeg",
-          "description": "I have two older brothers - one born in the same year as me, and the other born exactly 4 years apart.",
+          "img": "/images/headshots/d2c8ddf7-2dce-4dd9-a9a4-0fec1c3f60b8---abdullah-mohsin-202609051423.jpeg",
+          "description": "Last years msa president tripped me & left me behind at an abandoned house with a homeless guy\n\nProgram: Computer Science - Year: 3",
           "email": "operations@qumsa.ca"
         },
         {
-          "name": "Seham Kettaneh",
-          "role": "Director of Fundraising",
-          "img": "/images/headshots/sehem.jpeg",
-          "description": "I am a certified trainee firefighter.",
+          "name": "Haniya Saad",
+          "role": "Sister's Director of Fundraising",
+          "img": "/images/headshots/screenshot-2026-09-05-102929-202609051429.png",
+          "description": "I’ve lived in 4 cities!\n\nProgram: Health Sciences - Year: 2",
           "email": "fundraising@qumsa.ca"
         },
         {
-          "name": "Zaid Alam",
+          "name": "Salem Hammady Cherif",
+          "role": "Brother's Director of Fundraising",
+          "img": "/images/headshots/img_0437---salem-cherif-202609051426.jpeg",
+          "description": "I lived in Madagascar!\n\nProgram: Life Sciences - Year: 3",
+          "email": "fundraising@qumsa.ca"
+        },
+        {
+          "name": "Ajwaad Khan",
           "role": "Director of Outreach",
           "img": "/images/headshots/zaid-alam.jpeg",
-          "description": "I SOMETIMES wear my glasses even though I should wear them all the time.",
+          "description": "Program: Computing - Year: 4th",
           "email": "outreach@qumsa.ca"
         },
         {
-          "name": "Cleon Aristo",
+          "name": "Fatima Aboujassoum",
           "role": "Director of Da'wah & Islamic Affairs",
-          "img": "/images/headshots/cleon-aristo.jpeg",
-          "description": "Guess the origin of my name.",
+          "img": "/images/headshots/img_7899---fatima-aboujassoum-202609051431.jpg",
+          "description": "I know how to solve a rubik's cube!\n\nProgram: Computing - Year: 3",
           "email": "dawah@qumsa.ca"
+        },
+        {
+          "name": "Ibraheem Syed",
+          "role": "Director of Da'wah & Islamic Affairs",
+          "img": "",
+          "description": "I have broken every finger except my thumbs!\n\nProgram: Computing - Year: 3",
+          "email": "dawah@qumsa.ca"
+        },
+        {
+          "name": "Shahmeer Raza",
+          "role": "Head of Education ",
+          "img": "",
+          "description": "My favourite sport is cricket 🏏\n\nProgram: Commerce - Year: 4",
+          "email": ""
         }
       ]
     },
