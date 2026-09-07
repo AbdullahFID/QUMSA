@@ -1,6 +1,62 @@
 {
   "events": [
     {
+      "id": "new-event-mtrjo2ja",
+      "title": "",
+      "date": "2026-09-07",
+      "time": "5:00 PM",
+      "endTime": "7:00 PM",
+      "location": "",
+      "description": "",
+      "type": "community",
+      "featured": false,
+      "attendees": 0,
+      "organizer": "QUMSA",
+      "url": ""
+    },
+    {
+      "id": "new-event-mtrjlp85",
+      "title": "Queen's In the Park",
+      "date": "2026-09-13",
+      "time": "9:00 AM",
+      "endTime": "1:30 PM",
+      "location": "City Park 79 Barrie Street",
+      "description": "Come visit our booth!",
+      "type": "community",
+      "featured": false,
+      "attendees": 0,
+      "organizer": "QUMSA",
+      "url": ""
+    },
+    {
+      "id": "new-event-mtrjioh1",
+      "title": "Sister's Jeopardy Social",
+      "date": "2026-09-12",
+      "time": "2:15 PM",
+      "endTime": "5:00 PM",
+      "location": "Kingston Hall Room 301",
+      "description": "Join us for a fun and relaxed QUMSA Jeopardy icebreaker! Get to know your fellow Muslim students through a mix of fun trivia and friendly competition. Come ready to laugh, connect, and unleash your inner trivia master. Plus, snacks will be provided!",
+      "type": "community",
+      "featured": false,
+      "attendees": 0,
+      "organizer": "QUMSA",
+      "url": ""
+    },
+    {
+      "id": "new-event-mtrjfwlw",
+      "title": "Tri-Colour Open House Booth",
+      "date": "2026-09-10",
+      "time": "5:00 PM",
+      "endTime": "8:00 PM",
+      "location": "ARC Main Gym",
+      "description": "Visit our booth to learn more about QUMSA!",
+      "type": "community",
+      "featured": false,
+      "attendees": 0,
+      "organizer": "QUMSA",
+      "url": ""
+    },
+    {
       "id": "skate-day-2026",
       "title": "QUMSA Skate Day",
       "date": "2026-01-31",
