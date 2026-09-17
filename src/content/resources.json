@@ -1,25 +1,6 @@
 {
   "categories": [
     {
-      "name": "Ramadan & Community",
-      "items": [
-        {
-          "title": "Ramadan Iftar Donation",
-          "url": "https://www.launchgood.com/v4/campaign/qumsa_2025_ramadan_iftar_program",
-          "icon": "HeartHandshake",
-          "description": "Support our community Iftar program during the holy month",
-          "featured": true
-        },
-        {
-          "title": "Ramadan Resources",
-          "url": "https://drive.google.com/drive/folders/1rMCYRXNlu8cpHgLiOhBz7Ea6EMdUu7hm",
-          "icon": "Calendar",
-          "description": "Complete collection of Ramadan materials and spiritual resources",
-          "featured": false
-        }
-      ]
-    },
-    {
       "name": "Community Support",
       "items": [
         {
