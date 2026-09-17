@@ -1,6 +1,48 @@
 {
   "events": [
     {
+      "id": "new-event-mu64am3v",
+      "title": "Welcome BBQ Picnic",
+      "date": "2026-09-27",
+      "time": "1:00 PM",
+      "endTime": "5:00 PM",
+      "location": "City Park",
+      "description": "A new academic year is here, and with it comes a beautiful chance to reconnect, unwind, and celebrate the incredible diversity of our Queen's Muslim community. Whether you’re returning to campus with your friend group or stepping out as a first-year student looking to find your community, this Welcome BBQ is for you! Come grab some great halal food, challenge your peers to outdoor games, or just lounge and chat to clear your mind after a hectic first few weeks of classes. For those looking to expand their circle, this is your perfect, low-pressure opportunity to take a risk and meet amazing people. Either way, come join us! :)",
+      "type": "community",
+      "featured": false,
+      "attendees": 0,
+      "organizer": "QUMSA",
+      "url": ""
+    },
+    {
+      "id": "new-event-mu648uti",
+      "title": "Brother's Soccer Tournament",
+      "date": "2026-09-20",
+      "time": "3:00 PM",
+      "endTime": "6:00 PM",
+      "location": "West Campus - South Grass Field",
+      "description": "⚽It's back! QUMSA is holding the 2026-2027 year's first 6v6 soccer match. Come join us for an evening of brotherhood and friendly competition, where brothers of all years can join in! \n\nAll skill levels are welcome to participate, just bring your wonderful selves :) Sign up with a team of friends, or sign up individually and we'll sort you into one. IF YOU SIGN UP WITH A TEAM, EACH MEMBER MUST COMPLETE THIS FORM AND WAIVER",
+      "type": "community",
+      "featured": false,
+      "attendees": 0,
+      "organizer": "QUMSA",
+      "url": ""
+    },
+    {
+      "id": "new-event-mu642712",
+      "title": "MWJA sister's workshop",
+      "date": "2026-09-19",
+      "time": "4:00 PM",
+      "endTime": "7:00 PM",
+      "location": "Mac-Corry Hall, Room D202",
+      "description": "📣 Join MWJA’s Workshop next Saturday and learn how to navigate the expectations placed on Muslim women. Understand the noise around you and find your voice within.\n",
+      "type": "community",
+      "featured": false,
+      "attendees": 0,
+      "organizer": "QUMSA",
+      "url": ""
+    },
+    {
       "id": "new-event-mtrjo2ja",
       "title": "",
       "date": "2026-09-07",
